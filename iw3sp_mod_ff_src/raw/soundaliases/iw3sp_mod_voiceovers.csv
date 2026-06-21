@@ -1,0 +1,657 @@
+name,sequence,file,vol_min,vol_max,pitch_min,pitch_max,dist_min,dist_max,channel,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,volumefalloffcurve,startdelay,speakermap,reverb,lfe percentage,center percentage,platform,envelop_min,envelop_max,envelop percentage
+
+
+#*****AC 130,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+#Captain Price,,,,,,,,,,,,,,,,,,,,,,,,,,,
+ac130_pri_towntoeast,,voiceovers/US/AC130/ac130_pri_1_2_R.wav,0.95,0.95,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AC130_PRI_TOWNTOEAST12,,,,,radio,nowetlevel,,0.1
+
+
+#******AFTERMATH,,,,,,,,,,,,,,,,,,,,,,,
+
+# Male US Military Radio Voice,,,,,,,,,,,,,,,,,,,,,,,
+aftermath_mmr_romeo,,voiceovers/US/Aftermath/aftermath_hqr_1_1_R.wav,0.37,0.37,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AFTERMATH_MMR_ROMEO11,,,,,radio,nowetlevel,,0.1
+
+# Female US Military Radio Voice,,,,,,,,,,,,,,,,,,,,,,,
+aftermath_fmr_epicenter,,voiceovers/US/Aftermath/aftermath_fmr_1_2_R.wav,0.49,0.49,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AFTERMATH_FMR_EPICENTER12,,,,,radio,nowetlevel,,0.1
+aftermath_fmr_evacuation,,voiceovers/US/Aftermath/aftermath_fmr_1_3_R.wav,0.49,0.49,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AFTERMATH_FMR_EVACUATION13,,,,,radio,nowetlevel,,0.1
+aftermath_fmr_contcenters,,voiceovers/US/Aftermath/aftermath_fmr_1_4_R.wav,0.49,0.49,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AFTERMATH_FMR_CONTCENTERS14,,,,,radio,nowetlevel,,0.1
+aftermath_fmr_dosimeter,,voiceovers/US/Aftermath/aftermath_fmr_1_5_R.wav,0.49,0.49,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AFTERMATH_FMR_DOSIMETER15,,,,,radio,nowetlevel,,0.1
+aftermath_fmr_elevatedlevels,,voiceovers/US/Aftermath/aftermath_fmr_1_6_R.wav,0.49,0.49,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AFTERMATH_FMR_ELEVATEDLEVELS16,,,,,radio,nowetlevel,,0.1
+
+
+#******AIRLIFT,,,,,,,,,,,,,,,,,,,,,,,
+
+# Lt. Vasquez,,,,,,,,,,,,,,,,,,,,,,,
+airlift_vsq_letsgo,,voiceovers/US/Airlift/airlift_vsq_7_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_VSQ_LETSGO73,,,,,radio,nowetlevel,,0.1
+airlift_vsq_hangon,,voiceovers/US/Airlift/airlift_vsq_11_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_VSQ_HANGON115,,,,,radio,nowetlevel,,0.1
+
+# Co Pilot,,,,,,,,,,,,,,,,,,,,,,,
+airlift_cop_rogerthat,,voiceovers/US/Airlift/airlift_cop_11_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_COP_ROGERTHAT113,,,,,radio,nowetlevel,,0.1
+
+# Helicopter Crew Chief,,,,,,,,,,,,,,,,,,,,,,,
+airlift_hcc_letsgo,,voiceovers/US/Airlift/airlift_hcc_4_3.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_HCC_LETSGO43,,,,,,,,0.1
+airlift_hcc_downramp,,voiceovers/US/Airlift/airlift_hcc_4_4.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_HCC_DOWNRAMP44,,,,,,,,0.1
+airlift_hcc_wheelsup,1,voiceovers/US/Airlift/airlift_hcc_7_5.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_HCC_WHEELSUP75,,,,,,,,0.1
+airlift_hcc_wheelsup,2,voiceovers/US/Airlift/airlift_hcc_7_5b.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_HCC_WHEELSUP75B,,,,,,,,0.1
+
+# General Marine 1,,,,,,,,,,,,,,,,,,,,,,,
+airlift_gm1_firebalcony,,voiceovers/US/Airlift/airlift_gm1_5_1.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_GM1_FIREBALCONY51,,,,,,,,0.1
+
+# General Marine 2,,,,,,,,,,,,,,,,,,,,,,,
+airlift_gm2_firebalcony,,voiceovers/US/Airlift/airlift_gm2_6_1.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_GM2_FIREBALCONY61,,,,,,,,0.1
+
+# General Marine 3,,,,,,,,,,,,,,,,,,,,,,,
+airlift_gm3_reinforcements,,voiceovers/US/Airlift/airlift_gm3_6_2.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_GM3_REINFORCEMENTS62,,,,,,,,0.1
+airlift_gm3_hellyeah,,voiceovers/US/Airlift/airlift_gm3_7_2.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_GM3_HELLYEAH72,,,,,,,,0.1
+
+# General Marine 4,,,,,,,,,,,,,,,,,,,,,,,
+airlift_gm4_hellyeah,,voiceovers/US/Airlift/airlift_gm4_7_7.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_GM4_HELLYEAH77,,,,,,,,0.1
+
+# HQ Radio Voice,,,,,,,,,,,,,,,,,,,,,,,
+airlift_hqr_allcallsigns,,voiceovers/US/Airlift/airlift_hqr_1_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_HQR_ALLCALLSIGNS12,,,,,radio,nowetlevel,,0.1
+airlift_hqr_hostilesadvancing,,voiceovers/US/Airlift/airlift_hqr_10_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_HQR_HOSTILESADVANCING101,,,,,radio,nowetlevel,,0.1
+airlift_hqr_confirmed_sub,,voiceovers/US/Airlift/airlift_hqr_11_4b_R.wav,0.99,0.99,,,360,6000,announcer,loaded,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_HQR_CONFIRMED114,,,,,radio,nowetlevel,,0.1
+
+
+# Male Helicopter Pilot,,,,,,,,,,,,,,,,,,,,,,,
+airlift_mhp_information,,voiceovers/US/Airlift/airlift_mhp_1_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_MHP_INFORMATION11,,,,,radio,nowetlevel,,0.1
+airlift_mhp_takingfire,,voiceovers/US/Airlift/airlift_mhp_2_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_MHP_TAKINGFIRE21,,,,,radio,nowetlevel,,0.1
+airlift_mhp_rpgrooftops,,voiceovers/US/Airlift/airlift_mhp_2_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_MHP_RPGROOFTOPS22,,,,,radio,nowetlevel,,0.1
+airlift_mhp_hostilesrpgs,,voiceovers/US/Airlift/airlift_mhp_2_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_MHP_HOSTILESRPGS23,,,,,radio,nowetlevel,,0.1
+airlift_mhp_groundinfantry,,voiceovers/US/Airlift/airlift_mhp_2_4_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_MHP_GROUNDINFANTRY24,,,,,radio,nowetlevel,,0.1
+airlift_mhp_wevegotrpgs,,voiceovers/US/Airlift/airlift_mhp_2_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_MHP_WEVEGOTRPGS25,,,,,radio,nowetlevel,,0.1
+airlift_mhp_lightarmor,,voiceovers/US/Airlift/airlift_mhp_2_6_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_MHP_LIGHTARMOR26,,,,,radio,nowetlevel,,0.1
+airlift_mhp_antiairrooftop,,voiceovers/US/Airlift/airlift_mhp_2_7_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_MHP_ANTIAIRROOFTOP27,,,,,radio,nowetlevel,,0.1
+airlift_mhp_antiairground,,voiceovers/US/Airlift/airlift_mhp_2_8_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_MHP_ANTIAIRGROUND28,,,,,radio,nowetlevel,,0.1
+airlift_mhp_inforchop,,voiceovers/US/Airlift/airlift_mhp_11_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRLIFT_MHP_INFORCHOP112,,,,,radio,nowetlevel,,0.1
+
+
+#******AIRPLANE,,,,,,,,,,,,,,,,,,,,,,,
+
+# Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+airplane_ter_illkillhim,,voiceovers/UK/airplane/airplane_ru1_8_3.wav,0.99,0.99,,,360,6000,voice,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_TER_ILLKILLHIM83,,,,,,,,
+
+# SAS 1,,,,,,,,,,,,,,,,,,,,,,,
+airplane_sas1_tangodown,,voiceovers/UK/airplane/airplane_sas1_4_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS1_TANGODOWN41,,,,,radio,nowetlevel,,0.1
+airplane_sas1_xraydown,,voiceovers/UK/airplane/airplane_sas1_4_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS1_XRAYDOWN42,,,,,radio,nowetlevel,,0.1
+airplane_sas1_hostileneut,,voiceovers/UK/airplane/airplane_sas1_4_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS1_HOSTILENEUT43,,,,,radio,nowetlevel,,0.1
+airplane_sas1_targneut,,voiceovers/UK/airplane/airplane_sas1_4_4_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS1_TARGNEUT44,,,,,radio,nowetlevel,,0.1
+airplane_sas1_areaclear,,voiceovers/UK/airplane/airplane_sas1_4_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS1_AREACLEAR45,,,,,radio,nowetlevel,,0.1
+airplane_sas1_sectionclear,,voiceovers/UK/airplane/airplane_sas1_4_6_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS1_SECTIONCLEAR46,,,,,radio,nowetlevel,,0.1
+airplane_sas1_clear,,voiceovers/UK/airplane/airplane_sas1_4_7_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS1_CLEAR47,,,,,radio,nowetlevel,,0.1
+
+# Russian 4,,,,,,,,,,,,,,,,,,,,,,,
+airplane_ru4_donthurtme,,voiceovers/UK/airplane/airplane_ru4_9_3.wav,0.83,0.83,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_RU4_DONTHURTME93,,,,,,,,0.1
+airplane_ru4_gettoaphone,,voiceovers/UK/airplane/airplane_ru4_9_4.wav,0.83,0.83,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_RU4_GETTOAPHONE94,,,,,,,,0.1
+airplane_ru4_noparachute,,voiceovers/UK/airplane/airplane_ru4_9_6.wav,0.83,0.83,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_RU4_NOPARACHUTE96,,,,,,,,0.1
+
+# Gaz,,,,,,,,,,,,,,,,,,,,,,,
+airplane_gaz_okgetready,,voiceovers/UK/airplane/airplane_gaz_1_5.1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_OKGETREADY151,,,,,radio,nowetlevel,,0.1
+airplane_gaz_standby,,voiceovers/UK/airplane/airplane_gaz_1_6_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_STANDBY16,,,,,radio,nowetlevel,,0.1
+airplane_gaz_weaponsfree,,voiceovers/UK/airplane/airplane_gaz_2_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_WEAPONSFREE22,,,,,radio,nowetlevel,,0.1
+airplane_gaz_move,,voiceovers/UK/airplane/airplane_gaz_2_4_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_MOVE24,,,,,radio,nowetlevel,,0.1
+airplane_gaz_moveup,,voiceovers/UK/airplane/airplane_gaz_2_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_MOVEUP25,,,,,radio,nowetlevel,,0.1
+airplane_gaz_keepmoving,,voiceovers/UK/airplane/airplane_gaz_2_6_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_KEEPMOVING26,,,,,radio,nowetlevel,,0.1
+airplane_gaz_stairwayclear,,voiceovers/UK/airplane/airplane_gaz_2_7_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_STAIRWAYCLEAR27,,,,,radio,nowetlevel,,0.1
+airplane_gaz_tangodown,,voiceovers/UK/airplane/airplane_gaz_3_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_TANGODOWN31,,,,,radio,nowetlevel,,0.1
+airplane_gaz_xraydown,,voiceovers/UK/airplane/airplane_gaz_3_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_XRAYDOWN32,,,,,radio,nowetlevel,,0.1
+airplane_gaz_hostileneut,,voiceovers/UK/airplane/airplane_gaz_3_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_HOSTILENEUT33,,,,,radio,nowetlevel,,0.1
+airplane_gaz_targneut,,voiceovers/UK/airplane/airplane_gaz_3_4_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_TARGNEUT34,,,,,radio,nowetlevel,,0.1
+airplane_gaz_areaclear,,voiceovers/UK/airplane/airplane_gaz_3_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_AREACLEAR35,,,,,radio,nowetlevel,,0.1
+airplane_gaz_sectionclear,,voiceovers/UK/airplane/airplane_gaz_3_6_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_SECTIONCLEAR36,,,,,radio,nowetlevel,,0.1
+airplane_gaz_clear,,voiceovers/UK/airplane/airplane_gaz_3_7_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_CLEAR37,,,,,radio,nowetlevel,,0.1
+airplane_gaz_seeya,,voiceovers/UK/airplane/airplane_gaz_10_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_GAZ_SEEYA101,,,,,radio,nowetlevel,,0.1
+
+# SAS 4,,,,,,,,,,,,,,,,,,,,,,,
+airplane_sas4_onealpha,,voiceovers/UK/airplane/airplane_sas4_2_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS4_ONEALPHA21,,,,,radio,nowetlevel,,0.1
+airplane_sas4_multiplecont,,voiceovers/UK/airplane/airplane_sas4_2_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS4_MULTIPLECONT23,,,,,radio,nowetlevel,,0.1
+airplane_sas4_tangodown,,voiceovers/UK/airplane/airplane_sas4_5_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS4_TANGODOWN51,,,,,radio,nowetlevel,,0.1
+airplane_sas4_xraydown,,voiceovers/UK/airplane/airplane_sas4_5_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS4_XRAYDOWN52,,,,,radio,nowetlevel,,0.1
+airplane_sas4_hostileneut,,voiceovers/UK/airplane/airplane_sas4_5_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS4_HOSTILENEUT53,,,,,radio,nowetlevel,,0.1
+airplane_sas4_targneut,,voiceovers/UK/airplane/airplane_sas4_5_4_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS4_TARGNEUT54,,,,,radio,nowetlevel,,0.1
+airplane_sas4_areaclear,,voiceovers/UK/airplane/airplane_sas4_5_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS4_AREACLEAR55,,,,,radio,nowetlevel,,0.1
+airplane_sas4_sectionclear,,voiceovers/UK/airplane/airplane_sas4_5_6_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS4_SECTIONCLEAR56,,,,,radio,nowetlevel,,0.1
+airplane_sas4_clear,,voiceovers/UK/airplane/airplane_sas4_5_7_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AIRPLANE_SAS4_CLEAR57,,,,,radio,nowetlevel,,0.1
+
+
+#******AMBUSH,,,,,,,,,,,,,,,,,,,,,,,
+
+# Captain Price,,,,,,,,,,,,,,,,,,,,,,,
+ambush_pri_notbad,,voiceovers/UK/Ambush/ambush_pri_1_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_PRI_NOTBAD12,,,,,radio,nowetlevel,,0.1
+
+# Sgt. Griggs,,,,,,,,,,,,,,,,,,,,,,,
+ambush_grg_nothinglikerussian,,voiceovers/UK/Ambush/ambush_grg_2_3.wav,0.55,0.55,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_GRG_NOTHINGLIKERUSSIAN23,,,,,,,,0.1
+ambush_grg_ohno1,,voiceovers/UK/Ambush/ambush_grg_3_10.2.wav,0.99,0.99,,,480,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_GRG_OHNO13102,,,,,,,,0.1
+ambush_grg_ohno2,,voiceovers/UK/Ambush/ambush_grg_3_10.3.wav,0.99,0.99,,,480,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_GRG_OHNO23103,,,,,,,,0.1
+
+# Sgt. Kamarov,,,,,,,,,,,,,,,,,,,,,,,
+ambush_kmr_bestwayin,,voiceovers/UK/Ambush/ambush_kmr_1_1.wav,0.6,0.6,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_KMR_BESTWAYIN11,,,,,,,,0.1
+
+# Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+ambush_ru1_paperswhatpapers,,voiceovers/UK/Ambush/ambush_ru1_3_2.wav,0.45,0.45,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_RU1_PAPERSWHATPAPERS32,,,,,,,,0.1
+ambush_ru1_fatpolitician,,voiceovers/UK/Ambush/ambush_ru1_3_3.wav,0.45,0.45,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_RU1_FATPOLITICIAN33,,,,,,,,0.1
+ambush_ru1_whatareyouwaitingfor,,voiceovers/UK/Ambush/ambush_ru1_3_4.wav,0.45,0.45,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_RU1_WHATAREYOUWAITINGFOR34,,,,,,,,0.1
+
+# Russian 2,,,,,,,,,,,,,,,,,,,,,,,
+ambush_ru2_papersplease,,voiceovers/UK/Ambush/ambush_ru2_3_1.wav,0.45,0.45,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_RU2_PAPERSPLEASE31,,,,,,,,0.1
+ambush_ru2_illdothatrightnow,,voiceovers/UK/Ambush/ambush_ru2_3_5.wav,0.45,0.45,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_RU2_ILLDOTHATRIGHTNOW35,,,,,,,,0.1
+
+# Son of Zakhaev,,,,,,,,,,,,,,,,,,,,,,,
+ambush_soz_stopthebloodshed,,voiceovers/UK/Ambush/ambush_soz_8_1.wav,0.45,0.45,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_SOZ_STOPTHEBLOODSHED81,,,,,,,,0.1
+ambush_soz_deadsoonanyway,,voiceovers/UK/Ambush/ambush_soz_8_5.wav,0.45,0.45,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_SOZ_DEADSOONANYWAY85,,,,,,,,0.1
+ambush_soz_gofyourself,,voiceovers/UK/Ambush/ambush_soz_8_7.wav,0.45,0.45,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_AMBUSH_SOZ_GOFYOURSELF87,,,,,,,,0.1
+
+
+#*****ARMADA,,,,,,,,,,,,,,,,,,,,,,,
+
+#Generic Marine 1,,,,,,,,,,,,,,,,,,,,,,,
+armada_gm1_gogogo,,voiceovers/US/Armada/armada_gm1_4_2.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_GM1_GOGOGO42,,,,,,,,0.1
+armada_gm1_breaching,,voiceovers/US/Armada/armada_gm1_5_6.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_GM1_BREACHING56,,,,,,,,0.1
+armada_gm1_breachingbreaching,,voiceovers/US/Armada/armada_gm1_8_4.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_GM1_BREACHINGBREACHING84,,,,,,,,0.1
+armada_gm1_goesourboys,,voiceovers/US/Armada/armada_gm1_10_2.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_GM1_GOESOURBOYS102,,,,,,,,0.1
+armada_gm1_clear,,voiceovers/US/Armada/armada_gm1_11_14.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_GM1_CLEAR1114,,,,,,,,0.1
+
+#Generic Marine 2,,,,,,,,,,,,,,,,,,,,,,,
+armada_gm2_moveitmoveit,,voiceovers/US/Armada/armada_gm2_4_3.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_GM2_MOVEITMOVEIT43,,,,,,,,0.1
+armada_gm2_oorah,,voiceovers/US/Armada/armada_gm2_10_3.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_GM2_OORAH103,,,,,,,,0.1
+
+#Generic Marine 3,,,,,,,,,,,,,,,,,,,,,,,
+armada_gm3_blockingpositions,,voiceovers/US/Armada/armada_gm3_5_1.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_GM3_BLOCKINGPOSITIONS51,,,,,,,,0.1
+armada_gm3_oorah,,voiceovers/US/Armada/armada_gm3_10_4.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_GM3_OORAH104,,,,,,,,0.1
+
+#Female Pilot,,,,,,,,,,,,,,,,,,,,,,,
+armada_fhp_copystrikersixfour,,voiceovers/US/Armada/armada_fhp_1_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_FHP_COPYSTRIKERSIXFOUR12,,,,,radio,nowetlevel,,0.1
+armada_fhp_copy,,voiceovers/US/Armada/armada_fhp_1_4_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_FHP_COPY14,,,,,radio,nowetlevel,,0.1
+armada_fhp_rogerthat,,voiceovers/US/Armada/armada_fhp_2_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_FHP_ROGERTHAT22,,,,,radio,nowetlevel,,0.1
+armada_fhp_gotvisual,,voiceovers/US/Armada/armada_fhp_3_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_FHP_GOTVISUAL31,,,,,radio,nowetlevel,,0.1
+
+#Helicopter Pilot 1,,,,,,,,,,,,,,,,,,,,,,,
+armada_hp1_shorelineinview,,voiceovers/US/Armada/armada_mhp_1_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_HP1_SHORELINEINVIEW11,,,,,radio,nowetlevel,,0.1
+armada_hp1_feetdrytenseconds,,voiceovers/US/Armada/armada_mhp_1_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_HP1_FEETDRYTENSECONDS13,,,,,radio,nowetlevel,,0.1
+armada_hp1_takingfirehere,,voiceovers/US/Armada/armada_mhp_2_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_HP1_TAKINGFIREHERE21,,,,,radio,nowetlevel,,0.1
+armada_hp1_thatwasclose,,voiceovers/US/Armada/armada_mhp_2_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_HP1_THATWASCLOSE23,,,,,radio,nowetlevel,,0.1
+armada_hp1_copythat,,voiceovers/US/Armada/armada_mhp_3_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_HP1_COPYTHAT32,,,,,radio,nowetlevel,,0.1
+armada_hp1_fiveseconds,,voiceovers/US/Armada/armada_mhp_3_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_HP1_FIVESECONDS33,,,,,radio,nowetlevel,,0.1
+armada_hp1_standbygreenlight,,voiceovers/US/Armada/armada_mhp_3_4_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_HP1_STANDBYGREENLIGHT34,,,,,radio,nowetlevel,,0.1
+
+# MSgt Vasquez,,,,,,,,,,,,,,,,,,,,,,,
+armada_vsq_downtheropes,,voiceovers/US/Armada/armada_vsq_4_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_VSQ_DOWNTHEROPES41,,,,,radio,nowetlevel,,0.1
+armada_vsq_breaching,,voiceovers/US/Armada/armada_vsq_5_7_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_VSQ_BREACHING57,,,,,radio,nowetlevel,,0.1
+armada_vsq_gogogo,,voiceovers/US/Armada/armada_vsq_5_8_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_VSQ_GOGOGO58,,,,,radio,nowetlevel,,0.1
+armada_vsq_doit,,voiceovers/US/Armada/armada_vsq_8_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_VSQ_DOIT83,,,,,radio,nowetlevel,,0.1
+armada_vsq_gogogo2,,voiceovers/US/Armada/armada_vsq_8_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_VSQ_GOGOGO85,,,,,radio,nowetlevel,,0.1
+armada_vsq_oorah,,voiceovers/US/Armada/armada_vsq_10_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_VSQ_OORAH105,,,,,radio,nowetlevel,,0.1
+
+# Griggs,,,,,,,,,,,,,,,,,,,,,,,
+armada_grg_yeahoorah,,voiceovers/US/Armada/armada_grg_11_10.wav,0.6,0.6,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ARMADA_GRG_YEAHOORAH1110,,,,,,,,0.1
+
+
+# ******BLACKOUT,,,,,,,,,,,,,,,,,,,,,,,
+
+# Gaz,,,,,,,,,,,,,,,,,,,,,,,
+blackout_gaz_loyalistseh,,voiceovers/UK/Blackout/blackout_gaz_1_2_R.wav,0.58,0.58,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BLACKOUT_GAZ_LOYALISTSEH12,,,,,,,,0.1
+
+# Captain Price,,,,,,,,,,,,,,,,,,,,,,,
+blackout_pri_halfaclick,,voiceovers/UK/Blackout/blackout_pri_1_1_R.wav,0.58,0.58,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BLACKOUT_PRI_HALFACLICK11,,,,,,,,0.1
+
+# Sgt. Kamarov,,,,,,,,,,,,,,,,,,,,,,,
+blackout_kmr_prepareattack,,voiceovers/RU/Blackout/blackout_kmr_3_8.wav,0.7,0.7,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BLACKOUT_KMR_PREPAREATTACK38,,,,,,,,0.1
+blackout_kmr_stalling,,voiceovers/UK/blackout/blackout_kmr_4_12.1.wav,0.85,0.85,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BLACKOUT_KMR_STALLING4121_CUT,,,,,,,,0.1
+blackout_kmr_outofmind,,voiceovers/UK/blackout/blackout_kmr_5_1.6.wav,0.85,0.85,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BLACKOUT_KMR_OUTOFMIND516,,,,,,,,0.1
+
+# Nikolai the Defector,,,,,,,,,,,,,,,,,,,,,,,
+blackout_nkd_whoareyou,,voiceovers/UK/Blackout/blackout_nkd_6_4.1.wav,0.8,0.8,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BLACKOUT_NKD_WHOAREYOU641,,,,,,,,0.1
+
+# Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+blackout_ru1_viktor,,voiceovers/UK/blackout/blackout_ru1_6_3.1.wav,0.6,0.6,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BLACKOUT_RU1_VIKTOR631,,,,,,,,0.1
+blackout_ru1_electrician,,voiceovers/UK/blackout/blackout_ru1_6_3.2.wav,0.6,0.6,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BLACKOUT_RU1_ELECTRICIAN632,,,,,,,,0.1
+
+# Russian 2,,,,,,,,,,,,,,,,,,,,,,,
+blackout_ru1_sasha,,voiceovers/UK/blackout/blackout_ru2_6_3.6.wav,0.6,0.6,,,360,6000,voice,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BLACKOUT_RU1_SASHA636,,,,,,,,0.1
+
+
+#*****BOG A,,,,,,,,,,,,,,,,,,,,,,,
+
+#Generic Marine 1,,,,,,,,,,,,,,,,,,,,,,,
+bog_gm1_oorah,,voiceovers/US/Bog/bog_a_gm1_10_15.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM1_OORAH1015,,,,,,,,0.1
+bog_gm1_threecomin,,voiceovers/US/Bog/bog_a_gm1_06_TMP.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM1_THREECOMIN,,,,,,,,0.1
+
+#Generic Marine 2,,,,,,,,,,,,,,,,,,,,,,,
+bog_gm2_moveit,,voiceovers/US/Bog/bog_a_gm2_1_2.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM2_MOVEIT12,,,,,,,,0.1
+bog_gm2_clear1,,voiceovers/US/Bog/bog_a_gm2_3_7.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM2_CLEAR137,,,,,,,,0.1
+bog_gm2_clear2,,voiceovers/US/Bog/bog_a_gm2_6_8.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM2_CLEAR268,,,,,,,,0.1
+bog_gm2_oorah,,voiceovers/US/Bog/bog_a_gm2_10_16.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM2_OORAH1016,,,,,,,,0.1
+
+#Generic Marine 3,,,,,,,,,,,,,,,,,,,,,,,
+bog_gm3_rpg,,voiceovers/US/Bog/bog_a_gm3_1_7.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM3_RPG17,,,,,,,,0.1
+bog_gm3_clear,,voiceovers/US/Bog/bog_a_gm3_3_8.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM3_CLEAR38,,,,,,,,0.1
+bog_gm3_allclear,,voiceovers/US/Bog/bog_a_gm3_6_9.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM3_ALLCLEAR69,,,,,,,,0.1
+bog_gm3_oorah,,voiceovers/US/Bog/bog_a_gm3_10_17.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM3_OORAH1017,,,,,,,,0.1
+
+# Vasquez,,,,,,,,,,,,,,,,,,,,,,,
+bog_vsq_halfaclick,,voiceovers/US/bog/bog_a_vsq_1_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_VSQ_HALFACLICK11,,,,,radio,nowetlevel,,0.1
+
+
+#*****BOG B,,,,,,,,,,,,,,,,,,,,,,,
+
+#Arab Soldier 2,,,,,,,,,,,,,,,,,,,,,,,
+bog_as1_letenter,,voiceovers/US/Bog/bog_b_ab2_4_1.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_AS1_LETENTER41,,,,,,,,0.1
+bog_as2_getready,,voiceovers/US/Bog/bog_b_ab2_4_2.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_AS2_LETENTER42,,,,,,,,0.1
+
+#Generic Marine 1,,,,,,,,,,,,,,,,,,,,,,,
+bog_gm1_getyourass,,voiceovers/US/Bog/bog_b_gm1_1_1.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM1_GETYOURASS11,,,,,,,,0.1
+bog_gm1_wooyeah,,voiceovers/US/Bog/bog_b_gm1_11_10.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM1_WOOYEAH1100,,,,,,,,0.1
+bog_gm4_talkinabout,,voiceovers/US/Bog/bog_b_gm1_11_14.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM4_TALKINABOUT114,,,,,,,,0.1
+
+#Generic Marine 2,,,,,,,,,,,,,,,,,,,,,,,
+bog_gm2_holyshit,,voiceovers/US/Bog/bog_b_gm2_11_11.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM2_HOLYSHIT1111,,,,,,,,0.1
+
+#Generic Marine 3,,,,,,,,,,,,,,,,,,,,,,,
+bog_gm3_hellyeah,,voiceovers/US/Bog/bog_b_gm3_11_12.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM3_HELLYEAH1112,,,,,,,,0.1
+
+#Generic Marine 4,,,,,,,,,,,,,,,,,,,,,,,
+bog_gm4_yeahwoo,,voiceovers/US/Bog/bog_b_gm4_11_13.wav,0.99,0.99,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_GM4_YEAHWOO1113,,,,,,,,0.1
+
+#Tank Commander,,,,,,,,,,,,,,,,,,,,,,,
+bog_tcm_3story11_2ndfloor,,voiceovers/US/Bog/bog_b_tcm_3_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TCM_3STORY11_2NDFLOOR32,,,,,radio,nowetlevel,,0.1
+bog_tcm_fire1,1,voiceovers/US/Bog/bog_b_tcm_3_4_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TCM_FIRE134,,,,,radio,nowetlevel,,0.1
+bog_tcm_3story1130_2ndfloor,,voiceovers/US/Bog/bog_b_tcm_3_6_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TCM_3STORY1130_2NDFLOOR36,,,,,radio,nowetlevel,,0.1
+bog_tcm_fire1,2,voiceovers/US/Bog/bog_b_tcm_3_8_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TCM_FIRE138,,,,,radio,nowetlevel,,0.1
+bog_tcm_2story1_ground,,voiceovers/US/Bog/bog_b_tcm_3_10_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TCM_2STORY1_GROUND310,,,,,radio,nowetlevel,,0.1
+bog_tcm_fire1,3,voiceovers/US/Bog/bog_b_tcm_3_12_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TCM_FIRE1312,,,,,radio,nowetlevel,,0.1
+bog_tcm_2story1_2ndfloor,,voiceovers/US/Bog/bog_b_tcm_3_14_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TCM_2STORY1_2NDFLOOR314,,,,,radio,nowetlevel,,0.1
+bog_tcm_fire1,4,voiceovers/US/Bog/bog_b_tcm_3_16_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TCM_FIRE1316,,,,,radio,nowetlevel,,0.1
+bog_tcm_3story1230_2ndfloor,,voiceovers/US/Bog/bog_b_tcm_3_18_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TCM_3STORY1230_2NDFLOOR318,,,,,radio,nowetlevel,,0.1
+bog_tcm_fire1,5,voiceovers/US/Bog/bog_b_tcm_3_20_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TCM_FIRE1320,,,,,radio,nowetlevel,,0.1
+
+#Tank Loader,,,,,,,,,,,,,,,,,,,,,,,
+bog_tld_up,,voiceovers/US/Bog/bog_b_tld_3_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TLD_UP31,,,,,radio,nowetlevel,,0.1
+bog_tld_up1,,voiceovers/US/Bog/bog_b_tld_3_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TLD_UP135,,,,,radio,nowetlevel,,0.1
+bog_tld_up2,,voiceovers/US/Bog/bog_b_tld_3_9_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TLD_UP239,,,,,radio,nowetlevel,,0.1
+bog_tld_up3,,voiceovers/US/Bog/bog_b_tld_3_13_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TLD_UP3313,,,,,radio,nowetlevel,,0.1
+bog_tld_up4,,voiceovers/US/Bog/bog_b_tld_3_17_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TLD_UP4317,,,,,radio,nowetlevel,,0.1
+
+#Tank Gunner,,,,,,,,,,,,,,,,,,,,,,,
+bog_tgn_targetacquired1,1,voiceovers/US/Bog/bog_b_tgn_3_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TGN_TARGETACQUIRED133,,,,,radio,nowetlevel,,0.1
+bog_tgn_targetacquired1,2,voiceovers/US/Bog/bog_b_tgn_3_7_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TGN_TARGETACQUIRED137,,,,,radio,nowetlevel,,0.1
+bog_tgn_targetacquired2,1,voiceovers/US/Bog/bog_b_tgn_3_11_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TGN_TARGETACQUIRED2311,,,,,radio,nowetlevel,,0.1
+bog_tgn_targetacquired2,2,voiceovers/US/Bog/bog_b_tgn_3_15_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TGN_TARGETACQUIRED2315,,,,,radio,nowetlevel,,0.1
+bog_tgn_targetacquired3,1,voiceovers/US/Bog/bog_b_tgn_3_19_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TGN_TARGETACQUIRED3319,,,,,radio,nowetlevel,,0.1
+bog_tgn_targetacquired3,2,voiceovers/US/Bog/bog_b_tgn_8_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_BOG_TGN_TARGETACQUIRED385,,,,,radio,nowetlevel,,0.1
+
+
+# ***** CARGOSHIP,,,,,,,,,,,,,,,,,,,,,,,
+
+#Captain Price,,,,,,,,,,,,,,,,,,,,,,,
+cargoship_pri_crewexpend,,voiceovers/UK/Cargoship/cargoship_pri_1_4_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_PRI_CREWEXPEND14,,,,,radio,nowetlevel,,0.1
+
+#Helicopter Pilot 1,,,,,,,,,,,,,,,,,,,,,,,
+cargoship_hp1_baseplatehammertwo,,voiceovers/UK/Cargoship/cargoship_mhp_1_1_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_HP1_BASEPLATEHAMMERTWO11,,,,,radio,nowetlevel,,0.1
+cargoship_hp1_thirtysecdark,,voiceovers/UK/Cargoship/cargoship_mhp_1_3_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_HP1_THIRTYSECDARK13,,,,,radio,nowetlevel,,0.1
+cargoship_hp1_tensecondsradio,,voiceovers/UK/Cargoship/cargoship_mhp_1_13_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_HP1_TENSECONDSRADIO113,,,,,radio,nowetlevel,,0.1
+cargoship_hp1_radiocheck,,voiceovers/UK/Cargoship/cargoship_mhp_1_14_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_HP1_RADIOCHECK114,,,,,radio,nowetlevel,,0.1
+cargoship_hp1_greenlightgoradio,,voiceovers/UK/Cargoship/cargoship_mhp_1_15_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_HP1_GREENLIGHTGORADIO115,,,,,radio,nowetlevel,,0.1
+
+#HQ Radio Voice,,,,,,,,,,,,,,,,,,,,,,,
+cargoship_hqr_copytwofour,,voiceovers/UK/Cargoship/cargoship_hqr_1_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_HQR_COPYTWOFOUR12,,,,,radio,nowetlevel,,0.1
+
+#Drunk Russian,,,,,,,,,,,,,,,,,,,,,,,
+cargoship_rud_3sec,,voiceovers/UK/Cargoship/cargoship_ru1_2_1.1.wav,0.8,0.8,,,7,3600,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_RUD_3SEC211,,,,,,,,0.1
+
+# Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+cargoship_ru1_getready,,voiceovers/UK/Cargoship/cargoship_ru1_8_1.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_RU1_GETREADY81,,,,,,,,0.1
+cargoship_ru1_callforhelp,,voiceovers/UK/Cargoship/cargoship_ru1_8_5.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_RU1_CALLFORHELP85,,,,,,,,0.1
+
+# Russian 2,,,,,,,,,,,,,,,,,,,,,,,
+cargoship_ru2_incargoholds,,voiceovers/UK/Cargoship/cargoship_ru2_2_2.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_RU2_INCARGOHOLDS22,,,,,,,,0.1
+cargoship_ru2_whatthe,,voiceovers/UK/Cargoship/cargoship_ru2_8_2.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_RU2_WHATTHE82,,,,,,,,0.1
+cargoship_ru2_aretheyamericans,,voiceovers/UK/Cargoship/cargoship_ru2_8_3.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_RU2_ARETHEYAMERICANS83,,,,,,,,0.1
+cargoship_ru2_theyregettingclose,,voiceovers/UK/Cargoship/cargoship_ru2_8_7.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_RU2_THEYREGETTINGCLOSE87,,,,,,,,0.1
+
+# Russian 4,,,,,,,,,,,,,,,,,,,,,,,
+cargoship_ru4_getready,,voiceovers/UK/Cargoship/cargoship_ru4_8_4.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_RU4_GETREADY84,,,,,,,,0.1
+cargoship_ru4_middleofocean,,voiceovers/UK/Cargoship/cargoship_ru4_8_6.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_CARGOSHIP_RU4_MIDDLEOFOCEAN86,,,,,,,,0.1
+
+
+#******HUNTED,,,,,,,,,,,,,,,,,,,,,,,
+
+#Captain Price,,,,,,,,,,,,,,,,,,,,,,,
+hunted_pri_whatthebloody,,voiceovers/UK/Hunted/hunted_pri_1_1.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_PRI_WHATTHEBLOODY11,,,,,,,,0.1
+
+#Helicopter Plot 1,,,,,,,,,,,,,,,,,,,,,,,
+hunted_hp1_missileinbound,,voiceovers/UK/Hunted/hunted_mhp_1_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_HP1_MISSILEINBOUND12,,,,,radio,nowetlevel,,0.1
+hunted_hp1_maydaymayday,,voiceovers/UK/Hunted/hunted_mhp_1_4_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_HP1_MAYDAYMAYDAY14,,alarm_altitude,,,radio,nowetlevel,,0.1
+hunted_hp1_goingdown,,voiceovers/UK/Hunted/hunted_mhp_1_5_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_HP1_GOINGDOWN15,,,,,radio,nowetlevel,,0.1
+
+#Russian Farmer,,,,,,,,,,,,,,,,,,,,,,,
+hunted_ruf_whatsgoingon,,voiceovers/UK/Hunted/hunted_ruf_4_1.wav,0.5,0.5,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RUF_WHATSGOINGON41,,,,,,,,0.1
+hunted_ruf_hidingwho,,voiceovers/UK/Hunted/hunted_ruf_4_3.wav,0.5,0.5,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RUF_HIDINGWHO43,,,,,,,,0.1
+hunted_ruf_british,,voiceovers/UK/Hunted/hunted_ruf_4_5.wav,0.5,0.5,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RUF_BRITISH45,,,,,,,,0.1
+
+#Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+hunted_ru1_isadump,,voiceovers/UK/Hunted/hunted_ru1_3_3.wav,0.5,0.5,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RU1_ISADUMP33,,,,,,,,0.1
+hunted_ru1_dontplaystupid,,voiceovers/UK/Hunted/hunted_ru1_4_2.wav,0.5,0.5,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RU1_DONTPLAYSTUPID42,,,,,,,,0.1
+hunted_ru1_hidingsoldiers,,voiceovers/UK/Hunted/hunted_ru1_4_4.wav,0.5,0.5,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RU1_HIDINGSOLDIERS44,,,,,,,,0.1
+hunted_ru1_forgetit,,voiceovers/UK/Hunted/hunted_ru1_4_6.wav,0.6,0.6,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RU1_FORGETIT46,,,,,,,,0.1
+hunted_ru1_bythehouse,,voiceovers/UK/Hunted/hunted_ru1_6_1.wav,0.6,0.6,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RU1_BYTHEHOUSE61,,,,,,,,0.1
+hunted_ru1_inthefield,,voiceovers/UK/Hunted/hunted_ru1_11_6.wav,0.6,0.6,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RU1_INTHEFIELD116,,,,,,,,0.1
+
+#Russian 2,,,,,,,,,,,,,,,,,,,,,,,
+hunted_ru2_bythecreek,,voiceovers/UK/Hunted/hunted_ru2_11_5.wav,0.6,0.6,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RU2_BYTHECREEK115,,,,,,,,0.1
+
+#Russian 4,,,,,,,,,,,,,,,,,,,,,,,
+hunted_ru4_outonfield,,voiceovers/UK/Hunted/hunted_ru4_11_7.wav,0.6,0.6,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_RU4_OUTONFIELD117,,,,,,,,0.1
+
+# B***n' Betty,,,,,,,,,,,,,,,,,,,,,,,
+hunted_bnb_missilelock,,voiceovers/UK/Hunted/hunted_bnb_1_6_R.wav,0.85,0.85,1.1,1.1,360,6000,announcer,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_BNB_MISSILELOCK16,,,,,radio,nowetlevel,,0.1
+hunted_bnb_altitude,,voiceovers/UK/Hunted/hunted_bnb_1_7_R.wav,0.85,0.85,1.1,1.1,360,6000,announcer,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_BNB_ALTITUDE17,,,,,radio,nowetlevel,,0.1
+hunted_bnb_caution,,voiceovers/UK/Hunted/hunted_bnb_1_8_R.wav,0.85,0.85,1.1,1.1,360,6000,announcer,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_BNB_CAUTION18,,,,,radio,nowetlevel,,0.1
+hunted_bnb_warning,,voiceovers/UK/Hunted/hunted_bnb_1_9_R.wav,0.85,0.85,1.1,1.1,360,6000,announcer,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_HUNTED_BNB_WARNING19,,,,,radio,nowetlevel,,0.1
+
+
+#******ICBM,,,,,,,,,,,,,,,,,,,,,,,
+
+# Captain Price,,,,,,,,,,,,,,,,,,,,,,,
+icbm_pri_regrouponme,,voiceovers/UK/icbm/icbm_pri_2_19_R.wav,0.6,0.6,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_PRI_REGROUPONME219,,,,,radio,nowetlevel,,0.1
+
+# Sgt. Griggs,,,,,,,,,,,,,,,,,,,,,,,
+icbm_grg_678452056,,voiceovers/US/ICBM/icbm_grg_3_15.wav,0.63,0.63,,,30,1200,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_GRG_678452056315,,,,,,,,0.1
+icbm_grg_678,,voiceovers/US/ICBM/icbm_grg_3_18.wav,0.63,0.63,,,30,1200,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_GRG_678318,,,,,,,,0.1
+icbm_grg_getbusy,,voiceovers/US/ICBM/icbm_grg_3_20.wav,0.63,0.63,,,30,1200,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_GRG_GETBUSY320,,,,,,,,0.1
+
+# Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+icbm_ru1_unit4report,,voiceovers/UK/ICBM/icbm_ru1_2_17_R.wav,0.95,0.95,,,30,1200,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_RU1_UNIT4REPORT217,,,,,radio,nowetlevel,,0.1
+icbm_ru1_whereothers,,voiceovers/UK/ICBM/icbm_ru1_3_14.wav,0.63,0.63,,,30,1200,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_RU1_WHEREOTHERS314,,,,,,,,0.1
+icbm_ru1_tovarisch,,voiceovers/UK/ICBM/icbm_ru1_3_16.wav,0.63,0.63,,,30,1200,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_RU1_TOVARISCH316,,,,,,,,0.1
+icbm_ru1_howmany,,voiceovers/UK/ICBM/icbm_ru1_3_17.wav,0.63,0.63,,,30,1200,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_RU1_HOWMANY317,,,,,,,,0.1
+icbm_ru1_whoisofficer,,voiceovers/UK/ICBM/icbm_ru1_3_19.wav,0.63,0.63,,,30,1200,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_RU1_WHOISOFFICER319,,,,,,,,0.1
+icbm_ru1_whereshacksaw,,voiceovers/UK/ICBM/icbm_ru1_3_21.wav,0.63,0.63,,,30,1200,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_RU1_WHERESHACKSAW321,,,,,,,,0.1
+icbm_ru1_ifihad,,voiceovers/UK/ICBM/icbm_ru1_3_23.wav,0.63,0.63,,,30,1200,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_RU1_IFIHAD323,,,,,,,,0.1
+
+# Russian 2,,,,,,,,,,,,,,,,,,,,,,,
+icbm_ru2_youhadit,,voiceovers/UK/ICBM/icbm_ru2_3_22.wav,0.5,0.5,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_ICBM_RU2_YOUHADIT322,,,,,,,,0.1
+
+
+# ******JEEPRIDE,,,,,,,,,,,,,,,,,,,,,,,
+
+# Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+jeepride_ru1_barelybreathing,,voiceovers/UK/Jeepride/jeepride_ru1_17_2.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_JEEPRIDE_RU1_BARELYBREATHING172,,,,,,,,0.1
+
+# Russian 2,,,,,,,,,,,,,,,,,,,,,,,
+jeepride_ru2_allrightmyfriend,,voiceovers/UK/Jeepride/jeepride_ru2_17_3.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_JEEPRIDE_RU2_ALLRIGHTMYFRIEND173,,,,,,,,0.1
+jeepride_ru2_gethimoutofhere,,voiceovers/UK/Jeepride/jeepride_ru2_17_4.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_JEEPRIDE_RU2_GETHIMOUTOFHERE174,,,,,,,,0.1
+
+
+# ******Kill House,,,,,,,,,,,,,,,,,,,,,,,
+
+# Gaz,,,,,,,,,,,,,,,,,,,,,,,
+killhouse_gaz_goodtosee,,voiceovers/us/khouse/khouse_gaz_2_1.wav,0.75,0.75,,,120,2400,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_KILLHOUSE_GAZ_GOODTOSEE21,,,,,,,,0.1
+killhouse_gaz_getarifle,,voiceovers/us/khouse/khouse_gaz_2_1.1.wav,0.75,0.75,,,120,2400,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_KILLHOUSE_GAZ_GETARIFLE211,,,,,,,,0.1
+
+# SAS 4,,,,,,,,,,,,,,,,,,,,,,,
+killhouse_sas4_goeasy,,voiceovers/UK/khouse/khouse_sas4_12_1.3.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_KILLHOUSE_SAS4_GOEASY1213,,,,,,,,0.1
+killhouse_sas4_fng,,voiceovers/UK/khouse/khouse_sas4_12_1.1.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_KILLHOUSE_SAS4_FNG1211,,,,,,,,0.1
+
+
+#******LAUNCH FACILITY_A,,,,,,,,,,,,,,,,,,,,,,,
+
+#HQ Radio Voice,,,,,,,,,,,,,,,,,,,,,,,
+launchfacility_a_hqr_stillworking,,voiceovers/US/LaunchA/launch_a_hqr_1_9_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_A_HQR_STILLWORKING19,,,,,radio,nowetlevel,,0.1
+
+#Russian Loudspeaker 1,,,,,,,,,,,,,,,,,,,,,,,
+launchfacility_a_rul_highalert,,voiceovers/US/LaunchA/launch_a_rl1_1_1_R.wav,0.6,0.6,,,360,6000,mission,streamed,,,0.8,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_A_RUL_HIGHALERT11,,,,,,nowetlevel,,0.1
+launchfacility_a_rul_underattack,,voiceovers/US/LaunchA/launch_a_rl1_1_2_R.wav,0.6,0.6,,,360,6000,mission,streamed,,,0.8,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_A_RUL_UNDERATTACK12,,,,,,nowetlevel,,0.1
+launchfacility_a_rul_redspentznaz,,voiceovers/US/LaunchA/launch_a_rl1_1_3_R.wav,0.6,0.6,,,360,6000,mission,streamed,,,0.8,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_A_RUL_REDSPENTZNAZ13,,,,,,nowetlevel,,0.1
+
+# Russian Loudspeaker 2,,,,,,,,,,,,,,,,,,,,,,,
+launchfacility_a_rul_motherland_sub,,voiceovers/US/LaunchA/launch_a_rl2_2_3_R.wav,0.6,0.6,,,360,6000,mission,streamed,,,0.8,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_A_RUL_MOTHERLAND23,,,,,,nowetlevel,,0.1
+launchfacility_a_rul_avengefallen_sub,,voiceovers/US/LaunchA/launch_a_rl2_2_4_R.wav,0.6,0.6,,,360,6000,mission,streamed,,,0.8,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_A_RUL_AVENGEFALLEN24,,,,,,nowetlevel,,0.1
+launchfacility_a_rul_restorehonor_sub,,voiceovers/US/LaunchA/launch_a_rl2_2_5_R.wav,0.6,0.6,,,360,6000,mission,streamed,,,0.8,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_A_RUL_RESTOREHONOR25,,,,,,nowetlevel,,0.1
+
+# Russian Loudspeaker 3,,,,,,,,,,,,,,,,,,,,,,,
+launchfacility_a_rul_preptubes,,voiceovers/US/LaunchA/launch_a_rl3_1_4_R.wav,0.6,0.6,,,360,6000,mission,streamed,,,0.8,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_A_RUL_PREPTUBES14,,,,,,nowetlevel,,0.1
+
+
+#******Launch Facility B,,,,,,,,,,,,,,,,,,,,,,,
+
+#Captain Price,,,,,,,,,,,,,,,,,,,,,,,
+launchfacility_b_pri_letsmove,,voiceovers/US/Launchb/launch_b_pri_1_1_R.wav,0.95,0.95,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_PRI_LETSMOVE11,,,,,radio,nowetlevel,,0.1
+
+#Marine 1,,,,,,,,,,,,,,,,,,,,,,,
+launchfacility_b_gm1_basesecurity,,voiceovers/US/Launchb/launch_b_gm1_1_2_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_GM1_BASESECURITY12,,,,,radio,nowetlevel,,0.1
+
+#Russian Loudspeaker 1,,,,,,,,,,,,,,,,,,,,,,,
+launchfacility_b_rul_alert_sub,,voiceovers/US/Launchb/launch_b_rl1_2_5_R.wav,0.31,0.31,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_ALERT25,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_barracks_sub,,voiceovers/US/Launchb/launch_b_rl1_2_6_R.wav,0.76,0.76,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_BARRACKS26,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_storagearea_sub,,voiceovers/US/Launchb/launch_b_rl1_3_2_R.wav,0.76,0.76,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_STORAGEAREA32,,,,,,nowetlevel,,0.1
+
+#Russian Loudspeaker 3,,,,,,,,,,,,,,,,,,,,,,,
+launchfacility_b_rul_2ndinitiated_sub,,voiceovers/US/Launchb/launch_b_rl3_4_1_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_2NDINITIATED41,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_primaryinititated_sub,,voiceovers/US/Launchb/launch_b_rl3_4_2_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_PRIMARYINITITATED42,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_securemissilebay_sub,,voiceovers/US/Launchb/launch_b_rl3_4_3_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_SECUREMISSILEBAY43,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_2mins_sub,,voiceovers/US/Launchb/launch_b_rl3_4_4_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_2MINS44,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_90secs_sub,,voiceovers/US/Launchb/launch_b_rl3_4_6_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_90SECS46,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_1min_sub,,voiceovers/US/Launchb/launch_b_rl3_4_7_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_1MIN47,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_30secs_sub,,voiceovers/US/Launchb/launch_b_rl3_4_8_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_30SECS48,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_20secs_sub,,voiceovers/US/Launchb/launch_b_rl3_4_10_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_20SECS410,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_ten_sub,,voiceovers/US/Launchb/launch_b_rl3_4_11_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_TEN411,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_nine_sub,,voiceovers/US/Launchb/launch_b_rl3_4_12_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_NINE412,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_eight_sub,,voiceovers/US/Launchb/launch_b_rl3_4_13_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_EIGHT413,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_seven_sub,,voiceovers/US/Launchb/launch_b_rl3_4_14_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_SEVEN414,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_six_sub,,voiceovers/US/Launchb/launch_b_rl3_4_15_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_SIX415,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_five_sub,,voiceovers/US/Launchb/launch_b_rl3_4_16_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_FIVE416,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_four_sub,,voiceovers/US/Launchb/launch_b_rl3_4_17_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_FOUR417,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_three_sub,,voiceovers/US/Launchb/launch_b_rl3_4_18_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_THREE418,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_two_sub,,voiceovers/US/Launchb/launch_b_rl3_4_19_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_TWO419,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_one_sub,,voiceovers/US/Launchb/launch_b_rl3_4_20_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_ONE420,,,,,,nowetlevel,,0.1
+launchfacility_b_rul_launchcomplete_sub,,voiceovers/US/Launchb/launch_b_rl3_4_21_R.wav,0.81,0.81,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RUL_LAUNCHCOMPLETE421,,,,,,nowetlevel,,0.1
+
+# Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+launchfacility_b_ru1_go,,voiceovers/US/Launchb/launch_b_ru1_1_5.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RU1_GO15,,,,,,,,0.1
+launchfacility_b_ru3_getready,,voiceovers/US/Launchb/launch_b_ru1_1_10.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RU3_GETREADY110,,,,,,,,0.1
+launchfacility_b_ru3_damnyou,,voiceovers/US/Launchb/launch_b_ru1_7_1.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RU3_DAMNYOU71,,,,,,,,0.1
+
+# Russian 2,,,,,,,,,,,,,,,,,,,,,,,
+launchfacility_b_ru2_grabweapons,,voiceovers/US/Launchb/launch_b_ru2_1_6.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RU2_GRABWEAPONS16,,,,,,,,0.1
+launchfacility_b_ru2_openfire,,voiceovers/US/Launchb/launch_b_ru2_7_2.wav,0.95,0.95,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_LAUNCHFACILITY_B_RU2_OPENFIRE72,,,,,,,,0.1
+
+
+#******SCOUTSNIPER,,,,,,,,,,,,,,,,,,,,,,,
+
+#Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+scoutsniper_ru1_otherteam,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_2_10.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_OTHERTEAM210,,,,,,,,0.1
+scoutsniper_ru1_wandering,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_2_4.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_WANDERING24,,,,,,,,0.1
+scoutsniper_ru1_wasteland,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_2_6.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_WASTELAND26,,,,,,,,0.1
+scoutsniper_ru1_takealook,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_2_8_R.wav,0.3,0.3,,,7,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_TAKEALOOK28,,,,,radio,nowetlevel,,0.1
+scoutsniper_ru1_onourway,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_2_9.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_ONOURWAY29,,,,,,,,0.1
+scoutsniper_ru1_foundenemy,1,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_9.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_FOUNDENEMY139,,,,,,,,0.1
+scoutsniper_ru1_foundenemy,2,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_11.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_FOUNDENEMY2311,,,,,,,,0.1
+scoutsniper_ru1_suspicious,1,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_13.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_SUSPICIOUS1313,,,,,,,,0.1
+scoutsniper_ru1_suspicious,2,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_14.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_SUSPICIOUS2314,,,,,,,,0.1
+scoutsniper_ru1_suspicious,3,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_15.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_SUSPICIOUS3315,,,,,,,,0.1
+scoutsniper_ru1_noworries,1,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_16.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_NOWORRIES1316,,,,,,,,0.1
+scoutsniper_ru1_noworries,2,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_17.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_NOWORRIES2317,,,,,,,,0.1
+scoutsniper_ru1_noworries,3,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_18.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_NOWORRIES3318,,,,,,,,0.1
+scoutsniper_ru1_foundenemy,3,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_19.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_FOUNDENEMY3319,,,,,,,,0.1
+scoutsniper_ru1_foundenemy,4,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_20.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_FOUNDENEMY4320,,,,,,,,0.1
+scoutsniper_ru1_foundenemy,5,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_21.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_FOUNDENEMY5321,,,,,,,,0.1
+scoutsniper_ru1_deadbody,1,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_22.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_DEADBODY1322,,,,,,,,0.1
+scoutsniper_ru1_deadbody,2,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_23.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_DEADBODY2323,,,,,,,,0.1
+scoutsniper_ru1_deadbody,3,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_24.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_DEADBODY3324,,,,,,,,0.1
+scoutsniper_ru1_anexplosion,1,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_59.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_ANEXPLOSION1,,,,,,,,0.1
+scoutsniper_ru1_anexplosion,2,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_60.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_ANEXPLOSION2,,,,,,,,0.1
+scoutsniper_ru1_anexplosion,3,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_61.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_ANEXPLOSION3,,,,,,,,0.1
+scoutsniper_ru1_anexplosion,4,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_62.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_ANEXPLOSION4,,,,,,,,0.1
+scoutsniper_ru1_anexplosion,5,voiceovers/UK/Scoutsniper/scoutsniper_ru1_3_63.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_ANEXPLOSION5,,,,,,,,0.1
+scoutsniper_ru1_sawsomething,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_4_1.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_SAWSOMETHING41,,,,,,,,0.1
+scoutsniper_ru1_allclear,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_4_3.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_ALLCLEAR43,,,,,,,,0.1
+scoutsniper_ru1_passcig,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_12_1.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_PASSCIG121,,,,,,,,0.1
+scoutsniper_ru1_wakeup,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_12_3.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_WAKEUP123,,,,,,,,0.1
+scoutsniper_ru1_tooexpensive,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_12_5.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_TOOEXPENSIVE125,,,,,,,,0.1
+scoutsniper_ru1_mercenaries,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_12_7.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_MERCENARIES127,,,,,,,,0.1
+scoutsniper_ru1_fivedollars,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_12_9.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_FIVEDOLLARS129,,,,,,,,0.1
+scoutsniper_ru1_pairofjacks,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_12_11.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_PAIROFJACKS1211,,,,,,,,0.1
+scoutsniper_ru1_ownmoney,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_12_15.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_OWNMONEY1215,,,,,,,,0.1
+scoutsniper_ru1_cantbelieve,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_12_20.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_CANTBELIEVE1220,,,,,,,,0.1
+scoutsniper_ru1_paytheman,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_12_21.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_PAYTHEMAN1221,,,,,,,,0.1
+scoutsniper_ru1_readytomove,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_1.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_READYTOMOVE181,,,,,,,,0.1
+scoutsniper_ru1_helicopteronway,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_3.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_HELICOPTERONWAY183,,,,,,,,0.1
+scoutsniper_ru1_zonesafe,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_4.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_ZONESAFE184,,,,,,,,0.1
+scoutsniper_ru1_okbringin,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_5.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_OKBRINGIN185,,,,,,,,0.1
+scoutsniper_ru1_checkthewoods,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_7.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_CHECKTHEWOODS187,,,,,,,,0.1
+scoutsniper_ru1_replacedbatteries,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_9.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_REPLACEDBATTERIES189,,,,,,,,0.1
+scoutsniper_ru1_getsworse,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_10.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_GETSWORSE1810,,,,,,,,0.1
+scoutsniper_ru1_dogsdontgetclose,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_12.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_DOGSDONTGETCLOSE1812,,,,,,,,0.1
+scoutsniper_ru1_whathappened,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_15.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_WHATHAPPENED1815,,,,,,,,0.1
+scoutsniper_ru1_specialforces,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_17.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_SPECIALFORCES1817,,,,,,,,0.1
+scoutsniper_ru1_nuclearreactor,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_20.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_NUCLEARREACTOR1820,,,,,,,,0.1
+scoutsniper_ru1_gottadosomething,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_22.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_GOTTADOSOMETHING1822,,,,,,,,0.1
+scoutsniper_ru1_hateguardduty,,voiceovers/UK/Scoutsniper/scoutsniper_ru1_18_25.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU1_HATEGUARDDUTY1825,,,,,,,,0.1
+
+#Russian 2,,,,,,,,,,,,,,,,,,,,,,,
+scoutsniper_ru2_notwandering,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_2_5.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_NOTWANDERING25,,,,,,,,0.1
+scoutsniper_ru2_zahkaevspayinggood,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_2_7.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_ZAHKAEVSPAYINGGOOD27,,,,,,,,0.1
+scoutsniper_ru2_foundenemy,4,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_10.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_FOUNDENEMY4310,,,,,,,,0.1
+scoutsniper_ru2_suspicious,1,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_25.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_SUSPICIOUS1325,,,,,,,,0.1
+scoutsniper_ru2_suspicious,2,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_26.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_SUSPICIOUS2326,,,,,,,,0.1
+scoutsniper_ru2_suspicious,3,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_27.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_SUSPICIOUS3327,,,,,,,,0.1
+scoutsniper_ru2_noworries,1,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_28.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_NOWORRIES1328,,,,,,,,0.1
+scoutsniper_ru2_noworries,2,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_29.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_NOWORRIES2329,,,,,,,,0.1
+scoutsniper_ru2_noworries,3,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_30.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_NOWORRIES3330,,,,,,,,0.1
+scoutsniper_ru2_foundenemy,1,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_31.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_FOUNDENEMY1331,,,,,,,,0.1
+scoutsniper_ru2_foundenemy,2,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_32.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_FOUNDENEMY2332,,,,,,,,0.1
+scoutsniper_ru2_foundenemy,3,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_33.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_FOUNDENEMY3333,,,,,,,,0.1
+scoutsniper_ru2_deadbody,1,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_34.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_DEADBODY1334,,,,,,,,0.1
+scoutsniper_ru2_deadbody,2,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_35.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_DEADBODY2335,,,,,,,,0.1
+scoutsniper_ru2_deadbody,3,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_36.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_DEADBODY3336,,,,,,,,0.1
+scoutsniper_ru2_anexplosion,1,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_54.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_ANEXPLOSION1354,,,,,,,,0.1
+scoutsniper_ru2_anexplosion,2,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_55.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_ANEXPLOSION2355,,,,,,,,0.1
+scoutsniper_ru2_anexplosion,3,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_56.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_ANEXPLOSION3356,,,,,,,,0.1
+scoutsniper_ru2_anexplosion,4,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_57.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_ANEXPLOSION4357,,,,,,,,0.1
+scoutsniper_ru2_anexplosion,5,voiceovers/UK/Scoutsniper/scoutsniper_ru2_3_58.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_ANEXPLOSION5358,,,,,,,,0.1
+scoutsniper_ru2_imonit,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_4_2.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_IMONIT42,,,,,,,,0.1
+scoutsniper_ru2_whoseturnisit,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_12_2.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_WHOSETURNISIT122,,,,,,,,0.1
+scoutsniper_ru2_anyoneseedogs,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_12_6.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_ANYONESEEDOGS126,,,,,,,,0.1
+scoutsniper_ru2_youidiot,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_12_13.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_YOUIDIOT1213,,,,,,,,0.1
+scoutsniper_ru2_call,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_12_17.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_CALL1217,,,,,,,,0.1
+scoutsniper_ru2_buymotorbike,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_13_1.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_BUYMOTORBIKE131,,,,,,,,0.1
+scoutsniper_ru2_americagoingtostartwar,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_13_2.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_AMERICAGOINGTOSTARTWAR132,,,,,,,,0.1
+scoutsniper_ru2_yesthatmakessense,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_13_3.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_YESTHATMAKESSENSE133,,,,,,,,0.1
+scoutsniper_ru2_isee,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_13_4.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_ISEE134,,,,,,,,0.1
+scoutsniper_ru2_yesiunderstand,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_13_5.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_YESIUNDERSTAND135,,,,,,,,0.1
+scoutsniper_ru2_illtakecareofit,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_13_6.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_ILLTAKECAREOFIT136,,,,,,,,0.1
+scoutsniper_ru2_haventseenanyone,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_14_1.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_HAVENTSEENANYONE141,,,,,,,,0.1
+scoutsniper_ru2_africanoreuropean,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_14_2.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_AFRICANOREUROPEAN142,,,,,,,,0.1
+scoutsniper_ru2_what,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_14_3.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_WHAT143,,,,,,,,0.1
+scoutsniper_ru2_timeforshiftchange,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_14_4.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_TIMEFORSHIFTCHANGE144,,,,,,,,0.1
+scoutsniper_ru2_comein,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_14_5.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_COMEIN145,,,,,,,,0.1
+scoutsniper_ru2_lostcontactdmitri,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_14_6.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_LOSTCONTACTDMITRI146,,,,,,,,0.1
+scoutsniper_ru2_sendsomeonetocheck,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_14_7.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_SENDSOMEONETOCHECK147,,,,,,,,0.1
+scoutsniper_ru2_andreibringingfood,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_15_2.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_ANDREIBRINGINGFOOD152,,,,,,,,0.1
+scoutsniper_ru2_quicklyaspossible,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_15_4.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_QUICKLYASPOSSIBLE154,,,,,,,,0.1
+scoutsniper_ru2_yescomrade,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_18_2.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_YESCOMRADE182,,,,,,,,0.1
+scoutsniper_ru2_clearrotorblades,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_18_6.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_CLEARROTORBLADES186,,,,,,,,0.1
+scoutsniper_ru2_radiationdosimeters,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_18_8.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_RADIATIONDOSIMETERS188,,,,,,,,0.1
+scoutsniper_ru2_dontbelieveatall,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_18_11.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_DONTBELIEVEATALL1811,,,,,,,,0.1
+scoutsniper_ru2_ok,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_18_13.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_OK1813,,,,,,,,0.1
+scoutsniper_ru2_professionaljob,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_18_16.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_PROFESSIONALJOB1816,,,,,,,,0.1
+scoutsniper_ru2_possiblyspetznaz,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_18_18.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_POSSIBLYSPETZNAZ1818,,,,,,,,0.1
+scoutsniper_ru2_bebackinaminute,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_18_21.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_BEBACKINAMINUTE1821,,,,,,,,0.1
+scoutsniper_ru2_imsobored,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_18_23.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_IMSOBORED1823,,,,,,,,0.1
+scoutsniper_ru2_guessitwasnothing,,voiceovers/UK/Scoutsniper/scoutsniper_ru2_18_26.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU2_GUESSITWASNOTHING1826,,,,,,,,0.1
+
+#Russian 4,,,,,,,,,,,,,,,,,,,,,,,
+scoutsniper_ru4_sniper,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_3_12.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_SNIPER312,,,,,,,,0.1
+scoutsniper_ru4_tooexpensive,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_12_4.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_TOOEXPENSIVE124,,,,,,,,0.1
+scoutsniper_ru4_radiationdogs,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_12_8.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_RADIATIONDOGS128,,,,,,,,0.1
+scoutsniper_ru4_twentydollars,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_12_10.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_TWENTYDOLLARS1210,,,,,,,,0.1
+scoutsniper_ru4_threekings,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_12_12.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_THREEKINGS1212,,,,,,,,0.1
+scoutsniper_ru4_wellplayedcomrade,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_12_14.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_WELLPLAYEDCOMRADE1214,,,,,,,,0.1
+scoutsniper_ru4_seeaboutthat,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_12_16.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_SEEABOUTTHAT1216,,,,,,,,0.1
+scoutsniper_ru4_raise,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_12_18.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_RAISE1218,,,,,,,,0.1
+scoutsniper_ru4_ifold,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_12_19.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_IFOLD1219,,,,,,,,0.1
+scoutsniper_ru4_thisonesheavy,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_15_1.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_THISONESHEAVY151,,,,,,,,0.1
+scoutsniper_ru4_didnteatbreakfast,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_15_3.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_DIDNTEATBREAKFAST153,,,,,,,,0.1
+scoutsniper_ru4_takenzakhaevsoffer,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_15_5.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_TAKENZAKHAEVSOFFER155,,,,,,,,0.1
+scoutsniper_ru4_mayhaveproblem,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_18_14.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_MAYHAVEPROBLEM1814,,,,,,,,0.1
+scoutsniper_ru4_canceltransactions,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_18_19.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_CANCELTRANSACTIONS1819,,,,,,,,0.1
+scoutsniper_ru4_cantwaitforshiftend,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_18_24.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_CANTWAITFORSHIFTEND1824,,,,,,,,0.1
+scoutsniper_ru4_hopeitdoesntrain,,voiceovers/UK/Scoutsniper/scoutsniper_ru4_18_27.wav,0.3,0.3,,,7,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SCOUTSNIPER_RU4_HOPEITDOESNTRAIN1827,,,,,,,,0.1
+
+
+#******SNIPER ESCAPE,,,,,,,,,,,,,,,,,,,,,,,
+
+#Captain MacMillan,,,,,,,,,,,,,,,,,,,,,,,
+sniperescape_mcm_gotone,,voiceovers/UK/Sniperescape/sniperescape_mcm_4_9_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_MCM_GOTONE49,,,,,radio,nowetlevel,,0.1
+sniperescape_mcm_tangodown,,voiceovers/UK/Sniperescape/sniperescape_mcm_4_10_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_MCM_TANGODOWN410,,,,,radio,nowetlevel,,0.1
+sniperescape_mcm_hesdown,,voiceovers/UK/Sniperescape/sniperescape_mcm_4_11_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_MCM_HESDOWN411,,,,,radio,nowetlevel,,0.1
+sniperescape_mcm_gotanother,,voiceovers/UK/Sniperescape/sniperescape_mcm_4_12_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_MCM_GOTANOTHER412,,,,,radio,nowetlevel,,0.1
+sniperescape_mcm_targetneutralized,,voiceovers/UK/Sniperescape/sniperescape_mcm_4_13_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_MCM_TARGETNEUTRALIZED413,,,,,radio,nowetlevel,,0.1
+sniperescape_mcm_gothim,,voiceovers/UK/Sniperescape/sniperescape_mcm_4_14_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_MCM_GOTHIM414,,,,,radio,nowetlevel,,0.1
+
+# Russian Loudspeaker,,,,,,,,,,,,,,,,,,,,,,,
+sniperescape_rul_nearpool,,voiceovers/UK/Sniperescape/sniperescape_rl1_5_1_R.wav,0.85,0.85,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_RUL_NEARPOOL51,,,,,,nowetlevel,,0.1
+sniperescape_rul_amusementpk,,voiceovers/UK/Sniperescape/sniperescape_rl1_5_2_R.wav,0.85,0.85,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_RUL_AMUSEMENTPK52,,,,,,nowetlevel,,0.1
+sniperescape_rul_hotelpolissa,,voiceovers/UK/Sniperescape/sniperescape_rl1_5_3_R.wav,0.85,0.85,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_RUL_HOTELPOLISSA53,,,,,,nowetlevel,,0.1
+sniperescape_rul_cutoffexits,,voiceovers/UK/Sniperescape/sniperescape_rl1_5_4_R.wav,0.85,0.85,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_RUL_CUTOFFEXITS54,,,,,,nowetlevel,,0.1
+sniperescape_rul_snipersinarea,,voiceovers/UK/Sniperescape/sniperescape_rl1_5_5_R.wav,0.85,0.85,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_RUL_SNIPERSINAREA55,,,,,,nowetlevel,,0.1
+sniperescape_rul_southofcity,,voiceovers/UK/Sniperescape/sniperescape_rl1_5_6_R.wav,0.85,0.85,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_RUL_SOUTHOFCITY56,,,,,,nowetlevel,,0.1
+sniperescape_rul_coverwoods,,voiceovers/UK/Sniperescape/sniperescape_rl1_5_7_R.wav,0.85,0.85,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_RUL_COVERWOODS57,,,,,,nowetlevel,,0.1
+sniperescape_rul_movemove,,voiceovers/UK/Sniperescape/sniperescape_rl1_5_8_R.wav,0.85,0.85,,,360,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_SNIPERESCAPE_RUL_MOVEMOVE58,,,,,,nowetlevel,,0.1
+
+# ****** VILLAGE ASSAULT,,,,,,,,,,,,,,,,,,,,,,,
+# Captain Price,,,,,,,,,,,,,,,,,,,,,,,
+vassault_pri_kamarovsman,,voiceovers/UK/Vassault/vassault_pri_1_1.1_R.wav,0.83,0.83,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VASSAULT_PRI_KAMAROVSMAN111,,,,,radio,nowetlevel,,0.1
+
+# Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+vassault_ru1_readyaimfire,,voiceovers/UK/Vassault/vassault_ru1_1_2.wav,0.85,0.85,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VASSAULT_RU1_READYAIMFIRE12,,,,,,,,0.1
+vassault_ru1_killthem,,voiceovers/UK/Vassault/vassault_ru1_1_3.wav,0.85,0.85,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VASSAULT_RU1_KILLTHEM13,,,,,,,,0.1
+vassault_ru1_makeexample,,voiceovers/UK/Vassault/vassault_ru1_1_4.wav,0.85,0.85,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VASSAULT_RU1_MAKEEXAMPLE14,,,,,,,,0.1
+vassault_ru1_dieyoutraitor,,voiceovers/UK/Vassault/vassault_ru1_1_5.wav,0.85,0.85,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VASSAULT_RU1_DIEYOUTRAITOR15,,,,,,,,0.1
+vassault_ru1_executethem,,voiceovers/UK/Vassault/vassault_ru1_1_6.wav,0.85,0.85,,,360,6000,mission,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VASSAULT_RU1_EXECUTETHEM16,,,,,,,,0.1
+
+# Al-Asad,,,,,,,,,,,,,,,,,,,,,,,
+vassault_kaa_wasntme1,,voiceovers/UK/Vassault/vassault_kaa_4_5.2.wav,0.7,0.7,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VASSAULT_KAA_WASNTME1452,,,,,,,,0.1
+vassault_kaa_wasntme2,,voiceovers/UK/Vassault/vassault_kaa_4_5.4.wav,0.7,0.7,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VASSAULT_KAA_WASNTME2454,,,,,,,,0.1
+
+
+#*****VILLAGE_DEFEND,,,,,,,,,,,,,,,,,,,,,,,
+
+#Russian Loudspeaker,,,,,,,,,,,,,,,,,,,,,,,
+villagedef_rul_surrenderatonce,,voiceovers/US/Villagedef/villagedef_rl2_1_1_R.wav,0.7,0.7,,,2000,24000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RUL_SURRENDERATONCE11,,,,,,nowetlevel,,0.1
+villagedef_rul_dropyourweapons,,voiceovers/US/Villagedef/villagedef_rl2_1_2_R.wav,0.8,0.8,,,2000,24000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RUL_DROPYOURWEAPONS12,,,,,,nowetlevel,,0.1
+villagedef_rul_weknowyourehiding,,voiceovers/US/Villagedef/villagedef_rl2_1_3_R.wav,0.95,0.95,,,2000,24000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RUL_WEKNOWYOUREHIDING13,,,,,,nowetlevel,,0.1
+
+#Russian 1,,,,,,,,,,,,,,,,,,,,,,,
+villagedef_ru1_whatwasthat,,voiceovers/UK/Villagedef/villagedef_ru1_1_12.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU1_WHATWASTHAT112,,,,,,,,0.1
+villagedef_ru1_noicantmove,,voiceovers/UK/Villagedef/villagedef_ru1_1_17.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU1_NOICANTMOVE117,,,,,,,,0.1
+villagedef_ru1_icantseethem,,voiceovers/UK/Villagedef/villagedef_ru1_1_21.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU1_ICANTSEETHEM121,,,,,,,,0.1
+villagedef_ru1_goaroundwest,,voiceovers/UK/Villagedef/villagedef_ru1_1_29.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU1_GOAROUNDWEST129,,,,,,,,0.1
+villagedef_ru1_medic,,voiceovers/UK/Villagedef/villagedef_ru1_1_31.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU1_MEDIC131,,,,,,,,0.1
+villagedef_ru1_mustbetwoplatoons,,voiceovers/UK/Villagedef/villagedef_ru1_1_35.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU1_MUSTBETWOPLATOONS135,,,,,,,,0.1
+
+#Russian 2,,,,,,,,,,,,,,,,,,,,,,,
+villagedef_ru2_didyouhearthat,,voiceovers/UK/Villagedef/villagedef_ru2_1_13.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU2_DIDYOUHEARTHAT113,,,,,,,,0.1
+villagedef_ru2_death,,voiceovers/UK/Villagedef/villagedef_ru2_1_18.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,,,,,,,,,0.1
+villagedef_ru2_underheavyfire,,voiceovers/UK/Villagedef/villagedef_ru2_1_22.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU2_UNDERHEAVYFIRE122,,,,,,,,0.1
+villagedef_ru2_putupsmokescreen,,voiceovers/UK/Villagedef/villagedef_ru2_1_32.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU2_PUTUPSMOKESCREEN132,,,,,,,,0.1
+
+#Russian 4,,,,,,,,,,,,,,,,,,,,,,,
+villagedef_ru3_whatthehell,,voiceovers/UK/Villagedef/villagedef_ru4_1_14.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU3_WHATTHEHELL114,,,,,,,,0.1
+villagedef_ru4_helpmeimwounded,,voiceovers/UK/Villagedef/villagedef_ru4_1_16.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU4_HELPMEIMWOUNDED116,,,,,,,,0.1
+villagedef_ru3_death,,voiceovers/UK/Villagedef/villagedef_ru4_1_19.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,,,,,,,,,0.1
+villagedef_ru4_wheretheyshooting,,voiceovers/UK/Villagedef/villagedef_ru4_1_20.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU4_WHERETHEYSHOOTING120,,,,,,,,0.1
+villagedef_ru4_reinforcements,,voiceovers/UK/Villagedef/villagedef_ru4_1_23.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU4_REINFORCEMENTS123,,,,,,,,0.1
+villagedef_ru4_imhitmedic,,voiceovers/UK/Villagedef/villagedef_ru4_1_30.wav,0.45,0.45,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_RU4_IMHITMEDIC130,,,,,,,,0.1
+
+# Gaz,,,,,,,,,,,,,,,,,,,,,,,
+villagedef_sas3_targetdown,,voiceovers/UK/Villagedef/villagedef_gaz_1_20_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_SAS3_TARGETDOWN120,,,,,radio,nowetlevel,,0.1
+villagedef_sas3_gothim,,voiceovers/UK/Villagedef/villagedef_gaz_1_21_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_SAS3_GOTHIM121,,,,,radio,nowetlevel,,0.1
+villagedef_sas3_targeteliminated,,voiceovers/UK/Villagedef/villagedef_gaz_1_22_R.wav,0.99,0.99,,,360,6000,announcer,streamed,,,master,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_SAS3_TARGETELIMINATED122,,,,,radio,nowetlevel,,0.1
+
+# SSgt. Griggs,,,,,,,,,,,,,,,,,,,,,,,
+villagedef_grg_needaride,,voiceovers/UK/Villagedef/village_defend_grg_8_1.wav,0.95,0.95,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_GRG_NEEDARIDE81,,,,,,,,0.1
+villagedef_grg_getonboard,,voiceovers/UK/Villagedef/village_defend_grg_8_3.wav,0.95,0.95,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_GRG_GETONBOARD83,,,,,,,,0.1
+villagedef_grg_letsgo,,voiceovers/UK/Villagedef/village_defend_grg_8_4.wav,0.95,0.95,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_GRG_LETSGO84,,,,,,,,0.1
+villagedef_grg_wereallaboard,,voiceovers/UK/Villagedef/village_defend_grg_8_5.wav,0.95,0.95,,,7,6000,mission,streamed,,,,,IW3SP_MOD_LOC_SUBTITLES_VILLAGEDEF_GRG_WEREALLABOARD85,,,,,,,,0.1

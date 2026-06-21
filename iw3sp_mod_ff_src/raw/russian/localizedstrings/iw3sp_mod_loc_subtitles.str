@@ -1,0 +1,1255 @@
+// Note to translators:
+// If a sentence is the same in your language then please change it to "#same"
+//
+// eg:
+// LANG_ENGLISH  "HALT"
+// LANG_GERMAN   "#same"
+//
+// (This is so we can tell which strings have been signed-off as ok to be the same words for QA
+//  and because we do not store duplicate strings, which will then get exported again next time
+//  as being untranslated.)
+//
+VERSION             "1"
+CONFIG              "C:\trees\cod2\bin\StringEd.cfg"
+FILENOTES           "Additional subtitles for some voice lines"
+
+REFERENCE           AC130_PRI_TOWNTOEAST12
+LANG_RUSSIAN        "^2Капитан Прайс: ^7Пламя, мы приближаемся к городу по дороге с запада. Подтвердите, что вы видите нас."
+
+REFERENCE           AFTERMATH_MMR_ROMEO11
+LANG_RUSSIAN        "^2Радио: ^7Вспышка. Опасность ядерного взрыва NB-06-26-34. Азимут - 90 градусов по сетке координат. Тип - поверхностный. От вспышки до взрыва - 90 секунд. Ширина облака - 10 градусов. Направление облака - 2,3 градуса."
+
+REFERENCE           AFTERMATH_FMR_EPICENTER12
+LANG_RUSSIAN        "^2Радио: ^7Внимание, произошёл ядерный взрыв, радиус зоны радиационного поражения 7.4 мили, координаты эпицентра NB-05-86-80."
+
+REFERENCE           AFTERMATH_FMR_EVACUATION13
+LANG_RUSSIAN        "^2Радио: ^7Приступить к немедленной эвакуации всего личного состава из зоны поражения."
+
+REFERENCE           AFTERMATH_FMR_CONTCENTERS14
+LANG_RUSSIAN        "^2Радио: ^7В настоящий момент организуются противорадиационные центры, приступить к работе они смогут через два часа."
+
+REFERENCE           AFTERMATH_FMR_DOSIMETER15
+LANG_RUSSIAN        "^2Радио: ^7Всем постоянно проверять показания дозиметра и определять текущий уровень радиации."
+
+REFERENCE           AFTERMATH_FMR_ELEVATEDLEVELS16
+LANG_RUSSIAN        "^2Радио: ^7При фиксировании высокого уровня радиации немедленно обратиться за медицинской помощью."
+
+REFERENCE           AIRLIFT_VSQ_LETSGO73
+LANG_RUSSIAN        "^2Лейтенант Васкес: ^7Выходим! Вперёд! Вперёд!"
+
+REFERENCE           AIRLIFT_VSQ_HANGON115
+LANG_RUSSIAN        "^2Лейтенант Васкес: ^7Держитесь!"
+
+REFERENCE           AIRLIFT_COP_ROGERTHAT113
+LANG_RUSSIAN        "^2Второй пилот: ^7Вас понял."
+
+REFERENCE           AIRLIFT_HCC_LETSGO43
+LANG_RUSSIAN        "^2Командир экипажа: ^7Вперёд! Вперёд! Быть начеку! Пошевеливаемся!"
+
+REFERENCE           AIRLIFT_HCC_DOWNRAMP44
+LANG_RUSSIAN        "^2Командир экипажа: ^7Вперёд! Вперёд! Быть начеку! Пошевеливаемся!"
+
+REFERENCE           AIRLIFT_HCC_WHEELSUP75
+LANG_RUSSIAN        "^2Командир экипажа: ^7Шевелитесь! Через 10 секунд мы должны быть в воздухе! Живее!"
+
+REFERENCE           AIRLIFT_HCC_WHEELSUP75B
+LANG_RUSSIAN        "^2Командир экипажа: ^7Шевелитесь! Через 10 секунд мы должны быть в воздухе! Живее!"
+
+REFERENCE           AIRLIFT_GM1_FIREBALCONY51
+LANG_RUSSIAN        "^2Морпех: ^7Миномётный огонь! Внимание!"
+
+REFERENCE           AIRLIFT_GM2_FIREBALCONY61
+LANG_RUSSIAN        "^2Морпех: ^7Огонь по той площадке!"
+
+REFERENCE           AIRLIFT_GM3_REINFORCEMENTS62
+LANG_RUSSIAN        "^2Морпех: ^7Подкрепление! Десантируются к востоку!"
+
+REFERENCE           AIRLIFT_GM3_HELLYEAH72
+LANG_RUSSIAN        "^2Морпех: ^7Да, чёрт возьми!"
+
+REFERENCE           AIRLIFT_GM4_HELLYEAH77
+LANG_RUSSIAN        "^2Морпех: ^7Спасибо, что подбросили!"
+
+REFERENCE           AIRLIFT_HQR_ALLCALLSIGNS12
+LANG_RUSSIAN        "^2Центр: ^7Внимание всем, говорит Центр. Вражеская бронетехника в пальмовой роще к западу от реки."
+
+REFERENCE           AIRLIFT_HQR_HOSTILESADVANCING101
+LANG_RUSSIAN        "^2Центр: ^7Внимание, 2-5! Противник приближается к месту крушения к юго-западу от вашей позиции."
+
+REFERENCE           AIRLIFT_HQR_CONFIRMED114
+LANG_RUSSIAN        "^2Центр: ^7Внимание всем войскам США. Подтверждена опасность ядерного взрыва в городе. Команды по ликвидации пытаются обезвредить устройство. Повторяю: подтверждена опас..."
+
+REFERENCE           AIRLIFT_MHP_INFORMATION11
+LANG_RUSSIAN        "^2Пират 2-5: ^7Идём в строю, приближаемся к цели.\nПодходим через 30 секунд."
+
+REFERENCE           AIRLIFT_MHP_TAKINGFIRE21
+LANG_RUSSIAN        "^2Пират 2-5: ^7Мы попали под обстрел."
+
+REFERENCE           AIRLIFT_MHP_RPGROOFTOPS22
+LANG_RUSSIAN        "^2Пират 2-5: ^7Гранатомёчики на крышах."
+
+REFERENCE           AIRLIFT_MHP_HOSTILESRPGS23
+LANG_RUSSIAN        "^2Пират 2-5: ^7Противники с гранатомётами."
+
+REFERENCE           AIRLIFT_MHP_GROUNDINFANTRY24
+LANG_RUSSIAN        "^2Пират 2-5: ^7Вижу пехоту, быть начеку."
+
+REFERENCE           AIRLIFT_MHP_WEVEGOTRPGS25
+LANG_RUSSIAN        "^2Пират 2-5: ^7Вижу гранатомётчиков на крышах."
+
+REFERENCE           AIRLIFT_MHP_LIGHTARMOR26
+LANG_RUSSIAN        "^2Пират 2-5: ^7Лёгкий бронетранспортёр. Огонь, Джексон."
+
+REFERENCE           AIRLIFT_MHP_ANTIAIRROOFTOP27
+LANG_RUSSIAN        "^2Пират 2-5: ^7Зенитная батарея на крыше."
+
+REFERENCE           AIRLIFT_MHP_ANTIAIRGROUND28
+LANG_RUSSIAN        "^2Пират 2-5: ^7Зенитная батарея на земле."
+
+REFERENCE           AIRLIFT_MHP_INFORCHOP112
+LANG_RUSSIAN        "^2Пират 2-5: ^7Дамы и господа, говорит ваш капитан. Скоро будем! Держитесь! Джейк, жми на максимум."
+
+REFERENCE           AIRPLANE_TER_ILLKILLHIM83
+LANG_RUSSIAN        "^1Ультранационалист: ^7Назад! Или я ему мозги вышибу! Я сказал назад!"
+
+REFERENCE           AIRPLANE_SAS1_TANGODOWN41
+LANG_RUSSIAN        "^2E-1-1: ^7Террорист уничтожен!"
+
+REFERENCE           AIRPLANE_SAS1_XRAYDOWN42
+LANG_RUSSIAN        "^2E-1-1: ^7Цель уничтожена!"
+
+REFERENCE           AIRPLANE_SAS1_HOSTILENEUT43
+LANG_RUSSIAN        "^2E-1-1: ^7Противник нейтрализован!"
+
+REFERENCE           AIRPLANE_SAS1_TARGNEUT44
+LANG_RUSSIAN        "^2E-1-1: ^7Цель нейтрализована!"
+
+REFERENCE           AIRPLANE_SAS1_AREACLEAR45
+LANG_RUSSIAN        "^2E-1-1: ^7Всё чисто!"
+
+REFERENCE           AIRPLANE_SAS1_SECTIONCLEAR46
+LANG_RUSSIAN        "^2E-1-1: ^7В секторе чисто!"
+
+REFERENCE           AIRPLANE_SAS1_CLEAR47
+LANG_RUSSIAN        "^2E-1-1: ^7Чисто!"
+
+REFERENCE           AIRPLANE_RU4_DONTHURTME93
+LANG_RUSSIAN        "^2Гражданский: ^7Пожалуйста, не трогайте меня! Я хочу домой! Просто хочу, чтобы всё это быстрее кончилось..."
+
+REFERENCE           AIRPLANE_RU4_GETTOAPHONE94
+LANG_RUSSIAN        "^2Гражданский: ^7Мне нужно позвонить. Что здесь происходит? Я не заслуживаю подобного обращения..."
+
+REFERENCE           AIRPLANE_RU4_NOPARACHUTE96
+LANG_RUSSIAN        "^2Гражданский: ^7Что? Нет!... Постойте! Что вы делаете? У меня же нету парашютааааааааа..."
+
+REFERENCE           AIRPLANE_GAZ_OKGETREADY151
+LANG_RUSSIAN        "^2R-1-1: ^7Так, приготовиться."
+
+REFERENCE           AIRPLANE_GAZ_STANDBY16
+LANG_RUSSIAN        "^2R-1-1: ^7Ждать сигнала... ждать сигнала... вперёд!"
+
+REFERENCE           AIRPLANE_GAZ_WEAPONSFREE22
+LANG_RUSSIAN        "^2R-1-1: ^7Огонь по усмотрению."
+
+REFERENCE           AIRPLANE_GAZ_MOVE24
+LANG_RUSSIAN        "^2R-1-1: ^7Пошли."
+
+REFERENCE           AIRPLANE_GAZ_MOVEUP25
+LANG_RUSSIAN        "^2R-1-1: ^7Живо вперёд."
+
+REFERENCE           AIRPLANE_GAZ_KEEPMOVING26
+LANG_RUSSIAN        "^2R-1-1: ^7Вперёд!"
+
+REFERENCE           AIRPLANE_GAZ_STAIRWAYCLEAR27
+LANG_RUSSIAN        "^2R-1-1: ^7На лестнице чисто!"
+
+REFERENCE           AIRPLANE_GAZ_TANGODOWN31
+LANG_RUSSIAN        "^2R-1-1: ^7Террорист уничтожен!"
+
+REFERENCE           AIRPLANE_GAZ_XRAYDOWN32
+LANG_RUSSIAN        "^2R-1-1: ^7Цель уничтожена!"
+
+REFERENCE           AIRPLANE_GAZ_HOSTILENEUT33
+LANG_RUSSIAN        "^2R-1-1: ^7Противник нейтрализован!"
+
+REFERENCE           AIRPLANE_GAZ_TARGNEUT34
+LANG_RUSSIAN        "^2R-1-1: ^7Цель нейтрализована!"
+
+REFERENCE           AIRPLANE_GAZ_AREACLEAR35
+LANG_RUSSIAN        "^2R-1-1: ^7Всё чисто!"
+
+REFERENCE           AIRPLANE_GAZ_SECTIONCLEAR36
+LANG_RUSSIAN        "^2R-1-1: ^7В секторе чисто!"
+
+REFERENCE           AIRPLANE_GAZ_CLEAR37
+LANG_RUSSIAN        "^2R-1-1: ^7Чисто!"
+
+REFERENCE           AIRPLANE_SAS4_ONEALPHA21
+LANG_RUSSIAN        "^2С-1-1: ^7Цель нейтрализована в секторе 1-А."
+
+REFERENCE           AIRPLANE_SAS4_MULTIPLECONT23
+LANG_RUSSIAN        "^2С-1-1: ^7Вижу противника."
+
+REFERENCE           AIRPLANE_SAS4_TANGODOWN51
+LANG_RUSSIAN        "^2С-1-1: ^7Террорист уничтожен!"
+
+REFERENCE           AIRPLANE_SAS4_XRAYDOWN52
+LANG_RUSSIAN        "^2С-1-1: ^7Цель уничтожена!"
+
+REFERENCE           AIRPLANE_SAS4_HOSTILENEUT53
+LANG_RUSSIAN        "^2С-1-1: ^7Противник нейтрализован!"
+
+REFERENCE           AIRPLANE_SAS4_TARGNEUT54
+LANG_RUSSIAN        "^2С-1-1: ^7Цель нейтрализована!"
+
+REFERENCE           AIRPLANE_SAS4_AREACLEAR55
+LANG_RUSSIAN        "^2С-1-1: ^7Всё чисто!"
+
+REFERENCE           AIRPLANE_SAS4_SECTIONCLEAR56
+LANG_RUSSIAN        "^2С-1-1: ^7В секторе чисто!"
+
+REFERENCE           AIRPLANE_SAS4_CLEAR57
+LANG_RUSSIAN        "^2С-1-1: ^7Чисто!"
+
+REFERENCE           AIRPLANE_GAZ_SEEYA101
+LANG_RUSSIAN        "^2R-1-1: ^7Задание выполнено! До встречи, дружище!"
+
+REFERENCE           AMBUSH_PRI_NOTBAD12
+LANG_RUSSIAN        "^2Капитан Прайс: ^7Неплохо, Комаров. Всё должно пройти гладко. Хищник 1-6, мы на позиции."
+
+REFERENCE           AMBUSH_GRG_NOTHINGLIKERUSSIAN23
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Хорошо, что ты здесь, потому что на русского ты ну никак не тянешь."
+
+REFERENCE           AMBUSH_GRG_OHNO13102
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Вот зараза!"
+
+REFERENCE           AMBUSH_GRG_OHNO23103
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Вот чёрт!"
+
+REFERENCE           AMBUSH_KMR_BESTWAYIN11
+LANG_RUSSIAN        "^2Сержант Комаров: ^7Это самый лучший путь.\nКонтрольный пункт прямо по курсу."
+
+REFERENCE           AMBUSH_RU1_PAPERSWHATPAPERS32
+LANG_RUSSIAN        "^1Ультранационалист: ^7Бумаги? О каких бумагах идёт речь?"
+
+REFERENCE           AMBUSH_RU1_FATPOLITICIAN33
+LANG_RUSSIAN        "^1Ультранационалист: ^7Ты кто такой, твою мать? Канцелярская крыса требует тут ещё чего-то."
+
+REFERENCE           AMBUSH_RU1_WHATAREYOUWAITINGFOR34
+LANG_RUSSIAN        "^1Ультранационалист: ^7Чего ты ждёшь? Открывай ворота! Идиот! Твою мать!"
+
+REFERENCE           AMBUSH_RU2_PAPERSPLEASE31
+LANG_RUSSIAN        "^2Русский лоялист: ^7Бумаги, пожалуйста!"
+
+REFERENCE           AMBUSH_RU2_ILLDOTHATRIGHTNOW35
+LANG_RUSSIAN        "^2Русский лоялист: ^7Да, прошу прощения. Займусь этим немедленно."
+
+REFERENCE           AMBUSH_SOZ_STOPTHEBLOODSHED81
+LANG_RUSSIAN        "^1Виктор Захаев: ^7Вы думаете, что это остановит кровопролитие? Думаете, это остановит моего отца?"
+
+REFERENCE           AMBUSH_SOZ_DEADSOONANYWAY85
+LANG_RUSSIAN        "^1Виктор Захаев: ^7Всё равно скоро вы все умрёте."
+
+REFERENCE           AMBUSH_SOZ_GOFYOURSELF87
+LANG_RUSSIAN        "^1Виктор Захаев: ^7Пошли вы все к чёрту."
+
+REFERENCE           ARMADA_GM1_GOGOGO42
+LANG_RUSSIAN        "^2Морпех: ^7Пошли! Вперёд!"
+
+REFERENCE           ARMADA_GM1_BREACHING56
+LANG_RUSSIAN        "^2Морпех: ^7Заходим, заходим!"
+
+REFERENCE           ARMADA_GM1_BREACHINGBREACHING84
+LANG_RUSSIAN        "^2Морпех: ^7Заходим, заходим!"
+
+REFERENCE           ARMADA_GM1_GOESOURBOYS102
+LANG_RUSSIAN        "^2Морпех: ^7А вот и наши парни!"
+
+REFERENCE           ARMADA_GM1_CLEAR1114
+LANG_RUSSIAN        "^2Морпех: ^7Чисто!"
+
+REFERENCE           ARMADA_GM2_MOVEITMOVEIT43
+LANG_RUSSIAN        "^2Морпех: ^7Живее, живее!"
+
+REFERENCE           ARMADA_GM2_OORAH103
+LANG_RUSSIAN        "^2Морпех: ^7Так точно!"
+
+REFERENCE           ARMADA_GM3_BLOCKINGPOSITIONS51
+LANG_RUSSIAN        "^2Морпех: ^7Занять блокирующие позиции! Вперёд!"
+
+REFERENCE           ARMADA_GM3_OORAH104
+LANG_RUSSIAN        "^2Морпех: ^7Так точно!"
+
+REFERENCE           ARMADA_FHP_COPYSTRIKERSIXFOUR12
+LANG_RUSSIAN        "^2Пилот "Блэкхока": ^7Вас поняла, Стрелок 6-4."
+
+REFERENCE           ARMADA_FHP_COPY14
+LANG_RUSSIAN        "^2Пилот "Блэкхока": ^7Вас поняла."
+
+REFERENCE           ARMADA_FHP_ROGERTHAT22
+LANG_RUSSIAN        "^2Пилот "Блэкхока": ^7Вас поняла. У нас здесь гранатомёты."
+
+REFERENCE           ARMADA_FHP_GOTVISUAL31
+LANG_RUSSIAN        "^2Пилот "Блэкхока": ^7Вижу цель."
+
+REFERENCE           ARMADA_HP1_SHORELINEINVIEW11
+LANG_RUSSIAN        "^2Стрелок 6-4: ^7Вижу берег."
+
+REFERENCE           ARMADA_HP1_FEETDRYTENSECONDS13
+LANG_RUSSIAN        "^2Стрелок 6-4: ^7Вылетаем через десять секунд."
+
+REFERENCE           ARMADA_HP1_TAKINGFIREHERE21
+LANG_RUSSIAN        "^2Стрелок 6-4: ^7Мы попали под обстрел..."
+
+REFERENCE           ARMADA_HP1_THATWASCLOSE23
+LANG_RUSSIAN        "^2Стрелок 6-4: ^7Чёрт, чуть не попали!"
+
+REFERENCE           ARMADA_HP1_COPYTHAT32
+LANG_RUSSIAN        "^2Стрелок 6-4: ^7Вас понял."
+
+REFERENCE           ARMADA_HP1_FIVESECONDS33
+LANG_RUSSIAN        "^2Стрелок 6-4: ^7Пять секунд."
+
+REFERENCE           ARMADA_HP1_STANDBYGREENLIGHT34
+LANG_RUSSIAN        "^2Стрелок 6-4: ^7Ждать разрешения."
+
+REFERENCE           ARMADA_VSQ_DOWNTHEROPES41
+LANG_RUSSIAN        "^2Лейтенант Васкес: ^7Спускаемся по тросам! Пошли! Пошли!"
+
+REFERENCE           ARMADA_VSQ_BREACHING57
+LANG_RUSSIAN        "^2Лейтенант Васкес: ^7Заходим, заходим!"
+
+REFERENCE           ARMADA_VSQ_GOGOGO58
+LANG_RUSSIAN        "^2Лейтенант Васкес: ^7Пошли! Пошли!"
+
+REFERENCE           ARMADA_VSQ_DOIT83
+LANG_RUSSIAN        "^2Лейтенант Васкес: ^7Выполнять!"
+
+REFERENCE           ARMADA_VSQ_GOGOGO85
+LANG_RUSSIAN        "^2Лейтенант Васкес: ^7Вперёд! Вперёд! Вперёд!"
+
+REFERENCE           ARMADA_VSQ_OORAH105
+LANG_RUSSIAN        "^2Лейтенант Васкес: ^7Так точно."
+
+REFERENCE           ARMADA_GRG_YEAHOORAH1110
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Да. Так точно."
+
+REFERENCE           BLACKOUT_GAZ_LOYALISTSEH12
+LANG_RUSSIAN        "^2Гас: ^7Лоялисты, да? Это кто? Хорошие русские\nили плохие русские?"
+
+REFERENCE           BLACKOUT_PRI_HALFACLICK11
+LANG_RUSSIAN        "^2Капитан Прайс: ^7Лоялисты ждут нас в полукилометре к северу. Выходим"
+
+REFERENCE           BLACKOUT_KMR_PREPAREATTACK38
+LANG_RUSSIAN        "^2Сержант Комаров: ^7Иван, приготовься к атаке. По моему сигналу."
+
+REFERENCE           BLACKOUT_KMR_STALLING4121_FULL
+LANG_RUSSIAN        "^2Сержант Комаров: ^7Доложите обстановку. Сколько ещё времени вам нужно? Хорошо, я их задержу."
+
+REFERENCE           BLACKOUT_KMR_STALLING4121_CUT
+LANG_RUSSIAN        "^2Сержант Комаров: ^7Доложите обстановку. Сколько ещё времени вам нужно? Хорошо, я их ..."
+
+REFERENCE           BLACKOUT_KMR_OUTOFMIND516
+LANG_RUSSIAN        "^2Сержант Комаров: ^7Что ты делаешь?! Ты что, с ума сошёл? Кем ты себя возомнил?"
+
+REFERENCE           BLACKOUT_NKD_WHOAREYOU641
+LANG_RUSSIAN        "^2Николай: ^7Что вам нужно? Кто вы? Спецназ?"
+
+REFERENCE           BLACKOUT_RU1_VIKTOR631
+LANG_RUSSIAN        "^1Ультранационалист: ^7Хм... Что это со светом?"
+
+REFERENCE           BLACKOUT_RU1_ELECTRICIAN632
+LANG_RUSSIAN        "^1Ультранационалист: ^7Виктор! Электричество отрубили!"
+
+REFERENCE           BLACKOUT_RU2_GETTINGCLOSER633
+LANG_RUSSIAN        "^1Ультранационалист: ^7Знаю. Противник приближается."
+
+REFERENCE           BLACKOUT_RU2_STAY635
+LANG_RUSSIAN        "^1Ультранационалист: ^7Нет, ты их переоцениваешь. Оставайся на месте и охраняй пленника."
+
+REFERENCE           BLACKOUT_RU1_SASHA636
+LANG_RUSSIAN        "^1Ультранационалист: ^7Саша...? Ты тут? Саша...? Что, черт возьми, происходит! Где ты?!"
+
+REFERENCE           BLACKOUT_RU4_THEYREINSIDE437
+LANG_RUSSIAN        "^1Ультранационалист: ^7Кажется, они внутри. Виктор...? Саша...?"
+
+REFERENCE           BLACKOUT_RU4_HOWCLOSE634
+LANG_RUSSIAN        "^1Ультранационалист: ^7Где сейчас противник? Нам покинуть территорию?"
+
+REFERENCE           BOG_GM1_OORAH1015
+LANG_RUSSIAN        "^2Морпех: ^7Так точно."
+
+REFERENCE           BOG_GM1_THREECOMIN
+LANG_RUSSIAN        "^2Морпех: ^7Трое выходят!"
+
+REFERENCE           BOG_GM2_MOVEIT12
+LANG_RUSSIAN        "^2Морпех: ^7Живее! Живее!"
+
+REFERENCE           BOG_GM2_CLEAR137
+LANG_RUSSIAN        "^2Морпех: ^7Всё чисто!"
+
+REFERENCE           BOG_GM2_CLEAR268
+LANG_RUSSIAN        "^2Морпех: ^7Чисто!"
+
+REFERENCE           BOG_GM2_OORAH1016
+LANG_RUSSIAN        "^2Морпех: ^7Так точно."
+
+REFERENCE           BOG_GM3_RPG17
+LANG_RUSSIAN        "^2Морпех: ^7Гранатомёты!"
+
+REFERENCE           BOG_GM3_CLEAR38
+LANG_RUSSIAN        "^2Морпех: ^7Всё чисто!"
+
+REFERENCE           BOG_GM3_ALLCLEAR69
+LANG_RUSSIAN        "^2Морпех: ^7Всё чисто!"
+
+REFERENCE           BOG_GM3_OORAH1017
+LANG_RUSSIAN        "^2Морпех: ^7Так точно."
+
+REFERENCE           BOG_VSQ_HALFACLICK11
+LANG_RUSSIAN        "^2Лейтенант Васкес: ^7Танк из группы "Альфа" застрял в\nполукилометре к северу отсюда. Нужно спешить! Пошли!"
+
+REFERENCE           BOG_AS1_LETENTER41
+LANG_RUSSIAN        "^1Арабский солдат: ^7Дайте им войти, а затем атакуйте их, как только они пройдут!"
+
+REFERENCE           BOG_AS2_GETREADY42
+LANG_RUSSIAN        "^1Арабский солдат: ^7Они внизу, приготовься."
+
+REFERENCE           BOG_GM1_GETYOURASS11
+LANG_RUSSIAN        "^2Морпех: ^7Джексон! Тащи сюда свою задницу!\nВраг с севера!"
+
+REFERENCE           BOG_GM1_WOOYEAH1100
+LANG_RUSSIAN        "^2Морпех: ^7Да! Ура! Да!"
+
+REFERENCE           BOG_GM2_HOLYSHIT1111
+LANG_RUSSIAN        "^2Морпех: ^7Охренеть! Вы это видели?"
+
+REFERENCE           BOG_GM3_HELLYEAH1112
+LANG_RUSSIAN        "^2Морпех: ^7Да, чёрт дери."
+
+REFERENCE           BOG_GM4_YEAHWOO1113
+LANG_RUSSIAN        "^2Морпех: ^7Да! Ура!"
+
+REFERENCE           BOG_GM4_TALKINABOUT114
+LANG_RUSSIAN        "^2Морпех: ^7Да, именно то, что надо!"
+
+REFERENCE           BOG_TCM_3STORY11_2NDFLOOR32
+LANG_RUSSIAN        "^2Кабан: ^7Пулемётчик! В трёхэтажном здании, 30 градусов слева, второй этаж!"
+
+REFERENCE           BOG_TCM_3STORY1130_2NDFLOOR36
+LANG_RUSSIAN        "^2Кабан: ^7Трёхэтажное здание, 15 градусов слева, балкон на втором этаже!"
+
+REFERENCE           BOG_TCM_2STORY1_GROUND310
+LANG_RUSSIAN        "^2Кабан: ^7Пулемётчик! Двухэтажное здание, 30 градусов справа, первый этаж!"
+
+REFERENCE           BOG_TCM_2STORY1_2NDFLOOR314
+LANG_RUSSIAN        "^2Кабан: ^7Пулемётчик! Двухэтажное здание, 30 градусов справа, второй этаж!"
+
+REFERENCE           BOG_TCM_3STORY1230_2NDFLOOR318
+LANG_RUSSIAN        "^2Кабан: ^7Пулемётчик! Трёхэтажное здание, 15 градусов справа, второй этаж!"
+
+REFERENCE           BOG_TCM_FIRE134
+LANG_RUSSIAN        "^2Кабан: ^7Огонь!"
+
+REFERENCE           BOG_TCM_FIRE138
+LANG_RUSSIAN        "^2Кабан: ^7Огонь!"
+
+REFERENCE           BOG_TCM_FIRE1312
+LANG_RUSSIAN        "^2Кабан: ^7Огонь!"
+
+REFERENCE           BOG_TCM_FIRE1316
+LANG_RUSSIAN        "^2Кабан: ^7Огонь!"
+
+REFERENCE           BOG_TCM_FIRE1320
+LANG_RUSSIAN        "^2Кабан: ^7Огонь!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED133
+LANG_RUSSIAN        "^2Наводчик танка: ^7Цель захвачена!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED137
+LANG_RUSSIAN        "^2Наводчик танка: ^7Есть цель!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED2311
+LANG_RUSSIAN        "^2Наводчик танка: ^7Есть цель!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED2315
+LANG_RUSSIAN        "^2Наводчик танка: ^7Есть цель!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED3319
+LANG_RUSSIAN        "^2Наводчик танка: ^7Есть цель!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED385
+LANG_RUSSIAN        "^2Наводчик танка: ^7Цель получена!"
+
+REFERENCE           BOG_TLD_UP31
+LANG_RUSSIAN        "^2Заряжающий танка: ^7Готово!"
+
+REFERENCE           BOG_TLD_UP135
+LANG_RUSSIAN        "^2Заряжающий танка: ^7Готов!"
+
+REFERENCE           BOG_TLD_UP239
+LANG_RUSSIAN        "^2Заряжающий танка: ^7Готов!"
+
+REFERENCE           BOG_TLD_UP3313
+LANG_RUSSIAN        "^2Заряжающий танка: ^7Готов!"
+
+REFERENCE           BOG_TLD_UP4317
+LANG_RUSSIAN        "^2Заряжающий танка: ^7Готов!"
+
+REFERENCE           CARGOSHIP_PRI_CREWEXPEND14
+LANG_RUSSIAN        "^2Капитан Прайс: ^7Оружие к бою."
+
+REFERENCE           CARGOSHIP_HP1_BASEPLATEHAMMERTWO11
+LANG_RUSSIAN        "^2Молот 2-4: ^7База, говорит Молот 2-4. Видим цель.\nРасчётное время прибытия: 60 секунд."
+
+REFERENCE           CARGOSHIP_HP1_THIRTYSECDARK13
+LANG_RUSSIAN        "^2Молот 2-4: ^7Тридцать секунд, темнеет."
+
+REFERENCE           CARGOSHIP_HP1_TENSECONDSRADIO113
+LANG_RUSSIAN        "^2Молот 2-4: ^7Десять секунд."
+
+REFERENCE           CARGOSHIP_HP1_RADIOCHECK114
+LANG_RUSSIAN        "^2Молот 2-4: ^7Проверка связи. Переходим на шифрованный канал."
+
+REFERENCE           CARGOSHIP_HP1_GREENLIGHTGORADIO115
+LANG_RUSSIAN        "^2Молот 2-4: ^7Всё! Пошли! Пошли! Пошли!"
+
+REFERENCE           CARGOSHIP_HQR_COPYTWOFOUR12
+LANG_RUSSIAN        "^2База: ^7Вас понял, 2-4."
+
+REFERENCE           CARGOSHIP_RUD_3SEC211
+LANG_RUSSIAN        "^1Ультранационалист: ^7Ну... блеать... хорош уже... ну сколько можно?... ну блеать, всё... хватит."
+
+REFERENCE           CARGOSHIP_RU1_HEY
+LANG_RUSSIAN        "^1Ультранационалист: ^7Эй!"
+
+REFERENCE           CARGOSHIP_RU1_GETREADY81
+LANG_RUSSIAN        "^1Ультранационалист: ^7У нас гости! Приготовиться! Приготовиться!"
+
+REFERENCE           CARGOSHIP_RU1_CALLFORHELP85
+LANG_RUSSIAN        "^1Ультранационалист: ^7Давай к рации, вызывай подкрепление!"
+
+REFERENCE           CARGOSHIP_RU2_INCARGOHOLDS22
+LANG_RUSSIAN        "^1Ультранационалист: ^7Это ещё что такое?!"
+
+REFERENCE           CARGOSHIP_RU2_WHATTHE82
+LANG_RUSSIAN        "^1Ультранационалист: ^7Они в грузовых отсеках. Идут сюда. Держи двери."
+
+REFERENCE           CARGOSHIP_RU2_ARETHEYAMERICANS83
+LANG_RUSSIAN        "^1Ультранационалист: ^7Это американцы?"
+
+REFERENCE           CARGOSHIP_RU2_THEYREGETTINGCLOSE87
+LANG_RUSSIAN        "^1Ультранационалист: ^7Они приближаются! Приготовиться!"
+
+REFERENCE           CARGOSHIP_RU4_GETREADY84
+LANG_RUSSIAN        "^1Ультранационалист: ^7Не знаю, приготовься!"
+
+REFERENCE           CARGOSHIP_RU4_MIDDLEOFOCEAN86
+LANG_RUSSIAN        "^1Ультранационалист: ^7Мы посреди океана! Какое тебе подкрепление, идиот?!"
+
+REFERENCE           KILLHOUSE_GAZ_GETARIFLE211
+LANG_RUSSIAN        "^2Гас: ^7Рад тебя видеть, дружище. Возьми из арсенала винтовку."
+
+REFERENCE           HUNTED_PRI_WHATTHEBLOODY11
+LANG_RUSSIAN        "^2Капитан Прайс: ^7Чёрт его дери."
+
+REFERENCE           HUNTED_HP1_MISSILEINBOUND12
+LANG_RUSSIAN        "^2Молот 6-4: ^7Снаряд. Поворачивай, поворачивай!"
+
+REFERENCE           HUNTED_HP1_MAYDAYMAYDAY14
+LANG_RUSSIAN        "^2Молот 6-4: ^7SOS, SOS, говорит Молот 6-4. Терпим крушение, повторяю, терпим крушение, в двух милях от пункта 5-..."
+
+REFERENCE           HUNTED_HP1_GOINGDOWN15
+LANG_RUSSIAN        "^2Молот 6-4: ^76-4 терпит крушение! Мы падаем! Держись!"
+
+REFERENCE           HUNTED_RUF_WHATSGOINGON41
+LANG_RUSSIAN        "^2Фермер: ^7Что здесь происходит? Вам чего нужно?"
+
+REFERENCE           HUNTED_RUF_HIDINGWHO43
+LANG_RUSSIAN        "^2Фермер: ^7Прячем? Кого? О чём вы вообще?"
+
+REFERENCE           HUNTED_RUF_BRITISH45
+LANG_RUSSIAN        "^2Фермер: ^7Англичане?"
+
+REFERENCE           HUNTED_RU1_ISADUMP33
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что за помойка?"
+
+REFERENCE           HUNTED_RU1_DONTPLAYSTUPID42
+LANG_RUSSIAN        "^1Ультранационалист: ^7Не надо разыгрывать из себя идиота. Мы знаем, ты их где-то прячешь."
+
+REFERENCE           HUNTED_RU1_HIDINGSOLDIERS44
+LANG_RUSSIAN        "^1Ультранационалист: ^7Там у тебя англичане, так?"
+
+REFERENCE           HUNTED_RU1_FORGETIT46
+LANG_RUSSIAN        "^1Ультранационалист: ^7Неважно! С тобой только время тратить..."
+
+REFERENCE           HUNTED_RU1_BYTHEHOUSE61
+LANG_RUSSIAN        "^1Ультранационалист: ^7Они там! У дома!"
+
+REFERENCE           HUNTED_RU1_INTHEFIELD116
+LANG_RUSSIAN        "^1Ультранационалист: ^7Вижу врага! Они в поле!"
+
+REFERENCE           HUNTED_RU2_BYTHECREEK115
+LANG_RUSSIAN        "^1Ультранационалист: ^7Там! У бухты!"
+
+REFERENCE           HUNTED_RU4_OUTONFIELD117
+LANG_RUSSIAN        "^1Ультранационалист: ^7Они в поле!"
+
+REFERENCE           HUNTED_BNB_MISSILELOCK16
+LANG_RUSSIAN        "^2Система: ^7Цель захвачена."
+
+REFERENCE           HUNTED_BNB_ALTITUDE17
+LANG_RUSSIAN        "^2Система: ^7Высота. Высота. Высота."
+
+REFERENCE           HUNTED_BNB_CAUTION18
+LANG_RUSSIAN        "^2Система: ^7Внимание. Внимание. Внимание."
+
+REFERENCE           HUNTED_BNB_WARNING19
+LANG_RUSSIAN        "^2Система: ^7Внимание. Внимание. Внимание."
+
+REFERENCE           ICBM_PRI_REGROUPONME219
+LANG_RUSSIAN        "^2Капитан Прайс: ^7Ко мне."
+
+REFERENCE           ICBM_GRG_678452056315
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Григгс. 678-45-20-56."
+
+REFERENCE           ICBM_GRG_678318
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Григгс. 678..."
+
+REFERENCE           ICBM_GRG_GETBUSY320
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Скоро здесь будет очень жарко... хех, на вашем месте я бы отсюда сматывался."
+
+REFERENCE           ICBM_RU1_UNIT4REPORT217
+LANG_RUSSIAN        "^1Ультранационалист: ^74-я группа, остальных нашли? У этого при себе была взрывчатка, должны быть остальные. 4-я группа, отвечайте!"
+
+REFERENCE           ICBM_RU1_WHEREOTHERS314
+LANG_RUSSIAN        "^1Ультранационалист: ^7Где остальные?"
+
+REFERENCE           ICBM_RU1_TOVARISCH316
+LANG_RUSSIAN        "^1Ультранационалист: ^7Знаешь, товарищ, Женевская конвенция вещь хорошая в теории только.\nТак что побереги нервы и просто ответь на мои вопросы, хорошо?"
+
+REFERENCE           ICBM_RU1_HOWMANY317
+LANG_RUSSIAN        "^1Ультранационалист: ^7И сколько этих остальных?"
+
+REFERENCE           ICBM_RU1_WHOISOFFICER319
+LANG_RUSSIAN        "^1Ультранационалист: ^7Кто твой командир?"
+
+REFERENCE           ICBM_RU1_WHERESHACKSAW321
+LANG_RUSSIAN        "^1Ультранационалист: ^7Юр, где ножовка?"
+
+REFERENCE           ICBM_RU1_IFIHAD323
+LANG_RUSSIAN        "^1Ультранационалист: ^7Твою мать! Если бы ножовка была у меня, я бы и не спрашивал, где она, придурок!"
+
+REFERENCE           ICBM_RU2_YOUHADIT322
+LANG_RUSSIAN        "^1Ультранационалист: ^7Я думал, она у тебя..."
+
+REFERENCE           JEEPRIDE_RU1_BARELYBREATHING172
+LANG_RUSSIAN        "^2Русский лоялист: ^7Он едва дышит!"
+
+REFERENCE           JEEPRIDE_RU2_ALLRIGHTMYFRIEND173
+LANG_RUSSIAN        "^2Сержант Комаров: ^7Один живой! С тобой всё будет в порядке, дружище!"
+
+REFERENCE           JEEPRIDE_RU2_GETHIMOUTOFHERE174
+LANG_RUSSIAN        "^2Сержант Комаров: ^7Уносите его отсюда! Пошли! Пошли! Его нужно срочно доставить в госпиталь!"
+
+REFERENCE           KILLHOUSE_GAZ_GOODTOSEE21
+LANG_RUSSIAN        "^2Гас: ^7Рад тебя видеть, дружище."
+
+REFERENCE           KILLHOUSE_SAS4_FNG1211
+LANG_RUSSIAN        "^2САС: ^7Он новичок, сэр."
+
+REFERENCE           KILLHOUSE_SAS4_GOEASY1213
+LANG_RUSSIAN        "^2САС: ^7Полегче с ним, сэр. Он первый день на службе."
+
+REFERENCE           LAUNCHFACILITY_A_HQR_STILLWORKING19
+LANG_RUSSIAN        "^2Центр: ^7Эм, Б-6, мы всё ещё пытаемся получить у русских коды запуска.\nВот-вот они будут у нас. Продолжайте операцию, конец связи."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_HIGHALERT11
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Переметр наружен. Всем занять обранительные позиции.\nНеизвестные войска противника приближаются с юга или запада. Объявляется общая тревога."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_UNDERATTACK12
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Враг атакует! Немедленно перекрыть все входы и выходы."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_REDSPENTZNAZ13
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Нас атакует спецназ США. Предпринять все возможные меры предосторожности. Красный спецназ уже в пути."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_PREPTUBES14
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Подготовка пусковых шахт со второй по шестую. Ждать сигнала."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_MOTHERLAND23
+LANG_RUSSIAN        "^1Громкоговоритель: ^7В бой! За родину! Не позволим подкупить наш великий народ!"
+
+REFERENCE           LAUNCHFACILITY_A_RUL_AVENGEFALLEN24
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Товарищи! Не забывайте павших братьев! Отомстите за них! Их жертва не должна быть напрасной!"
+
+REFERENCE           LAUNCHFACILITY_A_RUL_RESTOREHONOR25
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Мы вернём былую славу нашего народа, когда он был свободен ото всех! Никто нас не остановит! Никто нам не помешает!"
+
+REFERENCE           LAUNCHFACILITY_B_PRI_LETSMOVE11
+LANG_RUSSIAN        "^2Капитан Прайс: ^7Отлично, выдвигаемся!"
+
+REFERENCE           LAUNCHFACILITY_B_GM1_BASESECURITY12
+LANG_RUSSIAN        "^25-Д-6: ^7Капитан Прайс, докладывает 5-Д-6. Очищаем восточное крыло и направляемся к центру управления, приём."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_ALERT25
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Тревога! Противник проник на базу. Повторяю, противник проник на базу."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_BARRACKS26
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Противник окружён у казарм, там нам потребуется подкрепление."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_STORAGEAREA32
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Противник проник в складские помещения и к пусковым шахтам. Главные двери в центр управления пуска блокируются!"
+
+REFERENCE           LAUNCHFACILITY_B_RUL_2NDINITIATED41
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Начинается вторая стадия запуска."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_PRIMARYINITITATED42
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Начинается основная стадия пуска с третьей по шестой шахты. Ждать сигнала."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SECUREMISSILEBAY43
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Закрыть все ракетные отсеки. Топливопровод перекрыт."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_2MINS44
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Зажигание через две минуты."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_90SECS46
+LANG_RUSSIAN        "^1Громкоговоритель: ^790 секунд."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_1MIN47
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Одна минута. Уровень охлаждение: нормальный."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_30SECS48
+LANG_RUSSIAN        "^1Громкоговоритель: ^730 секунд. Программа теплового наведения загружена."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_20SECS410
+LANG_RUSSIAN        "^1Громкоговоритель: ^720 секунд."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_TEN411
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Десять."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_NINE412
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Девять."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_EIGHT413
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Восемь."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SEVEN414
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Семь."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SIX415
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Шесть."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_FIVE416
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Пять."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_FOUR417
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Четыре."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_THREE418
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Три."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_TWO419
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Два."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_ONE420
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Один."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_LAUNCHCOMPLETE421
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Зажигание. Есть пуск."
+
+REFERENCE           LAUNCHFACILITY_B_RU1_GO15
+LANG_RUSSIAN        "^1Ультранационалист: ^7Пошли! Шевелитесь! Живее! Нас атакуют!"
+
+REFERENCE           LAUNCHFACILITY_B_RU3_GETREADY110
+LANG_RUSSIAN        "^1Ультранационалист: ^7Они идут сюда! Приготовиться!"
+
+REFERENCE           LAUNCHFACILITY_B_RU3_DAMNYOU71
+LANG_RUSSIAN        "^1Ультранационалист: ^7Будьте вы прокляты..."
+
+REFERENCE           LAUNCHFACILITY_B_RU2_GRABWEAPONS16
+LANG_RUSSIAN        "^1Ультранационалист: ^7Все за оружие! Занять оборонительные позиции! Живо! Живо!"
+
+REFERENCE           LAUNCHFACILITY_B_RU2_OPENFIRE72
+LANG_RUSSIAN        "^1Ультранационалист: ^7Открыть огонь! Убить их! Всех их уничтожить!"
+
+REFERENCE           SCOUTSNIPER_RU1_OTHERTEAM210
+LANG_RUSSIAN        "^1Ультранационалист: ^7Вторая группа что-то обнаружила в деревне, идём!"
+
+REFERENCE           SCOUTSNIPER_RU1_WANDERING24
+LANG_RUSSIAN        "^1Ультранационалист: ^7Слушай, Серёга! Какого чёрта мы вообще по этим полям бродим?"
+
+REFERENCE           SCOUTSNIPER_RU1_WASTELAND26
+LANG_RUSSIAN        "^1Ультранационалист: ^7И зачем мы патрулируем? Да здесь вроде 120 километров и ни одной живой души... одна пустыня."
+
+REFERENCE           SCOUTSNIPER_RU1_TAKEALOOK28
+LANG_RUSSIAN        "^1Ультранационалист: ^7Шестой, у нас проблемы в деревне. Думаю, тебе стоит на это взглянуть."
+
+REFERENCE           SCOUTSNIPER_RU1_ONOURWAY29
+LANG_RUSSIAN        "^1Ультранационалист: ^7Вас понял, Второй, мы идём."
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY139
+LANG_RUSSIAN        "^1Ультранационалист: ^7Стойте... чужой! Убить его!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY2311
+LANG_RUSSIAN        "^1Ультранационалист: ^7Чёрт! Снайпер! Снайпер! Открыть огонь!"
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS1313
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что-то здесь не так... могу поклясться, я что-то видел."
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS2314
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что-то здесь неладное творится..."
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS3315
+LANG_RUSSIAN        "^1Ультранационалист: ^7Будь начеку, кажется, я что-то видел..."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES1316
+LANG_RUSSIAN        "^1Ультранационалист: ^7Наверняка ничего страшного... расслабься."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES2317
+LANG_RUSSIAN        "^1Ультранационалист: ^7Ты слишком нервничаешь."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES3318
+LANG_RUSSIAN        "^1Ультранационалист: ^7Я ничего не видел, ты просто устал."
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY4319
+LANG_RUSSIAN        "^1Ультранационалист: ^7Какого чёрта? Снайпер!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY5320
+LANG_RUSSIAN        "^1Ультранационалист: ^7Вижу врага, противник в камуфляже!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY6321
+LANG_RUSSIAN        "^1Ультранационалист: ^7Чёрт, на нашей позиции враг."
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY1322
+LANG_RUSSIAN        "^1Ультранационалист: ^7Человека убили! Всем быть начеку! Здесь враг!"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY2323
+LANG_RUSSIAN        "^1Ультранационалист: ^7Я нашёл труп! Где-то здесь противник!"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY3324
+LANG_RUSSIAN        "^1Ультранационалист: ^7Вот чёрт, он мёртв. Человека убили! Человека убили!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION1359
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что это было, чёрт возьми?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION2360
+LANG_RUSSIAN        "^1Ультранационалист: ^7Это что, взрыв?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION3361
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что-то только что взорвалось?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION4362
+LANG_RUSSIAN        "^1Ультранационалист: ^7Никто не ранен?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION5363
+LANG_RUSSIAN        "^1Ультранационалист: ^7Всё в порядке?!"
+
+REFERENCE           SCOUTSNIPER_RU1_SAWSOMETHING41
+LANG_RUSSIAN        "^1Ультранационалист: ^7Эй! Дим! Кажется, там что-то было в поле. Сходи посмотри."
+
+REFERENCE           SCOUTSNIPER_RU1_ALLCLEAR43
+LANG_RUSSIAN        "^1Ультранационалист: ^7Ничего здесь нет! Всё чисто."
+
+REFERENCE           SCOUTSNIPER_RU1_PASSCIG121
+LANG_RUSSIAN        "^1Ультранационалист: ^7Передай сигареты."
+
+REFERENCE           SCOUTSNIPER_RU1_WAKEUP123
+LANG_RUSSIAN        "^1Ультранационалист: ^7Юрий... Юр, очнись, твой ход! Толян поднял ставку на два бакса."
+
+REFERENCE           SCOUTSNIPER_RU1_TOOEXPENSIVE125
+LANG_RUSSIAN        "^1Ультранационалист: ^7Слишком дорого? Да нам Захаев за это дело в два раза больше платит. Деньги-то лёгкие. Никакой опасности, никаких перестрелок. Здесь вообще никого нет, чёрт возьми. Это же зона ядерной катастрофы. Скорее от рака сдохнешь, чем пулю тут схватишь."
+
+REFERENCE           SCOUTSNIPER_RU1_MERCENARIES127
+LANG_RUSSIAN        "^1Ультранационалист: ^7Эти украинцы ни на что не способны, получили по заслугам. Будь у них хоть какой-то боевой опыт, пристрелили бы тех собак, да и дело с концом."
+
+REFERENCE           SCOUTSNIPER_RU1_FIVEDOLLARS129
+LANG_RUSSIAN        "^1Ультранационалист: ^7Пять долларов. Открываешься или будешь поднимать, или пасуешь, как слабак последний?"
+
+REFERENCE           SCOUTSNIPER_RU1_PAIROFJACKS1211
+LANG_RUSSIAN        "^1Ультранационалист: ^7У меня пара валетов."
+
+REFERENCE           SCOUTSNIPER_RU1_OWNMONEY1215
+LANG_RUSSIAN        "^1Ультранационалист: ^7Повезло ублюдку... хотя, с другой стороны, я тебе ведь твои же деньги отдаю."
+
+REFERENCE           SCOUTSNIPER_RU1_CANTBELIEVE1220
+LANG_RUSSIAN        "^1Ультранационалист: ^7Чёрт. Поверить не могу, что с таким раскладом проиграл."
+
+REFERENCE           SCOUTSNIPER_RU1_PAYTHEMAN1221
+LANG_RUSSIAN        "^1Ультранационалист: ^7Отдай ему его деньги, он честно у меня выиграл."
+
+REFERENCE           SCOUTSNIPER_RU1_READYTOMOVE181
+LANG_RUSSIAN        "^1Ультранационалист: ^7Грузовики должны быть готовы к отъезду к двум часам!"
+
+REFERENCE           SCOUTSNIPER_RU1_HELICOPTERONWAY183
+LANG_RUSSIAN        "^1Ультранационалист: ^7Вертолёт приближается."
+
+REFERENCE           SCOUTSNIPER_RU1_ZONESAFE184
+LANG_RUSSIAN        "^1Ультранационалист: ^7Он ждёт сигнала! На посадочной зоне всё чисто?"
+
+REFERENCE           SCOUTSNIPER_RU1_OKBRINGIN185
+LANG_RUSSIAN        "^1Ультранационалист: ^7Да, пусть садится. Здесь всё чисто."
+
+REFERENCE           SCOUTSNIPER_RU1_CHECKTHEWOODS187
+LANG_RUSSIAN        "^1Ультранационалист: ^7Эй, ты! Проверь лес на востоке. Нечего тут этим собакам ошиваться."
+
+REFERENCE           SCOUTSNIPER_RU1_REPLACEDBATTERIES189
+LANG_RUSSIAN        "^1Ультранационалист: ^7Я в Киеве батарейки менял, так что не беспокойся."
+
+REFERENCE           SCOUTSNIPER_RU1_GETSWORSE1810
+LANG_RUSSIAN        "^1Ультранационалист: ^7Насколько я понимаю, радиация становится сильнее, чем дальше отдаляешься от Чернобыля."
+
+REFERENCE           SCOUTSNIPER_RU1_DOGSDONTGETCLOSE1812
+LANG_RUSSIAN        "^1Ультранационалист: ^7Не веришь, и не надо! Просто следи, чтобы эти чёртовы собаки сюда не приближались."
+
+REFERENCE           SCOUTSNIPER_RU1_WHATHAPPENED1815
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что случилось?"
+
+REFERENCE           SCOUTSNIPER_RU1_SPECIALFORCES1817
+LANG_RUSSIAN        "^1Ультранационалист: ^7Украинский спецназ?"
+
+REFERENCE           SCOUTSNIPER_RU1_NUCLEARREACTOR1820
+LANG_RUSSIAN        "^1Ультранационалист: ^7Это решать Захаеву. Наша задача: охранять грузовики и перебросить их к ядерному реактору, как только получим сигнал."
+
+REFERENCE           SCOUTSNIPER_RU1_GOTTADOSOMETHING1822
+LANG_RUSSIAN        "^1Ультранационалист: ^7Пора с ним что-то делать... никчёмный ублюдок!"
+
+REFERENCE           SCOUTSNIPER_RU1_HATEGUARDDUTY1825
+LANG_RUSSIAN        "^1Ультранационалист: ^7Терпеть не могу в карауле стоять, ноги болят постоянно."
+
+REFERENCE           SCOUTSNIPER_RU2_NOTWANDERING25
+LANG_RUSSIAN        "^1Ультранационалист: ^7Мы не бродим. Мы патрулируем, идиот."
+
+REFERENCE           SCOUTSNIPER_RU2_ZAHKAEVSPAYINGGOOD27
+LANG_RUSSIAN        "^1Ультранационалист: ^7Слушай... Захаев нам хорошо платит именно за то, чтобы мы патрулировали этот район. Так что заткнись ради собственного же блага. Если он хочет быть параноиком - его дело, пусть будет."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY4310
+LANG_RUSSIAN        "^1Ультранационалист: ^7Какого чёрта? Снайпер! Огонь!"
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS1325
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что-то здесь неладно... я уверен, что что-то видел."
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS2326
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что-то здесь творится неладное..."
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS3327
+LANG_RUSSIAN        "^1Ультранационалист: ^7Всем быть начеку, кажется, я что-то видел..."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES1328
+LANG_RUSSIAN        "^1Ультранационалист: ^7Наверное ошибся просто... расслабься."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES2329
+LANG_RUSSIAN        "^1Ультранационалист: ^7Ой, ты слишком нервничаешь."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES3330
+LANG_RUSSIAN        "^1Ультранационалист: ^7Я ничего не видел, ты просто устал."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY1331
+LANG_RUSSIAN        "^1Ультранационалист: ^7Какого чёрта? Снайпер!"
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY2332
+LANG_RUSSIAN        "^1Ультранационалист: ^7Вижу врага, противник в камуфляже!"
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY3332
+LANG_RUSSIAN        "^1Ультранационалист: ^7Чёрт, на нашей позиции враг."
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY1334
+LANG_RUSSIAN        "^1Ультранационалист: ^7Человека убили! Всем быть начеку! Здесь враг!"
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY2335
+LANG_RUSSIAN        "^1Ультранационалист: ^7Я нашёл труп! Где-то здесь противник!"
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY3336
+LANG_RUSSIAN        "^1Ультранационалист: ^7Вот чёрт, он мёртв. Здесь труп! Труп!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION1354
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что это было, чёрт возьми?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION2355
+LANG_RUSSIAN        "^1Ультранационалист: ^7Это что, взрыв?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION3356
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что-то только что взорвалось?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION4357
+LANG_RUSSIAN        "^1Ультранационалист: ^7Никто не ранен?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION5358
+LANG_RUSSIAN        "^1Ультранационалист: ^7Всё в порядке?!"
+
+REFERENCE           SCOUTSNIPER_RU2_IMONIT42
+LANG_RUSSIAN        "^1Ультранационалист: ^7Так точно!"
+
+REFERENCE           SCOUTSNIPER_RU2_WHOSETURNISIT122
+LANG_RUSSIAN        "^1Ультранационалист: ^7Чья очередь?"
+
+REFERENCE           SCOUTSNIPER_RU2_ANYONESEEDOGS126
+LANG_RUSSIAN        "^1Ультранационалист: ^7Никто здесь диких собак не видел? Говорят, у украинцев пара человек пропала сегодня ночью у бассейна."
+
+REFERENCE           SCOUTSNIPER_RU2_YOUIDIOT1213
+LANG_RUSSIAN        "^1Ультранационалист: ^7Идиот, и кого ты хотел напугать своими валетами?"
+
+REFERENCE           SCOUTSNIPER_RU2_CALL1217
+LANG_RUSSIAN        "^1Ультранационалист: ^7Открываюсь."
+
+REFERENCE           SCOUTSNIPER_RU2_BUYMOTORBIKE131
+LANG_RUSSIAN        "^1Ультранационалист: ^7Да, вот заплатят мне за всё это дело, куплю мотоцикл. Вот я тут вволю накатаюсь."
+
+REFERENCE           SCOUTSNIPER_RU2_AMERICAGOINGTOSTARTWAR132
+LANG_RUSSIAN        "^1Ультранационалист: ^7Как думаешь, нападёт ли на нас Америка, пока мы уязвимы? Эта страна давно уже катится псу под хвост. Почему бы и нет."
+
+REFERENCE           SCOUTSNIPER_RU2_YESTHATMAKESSENSE133
+LANG_RUSSIAN        "^1Ультранационалист: ^7Да, что-то в этом есть."
+
+REFERENCE           SCOUTSNIPER_RU2_ISEE134
+LANG_RUSSIAN        "^1Ультранационалист: ^7Ясно."
+
+REFERENCE           SCOUTSNIPER_RU2_YESIUNDERSTAND135
+LANG_RUSSIAN        "^1Ультранационалист: ^7Да, ясно."
+
+REFERENCE           SCOUTSNIPER_RU2_ILLTAKECAREOFIT136
+LANG_RUSSIAN        "^1Ультранационалист: ^7Есть. Будет сделано."
+
+REFERENCE           SCOUTSNIPER_RU2_HAVENTSEENANYONE141
+LANG_RUSSIAN        "^1Ультранационалист: ^7Нет, никого там нет. Я тебе скажу, если что случится."
+
+REFERENCE           SCOUTSNIPER_RU2_AFRICANOREUROPEAN142
+LANG_RUSSIAN        "^1Ультранационалист: ^7Хм, хороший вопрос: Африка или Европа?"
+
+REFERENCE           SCOUTSNIPER_RU2_WHAT143
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что?"
+
+REFERENCE           SCOUTSNIPER_RU2_TIMEFORSHIFTCHANGE144
+LANG_RUSSIAN        "^1Ультранационалист: ^7Дмитрий, смена караула. Ты должен был быть здесь 15 минут назад. Где тебя черти носят?"
+
+REFERENCE           SCOUTSNIPER_RU2_COMEIN145
+LANG_RUSSIAN        "^1Ультранационалист: ^7Дмитрий, отвечай."
+
+REFERENCE           SCOUTSNIPER_RU2_LOSTCONTACTDMITRI146
+LANG_RUSSIAN        "^1Ультранационалист: ^7Николай, Дмитрий не отвечает. Должно быть, рация сломалась."
+
+REFERENCE           SCOUTSNIPER_RU2_SENDSOMEONETOCHECK147
+LANG_RUSSIAN        "^1Ультранационалист: ^7Пошли кого-нибудь проверить в чём дело."
+
+REFERENCE           SCOUTSNIPER_RU2_ANDREIBRINGINGFOOD152
+LANG_RUSSIAN        "^1Ультранационалист: ^7Когда уже Андрей поесть принесёт?"
+
+REFERENCE           SCOUTSNIPER_RU2_QUICKLYASPOSSIBLE154
+LANG_RUSSIAN        "^1Ультранационалист: ^7Давайте побыстрее с этим кончать. Трупы уже раздуваться начинают."
+
+REFERENCE           SCOUTSNIPER_RU2_YESCOMRADE182
+LANG_RUSSIAN        "^1Ультранационалист: ^7Да, товарищ."
+
+REFERENCE           SCOUTSNIPER_RU2_CLEARROTORBLADES186
+LANG_RUSSIAN        "^1Ультранационалист: ^7От винта!"
+
+REFERENCE           SCOUTSNIPER_RU2_RADIATIONDOSIMETERS188
+LANG_RUSSIAN        "^1Ультранационалист: ^7Ты уверен, что эти дозиметры работают? Мне лишнее облучение ни к чему."
+
+REFERENCE           SCOUTSNIPER_RU2_DONTBELIEVEATALL1811
+LANG_RUSSIAN        "^1Ультранационалист: ^7Не верю ни капли."
+
+REFERENCE           SCOUTSNIPER_RU2_OK1813
+LANG_RUSSIAN        "^1Ультранационалист: ^7Ладно."
+
+REFERENCE           SCOUTSNIPER_RU2_PROFESSIONALJOB1816
+LANG_RUSSIAN        "^1Ультранационалист: ^7Некоторых наших убили. Похоже, действовали профессионалы."
+
+REFERENCE           SCOUTSNIPER_RU2_POSSIBLYSPETZNAZ1818
+LANG_RUSSIAN        "^1Ультранационалист: ^7Может быть и спецназ, кто-то из врагов Захаева."
+
+REFERENCE           SCOUTSNIPER_RU2_BEBACKINAMINUTE1821
+LANG_RUSSIAN        "^1Ультранационалист: ^7Мне надо отлить, вернусь через минуту."
+
+REFERENCE           SCOUTSNIPER_RU2_IMSOBORED1823
+LANG_RUSSIAN        "^1Ультранационалист: ^7Какая скукотища... в русскую рулетку что ли сыграть?"
+
+REFERENCE           SCOUTSNIPER_RU2_GUESSITWASNOTHING1826
+LANG_RUSSIAN        "^1Ультранационалист: ^7Наверное ошибся, должно быть, просто ветер или галлюцинации начались."
+
+REFERENCE           SCOUTSNIPER_RU4_SNIPER312
+LANG_RUSSIAN        "^1Ультранационалист: ^7Ааа, снайпер!"
+
+REFERENCE           SCOUTSNIPER_RU4_TOOEXPENSIVE124
+LANG_RUSSIAN        "^1Ультранационалист: ^7Слишком дорого. Я пас."
+
+REFERENCE           SCOUTSNIPER_RU4_RADIATIONDOGS128
+LANG_RUSSIAN        "^1Ультранационалист: ^7Из-за радиации дикие собаки стали сильнее и злобнее, не стоит их недооценивать. Какая у нас ставка?"
+
+REFERENCE           SCOUTSNIPER_RU4_TWENTYDOLLARS1210
+LANG_RUSSIAN        "^1Ультранационалист: ^7Посмотрим, что у тебя. 20 баксов утверждают, что ты блефуешь."
+
+REFERENCE           SCOUTSNIPER_RU4_THREEKINGS1212
+LANG_RUSSIAN        "^1Ультранационалист: ^7Три короля."
+
+REFERENCE           SCOUTSNIPER_RU4_WELLPLAYEDCOMRADE1214
+LANG_RUSSIAN        "^1Ультранационалист: ^7Отличная игра, товарищ! Выпей!"
+
+REFERENCE           SCOUTSNIPER_RU4_SEEABOUTTHAT1216
+LANG_RUSSIAN        "^1Ультранационалист: ^7Посмотрим. Раздавай."
+
+REFERENCE           SCOUTSNIPER_RU4_RAISE1218
+LANG_RUSSIAN        "^1Ультранационалист: ^7Поднимаю."
+
+REFERENCE           SCOUTSNIPER_RU4_IFOLD1219
+LANG_RUSSIAN        "^1Ультранационалист: ^7Я пас."
+
+REFERENCE           SCOUTSNIPER_RU4_THISONESHEAVY151
+LANG_RUSSIAN        "^1Ультранационалист: ^7Чёрт, ну и тяжёлая же штука!"
+
+REFERENCE           SCOUTSNIPER_RU4_DIDNTEATBREAKFAST153
+LANG_RUSSIAN        "^1Ультранационалист: ^7Не знаю, надеюсь, скоро. Помираю с голоду, даже не завтракал сегодня."
+
+REFERENCE           SCOUTSNIPER_RU4_TAKENZAKHAEVSOFFER155
+LANG_RUSSIAN        "^1Ультранационалист: ^7Идиоты... Надо было принимать предложение Захаева."
+
+REFERENCE           SCOUTSNIPER_RU4_MAYHAVEPROBLEM1814
+LANG_RUSSIAN        "^1Ультранационалист: ^7Я только что получил сообщение от группы разведки! Кажется, у нас проблема!"
+
+REFERENCE           SCOUTSNIPER_RU4_CANCELTRANSACTIONS1819
+LANG_RUSSIAN        "^1Ультранационалист: ^7Отменить сделку с украинцами?"
+
+REFERENCE           SCOUTSNIPER_RU4_CANTWAITFORSHIFTEND1824
+LANG_RUSSIAN        "^1Ультранационалист: ^7Когда же вахта кончится... хорошо, хоть Захаев нормально платит за эту скукотищу."
+
+REFERENCE           SCOUTSNIPER_RU4_HOPEITDOESNTRAIN1827
+LANG_RUSSIAN        "^1Ультранационалист: ^7Надеюсь, дождя не будет, я плащ забыл."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTONE49
+LANG_RUSSIAN        "^2Капитан Макмиллан: ^7Один готов."
+
+REFERENCE           SNIPERESCAPE_MCM_TANGODOWN410
+LANG_RUSSIAN        "^2Капитан Макмиллан: ^7Объект нейтрализован."
+
+REFERENCE           SNIPERESCAPE_MCM_HESDOWN411
+LANG_RUSSIAN        "^2Капитан Макмиллан: ^7Он убит."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTANOTHER412
+LANG_RUSSIAN        "^2Капитан Макмиллан: ^7Ещё один."
+
+REFERENCE           SNIPERESCAPE_MCM_TARGETNEUTRALIZED413
+LANG_RUSSIAN        "^2Капитан Макмиллан: ^7Цель нейтрализована!"
+
+REFERENCE           SNIPERESCAPE_MCM_GOTHIM414
+LANG_RUSSIAN        "^2Капитан Макмиллан: ^7Готов."
+
+REFERENCE           SNIPERESCAPE_RUL_NEARPOOL51
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Беглецы у бассейна! Направить к ним группы "А" и "Б", немедленно!"
+
+REFERENCE           SNIPERESCAPE_RUL_AMUSEMENTPK52
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Они направляются к парку! Запрашиваем подкрепление в третий сектор!"
+
+REFERENCE           SNIPERESCAPE_RUL_HOTELPOLISSA53
+LANG_RUSSIAN        "^1Громкоговоритель: ^7У гостиницы "Полiсся" замечен враг! Повторяю, у гостиницы замечены вражеские солдаты."
+
+REFERENCE           SNIPERESCAPE_RUL_CUTOFFEXITS54
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Они зашли в дом "Д", мы за ними последовать не можем. Перекрыть все выходы и остановить их в парке."
+
+REFERENCE           SNIPERESCAPE_RUL_SNIPERSINAREA55
+LANG_RUSSIAN        "^1Громкоговоритель: ^7В квадрате вражеские снайперы! Они скрываются в зданиях! Найти их!"
+
+REFERENCE           SNIPERESCAPE_RUL_SOUTHOFCITY56
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Пятая группа, обыскать район у бассейна! Шестая группа, обыскать здания к югу от города!"
+
+REFERENCE           SNIPERESCAPE_RUL_COVERWOODS57
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Скорее всего, они направляются в северную часть города! Направьте ещё две группы, чтобы перекрыть лес на севере."
+
+REFERENCE           SNIPERESCAPE_RUL_MOVEMOVE58
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Вражеские снайперы были замечены во дворах между зданиями! Вперёд! Вперёд!"
+
+REFERENCE           VASSAULT_PRI_KAMAROVSMAN111
+LANG_RUSSIAN        "^2Капитан Прайс: ^7Там агент Комарова, идём."
+
+REFERENCE           VASSAULT_RU1_READYAIMFIRE12
+LANG_RUSSIAN        "^1Ультранационалист: ^7Эта деревня послужит всем вам примером. Все вы помогали и способствовали преступлениям коррумпированных властей. Из-за таких, как вы, наш великий народ ослабел, а сейчас будете пожинать плоды своего предательства."
+
+REFERENCE           VASSAULT_RU1_KILLTHEM13
+LANG_RUSSIAN        "^1Ультранационалист: ^7Готовьсь... цельсь... огонь!"
+
+REFERENCE           VASSAULT_RU1_MAKEEXAMPLE14
+LANG_RUSSIAN        "^1Ультранационалист: ^7Убить их! Убить их всех!"
+
+REFERENCE           VASSAULT_RU1_DIEYOUTRAITOR15
+LANG_RUSSIAN        "^1Ультранационалист: ^7Сдохни, предатель!"
+
+REFERENCE           VASSAULT_RU1_EXECUTETHEM16
+LANG_RUSSIAN        "^1Ультранационалист: ^7Казнить их, немедленно!"
+
+REFERENCE           VASSAULT_KAA_WASNTME1452
+LANG_RUSSIAN        "^1Халед аль-Асад: ^7Это не я..."
+
+REFERENCE           VASSAULT_KAA_WASNTME2454
+LANG_RUSSIAN        "^1Халед аль-Асад: ^7Это не я."
+
+REFERENCE           VILLAGEDEF_RUL_SURRENDERATONCE11
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Сдавайтесь немедленно, и вас оставят в живых. Учитывая обстоятельства, думаю, вы сделаете правильный выбор."
+
+REFERENCE           VILLAGEDEF_RUL_DROPYOURWEAPONS12
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Бросайте оружие и сдавайтесь. Никто не причинит вам вреда, если сдадитесь добровольно."
+
+REFERENCE           VILLAGEDEF_RUL_WEKNOWYOUREHIDING13
+LANG_RUSSIAN        "^1Громкоговоритель: ^7Мы знаем, что вы скрываетесь в деревне. Вы окружены, бежать вам некуда. Сдавайтесь, и вас пощадят."
+
+REFERENCE           VILLAGEDEF_RU1_WHATWASTHAT112
+LANG_RUSSIAN        "^1Ультранационалист: ^7Что это было, чёрт возьми?"
+
+REFERENCE           VILLAGEDEF_RU1_NOICANTMOVE117
+LANG_RUSSIAN        "^1Ультранационалист: ^7Не-е-т, я не могу двигаться! Где мои ноги?! Кто-нибудь на помощь!"
+
+REFERENCE           VILLAGEDEF_RU1_ICANTSEETHEM121
+LANG_RUSSIAN        "^1Ультранационалист: ^7Должно быть, они где-то на холме, но я их не вижу."
+
+REFERENCE           VILLAGEDEF_RU1_GOAROUNDWEST129
+LANG_RUSSIAN        "^1Ультранационалист: ^7Окружай ублюдков! Обходи их с запада!"
+
+REFERENCE           VILLAGEDEF_RU1_MEDIC131
+LANG_RUSSIAN        "^1Ультранационалист: ^7ВРАААЧААА!"
+
+REFERENCE           VILLAGEDEF_RU1_MUSTBETWOPLATOONS135
+LANG_RUSSIAN        "^1Ультранационалист: ^7Да их там не меньше двух взводов!"
+
+REFERENCE           VILLAGEDEF_RU2_DIDYOUHEARTHAT113
+LANG_RUSSIAN        "^1Ультранационалист: ^7Вы это слышали?"
+
+REFERENCE           VILLAGEDEF_RU2_UNDERHEAVYFIRE122
+LANG_RUSSIAN        "^1Ультранационалист: ^7Мы попали под обстрел! Требуется подкрепление!"
+
+REFERENCE           VILLAGEDEF_RU2_PUTUPSMOKESCREEN132
+LANG_RUSSIAN        "^1Ультранационалист: ^7Давай дымовую завесу! Бросай дымовые гранаты!"
+
+REFERENCE           VILLAGEDEF_RU3_WHATTHEHELL114
+LANG_RUSSIAN        "^1Ультранационалист: ^7Какого чёрта?!"
+
+REFERENCE           VILLAGEDEF_RU4_HELPMEIMWOUNDED116
+LANG_RUSSIAN        "^1Ультранационалист: ^7ААААА! На помощь! Помогите! Я ранен!! ААААА!"
+
+REFERENCE           VILLAGEDEF_RU4_WHERETHEYSHOOTING120
+LANG_RUSSIAN        "^1Ультранационалист: ^7Откуда, чёрт возьми, они стреляют?"
+
+REFERENCE           VILLAGEDEF_RU4_REINFORCEMENTS123
+LANG_RUSSIAN        "^1Ультранационалист: ^7Подкрепление уже в пути!"
+
+REFERENCE           VILLAGEDEF_RU4_IMHITMEDIC130
+LANG_RUSSIAN        "^1Ультранационалист: ^7Я ранен! АААА! Врача! ВРАЧА!"
+
+REFERENCE           VILLAGEDEF_SAS3_TARGETDOWN120
+LANG_RUSSIAN        "^2Гас: ^7Цель уничтожена."
+
+REFERENCE           VILLAGEDEF_SAS3_GOTHIM121
+LANG_RUSSIAN        "^2Гас: ^7Готов."
+
+REFERENCE           VILLAGEDEF_SAS3_TARGETELIMINATED122
+LANG_RUSSIAN        "^2Гас: ^7Цель уничтожена."
+
+REFERENCE           VILLAGEDEF_GRG_NEEDARIDE81
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Говорят, вам нужно выбраться отсюда?"
+
+REFERENCE           VILLAGEDEF_GRG_GETONBOARD83
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Все на борт! Живее! Живее!!"
+
+REFERENCE           VILLAGEDEF_GRG_LETSGO84
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Пошли! Пошли!"
+
+REFERENCE           VILLAGEDEF_GRG_WEREALLABOARD85
+LANG_RUSSIAN        "^2Штаб-сержант Григгс: ^7Так. Все на борту! Улетаем! Улетаем!"
+
+ENDMARKER

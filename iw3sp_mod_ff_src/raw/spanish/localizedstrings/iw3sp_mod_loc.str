@@ -1,0 +1,359 @@
+
+// Note to translators:
+// If a sentence is the same in your language then please change it to "#same"
+//
+// eg:
+// LANG_ENGLISH  "HALT"
+// LANG_GERMAN   "#same"
+//
+// (This is so we can tell which strings have been signed-off as ok to be the same words for QA
+//  and because we do not store duplicate strings, which will then get exported again next time
+//  as being untranslated.)
+//
+VERSION             "1"
+CONFIG              "C:\trees\cod2\bin\StringEd.cfg"
+FILENOTES           ""
+
+REFERENCE           MENU_UNLOCK_ALL
+LANG_SPANISH        "Desbloquear Todas las Misiones y Trucos"
+
+REFERENCE           MENU_RESET_ALL
+LANG_SPANISH        "Restablecer Progreso de Misiones y Trucos"
+
+REFERENCE           MENU_ARE_YOU_SURE_UNLOCK
+LANG_SPANISH        "¿Desbloquear todas las misiones y trucos?"
+
+REFERENCE           MENU_ARE_YOU_SURE_RESET
+LANG_SPANISH        "¿Estás seguro de que quieres restablecer el progreso de tus misiones y trucos?"
+
+REFERENCE           MENU_QUIT_TO_DESKTOP
+LANG_SPANISH        "Salir al Escritorio"
+
+REFERENCE           MENU_LASTCHECKPOINT
+LANG_SPANISH        "Último Punto de Control"
+
+REFERENCE           MENU_LASTCHECKPOINT_DESC
+LANG_SPANISH        "¿Reiniciar desde el último punto de control?"
+
+REFERENCE           MENU_STATSHASBEENRESET
+LANG_SPANISH        "Se ha restablecido el progreso de tu perfil, incluyendo misiones y trucos."
+
+REFERENCE           MENU_UPDATE_NEW_UPDATE
+LANG_SPANISH        "Nueva actualización disponible. ¿Deseas descargar la nueva actualización?"
+
+REFERENCE           MENU_UPDATE_REQUIRES_RESTART
+LANG_SPANISH        "La actualización requiere reinicio."
+
+REFERENCE           MENU_UPDATE_RESTART
+LANG_SPANISH        "Reiniciar el juego"
+
+REFERENCE           MENU_ENABLE_AUTOUPDATE
+LANG_SPANISH        "Actualización Automática"
+
+REFERENCE           MENU_CHECK_FOR_UPDATE
+LANG_SPANISH        "Buscar Actualizaciones"
+
+REFERENCE           MENU_CHECKING_UPDATE
+LANG_SPANISH        "Buscando actualizaciones"
+
+REFERENCE           MENU_NO_UPDATES_AVAILABLE
+LANG_SPANISH        "No hay actualizaciones disponibles"
+
+REFERENCE           MENU_SERVER_OFFLINE
+LANG_SPANISH        "Descarga de actualizaciones no disponible. Servidor fuera de línea."
+
+REFERENCE           MENU_UPDATER_CUR_DOWNLOAD_SPEED
+LANG_SPANISH        "Velocidad de descarga actual: "
+
+REFERENCE           MENU_ACHIEVEMENTS
+LANG_SPANISH        "Logros"
+
+REFERENCE           MENU_ACHIEVEMENTS_TITLE
+LANG_SPANISH        "LOGROS"
+
+REFERENCE           MENU_ACHIEVEMENTS_DATE_RECEIVED
+LANG_SPANISH        "Fecha de Recepción:"
+
+REFERENCE           MENU_IW3SP_MOD_OPTIONS
+LANG_SPANISH        "IW3SP-MOD"
+
+REFERENCE           MENU_RESET_ACHIEVEMENTS
+LANG_SPANISH        "Restablecer Logros"
+
+REFERENCE           MENU_RESET_ACHIEVEMENTS_SURE
+LANG_SPANISH        "¿Seguro que deseas restablecer el progreso de los logros?"
+
+REFERENCE           MENU_RESET_ACHIEVEMENTS_COMPELETED
+LANG_SPANISH        "Se ha restablecido el progreso de los logros"
+
+REFERENCE           MENU_ENEMY_INTEL_TITLE
+LANG_SPANISH        "Inteligencia del Enemigo"
+
+REFERENCE           MENU_ENEMY_INTEL_COUNT
+LANG_SPANISH        "&&1/&&2 Inteligencia encontrada"
+
+REFERENCE           MENU_EXTERNAL_CONSOLE
+LANG_SPANISH        "Consola Externa"
+
+REFERENCE           MENU_BRANDING
+LANG_SPANISH        "Versión en exhibición"
+
+REFERENCE           MENU_WIP
+LANG_SPANISH        "EN PROGRESO"
+
+REFERENCE           MENU_STATS_TITLE
+LANG_SPANISH        "ESTADÍSTICAS"
+
+REFERENCE           MENU_STATS
+LANG_SPANISH        "Estadísticas"
+
+REFERENCE           MENU_CAREER_BULLETS_FIRED
+LANG_SPANISH        "Balas disparadas"
+
+REFERENCE           MENU_CAREER_BULLETS_HIT
+LANG_SPANISH        "Balas acertadas"
+
+REFERENCE           MENU_CAREER_DEATHS
+LANG_SPANISH        "Muertes"
+
+REFERENCE           MENU_CAREER_HEADSHOTS
+LANG_SPANISH        "Tiros a la cabeza"
+
+REFERENCE           MENU_CAREER_KILLS
+LANG_SPANISH        "Asesinatos"
+
+REFERENCE           MENU_CAREER_PLAYTIMESP
+LANG_SPANISH        "Tiempo total de juego"
+
+REFERENCE           MENU_CAREER_KILLS_MELEE
+LANG_SPANISH        "Muertes cuerpo a cuerpo"
+
+REFERENCE           MENU_CAREER_KILLS_VEHICLES
+LANG_SPANISH        "Vehículos destruidos"
+
+REFERENCE           MENU_CAREER_KILLS_EXPLOSIVES
+LANG_SPANISH        "Muertes por explosivos"
+
+REFERENCE           MENU_CAREER_ACCURACY
+LANG_SPANISH        "Precisión"
+
+REFERENCE           MENU_CAREER_SP_STATS
+LANG_SPANISH        "Estadísticas de un jugador"
+
+REFERENCE           MENU_CAREER_SP_COMPLETED
+LANG_SPANISH        "Campaña completada"
+
+REFERENCE           MENU_CAREER_INTEL
+LANG_SPANISH        "Información"
+
+REFERENCE           MENU_CAREER_ACHIEVEMENT_UNLOCKED
+LANG_SPANISH        "Logros desbloqueados"
+
+REFERENCE           MENU_CAREER_SP_PROGRESS
+LANG_SPANISH        "Progreso de campaña"
+
+REFERENCE           MENU_SP_STAT_TIME_FORMAT
+LANG_SPANISH        "D      H        M       S"
+
+REFERENCE           MENU_MUSIC_VOLUME
+LANG_SPANISH        "Volumen de la música"
+
+REFERENCE           MENU_VOICE_VOLUME
+LANG_SPANISH        "Volumen de la voz"
+
+REFERENCE           MENU_CINEMATIC_VOLUME
+LANG_SPANISH        "Volumen de las cinemáticas"
+
+REFERENCE           MENU_KEYBOARD_AND_MOUSE_OPTIONS
+LANG_SPANISH        "Teclado/Ratón"
+
+REFERENCE           MENU_GAMEPAD_OPTIONS
+LANG_SPANISH        "Gamepad"
+
+REFERENCE           MENU_GAMEPAD_MISC_SETTINGS
+LANG_SPANISH        "Configuraciones Varias"
+
+REFERENCE           MENU_GAMEPAD_BUTTONS_AND_STICKS_SETTINGS
+LANG_SPANISH        "Botones/Sticks"
+
+REFERENCE           MENU_GAMEPAD_RESET_DEFAULT_SETTINGS
+LANG_SPANISH        "Restaurar Controles Predeterminados"
+
+REFERENCE           MENU_GAMEPAD_ENABLED
+LANG_SPANISH        "Gamepad Habilitado"
+
+REFERENCE           MENU_GAMEPAD_BUTTON_STYLE
+LANG_SPANISH        "Estilo de Botones"
+
+REFERENCE           MENU_GAMEPAD_BUTTON_STYLE_XBOX
+LANG_SPANISH        "Xbox"
+
+REFERENCE           MENU_GAMEPAD_BUTTON_STYLE_SONY
+LANG_SPANISH        "PlayStation"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_LOW
+LANG_SPANISH        "Baja"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_MEDIUM
+LANG_SPANISH        "Media"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_HIGH
+LANG_SPANISH        "Alta"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_VERY_HIGH
+LANG_SPANISH        "Muy Alta"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_INSANE
+LANG_SPANISH        "Insana"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_CUSTOM_3
+LANG_SPANISH        "(Personalizada): 3"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_CUSTOM_5
+LANG_SPANISH        "(Personalizada): 5"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_CUSTOM_6
+LANG_SPANISH        "(Personalizada): 6"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_CUSTOM_8
+LANG_SPANISH        "(Personalizada): 8"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_CUSTOM_9
+LANG_SPANISH        "(Personalizada): 9"
+
+REFERENCE           MENU_CHANGELOG
+LANG_SPANISH        "Changelog"
+
+REFERENCE           MENU_CHANGELOG_TITLE
+LANG_SPANISH        "CHANGELOG"
+
+REFERENCE           MENU_CHANGELOG_CANT_GET
+LANG_SPANISH        ""
+
+REFERENCE           MENU_ALLOW_CHEATS_CMD
+LANG_SPANISH        "Permitir comandos de trucos"
+
+REFERENCE           MENU_VIDEO
+LANG_SPANISH        "Video"
+
+REFERENCE           MENU_VIDEO_SETTINGS
+LANG_SPANISH        "Configuración de video"
+
+REFERENCE           MENU_GRAPHICS_SETTINGS
+LANG_SPANISH        "Configuración de gráficos"
+
+REFERENCE           MENU_BRIGHTNESS_WARNING
+LANG_SPANISH        "El ajuste de brillo no tiene efecto al jugar en una ventana."
+
+REFERENCE           MENU_8X
+LANG_SPANISH        "8x"
+
+REFERENCE           MENU_16X
+LANG_SPANISH        "16x"
+
+REFERENCE           MENU_DISPLAY_MODE
+LANG_SPANISH        "Modo de visualización"
+
+REFERENCE           MENU_DISPLAY_MODE_FULL
+LANG_SPANISH        "Pantalla completa"
+
+REFERENCE           MENU_DISPLAY_MODE_WIN
+LANG_SPANISH        "Ventana"
+
+REFERENCE           MENU_DISPLAY_MODE_WIN_NO_BORD
+LANG_SPANISH        "Ventana (Sin bordes)"
+
+REFERENCE           MENU_D3D9EX
+LANG_SPANISH        "Direct3D 9 Ex"
+
+REFERENCE           CREDIT_IW3SPMOD_TITLE
+LANG_SPANISH        "IW3SP-MOD"
+
+REFERENCE           CREDIT_SPECIAL_THANKS_TITLE
+LANG_SPANISH        "Agradecimientos especiales"
+
+REFERENCE           CREDIT_MAIN_DEVELOPER_TITLE
+LANG_SPANISH        "Desarrollador principal"
+
+REFERENCE           CREDIT_HOLD_USE_TO_SKIP
+LANG_SPANISH        "Mantén presionado ^3[{+activate}]^7 para saltar."
+
+REFERENCE           CREDIT_NIKO
+LANG_SPANISH        "Bogdan Konstantinou"
+
+REFERENCE           CREDIT_XOXOR
+LANG_SPANISH        "xoxor4d (IW3xo)"
+
+REFERENCE           CREDIT_FED
+LANG_SPANISH        "fed (h2-mod)"
+
+REFERENCE           CREDIT_VLAD
+LANG_SPANISH        "Vlad Loktionov"
+
+REFERENCE           CREDIT_NUKEM9
+LANG_SPANISH        "Nukem9 (Black Ops Linker Mod)"
+
+REFERENCE           CREDIT_XLABS
+LANG_SPANISH        "X Labs Team (IW4x)"
+
+REFERENCE           CREDIT_ALTERWARE
+LANG_SPANISH        "AlterWare Team (IW4x)"
+
+REFERENCE           CREDIT_COD4X
+LANG_SPANISH        "CoD4x Team"
+
+REFERENCE           CREDIT_JERRY
+LANG_SPANISH        "JerryALT"
+
+REFERENCE           MENU_PORTUGUESE
+LANG_SPANISH        "Portugués"
+
+REFERENCE           MENU_SLOVAK
+LANG_SPANISH        "Eslovaco"
+
+REFERENCE           MENU_MOUSE_RAW_INPUT
+LANG_SPANISH        "Entrada cruda del ratón"
+
+REFERENCE           MENU_ENABLE_HITMARKERS
+LANG_SPANISH        "Indicadores de impacto"
+
+REFERENCE           MENU_ENABLE_HIT_SOUND
+LANG_SPANISH        "Feedback de sonido al impactar"
+
+REFERENCE           PLATFORM_RELOAD_GAMEPAD
+LANG_SPANISH        "&&1 Recargar"
+
+REFERENCE           PLATFORM_PICKUPNEWWEAPON_HOLD
+LANG_SPANISH        "Mantén^3 &&1 ^7para recoger"
+
+REFERENCE           PLATFORM_SWAPWEAPONS_HOLD
+LANG_SPANISH        "Mantén^3 &&1 ^7para cambiar por"
+
+REFERENCE           PLATFORM_UI_SELECTBUTTON_XBOX
+LANG_SPANISH        ""
+
+REFERENCE           PLATFORM_UI_SELECTBUTTON_SONY
+LANG_SPANISH        ""
+
+REFERENCE           PLATFORM_BACK_GAMEPAD_XBOX
+LANG_SPANISH        ""
+
+REFERENCE           PLATFORM_BACK_GAMEPAD_SONY
+LANG_SPANISH        ""
+
+REFERENCE           MENU_SIGNEDINAS
+LANG_SPANISH        "Conectado como: &&1"
+
+REFERENCE           MENU_CHEATS_NAME9
+LANG_SPANISH        "Paintball"
+
+REFERENCE           MENU_CHEATS_DESC9
+LANG_SPANISH        "¿No puedes manejar la brutalidad de la guerra? Prueba las pistolas de paintball."
+
+REFERENCE           KILLHOUSE_DEMOLITIONS_TRAINING
+LANG_SPANISH        "(Opcional) Completa la evaluación de armas explosivas."
+
+REFERENCE           KILLHOUSE_RUN_THE_OBSTACLE_COURSE
+LANG_SPANISH        "(Opcional) Completa el circuito de obstáculos."
+
+ENDMARKER

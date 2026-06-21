@@ -1,0 +1,20 @@
+name,sequence,file,vol_min,vol_max,vol_mod,pitch_min,pitch_max,dist_min,dist_max,channel,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,volumefalloffcurve,startdelay,speakermap,reverb,lfe percentage,center percentage,platform,envelop_min,envelop_max,envelop percentage,conversion
+
+mission_unlock_cheat,,voiceovers/UK/mpvoice/UK_1mc_boost_01_R.wav,0.3,,interface,,,,,menu,,,,,menu,,,,,,,nowetlevel fulldrylevel,,,,,,,
+mission_unlock_cheat_og,,voiceovers/US/ICBM/icbm_grg_3_30.wav,0.3,,interface,,,,,menu,,,,,menu,,,,,,,nowetlevel fulldrylevel,,,,,,,
+mission_reset_cheat,,user_interface/ui_arcade_streak_lost1.wav,0.3,,interface,,,,,menu,,,,,menu,,,,,,,nowetlevel fulldrylevel,,,,,,,
+achievement_unlocked_xbox,,user_interface/achievement_unlocked_xbox.wav,1,1,interface,,,,,menu,,,,,menu,,,,,,,nowetlevel fulldrylevel,,
+achievement_unlocked_ps,,user_interface/achievement_unlocked_ps.wav,1,1,interface,,,,,menu,,,,,menu,,,,,,,nowetlevel fulldrylevel,,
+SP_hit_alert_npc,1,user_interface/ui_hit_alert_01.wav,0.89,0.89,interface,1,1,120,600,auto2d,,,,,all_sp,,,,,35,,nowetlevel fulldrylevel,,,,,,
+SP_hit_alert_npc,2,user_interface/ui_hit_alert_02.wav,0.89,0.89,interface,1,1,120,600,auto2d,,,,,all_sp,,,,,35,,nowetlevel fulldrylevel,,,,,,
+SP_hit_alert_npc,3,user_interface/ui_hit_alert_03.wav,0.89,0.89,interface,1,1,120,600,auto2d,,,,,all_sp,,,,,35,,nowetlevel fulldrylevel,,,,,,
+SP_hit_alert_npc,4,user_interface/ui_hit_alert_04.wav,0.89,0.89,interface,1,1,120,600,auto2d,,,,,all_sp,,,,,35,,nowetlevel fulldrylevel,,,,,,
+SP_hit_alert_npc,5,user_interface/ui_hit_alert_05.wav,0.89,0.89,interface,1,1,120,600,auto2d,,,,,all_sp,,,,,35,,nowetlevel fulldrylevel,,,,,,
+SP_hit_alert_npc,6,user_interface/ui_hit_alert_06.wav,0.89,0.89,interface,1,1,120,600,auto2d,,,,,all_sp,,,,,35,,nowetlevel fulldrylevel,,,,,,
+#Paintball
+paintball_fire_plr,,weapons/paintball/paintball_fire.wav,0.72,0.79,wpnplyr,0.8,0.9,500000,,local,,,,0.85,,,,,weapon2
+paintball_fire_npc,,weapons/paintball/paintball_fire.wav,0.76,0.82,wpnai,0.95,1.05,35,8400,weapon,,,,0.7,,,,,weapon4
+paintball_impact,1,weapons/paintball/paintball_imp_00.wav,0.63,0.79,impact,0.9,0.9,7,750,bulletimpact,,3,,0.5,,,,,weapon2,5
+paintball_impact,2,weapons/paintball/paintball_imp_01.wav,0.63,0.79,impact,0.9,0.9,7,750,bulletimpact,,3,,0.5,,,,,weapon2,5
+paintball_impact,3,weapons/paintball/paintball_imp_02.wav,0.63,0.79,impact,0.9,0.9,7,750,bulletimpact,,3,,0.5,,,,,weapon2,5
+paintball_impact,4,weapons/paintball/paintball_imp_03.wav,0.63,0.79,impact,0.9,0.9,7,750,bulletimpact,,3,,0.5,,,,,weapon2,5

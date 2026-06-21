@@ -1,0 +1,1255 @@
+// Note to translators:
+// If a sentence is the same in your language then please change it to "#same"
+//
+// eg:
+// LANG_ENGLISH  "HALT"
+// LANG_GERMAN   "#same"
+//
+// (This is so we can tell which strings have been signed-off as ok to be the same words for QA
+//  and because we do not store duplicate strings, which will then get exported again next time
+//  as being untranslated.)
+//
+VERSION             "1"
+CONFIG              "C:\trees\cod2\bin\StringEd.cfg"
+FILENOTES           "Additional subtitles for some voice lines"
+
+REFERENCE           AC130_PRI_TOWNTOEAST12
+LANG_SPANISH        "^2Capitán Price: ^7¡Fuego salvaje, Avanzamos por la carretera\nhacia un pueblo al este! ¡Confirma que tienes imagen visual sobre nosotros!"
+
+REFERENCE           AFTERMATH_MMR_ROMEO11
+LANG_SPANISH        "^2Radio Militar: ^7Segadora. NBC-1 Nuclear. Bravo - NV-0 6-2, 6-3-4. Charlie - red 90 grados. Hotel - superficie. Julieta - 90 segundos. Lima - 10 grados. Romeo - 2.3 centígrados."
+
+REFERENCE           AFTERMATH_FMR_EPICENTER12
+LANG_SPANISH        "^2Radio Militar: ^7Cuidado, detectada detonación nuclear. Se predice lluvia radiactiva en un radio de 12 kilómetros, epicentro situado en N-B-0-5-8-6-8-0."
+
+REFERENCE           AFTERMATH_FMR_EVACUATION13
+LANG_SPANISH        "^2Radio Militar: ^7Al personal dentro zona principal de lluvia radioactiva, comiencen la evacuación inmediatamente."
+
+REFERENCE           AFTERMATH_FMR_CONTCENTERS14
+LANG_SPANISH        "^2Radio Militar: ^7En este momento se están creando los centros de contaminación y estarán totalmente operativos en dos horas."
+
+REFERENCE           AFTERMATH_FMR_DOSIMETER15
+LANG_SPANISH        "^2Radio Militar: ^7Se recomienda al personal que compruebe su dosímetro y N 93 AD y determine la extensión de la contaminación por radiación."
+
+REFERENCE           AFTERMATH_FMR_ELEVATEDLEVELS16
+LANG_SPANISH        "^2Radio Militar: ^7Se aconseja al personal con niveles altos de radiación que busquen atención médica en cuanto les sea posible."
+
+REFERENCE           AIRLIFT_VSQ_LETSGO73
+LANG_SPANISH        "^2Teniente Vasquez: ^7¡Fuera! ¡Vamos! ¡Vamos!"
+
+REFERENCE           AIRLIFT_VSQ_HANGON115
+LANG_SPANISH        "^2Teniente Vasquez: ^7¡Agarraos todos!"
+
+REFERENCE           AIRLIFT_COP_ROGERTHAT113
+LANG_SPANISH        "^2Copiloto: ^7De acuerdo."
+
+REFERENCE           AIRLIFT_HCC_LETSGO43
+LANG_SPANISH        "^2Jefe de tripulación: ^7¡Venga! ¡Venga! ¡Levantad la cabeza! ¡Vamos!"
+
+REFERENCE           AIRLIFT_HCC_DOWNRAMP44
+LANG_SPANISH        "^2Jefe de tripulación: ^7¡Bajando la rampa! ¡Vamos! ¡Ya! ¡Ya! ¡Ya!"
+
+REFERENCE           AIRLIFT_HCC_WHEELSUP75
+LANG_SPANISH        "^2Jefe de tripulación: ^7¡Deprisa! ¡Tenemos que estar listos en 10 segundos! ¡Venga!"
+
+REFERENCE           AIRLIFT_HCC_WHEELSUP75B
+LANG_SPANISH        "^2Jefe de tripulación: ^7¡Vamos! ¡Vamos! ¡Despegar!"
+
+REFERENCE           AIRLIFT_GM1_FIREBALCONY51
+LANG_SPANISH        "^2Marine: ^7¡Fuego de mortero! ¡Ya llega!"
+
+REFERENCE           AIRLIFT_GM2_FIREBALCONY61
+LANG_SPANISH        "^2Marine: ^7¡Disparad sobre esa balconada!"
+
+REFERENCE           AIRLIFT_GM3_REINFORCEMENTS62
+LANG_SPANISH        "^2Marine: ^7¡Refuerzos!"
+
+REFERENCE           AIRLIFT_GM3_HELLYEAH72
+LANG_SPANISH        "^2Marine: ^7¡Joder, si!"
+
+REFERENCE           AIRLIFT_GM4_HELLYEAH77
+LANG_SPANISH        "^2Marine: ^7¡Gracias por el paseo!"
+
+REFERENCE           AIRLIFT_HQR_ALLCALLSIGNS12
+LANG_SPANISH        "^2Mando: ^7Atención a todos aquí, Observador. Estamos viendo blindados enemigos en la arboleda de palmeras al oeste del río."
+
+REFERENCE           AIRLIFT_HQR_HOSTILESADVANCING101
+LANG_SPANISH        "^2Mando: ^7Cuidado, Dos-Cinco, hostiles avanzando en paralelo al suroeste de su posición hacia el lugar de la colisión."
+
+REFERENCE           AIRLIFT_HQR_CONFIRMED114
+LANG_SPANISH        "^2Mando: ^7A todas las fuerzas de los EE. UU., tenemos confirmación de una amenaza nuclear en la ciudad. Los equipos de apoyo nuclear están en el lugar e intentan desactivarla. Repito, tenemos confirmación de..."
+
+REFERENCE           AIRLIFT_MHP_INFORMATION11
+LANG_SPANISH        "^2Forajido Dos Cinco: ^7En formación. Nos acercamos al objetivo. 30 segundos."
+
+REFERENCE           AIRLIFT_MHP_TAKINGFIRE21
+LANG_SPANISH        "^2Forajido Dos Cinco: ^7Recibiendo fuego."
+
+REFERENCE           AIRLIFT_MHP_RPGROOFTOPS22
+LANG_SPANISH        "^2Forajido Dos Cinco: ^7RPG en los tejados."
+
+REFERENCE           AIRLIFT_MHP_HOSTILESRPGS23
+LANG_SPANISH        "^2Forajido Dos Cinco: ^7Enemigos con RPG."
+
+REFERENCE           AIRLIFT_MHP_GROUNDINFANTRY24
+LANG_SPANISH        "^2Forajido Dos Cinco: ^7¡Más infantería de tierra, cuidado!"
+
+REFERENCE           AIRLIFT_MHP_WEVEGOTRPGS25
+LANG_SPANISH        "^2Forajido Dos Cinco: ^7Tenemos RPG en los tejados."
+
+REFERENCE           AIRLIFT_MHP_LIGHTARMOR26
+LANG_SPANISH        "^2Forajido Dos Cinco: ^7Blindado ligero. Acaba con el, Jackson."
+
+REFERENCE           AIRLIFT_MHP_ANTIAIRROOFTOP27
+LANG_SPANISH        "^2Forajido Dos Cinco: ^7Batería antiaérea, tejado."
+
+REFERENCE           AIRLIFT_MHP_ANTIAIRGROUND28
+LANG_SPANISH        "^2Forajido Dos Cinco: ^7Antiaéreo en tierra."
+
+REFERENCE           AIRLIFT_MHP_INFORCHOP112
+LANG_SPANISH        "^2Forajido Dos Cinco: ^7Damas y caballeros, les habla su capitán. Nos espera algo de movimiento. Jake, dame potencia máxima."
+
+REFERENCE           AIRPLANE_TER_ILLKILLHIM83
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Retrocede! ¡Le volaré la cabeza! ¡Dije retrocede!"
+
+REFERENCE           AIRPLANE_SAS1_TANGODOWN41
+LANG_SPANISH        "^2Eco Uno Uno: ^7¡Tango abatido!"
+
+REFERENCE           AIRPLANE_SAS1_XRAYDOWN42
+LANG_SPANISH        "^2Eco Uno Uno: ^7¡Rayos X abatido!"
+
+REFERENCE           AIRPLANE_SAS1_HOSTILENEUT43
+LANG_SPANISH        "^2Eco Uno Uno: ^7¡Enemigo neutralizado!"
+
+REFERENCE           AIRPLANE_SAS1_TARGNEUT44
+LANG_SPANISH        "^2Eco Uno Uno: ^7¡Blanco neutralizado!"
+
+REFERENCE           AIRPLANE_SAS1_AREACLEAR45
+LANG_SPANISH        "^2Eco Uno Uno: ^7¡Zona despejada!"
+
+REFERENCE           AIRPLANE_SAS1_SECTIONCLEAR46
+LANG_SPANISH        "^2Eco Uno Uno: ^7¡Sección despejada!"
+
+REFERENCE           AIRPLANE_SAS1_CLEAR47
+LANG_SPANISH        "^2Eco Uno Uno: ^7¡Despejado!"
+
+REFERENCE           AIRPLANE_RU4_DONTHURTME93
+LANG_SPANISH        "^2Civil Ruso: ^7¡Por favor! Solo no me mates. Quiero ir a casa, solo quiero irme de aquí..."
+
+REFERENCE           AIRPLANE_RU4_GETTOAPHONE94
+LANG_SPANISH        "^2Civil Ruso: ^7Necesito llegar a un teléfono. ¿Qué está pasando aquí? No merezco esto..."
+
+REFERENCE           AIRPLANE_RU4_NOPARACHUTE96
+LANG_SPANISH        "^2Civil Ruso: ^7¿Qué? ¡No!... ¡Espera! ¿Qué estás haciendo? No tengo un paracaííííí..."
+
+REFERENCE           AIRPLANE_GAZ_OKGETREADY151
+LANG_SPANISH        "^2Romeo Uno Uno: ^7Vale, prepárate."
+
+REFERENCE           AIRPLANE_GAZ_STANDBY16
+LANG_SPANISH        "^2Romeo Uno Uno: ^7Esperad...esperad...¡ya!"
+
+REFERENCE           AIRPLANE_GAZ_WEAPONSFREE22
+LANG_SPANISH        "^2Romeo Uno Uno: ^7Fuego a discreción."
+
+REFERENCE           AIRPLANE_GAZ_MOVE24
+LANG_SPANISH        "^2Romeo Uno Uno: ^7Muévete."
+
+REFERENCE           AIRPLANE_GAZ_MOVEUP25
+LANG_SPANISH        "^2Romeo Uno Uno: ^7Moveos."
+
+REFERENCE           AIRPLANE_GAZ_KEEPMOVING26
+LANG_SPANISH        "^2Romeo Uno Uno: ^7¡Sigan avanzando.!"
+
+REFERENCE           AIRPLANE_GAZ_STAIRWAYCLEAR27
+LANG_SPANISH        "^2Romeo Uno Uno: ^7¡Escalera despejada!"
+
+REFERENCE           AIRPLANE_GAZ_TANGODOWN31
+LANG_SPANISH        "^2Romeo Uno Uno: ^7¡Tango abatido!"
+
+REFERENCE           AIRPLANE_GAZ_XRAYDOWN32
+LANG_SPANISH        "^2Romeo Uno Uno: ^7¡Rayos X abatido!"
+
+REFERENCE           AIRPLANE_GAZ_HOSTILENEUT33
+LANG_SPANISH        "^2Romeo Uno Uno: ^7¡Enemigo neutralizado!"
+
+REFERENCE           AIRPLANE_GAZ_TARGNEUT34
+LANG_SPANISH        "^2Romeo Uno Uno: ^7¡Blanco neutralizado!"
+
+REFERENCE           AIRPLANE_GAZ_AREACLEAR35
+LANG_SPANISH        "^2Romeo Uno Uno: ^7¡Zona despejada!"
+
+REFERENCE           AIRPLANE_GAZ_SECTIONCLEAR36
+LANG_SPANISH        "^2Romeo Uno Uno: ^7¡Sección despejada!"
+
+REFERENCE           AIRPLANE_GAZ_CLEAR37
+LANG_SPANISH        "^2Romeo Uno Uno: ^7¡Despejado!"
+
+REFERENCE           AIRPLANE_SAS4_ONEALPHA21
+LANG_SPANISH        "^2Charlie Uno Uno: ^7Tango abatido en la sección 'Uno-Alfa'."
+
+REFERENCE           AIRPLANE_SAS4_MULTIPLECONT23
+LANG_SPANISH        "^2Charlie Uno Uno: ^7Contactos múltiples."
+
+REFERENCE           AIRPLANE_SAS4_TANGODOWN51
+LANG_SPANISH        "^2Charlie Uno Uno: ^7¡Tango abatido!"
+
+REFERENCE           AIRPLANE_SAS4_XRAYDOWN52
+LANG_SPANISH        "^2Charlie Uno Uno: ^7¡Rayos X abatido!"
+
+REFERENCE           AIRPLANE_SAS4_HOSTILENEUT53
+LANG_SPANISH        "^2Charlie Uno Uno: ^7¡Enemigo neutralizado!"
+
+REFERENCE           AIRPLANE_SAS4_TARGNEUT54
+LANG_SPANISH        "^2Charlie Uno Uno: ^7¡Blanco neutralizado!"
+
+REFERENCE           AIRPLANE_SAS4_AREACLEAR55
+LANG_SPANISH        "^2Charlie Uno Uno: ^7¡Zona despejada!"
+
+REFERENCE           AIRPLANE_SAS4_SECTIONCLEAR56
+LANG_SPANISH        "^2Charlie Uno Uno: ^7¡Sección despejada!"
+
+REFERENCE           AIRPLANE_SAS4_CLEAR57
+LANG_SPANISH        "^2Charlie Uno Uno: ^7¡Despejado!"
+
+REFERENCE           AIRPLANE_GAZ_SEEYA101
+LANG_SPANISH        "^2Romeo Uno Uno: ^7¡Misión cumplida! ¡Hasta la próxima, amigo!"
+
+REFERENCE           AMBUSH_PRI_NOTBAD12
+LANG_SPANISH        "^2Capitán Price: ^7No está mal, Kamarov. Esto irá bien. Buitre Uno-Seis, estamos en posición."
+
+REFERENCE           AMBUSH_GRG_NOTHINGLIKERUSSIAN23
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7Menos mal que estás aquí porque pareces cualquier cosa menos ruso."
+
+REFERENCE           AMBUSH_GRG_OHNO13102
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7¡Oh, joder!"
+
+REFERENCE           AMBUSH_GRG_OHNO23103
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7¡Oh, mie...!"
+
+REFERENCE           AMBUSH_KMR_BESTWAYIN11
+LANG_SPANISH        "^2Sargento Kamarov: ^7Esta es la mejor entrada.\nEl punto de control de vehículos está justo delante."
+
+REFERENCE           AMBUSH_RU1_PAPERSWHATPAPERS32
+LANG_SPANISH        "^1Ultranacionalista: ^7Papeles, ¿de qué papeles estás hablando?"
+
+REFERENCE           AMBUSH_RU1_FATPOLITICIAN33
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Quién demonios te crees parado ahí como un político gordo, pidiéndome algo?"
+
+REFERENCE           AMBUSH_RU1_WHATAREYOUWAITINGFOR34
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Qué estás esperando, como un idiota? ¡Abre la puerta!"
+
+REFERENCE           AMBUSH_RU2_PAPERSPLEASE31
+LANG_SPANISH        "^2Patriota Ruso: ^7¡Papeles, por favor!"
+
+REFERENCE           AMBUSH_RU2_ILLDOTHATRIGHTNOW35
+LANG_SPANISH        "^2Patriota Ruso: ^7Lo siento, Comandante Comisario. Lo haré ahora mismo."
+
+REFERENCE           AMBUSH_SOZ_STOPTHEBLOODSHED81
+LANG_SPANISH        "^1Victor Zakhaev: ^7¿Crees que esto detendrá la matanza? ¿Crees que esto detendrá a mi padre?"
+
+REFERENCE           AMBUSH_SOZ_DEADSOONANYWAY85
+LANG_SPANISH        "^1Victor Zakhaev: ^7De todos modos, todos ustedes morirán pronto."
+
+REFERENCE           AMBUSH_SOZ_GOFYOURSELF87
+LANG_SPANISH        "^1Victor Zakhaev: ^7Vete a la mierda."
+
+REFERENCE           ARMADA_GM1_GOGOGO42
+LANG_SPANISH        "^2Marine: ^7¡Vamos! ¡Vamos! ¡Vamos!"
+
+REFERENCE           ARMADA_GM1_BREACHING56
+LANG_SPANISH        "^2Marine: ^7¡Entrando, entrando!"
+
+REFERENCE           ARMADA_GM1_BREACHINGBREACHING84
+LANG_SPANISH        "^2Marine: ^7¡Entrando, entrando!"
+
+REFERENCE           ARMADA_GM1_GOESOURBOYS102
+LANG_SPANISH        "^2Marine: ^7¡Allá van nuestros chicos!"
+
+REFERENCE           ARMADA_GM1_CLEAR1114
+LANG_SPANISH        "^2Marine: ^7¡Despejado!"
+
+REFERENCE           ARMADA_GM2_MOVEITMOVEIT43
+LANG_SPANISH        "^2Marine: ^7¡Venga, venga!"
+
+REFERENCE           ARMADA_GM2_OORAH103
+LANG_SPANISH        "^2Marine: ^7Uuu-ha..."
+
+REFERENCE           ARMADA_GM3_BLOCKINGPOSITIONS51
+LANG_SPANISH        "^2Marine: ^7¡Preparad las posiciones de bloqueo! ¡Vamos!"
+
+REFERENCE           ARMADA_GM3_OORAH104
+LANG_SPANISH        "^2Marine: ^7Uuu-ha..."
+
+REFERENCE           ARMADA_FHP_COPYSTRIKERSIXFOUR12
+LANG_SPANISH        "^2Piloto de Blackhawk: ^7Recibido, Golpeador Seis-Cuatro."
+
+REFERENCE           ARMADA_FHP_COPY14
+LANG_SPANISH        "^2Piloto de Blackhawk: ^7Recibido."
+
+REFERENCE           ARMADA_FHP_ROGERTHAT22
+LANG_SPANISH        "^2Piloto de Blackhawk: ^7Recibido, tenemos RPG ahí abajo."
+
+REFERENCE           ARMADA_FHP_GOTVISUAL31
+LANG_SPANISH        "^2Piloto de Blackhawk: ^7Visualizado el objetivo."
+
+REFERENCE           ARMADA_HP1_SHORELINEINVIEW11
+LANG_SPANISH        "^2Golpeador Seis-Cuatro: ^7Línea de costa a la vista."
+
+REFERENCE           ARMADA_HP1_FEETDRYTENSECONDS13
+LANG_SPANISH        "^2Golpeador Seis-Cuatro: ^7Tierra firme en diez segundos."
+
+REFERENCE           ARMADA_HP1_TAKINGFIREHERE21
+LANG_SPANISH        "^2Golpeador Seis-Cuatro: ^7Nos disparan."
+
+REFERENCE           ARMADA_HP1_THATWASCLOSE23
+LANG_SPANISH        "^2Golpeador Seis-Cuatro: ^7¡Mierda, eso ha estado cerca!"
+
+REFERENCE           ARMADA_HP1_COPYTHAT32
+LANG_SPANISH        "^2Golpeador Seis-Cuatro: ^7Recibido."
+
+REFERENCE           ARMADA_HP1_FIVESECONDS33
+LANG_SPANISH        "^2Golpeador Seis-Cuatro: ^7Cinco segundos."
+
+REFERENCE           ARMADA_HP1_STANDBYGREENLIGHT34
+LANG_SPANISH        "^2Golpeador Seis-Cuatro: ^7Esperad a la luz verde."
+
+REFERENCE           ARMADA_VSQ_DOWNTHEROPES41
+LANG_SPANISH        "^2Teniente Vasquez: ^7¡Bajad por las cuerdas! ¡Ya! ¡Ya!"
+
+REFERENCE           ARMADA_VSQ_BREACHING57
+LANG_SPANISH        "^2Teniente Vasquez: ^7¡Entrando, entrando!"
+
+REFERENCE           ARMADA_VSQ_GOGOGO58
+LANG_SPANISH        "^2Teniente Vasquez: ^7¡Vamos! ¡Vamos! ¡Vamos!"
+
+REFERENCE           ARMADA_VSQ_DOIT83
+LANG_SPANISH        "^2Teniente Vasquez: ^7¡Hazlo!"
+
+REFERENCE           ARMADA_VSQ_GOGOGO85
+LANG_SPANISH        "^2Teniente Vasquez: ^7¡Vamos! ¡Vamos! ¡Vamos!"
+
+REFERENCE           ARMADA_VSQ_OORAH105
+LANG_SPANISH        "^2Teniente Vasquez: ^7Uuu-ha..."
+
+REFERENCE           ARMADA_GRG_YEAHOORAH1110
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7Sí. Uuu-ha..."
+
+REFERENCE           BLACKOUT_GAZ_LOYALISTSEH12
+LANG_SPANISH        "^2Gaz: ^7Patriotas, ¿eh? ¿Esos son\n los rusos buenos o los malos?"
+
+REFERENCE           BLACKOUT_PRI_HALFACLICK11
+LANG_SPANISH        "^2Capitán Price: ^7Los Patriotas nos están esperando a medio\n kilómetro al norte. Moveos."
+
+REFERENCE           BLACKOUT_KMR_PREPAREATTACK38
+LANG_SPANISH        "^2Sargento Kamarov: ^7Vanya, entra y prepárate para atacar. Espera a mi señal."
+
+REFERENCE           BLACKOUT_KMR_STALLING4121_FULL
+LANG_SPANISH        "^2Sargento Kamarov: ^7¿Cuál es tu situación? ¿Cuánto más necesitas? Está bien, seguiré reteniéndolos."
+
+REFERENCE           BLACKOUT_KMR_STALLING4121_CUT
+LANG_SPANISH        "^2Sargento Kamarov: ^7¿Cuál es tu situación? ¿Cuánto más necesitas? Está bien, seguiré... ellos."
+
+REFERENCE           BLACKOUT_KMR_OUTOFMIND516
+LANG_SPANISH        "^2Sargento Kamarov: ^7¿Qué estás haciendo? ¿Estás fuera de tus cabales? ¿Quién te crees que eres?"
+
+REFERENCE           BLACKOUT_NKD_WHOAREYOU641
+LANG_SPANISH        "^2Nikolai: ^7¿Qué quieres? ¿Quién eres? ¿Fuerzas especiales?"
+
+REFERENCE           BLACKOUT_RU1_VIKTOR631
+LANG_SPANISH        "^1Ultranacionalista: ^7Hm? ¿Qué pasó con la electricidad?"
+
+REFERENCE           BLACKOUT_RU1_ELECTRICIAN632
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Viktor! ¡Se fue la electricidad!"
+
+REFERENCE           BLACKOUT_RU2_GETTINGCLOSER633
+LANG_SPANISH        "^1Ultranacionalista: ^7Lo sé. Las fuerzas enemigas se están acercando."
+
+REFERENCE           BLACKOUT_RU2_STAY635
+LANG_SPANISH        "^1Ultranacionalista: ^7No, creo que sobreestimas sus capacidades. Quédate aquí y guarda al prisionero."
+
+REFERENCE           BLACKOUT_RU1_SASHA636
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Sasha...? ¿Estás aquí? ¡Sasha...?"
+
+REFERENCE           BLACKOUT_RU4_THEYREINSIDE437
+LANG_SPANISH        "^1Ultranacionalista: ^7Creo que están adentro. ¡Viktor...? ¡Sasha...?"
+
+REFERENCE           BLACKOUT_RU4_HOWCLOSE634
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Qué tan cerca están las fuerzas enemigas? Necesitamos evacuar."
+
+REFERENCE           BOG_GM1_OORAH1015
+LANG_SPANISH        "^2Marine: ^7Uuu-ha."
+
+REFERENCE           BOG_GM1_THREECOMIN
+LANG_SPANISH        "^2Marine: ^7¡Tres saliendo!"
+
+REFERENCE           BOG_GM2_MOVEIT12
+LANG_SPANISH        "^2Marine: ^7¡Venga! ¡Venga!"
+
+REFERENCE           BOG_GM2_CLEAR137
+LANG_SPANISH        "^2Marine: ^7¡Despejado!"
+
+REFERENCE           BOG_GM2_CLEAR268
+LANG_SPANISH        "^2Marine: ^7¡Despejado!"
+
+REFERENCE           BOG_GM2_OORAH1016
+LANG_SPANISH        "^2Marine: ^7Uuu-ha."
+
+REFERENCE           BOG_GM3_RPG17
+LANG_SPANISH        "^2Marine: ^7R-P-G!"
+
+REFERENCE           BOG_GM3_CLEAR38
+LANG_SPANISH        "^2Marine: ^7¡Despejado!"
+
+REFERENCE           BOG_GM3_ALLCLEAR69
+LANG_SPANISH        "^2Marine: ^7¡Todo despejado!"
+
+REFERENCE           BOG_GM3_OORAH1017
+LANG_SPANISH        "^2Marine: ^7Uuu-ha."
+
+REFERENCE           BOG_VSQ_HALFACLICK11
+LANG_SPANISH        "^2Teniente Vasquez: ^7El tanque de la compañía "Alfa" está bloqueado\n a medio kilómetro al sur de aquí. ¡Hay que darse prisa! ¡Vamos!"
+
+REFERENCE           BOG_AS1_LETENTER41
+LANG_SPANISH        "^1Soldado Árabe: ^7Déjalos entrar, ¡y luego atácales una vez que hayan pasado!"
+
+REFERENCE           BOG_AS2_GETREADY42
+LANG_SPANISH        "^1Soldado Árabe: ^7Están abajo, prepárense."
+
+REFERENCE           BOG_GM1_GETYOURASS11
+LANG_SPANISH        "^2Marine: ^7¡Jackson! ¡Mueve tu culo hasta la línea ahora mismo!\n¡Se acercan enemigos por el norte!"
+
+REFERENCE           BOG_GM1_WOOYEAH1100
+LANG_SPANISH        "^2Marine: ^7Woo! Sí! Woo!"
+
+REFERENCE           BOG_GM2_HOLYSHIT1111
+LANG_SPANISH        "^2Marine: ^7Hostias, ¿Has visto eso?"
+
+REFERENCE           BOG_GM3_HELLYEAH1112
+LANG_SPANISH        "^2Marine: ^7¡Joder, si!"
+
+REFERENCE           BOG_GM4_YEAHWOO1113
+LANG_SPANISH        "^2Marine: ^7Sí! Woo! Woo!"
+
+REFERENCE           BOG_GM4_TALKINABOUT114
+LANG_SPANISH        "^2Marine: ^7¡Sí! ¡Nena de eso estaba hablando!"
+
+REFERENCE           BOG_TCM_3STORY11_2NDFLOOR32
+LANG_SPANISH        "^2Jabalí: ^7¡Artillero! ¡Segundo piso del edificio de tres plantas, a las once en punto!"
+
+REFERENCE           BOG_TCM_3STORY1130_2NDFLOOR36
+LANG_SPANISH        "^2Jabalí: ^7¡El edificio de tres plantas! ¡A las once y media! ¡Balcón del segundo piso!"
+
+REFERENCE           BOG_TCM_2STORY1_GROUND310
+LANG_SPANISH        "^2Jabalí: ^7¡Artillero! ¡Planta baja del edificio de dos plantas, a la una en punto!"
+
+REFERENCE           BOG_TCM_2STORY1_2NDFLOOR314
+LANG_SPANISH        "^2Jabalí: ^7¡Artillero! ¡Segundo piso del edificio de dos plantas a la una en punto!"
+
+REFERENCE           BOG_TCM_3STORY1230_2NDFLOOR318
+LANG_SPANISH        "^2Jabalí: ^7¡Artillero! ¡Segundo piso del edificio de tres plantas, a las doce y media!"
+
+REFERENCE           BOG_TCM_FIRE134
+LANG_SPANISH        "^2Jabalí: ^7¡Fuego!"
+
+REFERENCE           BOG_TCM_FIRE138
+LANG_SPANISH        "^2Jabalí: ^7¡Fuego!"
+
+REFERENCE           BOG_TCM_FIRE1312
+LANG_SPANISH        "^2Jabalí: ^7¡Fuego!"
+
+REFERENCE           BOG_TCM_FIRE1316
+LANG_SPANISH        "^2Jabalí: ^7¡Fuego!"
+
+REFERENCE           BOG_TCM_FIRE1320
+LANG_SPANISH        "^2Jabalí: ^7¡Fuego!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED133
+LANG_SPANISH        "^2Artillero de Tanque: ^7¡Objetivo fijado!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED137
+LANG_SPANISH        "^2Artillero de Tanque: ^7¡Objetivo fijado!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED2311
+LANG_SPANISH        "^2Artillero de Tanque: ^7¡Objetivo fijado!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED2315
+LANG_SPANISH        "^2Artillero de Tanque: ^7¡Objetivo fijado!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED3319
+LANG_SPANISH        "^2Artillero de Tanque: ^7¡Objetivo fijado!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED385
+LANG_SPANISH        "^2Artillero de Tanque: ^7¡Objetivo fijado!"
+
+REFERENCE           BOG_TLD_UP31
+LANG_SPANISH        "^2Cargador de Tanque: ^7¡Arriba!"
+
+REFERENCE           BOG_TLD_UP135
+LANG_SPANISH        "^2Cargador de Tanque: ^7¡Arriba!"
+
+REFERENCE           BOG_TLD_UP239
+LANG_SPANISH        "^2Cargador de Tanque: ^7¡Arriba!"
+
+REFERENCE           BOG_TLD_UP3313
+LANG_SPANISH        "^2Cargador de Tanque: ^7¡Arriba!"
+
+REFERENCE           BOG_TLD_UP4317
+LANG_SPANISH        "^2Cargador de Tanque: ^7¡Arriba!"
+
+REFERENCE           CARGOSHIP_PRI_CREWEXPEND14
+LANG_SPANISH        "^2Capitán Price: ^7Preparado y listo."
+
+REFERENCE           CARGOSHIP_HP1_BASEPLATEHAMMERTWO11
+LANG_SPANISH        "^2Martillo Dos-Cuatro: ^7Base, aquí Martillo Dos-Cuatro.\nTenemos el objetivo a la vista. Tiempo estimado: 60 segundos."
+
+REFERENCE           CARGOSHIP_HP1_THIRTYSECDARK13
+LANG_SPANISH        "^2Martillo Dos-Cuatro: ^7Cambiamos oscuridad en treinta."
+
+REFERENCE           CARGOSHIP_HP1_TENSECONDSRADIO113
+LANG_SPANISH        "^2Martillo Dos-Cuatro: ^710 segundos."
+
+REFERENCE           CARGOSHIP_HP1_RADIOCHECK114
+LANG_SPANISH        "^2Martillo Dos-Cuatro: ^7Comprobación de radio. Ir a un canal seguro."
+
+REFERENCE           CARGOSHIP_HP1_GREENLIGHTGORADIO115
+LANG_SPANISH        "^2Martillo Dos-Cuatro: ^7¡Luz verde! ¡Venga! ¡Venga! ¡Venga!"
+
+REFERENCE           CARGOSHIP_HQR_COPYTWOFOUR12
+LANG_SPANISH        "^2Base: ^7Recibido, Dos-Cuatro."
+
+REFERENCE           CARGOSHIP_RUD_3SEC211
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Brindemos por la salud, Coronel!"
+
+REFERENCE           CARGOSHIP_RU1_HEY
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Oye!"
+
+REFERENCE           CARGOSHIP_RU1_GETREADY81
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Estamos rodeados! Prepárense."
+
+REFERENCE           CARGOSHIP_RU1_CALLFORHELP85
+LANG_SPANISH        "^1Ultranacionalista: ^7Contacto en la radio, ¡llamen a ayuda!"
+
+REFERENCE           CARGOSHIP_RU2_INCARGOHOLDS22
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Maldición! ¿Qué es esto?"
+
+REFERENCE           CARGOSHIP_RU2_WHATTHE82
+LANG_SPANISH        "^1Ultranacionalista: ^7Están en los compartimentos y vienen hacia acá. Vigilen las puertas."
+
+REFERENCE           CARGOSHIP_RU2_ARETHEYAMERICANS83
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Son americanos?"
+
+REFERENCE           CARGOSHIP_RU2_THEYREGETTINGCLOSE87
+LANG_SPANISH        "^1Ultranacionalista: ^7Se acercan, estén preparados."
+
+REFERENCE           CARGOSHIP_RU4_GETREADY84
+LANG_SPANISH        "^1Ultranacionalista: ^7No sé, prepárense."
+
+REFERENCE           CARGOSHIP_RU4_MIDDLEOFOCEAN86
+LANG_SPANISH        "^1Ultranacionalista: ^7Estamos en medio del océano. Nadie puede ayudarnos, ¡idiota!"
+
+REFERENCE           KILLHOUSE_GAZ_GETARIFLE211
+LANG_SPANISH        "^2Gaz: ^7Me alegro de verte, compañero. Coge un rifle en el arsenal."
+
+REFERENCE           HUNTED_PRI_WHATTHEBLOODY11
+LANG_SPANISH        "^2Capitán Price: ^7¿¡Qué hostias es eso?!"
+
+REFERENCE           HUNTED_HP1_MISSILEINBOUND12
+LANG_SPANISH        "^2Martillo 6-4: ^7¡Se acerca un misil! ¡Gira a la derecha, a la derecha!"
+
+REFERENCE           HUNTED_HP1_MAYDAYMAYDAY14
+LANG_SPANISH        "^2Martillo 6-4: ^7Mayday mayday, aquí Martillo 6-4, estamos cayendo, repito, estamos cayendo a tres kilómetros al sur del punto de destino cinco..."
+
+REFERENCE           HUNTED_HP1_GOINGDOWN15
+LANG_SPANISH        "^2Martillo 6-4: ^7¡6-4 Cayendo! ¡Estamos cayendo! ¡Preparados!"
+
+REFERENCE           HUNTED_RUF_WHATSGOINGON41
+LANG_SPANISH        "^2Granjero: ^7¿Qué está pasando aquí? ¿Qué quieren?"
+
+REFERENCE           HUNTED_RUF_HIDINGWHO43
+LANG_SPANISH        "^2Granjero: ^7¿Quién se esconde? ¿De qué diablos estás hablando?"
+
+REFERENCE           HUNTED_RUF_BRITISH45
+LANG_SPANISH        "^2Granjero: ^7¿Británicos?"
+
+REFERENCE           HUNTED_RU1_ISADUMP33
+LANG_SPANISH        "^1Ultranacionalista: ^7Este lugar es un desastre."
+
+REFERENCE           HUNTED_RU1_DONTPLAYSTUPID42
+LANG_SPANISH        "^1Ultranacionalista: ^7No finjas ser un tonto. Sabemos que los tienes escondidos en algún lugar."
+
+REFERENCE           HUNTED_RU1_HIDINGSOLDIERS44
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Tienes soldados británicos ahí escondidos?"
+
+REFERENCE           HUNTED_RU1_FORGETIT46
+LANG_SPANISH        "^1Ultranacionalista: ^7Estás perdiendo mi tiempo..."
+
+REFERENCE           HUNTED_RU1_BYTHEHOUSE61
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Ahí están! Junto a la casa."
+
+REFERENCE           HUNTED_RU1_INTHEFIELD116
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Veo al enemigo! Están en el campo."
+
+REFERENCE           HUNTED_RU2_BYTHECREEK115
+LANG_SPANISH        "^1Ultranacionalista: ^7Ahí, junto al arroyo."
+
+REFERENCE           HUNTED_RU4_OUTONFIELD117
+LANG_SPANISH        "^1Ultranacionalista: ^7Están fuera en el campo."
+
+REFERENCE           HUNTED_BNB_MISSILELOCK16
+LANG_SPANISH        "^2Sistema: ^7Misil fijado. Misil fijado. Misil fijado."
+
+REFERENCE           HUNTED_BNB_ALTITUDE17
+LANG_SPANISH        "^2Sistema: ^7Altitude. Altitude. Altitude."
+
+REFERENCE           HUNTED_BNB_CAUTION18
+LANG_SPANISH        "^2Sistema: ^7Cuidado. Cuidado. Cuidado."
+
+REFERENCE           HUNTED_BNB_WARNING19
+LANG_SPANISH        "^2Sistema: ^7Aviso. Aviso. Aviso."
+
+REFERENCE           ICBM_PRI_REGROUPONME219
+LANG_SPANISH        "^2Capitán Price: ^7Reagrúpate conmigo."
+
+REFERENCE           ICBM_GRG_678452056315
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7Griggs. 6-7-8-4-5-2-0-5-6."
+
+REFERENCE           ICBM_GRG_678318
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7Griggs. 6-7-8..."
+
+REFERENCE           ICBM_GRG_GETBUSY320
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7Dentro de poco aquí se va a liar una buena...heh, si yo fuera tú, sacaría mi culo de aquí."
+
+REFERENCE           ICBM_RU1_UNIT4REPORT217
+LANG_SPANISH        "^1Ultranacionalista: ^7Unidad 4, ¿han encontrado a otros? Este tenía explosivos, deben haber más. ¡Unidad 4, informen!"
+
+REFERENCE           ICBM_RU1_WHEREOTHERS314
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Dónde están los demás?"
+
+REFERENCE           ICBM_RU1_TOVARISCH316
+LANG_SPANISH        "^1Ultranacionalista: ^7Ya sabes, tovarich. Que la Convención de Ginebra es, en teoría, una buena idea. ¿Verdad? ¿Por qué no te ahorras problemas y respondes sin más a mis preguntas?"
+
+REFERENCE           ICBM_RU1_HOWMANY317
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Cuántos más hay?"
+
+REFERENCE           ICBM_RU1_WHOISOFFICER319
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Quién es tu jefe al mando?"
+
+REFERENCE           ICBM_RU1_WHERESHACKSAW321
+LANG_SPANISH        "^1Ultranacionalista: ^7Yuri, ¿dónde está la sierra?"
+
+REFERENCE           ICBM_RU1_IFIHAD323
+LANG_SPANISH        "^1Ultranacionalista: ^7Si tuviera la sierra, no te lo estaría preguntando, ¡idiota!"
+
+REFERENCE           ICBM_RU2_YOUHADIT322
+LANG_SPANISH        "^1Ultranacionalista: ^7Pensé que tú la tenías."
+
+REFERENCE           JEEPRIDE_RU1_BARELYBREATHING172
+LANG_SPANISH        "^2Patriota Ruso: ^7¡Apenas está respirando!"
+
+REFERENCE           JEEPRIDE_RU2_ALLRIGHTMYFRIEND173
+LANG_SPANISH        "^2Sargento Kamarov: ^7¡Hay uno vivo aquí! ¡Vas a ponerte bien, amigo mío!"
+
+REFERENCE           JEEPRIDE_RU2_GETHIMOUTOFHERE174
+LANG_SPANISH        "^2Sargento Kamarov: ^7¡Llévenselo! ¡Rápido, vamos! Necesitamos llevarlo al hospital inmediatamente!"
+
+REFERENCE           KILLHOUSE_GAZ_GOODTOSEE21
+LANG_SPANISH        "^2Gaz: ^7Me alegro de verte, amigo. Coge uno de los rifles de la mesa."
+
+REFERENCE           KILLHOUSE_SAS4_FNG1211
+LANG_SPANISH        "^2SAS: ^7Es el PNS, señor."
+
+REFERENCE           KILLHOUSE_SAS4_GOEASY1213
+LANG_SPANISH        "^2SAS: ^7Señor, sea suave con él, es su primer día en el regimiento."
+
+REFERENCE           LAUNCHFACILITY_A_HQR_STILLWORKING19
+LANG_SPANISH        "^2Mando: ^7Bravo Seis, seguimos trabajando con los rusos\npara conseguir los códigos de lanzamiento.\nDeberíamos tenerlos en breve. Sigan moviéndose. Corto."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_HIGHALERT11
+LANG_SPANISH        "^1Altavoz: ^7El perímetro de la instalación ha sido comprometido. Todas las unidades diríjanse a posiciones defensivas.\nFuerza enemiga desconocida se mueve desde el sur o oeste. La instalación está ahora en alerta máxima."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_UNDERATTACK12
+LANG_SPANISH        "^1Altavoz: ^7¡Estamos bajo ataque! Cierren todas las entradas inmediatamente."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_REDSPENTZNAZ13
+LANG_SPANISH        "^1Altavoz: ^7Se confirma que las unidades enemigas son fuerzas especiales estadounidenses. Ejerciten extrema precaución. Las unidades Spetznaz Rojas están en camino para interceptar."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_PREPTUBES14
+LANG_SPANISH        "^1Altavoz: ^7Preparando los tubos de lanzamiento 2 al 6 para el disparo. En espera."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_MOTHERLAND23
+LANG_SPANISH        "^1Altavoz: ^7¡Luchen por la gloria de la Madre Patria! ¡Luchen contra la corrupción de nuestra gran nación que fue!"
+
+REFERENCE           LAUNCHFACILITY_A_RUL_AVENGEFALLEN24
+LANG_SPANISH        "^1Altavoz: ^7¡Camrades! ¡Recuerden a los caídos y vénguenlos! ¡Asegurémonos de que sus sacrificios no hayan sido en vano!"
+
+REFERENCE           LAUNCHFACILITY_A_RUL_RESTOREHONOR25
+LANG_SPANISH        "^1Altavoz: ^7¡Restauraremos el honor de los días en que esta nación era temida por todas las demás! ¡No seremos detenidos! ¡No seremos apartados tan fácilmente!"
+
+REFERENCE           LAUNCHFACILITY_B_PRI_LETSMOVE11
+LANG_SPANISH        "^2Capitán Price: ^7¡De acuerdo, adelante!"
+
+REFERENCE           LAUNCHFACILITY_B_GM1_BASESECURITY12
+LANG_SPANISH        "^2Cinco-Delta Seis: ^7Capitán Price, aquí Cinco-Delta Seis. Estamos asegurando el ala este y nos dirigimos a la seguridad de la base. Cambio."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_ALERT25
+LANG_SPANISH        "^1Altavoz: ^7¡Alerta! Fuerzas enemigas han ingresado a la base. Repito, fuerzas enemigas han ingresado a la base."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_BARRACKS26
+LANG_SPANISH        "^1Altavoz: ^7Las fuerzas enemigas han sido comprometidas en los cuarteles. Se necesitan refuerzos en los cuarteles."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_STORAGEAREA32
+LANG_SPANISH        "^1Altavoz: ^7Se ha comprometido el área de almacenamiento. Las fuerzas enemigas han llegado a los tubos de lanzamiento.\nSellando la puerta de acceso principal al área de control de lanzamiento."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_2NDINITIATED41
+LANG_SPANISH        "^1Altavoz: ^7Se ha iniciado el segundo lanzamiento."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_PRIMARYINITITATED42
+LANG_SPANISH        "^1Altavoz: ^7Secuencia de lanzamiento primaria iniciada para los tubos 3 al 6. En espera."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SECUREMISSILEBAY43
+LANG_SPANISH        "^1Altavoz: ^7Aseguren todos los silos de misiles. Líneas de combustible desconectadas."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_2MINS44
+LANG_SPANISH        "^1Altavoz: ^7Lanzamiento en dos minutos."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_90SECS46
+LANG_SPANISH        "^1Altavoz: ^790 segundos."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_1MIN47
+LANG_SPANISH        "^1Altavoz: ^7Un minuto. Nivel de refrigerante calificado."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_30SECS48
+LANG_SPANISH        "^1Altavoz: ^730 segundos. Las coordenadas del misil están cargadas."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_20SECS410
+LANG_SPANISH        "^1Altavoz: ^720 segundos."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_TEN411
+LANG_SPANISH        "^1Altavoz: ^7Diez."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_NINE412
+LANG_SPANISH        "^1Altavoz: ^7Nueve."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_EIGHT413
+LANG_SPANISH        "^1Altavoz: ^7Ocho."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SEVEN414
+LANG_SPANISH        "^1Altavoz: ^7Siete."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SIX415
+LANG_SPANISH        "^1Altavoz: ^7Seis."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_FIVE416
+LANG_SPANISH        "^1Altavoz: ^7Cinco."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_FOUR417
+LANG_SPANISH        "^1Altavoz: ^7Cuatro."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_THREE418
+LANG_SPANISH        "^1Altavoz: ^7Tres."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_TWO419
+LANG_SPANISH        "^1Altavoz: ^7Dos."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_ONE420
+LANG_SPANISH        "^1Altavoz: ^7Uno."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_LAUNCHCOMPLETE421
+LANG_SPANISH        "^1Altavoz: ^7Ignición. La secuencia de lanzamiento está completa."
+
+REFERENCE           LAUNCHFACILITY_B_RU1_GO15
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Vamos! ¡Rápido! Estamos bajo ataque."
+
+REFERENCE           LAUNCHFACILITY_B_RU3_GETREADY110
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Vienen hacia nuestro lado! ¡Prepárense!"
+
+REFERENCE           LAUNCHFACILITY_B_RU3_DAMNYOU71
+LANG_SPANISH        "^1Ultranacionalista: ^7Maldición..."
+
+REFERENCE           LAUNCHFACILITY_B_RU2_GRABWEAPONS16
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Agarren las armas y tomen posiciones defensivas! ¡Vamos! ¡Vamos!"
+
+REFERENCE           LAUNCHFACILITY_B_RU2_OPENFIRE72
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Abra fuego! ¡Destrúyanlos!"
+
+REFERENCE           SCOUTSNIPER_RU1_OTHERTEAM210
+LANG_SPANISH        "^1Ultranacionalista: ^7El otro equipo encontró algo en el pueblo, ¡vamos!"
+
+REFERENCE           SCOUTSNIPER_RU1_WANDERING24
+LANG_SPANISH        "^1Ultranacionalista: ^7Oye, Sergei, ¿por qué estamos deambulando por este campo?"
+
+REFERENCE           SCOUTSNIPER_RU1_WASTELAND26
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Por qué patrullar? No hay nadie aquí a 120 kilómetros. Desierto."
+
+REFERENCE           SCOUTSNIPER_RU1_TAKEALOOK28
+LANG_SPANISH        "^1Ultranacionalista: ^7Número Seis. Tenemos problemas en el pueblo. Ve y échale un vistazo tú mismo."
+
+REFERENCE           SCOUTSNIPER_RU1_ONOURWAY29
+LANG_SPANISH        "^1Ultranacionalista: ^7Entendido. Número Dos, estamos en camino."
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY139
+LANG_SPANISH        "^1Ultranacionalista: ^7Espera, esto es un desconocido. ¡Llévatelo!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY2311
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Aghh! ¡Francotirador! ¡Francotirador! ¡Fuego!"
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS1313
+LANG_SPANISH        "^1Ultranacionalista: ^7Algo no está bien aquí... estoy seguro de haber visto algo."
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS2314
+LANG_SPANISH        "^1Ultranacionalista: ^7Algo extraño está sucediendo aquí..."
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS3315
+LANG_SPANISH        "^1Ultranacionalista: ^7Mantengan los ojos abiertos. Creo que vi algo..."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES1316
+LANG_SPANISH        "^1Ultranacionalista: ^7Probablemente nada... relájense."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES2317
+LANG_SPANISH        "^1Ultranacionalista: ^7No te preocupes tanto."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES3318
+LANG_SPANISH        "^1Ultranacionalista: ^7No veo nada, podrías estar cansado."
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY4319
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Qué es? ¡FRANCOTIRADOR!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY5320
+LANG_SPANISH        "^1Ultranacionalista: ^7Fuerzas enemigas camufladas, ¡repetir!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY6321
+LANG_SPANISH        "^1Ultranacionalista: ^7Las fuerzas enemigas están en nuestras posiciones."
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY1322
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Un soldado está muerto! ¡Está muerto! ¡Está muerto!"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY2323
+LANG_SPANISH        "^1Ultranacionalista: ^7Encontré un cuerpo aquí. ¡Enemigo cerca!"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY3324
+LANG_SPANISH        "^1Ultranacionalista: ^7Está muerto. ¡Soldado asesinado! ¡Está asesinado!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION1359
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Qué fue eso?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION2360
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Esto es una explosión?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION3361
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Explotó algo?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION4362
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Alguien está herido?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION5363
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Todo está bien?!"
+
+REFERENCE           SCOUTSNIPER_RU1_SAWSOMETHING41
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Oye! Dmitriy, vi algo moverse en el campo. Ve a echar un vistazo."
+
+REFERENCE           SCOUTSNIPER_RU1_ALLCLEAR43
+LANG_SPANISH        "^1Ultranacionalista: ^7No hay nadie aquí. Todo está tranquilo."
+
+REFERENCE           SCOUTSNIPER_RU1_PASSCIG121
+LANG_SPANISH        "^1Ultranacionalista: ^7Pasa los cigarrillos."
+
+REFERENCE           SCOUTSNIPER_RU1_WAKEUP123
+LANG_SPANISH        "^1Ultranacionalista: ^7Es tu turno, Yuri. ¡Oye, Yuri! No duermas, es tu turno. Anatoly subió la apuesta dos dólares."
+
+REFERENCE           SCOUTSNIPER_RU1_TOOEXPENSIVE125
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Demasiado caro? Zakhaev nos paga el doble por este trabajo. Dinero fácil. No hay peligro, no hay posibilidad de un tiroteo. ¿Quién viene aquí? Esta es una zona de desastre nuclear. Preferirías morir de cáncer aquí que de una bala."
+
+REFERENCE           SCOUTSNIPER_RU1_MERCENARIES127
+LANG_SPANISH        "^1Ultranacionalista: ^7Estos mercenarios ucranianos son tan incompetentes. Tienen lo que se merecían. Cualquiera con habilidades de combate los habría matado sin problema."
+
+REFERENCE           SCOUTSNIPER_RU1_FIVEDOLLARS129
+LANG_SPANISH        "^1Ultranacionalista: ^7Cinco dólares. ¿Quieres seguir o subir la apuesta o rendirte como un débil?"
+
+REFERENCE           SCOUTSNIPER_RU1_PAIROFJACKS1211
+LANG_SPANISH        "^1Ultranacionalista: ^7Tengo un par de jotas."
+
+REFERENCE           SCOUTSNIPER_RU1_OWNMONEY1215
+LANG_SPANISH        "^1Ultranacionalista: ^7A los afortunados... pero les pago con su propio dinero."
+
+REFERENCE           SCOUTSNIPER_RU1_CANTBELIEVE1220
+LANG_SPANISH        "^1Ultranacionalista: ^7Increíble. Perdí mi juego."
+
+REFERENCE           SCOUTSNIPER_RU1_PAYTHEMAN1221
+LANG_SPANISH        "^1Ultranacionalista: ^7Paga al hombre su dinero. Ganó justamente."
+
+REFERENCE           SCOUTSNIPER_RU1_READYTOMOVE181
+LANG_SPANISH        "^1Ultranacionalista: ^7Preparen los camiones durante dos horas."
+
+REFERENCE           SCOUTSNIPER_RU1_HELICOPTERONWAY183
+LANG_SPANISH        "^1Ultranacionalista: ^7Helicóptero en camino."
+
+REFERENCE           SCOUTSNIPER_RU1_ZONESAFE184
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Está esperando la señal! ¿La zona de aterrizaje está despejada?"
+
+REFERENCE           SCOUTSNIPER_RU1_OKBRINGIN185
+LANG_SPANISH        "^1Ultranacionalista: ^7De acuerdo. Traigan el helicóptero. Todo está tranquilo aquí."
+
+REFERENCE           SCOUTSNIPER_RU1_CHECKTHEWOODS187
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Oye, tú! Da la vuelta al bosque y dirígete hacia el este. No quiero que estos perros salvajes anden sueltos aquí."
+
+REFERENCE           SCOUTSNIPER_RU1_REPLACEDBATTERIES189
+LANG_SPANISH        "^1Ultranacionalista: ^7Reemplacé las baterías cuando estábamos en Kiev. No te preocupes."
+
+REFERENCE           SCOUTSNIPER_RU1_GETSWORSE1810
+LANG_SPANISH        "^1Ultranacionalista: ^7Según entiendo, cuanto más nos alejamos de Chernobyl, peor es la radiación allí."
+
+REFERENCE           SCOUTSNIPER_RU1_DOGSDONTGETCLOSE1812
+LANG_SPANISH        "^1Ultranacionalista: ^7Cree lo que quieras, pero cuando nos vayamos, no quiero que esos perros se acerquen más."
+
+REFERENCE           SCOUTSNIPER_RU1_WHATHAPPENED1815
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Qué pasó?"
+
+REFERENCE           SCOUTSNIPER_RU1_SPECIALFORCES1817
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Fuerzas especiales ucranianas?"
+
+REFERENCE           SCOUTSNIPER_RU1_NUCLEARREACTOR1820
+LANG_SPANISH        "^1Ultranacionalista: ^7Eso es decisión de Zakhaev. Nuestro trabajo es custodiar los camiones y llevarlos al reactor nuclear."
+
+REFERENCE           SCOUTSNIPER_RU1_GOTTADOSOMETHING1822
+LANG_SPANISH        "^1Ultranacionalista: ^7Tengo que hacer algo al respecto... bastardo inútil."
+
+REFERENCE           SCOUTSNIPER_RU1_HATEGUARDDUTY1825
+LANG_SPANISH        "^1Ultranacionalista: ^7Odio hacer guardia, me duelen los pies."
+
+REFERENCE           SCOUTSNIPER_RU2_NOTWANDERING25
+LANG_SPANISH        "^1Ultranacionalista: ^7No estamos deambulando. Estamos patrullando aquí, idiota."
+
+REFERENCE           SCOUTSNIPER_RU2_ZAHKAEVSPAYINGGOOD27
+LANG_SPANISH        "^1Ultranacionalista: ^7Escucha... Zakhaev nos está pagando buen dinero por patrullar este territorio. Si sabes lo que te conviene, te callarás. Si él es paranoico, eso es asunto suyo."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY4310
+LANG_SPANISH        "^1Ultranacionalista: ^7Maldición, francotirador... ¡Llévatelo!"
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS1325
+LANG_SPANISH        "^1Ultranacionalista: ^7Algo no está bien aquí... estoy seguro de haber visto algo."
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS2326
+LANG_SPANISH        "^1Ultranacionalista: ^7Algo extraño está sucediendo aquí..."
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS3327
+LANG_SPANISH        "^1Ultranacionalista: ^7Mantengan los ojos abiertos. Creo que vi algo..."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES1328
+LANG_SPANISH        "^1Ultranacionalista: ^7Debes habértelo imaginado... relájate."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES2329
+LANG_SPANISH        "^1Ultranacionalista: ^7Sí, te preocupas demasiado."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES3330
+LANG_SPANISH        "^1Ultranacionalista: ^7No veo nada, probablemente estoy cansado."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY1331
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Qué es? ¡FRANCOTIRADOR!"
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY2332
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Contacto! Enemigos camuflados."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY3332
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Enemigos en nuestras posiciones!"
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY1334
+LANG_SPANISH        "^1Ultranacionalista: ^7¡El camarada está muerto! ¡Ten cuidado! El enemigo está aquí en algún lugar."
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY2335
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Encontré un cuerpo! ¡El enemigo debe estar cerca!"
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY3336
+LANG_SPANISH        "^1Ultranacionalista: ^7Está muerto. ¡Está asesinado! ¡Asesinado!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION1354
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Qué diablos es eso?! ¿Qué es esto?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION2355
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Esto es una explosión?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION3356
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Explotó algo?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION4357
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Alguien está herido?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION5358
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Todo está bien?!"
+
+REFERENCE           SCOUTSNIPER_RU2_IMONIT42
+LANG_SPANISH        "^1Ultranacionalista: ^7Voy a echar un vistazo."
+
+REFERENCE           SCOUTSNIPER_RU2_WHOSETURNISIT122
+LANG_SPANISH        "^1Ultranacionalista: ^7¿A quién le toca?"
+
+REFERENCE           SCOUTSNIPER_RU2_ANYONESEEDOGS126
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Alguien vio perros salvajes por aquí? Escuché que los ucranianos perdieron a un par de los suyos cerca del complejo de natación anoche."
+
+REFERENCE           SCOUTSNIPER_RU2_YOUIDIOT1213
+LANG_SPANISH        "^1Ultranacionalista: ^7Tonto. ¿Esto parece alguien que puede ser vencido por jotas?"
+
+REFERENCE           SCOUTSNIPER_RU2_CALL1217
+LANG_SPANISH        "^1Ultranacionalista: ^7Llama."
+
+REFERENCE           SCOUTSNIPER_RU2_BUYMOTORBIKE131
+LANG_SPANISH        "^1Ultranacionalista: ^7Sí, cuando consiga el dinero por este trabajo, compraré una motocicleta y daré vueltas por esta zona."
+
+REFERENCE           SCOUTSNIPER_RU2_AMERICANGOINGTOSTARTWAR132
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Crees que los estadounidenses comenzarán una guerra con nosotros mientras estamos débiles? Este país se dirige hacia el colapso. Todo es posible."
+
+REFERENCE           SCOUTSNIPER_RU2_YESTHATMAKESSENSE133
+LANG_SPANISH        "^1Ultranacionalista: ^7Sí, tiene sentido."
+
+REFERENCE           SCOUTSNIPER_RU2_ISEE134
+LANG_SPANISH        "^1Ultranacionalista: ^7Entendido."
+
+REFERENCE           SCOUTSNIPER_RU2_YESIUNDERSTAND135
+LANG_SPANISH        "^1Ultranacionalista: ^7Sí, entiendo."
+
+REFERENCE           SCOUTSNIPER_RU2_ILLTAKECAREOFIT136
+LANG_SPANISH        "^1Ultranacionalista: ^7Sí, camarada comandante. Se hará."
+
+REFERENCE           SCOUTSNIPER_RU2_HAVENTSEENANYONE141
+LANG_SPANISH        "^1Ultranacionalista: ^7No, no vi a nadie. Te avisaré si pasa algo."
+
+REFERENCE           SCOUTSNIPER_RU2_AFRICANOREUROPEAN142
+LANG_SPANISH        "^1Ultranacionalista: ^7Hmm, sí, buena pregunta: ¿africano o europeo?"
+
+REFERENCE           SCOUTSNIPER_RU2_WHAT143
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Qué?"
+
+REFERENCE           SCOUTSNIPER_RU2_TIMEFORSHIFTCHANGE144
+LANG_SPANISH        "^1Ultranacionalista: ^7Dmitriy, es hora del cambio de guardia. Deberías haber estado aquí hace 15 minutos. ¿A dónde vas?"
+
+REFERENCE           SCOUTSNIPER_RU2_COMEIN145
+LANG_SPANISH        "^1Ultranacionalista: ^7Dmitriy, entra, ¿me copias?"
+
+REFERENCE           SCOUTSNIPER_RU2_LOSTCONTACTDMITRI146
+LANG_SPANISH        "^1Ultranacionalista: ^7Nikolai, perdí contacto con Dmitriy. Su radio está rota."
+
+REFERENCE           SCOUTSNIPER_RU2_SENDSOMEONETOCHECK147
+LANG_SPANISH        "^1Ultranacionalista: ^7Envía a alguien a verificar."
+
+REFERENCE           SCOUTSNIPER_RU2_ANDREIBRINGINGFOOD152
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Cuándo traerá Andrei la comida?"
+
+REFERENCE           SCOUTSNIPER_RU2_QUICKLYASPOSSIBLE154
+LANG_SPANISH        "^1Ultranacionalista: ^7Hagámoslo lo más rápido posible. Los cadáveres están empezando a descomponerse."
+
+REFERENCE           SCOUTSNIPER_RU2_YESCOMRADE182
+LANG_SPANISH        "^1Ultranacionalista: ^7Sí, camarada comandante."
+
+REFERENCE           SCOUTSNIPER_RU2_CLEARROTORBLADES186
+LANG_SPANISH        "^1Ultranacionalista: ^7Ten cuidado con las palas del helicóptero."
+
+REFERENCE           SCOUTSNIPER_RU2_RADIATIONDOSIMETERS188
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Estás seguro de que estos dosímetros de radiación funcionan? No quiero enfermarme."
+
+REFERENCE           SCOUTSNIPER_RU2_DONTBELIEVEATALL1811
+LANG_SPANISH        "^1Ultranacionalista: ^7No lo creo en absoluto."
+
+REFERENCE           SCOUTSNIPER_RU2_OK1813
+LANG_SPANISH        "^1Ultranacionalista: ^7De acuerdo."
+
+REFERENCE           SCOUTSNIPER_RU2_PROFESSIONALJOB1816
+LANG_SPANISH        "^1Ultranacionalista: ^7Algunos de nuestros chicos fueron asesinados. Parecía un trabajo profesional."
+
+REFERENCE           SCOUTSNIPER_RU2_POSSIBLYSPETZNAZ1818
+LANG_SPANISH        "^1Ultranacionalista: ^7Posiblemente, tal vez debió haber sido Spetsnaz. A alguien no le gusta Zakhaev."
+
+REFERENCE           SCOUTSNIPER_RU2_BEBACKINAMINUTE1821
+LANG_SPANISH        "^1Ultranacionalista: ^7Voy al baño por un minuto."
+
+REFERENCE           SCOUTSNIPER_RU2_IMSOBORED1823
+LANG_SPANISH        "^1Ultranacionalista: ^7Tristeza... ¿Quizás jugar a la ruleta rusa?"
+
+REFERENCE           SCOUTSNIPER_RU2_GUESSITWASNOTHING1826
+LANG_SPANISH        "^1Ultranacionalista: ^7Supongo que no fue nada, tal vez fue el viento, estaba viendo algo."
+
+REFERENCE           SCOUTSNIPER_RU4_SNIPER312
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Aghh, francotirador!"
+
+REFERENCE           SCOUTSNIPER_RU4_TOOEXPENSIVE124
+LANG_SPANISH        "^1Ultranacionalista: ^7Demasiado caro para mí. Pasaré."
+
+REFERENCE           SCOUTSNIPER_RU4_RADIATIONDOGS128
+LANG_SPANISH        "^1Ultranacionalista: ^7La radiación vuelve locos y fuertes a estos perros. Los estás subestimando, camarada. ¿Cuál es la apuesta?"
+
+REFERENCE           SCOUTSNIPER_RU4_TWENTYDOLLARS1210
+LANG_SPANISH        "^1Ultranacionalista: ^7Veamos qué tienes. Veinte dólares. Así que, estás bluffeando."
+
+REFERENCE           SCOUTSNIPER_RU4_THREEKINGS1212
+LANG_SPANISH        "^1Ultranacionalista: ^7Tres reyes."
+
+REFERENCE           SCOUTSNIPER_RU4_WELLPLAYEDCOMRADE1214
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Bien jugado, camarada! ¿Quieres una bebida?"
+
+REFERENCE           SCOUTSNIPER_RU4_SEEABOUTTHAT1216
+LANG_SPANISH        "^1Ultranacionalista: ^7Ya veremos. Reparte las cartas."
+
+REFERENCE           SCOUTSNIPER_RU4_RAISE1218
+LANG_SPANISH        "^1Ultranacionalista: ^7Subir."
+
+REFERENCE           SCOUTSNIPER_RU4_IFOLD1219
+LANG_SPANISH        "^1Ultranacionalista: ^7Me retiro del juego."
+
+REFERENCE           SCOUTSNIPER_RU4_THISONESHEAVY151
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Vaya! ¡Este es pesado!"
+
+REFERENCE           SCOUTSNIPER_RU4_DIDNTEATBREAKFAST153
+LANG_SPANISH        "^1Ultranacionalista: ^7No lo sé, pero espero pronto. Tengo tanta hambre, no he comido desde el desayuno."
+
+REFERENCE           SCOUTSNIPER_RU4_TAKENZAKHAEVSOFFER155
+LANG_SPANISH        "^1Ultranacionalista: ^7Tontos... Mejor aceptar la oferta de Zakhaev."
+
+REFERENCE           SCOUTSNIPER_RU4_MAYHAVEPROBLEM1814
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Acabo de recibir un mensaje de inteligencia! ¡Parece que tenemos un problema!"
+
+REFERENCE           SCOUTSNIPER_RU4_CANCELTRANSACTIONS1819
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Quizás cancelar la transacción con los ucranianos?"
+
+REFERENCE           SCOUTSNIPER_RU4_CANTWAITFORSHIFTEND1824
+LANG_SPANISH        "^1Ultranacionalista: ^7No puedo esperar a que termine el turno. Al menos Zakhaev paga bien por estar aquí de pie."
+
+REFERENCE           SCOUTSNIPER_RU4_HOPEITDOESNTRAIN1827
+LANG_SPANISH        "^1Ultranacionalista: ^7Espero que no llueva, olvidé mi impermeable."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTONE49
+LANG_SPANISH        "^2Capitán MacMillan: ^7Elimina a uno."
+
+REFERENCE           SNIPERESCAPE_MCM_TANGODOWN410
+LANG_SPANISH        "^2Capitán MacMillan: ^7Tango abatido."
+
+REFERENCE           SNIPERESCAPE_MCM_HESDOWN411
+LANG_SPANISH        "^2Capitán MacMillan: ^7Abatido."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTANOTHER412
+LANG_SPANISH        "^2Capitán MacMillan: ^7Hay otro."
+
+REFERENCE           SNIPERESCAPE_MCM_TARGETNEUTRALIZED413
+LANG_SPANISH        "^2Capitán MacMillan: ^7Blanco neutralizado."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTHIM414
+LANG_SPANISH        "^2Capitán MacMillan: ^7Lo tengo."
+
+REFERENCE           SNIPERESCAPE_RUL_NEARPOOL51
+LANG_SPANISH        "^1Altavoz: ^7¡Los fugitivos están cerca del complejo de piscinas! ¡Envíen los Grupos A y B para interceptarlos ahora mismo!"
+
+REFERENCE           SNIPERESCAPE_RUL_AMUSEMENTPK52
+LANG_SPANISH        "^1Altavoz: ^7¡Se dirigen hacia el parque de atracciones! ¡Necesitamos refuerzos en el sector tres!"
+
+REFERENCE           SNIPERESCAPE_RUL_HOTELPOLISSA53
+LANG_SPANISH        "^1Altavoz: ^7¡Enemigos avistados cerca del Hotel Polissia! Repito, ¡soldados enemigos se están moviendo desde el Hotel Polissia!"
+
+REFERENCE           SNIPERESCAPE_RUL_CUTOFFEXITS54
+LANG_SPANISH        "^1Altavoz: ^7Han entrado en el Bloque de Apartamentos D, no podemos seguirlos ahí. Corten todas las salidas y deténganlos en el parque."
+
+REFERENCE           SNIPERESCAPE_RUL_SNIPERSINAREA55
+LANG_SPANISH        "^1Altavoz: ^7¡Hay francotiradores enemigos en la zona! ¡Se están ocultando en los bloques de apartamentos! ¡Encuéntrenlos!"
+
+REFERENCE           SNIPERESCAPE_RUL_SOUTHOFCITY56
+LANG_SPANISH        "^1Altavoz: ^7Equipo cinco, ¡busquen en el área de la piscina! Equipo seis, ¡busquen en los edificios al sur de la ciudad!"
+
+REFERENCE           SNIPERESCAPE_RUL_COVERWOODS57
+LANG_SPANISH        "^1Altavoz: ^7Puede que se estén moviendo hacia el extremo norte de la ciudad. ¡Envíen dos equipos más para cubrir el bosque al norte!"
+
+REFERENCE           SNIPERESCAPE_RUL_MOVEMOVE58
+LANG_SPANISH        "^1Altavoz: ^7¡Se ha visto a los francotiradores enemigos moviéndose por los patios entre los edificios de apartamentos! ¡Muévanse! ¡Muévanse!"
+
+REFERENCE           VASSAULT_PRI_KAMAROVSMAN111
+LANG_SPANISH        "^2Capitán Price: ^7Ahí está el hombre de Kamarov, vamos."
+
+REFERENCE           VASSAULT_RU1_READYAIMFIRE12
+LANG_SPANISH        "^1Ultranacionalista: ^7Este pueblo servirá como ejemplo para todos ustedes. ¡Todos ayudaron y contribuyeron a los crímenes de las autoridades corruptas! ¡Gracias a personas como ustedes, nuestra gran nación se ha debilitado! Y ahora cosecharán los frutos de su traición."
+
+REFERENCE           VASSAULT_RU1_KILLTHEM13
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Preparados... apunten... fuego!"
+
+REFERENCE           VASSAULT_RU1_MAKEEXAMPLE14
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Mátenlos! ¡Mátenlos a todos!"
+
+REFERENCE           VASSAULT_RU1_DIEYOUTRAITOR15
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Muere traidor!"
+
+REFERENCE           VASSAULT_RU1_EXECUTETHEM16
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Ejecútenlos! ¡Sigan la orden ahora!"
+
+REFERENCE           VASSAULT_KAA_WASNTME1452
+LANG_SPANISH        "^1Khaled Al-Asad: ^7No era yo!"
+
+REFERENCE           VASSAULT_KAA_WASNTME2454
+LANG_SPANISH        "^1Khaled Al-Asad: ^7No era yo!"
+
+REFERENCE           VILLAGEDEF_RUL_SURRENDERATONCE11
+LANG_SPANISH        "^1Altavoz: ^7Rendíos ahora y se os perdonará la vida. Estoy seguro de que tomaréis la decisión adecuada, dadas las circunstancias."
+
+REFERENCE           VILLAGEDEF_RUL_DROPYOURWEAPONS12
+LANG_SPANISH        "^1Altavoz: ^7Tirad vuestras armas y rendíos ahora mismo. Si os rendís, no sufriréis ningún daño."
+
+REFERENCE           VILLAGEDEF_RUL_WEKNOWYOUREHIDING13
+LANG_SPANISH        "^1Altavoz: ^7Sabemos que os estáis ocultando en la aldea. Estáis rodeados, no hay adónde huir. Rendíos y hacéos un favor."
+
+REFERENCE           VILLAGEDEF_RU1_WHATWASTHAT112
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Qué fue eso?"
+
+REFERENCE           VILLAGEDEF_RU1_NOICANTMOVE117
+LANG_SPANISH        "^1Ultranacionalista: ^7¡No puedo moverme! ¿Dónde están mis piernas? ¡Alguien ayúdeme!"
+
+REFERENCE           VILLAGEDEF_RU1_ICANTSEETHEM121
+LANG_SPANISH        "^1Ultranacionalista: ^7Probablemente estén arriba en la colina, pero no los veo."
+
+REFERENCE           VILLAGEDEF_RU1_GOAROUNDWEST129
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Vayan por el flanco al oeste!"
+
+REFERENCE           VILLAGEDEF_RU1_MEDIC131
+LANG_SPANISH        "^1Ultranacionalista: ^7¡MÉÉÉDICO!"
+
+REFERENCE           VILLAGEDEF_RU1_MUSTBETWOPLATOONS135
+LANG_SPANISH        "^1Ultranacionalista: ^7Puede que haya dos pelotones."
+
+REFERENCE           VILLAGEDEF_RU2_DIDYOUHEARTHAT113
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Oíste eso?"
+
+REFERENCE           VILLAGEDEF_RU2_UNDERHEAVYFIRE122
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Estamos bajo fuego pesado! ¡Necesitamos refuerzos!"
+
+REFERENCE           VILLAGEDEF_RU2_PUTUPSMOKESCREEN132
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Levanten la cortina de humo! ¡Lancen sus granadas de humo!"
+
+REFERENCE           VILLAGEDEF_RU3_WHATTHEHELL114
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Qué diablos?"
+
+REFERENCE           VILLAGEDEF_RU4_HELPMEIMWOUNDED116
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Aghh! ¡Ayuda! ¡Ayúdenme! ¡Estoy herido! ¡Ahhh!"
+
+REFERENCE           VILLAGEDEF_RU4_WHERETHEYSHOOTING120
+LANG_SPANISH        "^1Ultranacionalista: ^7¿Dónde están disparando?"
+
+REFERENCE           VILLAGEDEF_RU4_REINFORCEMENTS123
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Refuerzos en camino!"
+
+REFERENCE           VILLAGEDEF_RU4_IMHITMEDIC130
+LANG_SPANISH        "^1Ultranacionalista: ^7¡Me han alcanzado! ¡Médico! ¡MÉDICO!"
+
+REFERENCE           VILLAGEDEF_SAS3_TARGETDOWN120
+LANG_SPANISH        "^2Gaz: ^7Blanco abatido."
+
+REFERENCE           VILLAGEDEF_SAS3_GOTHIM121
+LANG_SPANISH        "^2Gaz: ^7Lo tengo."
+
+REFERENCE           VILLAGEDEF_SAS3_TARGETELIMINATED122
+LANG_SPANISH        "^2Gaz: ^7Objetivo eliminado."
+
+REFERENCE           VILLAGEDEF_GRG_NEEDARIDE81
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7¡Chicos, he oído que queréis salir de aquí!"
+
+REFERENCE           VILLAGEDEF_GRG_GETONBOARD83
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7¡Sube abordo! ¡Venga! ¡Venga!"
+
+REFERENCE           VILLAGEDEF_GRG_LETSGO84
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7¡Vamos! ¡Vamos!"
+
+REFERENCE           VILLAGEDEF_GRG_WEREALLABOARD85
+LANG_SPANISH        "^2Sargento 1º Griggs: ^7¡De acuerdo, todos estamos abordo! ¡Vamos! ¡Vamos!"
+
+ENDMARKER

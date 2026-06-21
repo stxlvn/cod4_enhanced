@@ -1,0 +1,63 @@
+		itemDef
+		{
+			rect -100 0 100 600 1 1
+			style 1
+			decoration
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0.5 0.6 0.8 0.5
+			textscale 0.55
+			dvarTest "ui_safearea"
+			showDvar { 1 }
+		}
+		itemDef
+		{
+			rect 0 -600 100 600 3 3
+			style 1
+			decoration
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0.5 0.6 0.8 0.5
+			textscale 0.55
+			dvarTest "ui_safearea"
+			showDvar { 1 }
+		}
+		itemDef
+		{
+			rect -900 -100 900 100 3 1
+			style 1
+			decoration
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0.5 0.6 0.8 0.5
+			textscale 0.55
+			dvarTest "ui_safearea"
+			showDvar { 1 }
+		}
+		itemDef
+		{
+			rect 0 0 900 100 1 3
+			style 1
+			decoration
+			visible 1
+			forecolor 1 1 1 1
+			backcolor 0.5 0.6 0.8 0.5
+			textscale 0.55
+			dvarTest "ui_safearea"
+			showDvar { 1 }
+		}
+		#ifdef PUBLIC_BETA
+		itemDef	
+		{
+			type			ITEM_TYPE_TEXT
+			rect			0 0 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			forecolor		1 1 1 1
+			text			"Pre-Beta v1"
+			textfont		UI_FONT_DEFAULT
+			textstyle	ITEM_TEXTSTYLE_SHADOWEDMORE
+			textscale		0.4583
+			textalign		ITEM_ALIGN_TOP_RIGHT
+			visible			1
+			decoration
+		}
+		#endif

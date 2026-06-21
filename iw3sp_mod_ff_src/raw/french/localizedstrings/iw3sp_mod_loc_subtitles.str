@@ -1,0 +1,1255 @@
+// Note to translators:
+// If a sentence is the same in your language then please change it to "#same"
+//
+// eg:
+// LANG_ENGLISH  "HALT"
+// LANG_GERMAN   "#same"
+//
+// (This is so we can tell which strings have been signed-off as ok to be the same words for QA
+//  and because we do not store duplicate strings, which will then get exported again next time
+//  as being untranslated.)
+//
+VERSION             "1"
+CONFIG              "C:\trees\cod2\bin\StringEd.cfg"
+FILENOTES           "Additional subtitles for some voice lines"
+
+REFERENCE           AC130_PRI_TOWNTOEAST12
+LANG_FRENCH         "^2Capitaine Price: ^7Wildfire, nous remontons la route vers\n une ville à l'est. Confirmez que vous nous avez en visuel."
+
+REFERENCE           AFTERMATH_MMR_ROMEO11
+LANG_FRENCH         "^2Radio Militaire Américaine: ^7Flash. NBC-1 nucléaire. Bravo - NB-0 6-2, 6-3-4. Charlie - grille à 90 degrés. Hôtel - surface. Juliet - 90 secondes. Lima - 10 degrés. Roméo - 2.3 degrés centigrade."
+
+REFERENCE           AFTERMATH_FMR_EPICENTER12
+LANG_FRENCH         "^2Radio Militaire Américaine: ^7Attention, explosions nucléaires détectées, retombées prévues dans un rayon de douze kilomètres, épicentre situé au point N-B-0-5-8-6-8-0."
+
+REFERENCE           AFTERMATH_FMR_EVACUATION13
+LANG_FRENCH         "^2Radio Militaire Américaine: ^7Le personnel se trouvant dans la zone des premières retombées doit procéder à une."
+
+REFERENCE           AFTERMATH_FMR_CONTCENTERS14
+LANG_FRENCH         "^2Radio Militaire Américaine: ^7Des centres de décontamination sont installés et seront pleinement opérationnels dans moins de 2 h."
+
+REFERENCE           AFTERMATH_FMR_DOSIMETER15
+LANG_FRENCH         "^2Radio Militaire Américaine: ^7Nous vous conseillons d'apprendre à contrôler vos dosimètres. Déterminer l'étendue de la contamination."
+
+REFERENCE           AFTERMATH_FMR_ELEVATEDLEVELS16
+LANG_FRENCH         "^2Radio Militaire Américaine: ^7La personne ayant un niveau de contamination élevé doit rejoindre dès que possible une."
+
+REFERENCE           AIRLIFT_VSQ_LETSGO73
+LANG_FRENCH         "^2Lt. Vasquez: ^7Dégagez ! Allez ! Allez !"
+
+REFERENCE           AIRLIFT_VSQ_HANGON115
+LANG_FRENCH         "^2Lt. Vasquez: ^7Accrochez vous !"
+
+REFERENCE           AIRLIFT_COP_ROGERTHAT113
+LANG_FRENCH         "^2Copilote: ^7Bien reçu."
+
+REFERENCE           AIRLIFT_HCC_LETSGO43
+LANG_FRENCH         "^2Chef d'équipage: ^7Allez ! Allez ! En avant ! On y va !"
+
+REFERENCE           AIRLIFT_HCC_DOWNRAMP44
+LANG_FRENCH         "^2Chef d'équipage: ^7Sauter ! Aller ! Aller ! Aller!"
+
+REFERENCE           AIRLIFT_HCC_WHEELSUP75
+LANG_FRENCH         "^2Chef d'équipage: ^7Bougez-vous ! On doit décoller dans 10 secondes ! Bougez !"
+
+REFERENCE           AIRLIFT_HCC_WHEELSUP75B
+LANG_FRENCH         "^2Chef d'équipage: ^7Allez ! allez!  On décolle !"
+
+REFERENCE           AIRLIFT_GM1_FIREBALCONY51
+LANG_FRENCH         "^2Marine: ^7Tir de mortier ! En approche !"
+
+REFERENCE           AIRLIFT_GM2_FIREBALCONY61
+LANG_FRENCH         "^2Marine: ^7Tirer sur ce balcon !"
+
+REFERENCE           AIRLIFT_GM3_REINFORCEMENTS62
+LANG_FRENCH         "^2Marine: ^7Renfort héliportage à l'est !"
+
+REFERENCE           AIRLIFT_GM3_HELLYEAH72
+LANG_FRENCH         "^2Marine: ^7Oh ouais !"
+
+REFERENCE           AIRLIFT_GM4_HELLYEAH77
+LANG_FRENCH         "^2Marine: ^7Merci pour la balade !"
+
+REFERENCE           AIRLIFT_HQR_ALLCALLSIGNS12
+LANG_FRENCH         "^2Commandement: ^7A toutes les unités ici. Chat perché on a repéré un blindé ennemi dans la palmeraie à l'ouest de la rivière."
+
+REFERENCE           AIRLIFT_HQR_HOSTILESADVANCING101
+LANG_FRENCH         "^2Commandement: ^7Attention Deux-Cinq. L'ennemi progresse parallèlement au sud ouest vers le site du crash."
+
+REFERENCE           AIRLIFT_HQR_CONFIRMED114
+LANG_FRENCH         "^2Commandement: ^7À toutes les troupes US, menace nucléaire confirmée sur la capitale. Les hommes du déminage sont sur place et tentent de désamorcer l'engin. Je répète, menace nucléaire confir..."
+
+REFERENCE           AIRLIFT_MHP_INFORMATION11
+LANG_FRENCH         "^2Bandit Deux-Cinq: ^7In formation. En approche de l'objectif. 30 secondes."
+
+REFERENCE           AIRLIFT_MHP_TAKINGFIRE21
+LANG_FRENCH         "^2Bandit Deux-Cinq: ^7On me tire dessus."
+
+REFERENCE           AIRLIFT_MHP_RPGROOFTOPS22
+LANG_FRENCH         "^2Bandit Deux-Cinq: ^7Lance-roquette sur les toits.."
+
+REFERENCE           AIRLIFT_MHP_HOSTILESRPGS23
+LANG_FRENCH         "^2Bandit Deux-Cinq: ^7Lance-roquettes ennemis."
+
+REFERENCE           AIRLIFT_MHP_GROUNDINFANTRY24
+LANG_FRENCH         "^2Bandit Deux-Cinq: ^7Attention encore de l'infanterie."
+
+REFERENCE           AIRLIFT_MHP_WEVEGOTRPGS25
+LANG_FRENCH         "^2Bandit Deux-Cinq: ^7Des lance-roquettes sur les toits."
+
+REFERENCE           AIRLIFT_MHP_LIGHTARMOR26
+LANG_FRENCH         "^2Bandit Deux-Cinq: ^7Armure légère. Éliminez-le, Jackson."
+
+REFERENCE           AIRLIFT_MHP_ANTIAIRROOFTOP27
+LANG_FRENCH         "^2Bandit Deux-Cinq: ^7Batterie anti aérienne sur le toit."
+
+REFERENCE           AIRLIFT_MHP_ANTIAIRGROUND28
+LANG_FRENCH         "^2Bandit Deux-Cinq: ^7Batterie anti aérienne au sol."
+
+REFERENCE           AIRLIFT_MHP_INFORCHOP112
+LANG_FRENCH         "^2Bandit Deux-Cinq: ^7Mesdames et messieurs, ici le commandant de bord. Ça va secouer dur! Tenez bon ! Jake, puissance maximale !"
+
+REFERENCE           AIRPLANE_TER_ILLKILLHIM83
+LANG_FRENCH         "^1Ultranationaliste: ^7Reculez ! Je lui fais sauter la tête ! J'ai dit reculez !"
+
+REFERENCE           AIRPLANE_SAS1_TANGODOWN41
+LANG_FRENCH         "^2Echo Un-Un: ^7Ennemi à terre !"
+
+REFERENCE           AIRPLANE_SAS1_XRAYDOWN42
+LANG_FRENCH         "^2Echo Un-Un: ^7Ennemi à terre !"
+
+REFERENCE           AIRPLANE_SAS1_HOSTILENEUT43
+LANG_FRENCH         "^2Echo Un-Un: ^7Ennemi neutralisée !"
+
+REFERENCE           AIRPLANE_SAS1_TARGNEUT44
+LANG_FRENCH         "^2Echo Un-Un: ^7Cible neutralisée !"
+
+REFERENCE           AIRPLANE_SAS1_AREACLEAR45
+LANG_FRENCH         "^2Echo Un-Un: ^7La zone est dégagée !"
+
+REFERENCE           AIRPLANE_SAS1_SECTIONCLEAR46
+LANG_FRENCH         "^2Echo Un-Un: ^7La section est dégagée!"
+
+REFERENCE           AIRPLANE_SAS1_CLEAR47
+LANG_FRENCH         "^2Echo Un-Un: ^7RAS !"
+
+REFERENCE           AIRPLANE_RU4_DONTHURTME93
+LANG_FRENCH         "^2Civil russe: ^7S'il vous plaît ! Ne me tuez pas. Je veux rentrer chez moi, je veux juste partir d'ici..."
+
+REFERENCE           AIRPLANE_RU4_GETTOAPHONE94
+LANG_FRENCH         "^2Civil russe: ^7Je dois trouver un téléphone. Que se passe-t-il ici ? Je ne mérite pas cela..."
+
+REFERENCE           AIRPLANE_RU4_NOPARACHUTE96
+LANG_FRENCH         "^2Civil russe: ^7Quoi ? Non !... Attendez ! Que faites-vous ? Je n'ai pas de parachuuuuuuu..."
+
+REFERENCE           AIRPLANE_GAZ_OKGETREADY151
+LANG_FRENCH         "^2Romeo Un-Un: ^7Bon, préparez-vous."
+
+REFERENCE           AIRPLANE_GAZ_STANDBY16
+LANG_FRENCH         "^2Romeo Un-Un: ^7En attente... en attente... allez!"
+
+REFERENCE           AIRPLANE_GAZ_WEAPONSFREE22
+LANG_FRENCH         "^2Romeo Un-Un: ^7Feu à volonté."
+
+REFERENCE           AIRPLANE_GAZ_MOVE24
+LANG_FRENCH         "^2Romeo Un-Un: ^7On y va."
+
+REFERENCE           AIRPLANE_GAZ_MOVEUP25
+LANG_FRENCH         "^2Romeo Un-Un: ^7Avancez !"
+
+REFERENCE           AIRPLANE_GAZ_KEEPMOVING26
+LANG_FRENCH         "^2Romeo Un-Un: ^7Allez !"
+
+REFERENCE           AIRPLANE_GAZ_STAIRWAYCLEAR27
+LANG_FRENCH         "^2Romeo Un-Un: ^7Escalier dégagé !"
+
+REFERENCE           AIRPLANE_GAZ_TANGODOWN31
+LANG_FRENCH         "^2Romeo Un-Un: ^7Ennemi à terre !"
+
+REFERENCE           AIRPLANE_GAZ_XRAYDOWN32
+LANG_FRENCH         "^2Romeo Un-Un: ^7Ennemi à terre !"
+
+REFERENCE           AIRPLANE_GAZ_HOSTILENEUT33
+LANG_FRENCH         "^2Romeo Un-Un: ^7Ennemi neutralisée !"
+
+REFERENCE           AIRPLANE_GAZ_TARGNEUT34
+LANG_FRENCH         "^2Romeo Un-Un: ^7Cible neutralisée !"
+
+REFERENCE           AIRPLANE_GAZ_AREACLEAR35
+LANG_FRENCH         "^2Romeo Un-Un: ^7La zone est dégagée !"
+
+REFERENCE           AIRPLANE_GAZ_SECTIONCLEAR36
+LANG_FRENCH         "^2Romeo Un-Un: ^7La section est dégagée !"
+
+REFERENCE           AIRPLANE_GAZ_CLEAR37
+LANG_FRENCH         "^2Romeo Un-Un: ^7RAS !"
+
+REFERENCE           AIRPLANE_SAS4_ONEALPHA21
+LANG_FRENCH         "^2Charlie Un-Un: ^7Ennemi à terre la section "Uh-Alpha"."
+
+REFERENCE           AIRPLANE_SAS4_MULTIPLECONT23
+LANG_FRENCH         "^2Charlie Un-Un: ^7Contacts multiples."
+
+REFERENCE           AIRPLANE_SAS4_TANGODOWN51
+LANG_FRENCH         "^2Charlie Un-Un: ^7Ennemi à terre !"
+
+REFERENCE           AIRPLANE_SAS4_XRAYDOWN52
+LANG_FRENCH         "^2Charlie Un-Un: ^7Ennemi à terre !"
+
+REFERENCE           AIRPLANE_SAS4_HOSTILENEUT53
+LANG_FRENCH         "^2Charlie Un-Un: ^7Ennemi neutralisée !"
+
+REFERENCE           AIRPLANE_SAS4_TARGNEUT54
+LANG_FRENCH         "^2Charlie Un-Un: ^7Cible neutralisée !"
+
+REFERENCE           AIRPLANE_SAS4_AREACLEAR55
+LANG_FRENCH         "^2Charlie Un-Un: ^7La zone est dégagée !"
+
+REFERENCE           AIRPLANE_SAS4_SECTIONCLEAR56
+LANG_FRENCH         "^2Charlie Un-Un: ^7La section est dégagée!"
+
+REFERENCE           AIRPLANE_SAS4_CLEAR57
+LANG_FRENCH         "^2Charlie Un-Un: ^7RAS !"
+
+REFERENCE           AIRPLANE_GAZ_SEEYA101
+LANG_FRENCH         "^2Romeo Un-Un: ^7Mission accomplie. A la prochaine les gars!"
+
+REFERENCE           AMBUSH_PRI_NOTBAD12
+LANG_FRENCH         "^2Capitaine Price: ^7C'est pas mal, Kamarov. Ça fera l'affaire. Vautour Un-Six on est en position."
+
+REFERENCE           AMBUSH_GRG_NOTHINGLIKERUSSIAN23
+LANG_FRENCH         "^2Sergeant Griggs: ^7Heureusement que t'es là-haut, parce que tu ressembles à rien d'un Russe."
+
+REFERENCE           AMBUSH_GRG_OHNO13102
+LANG_FRENCH         "^2Sergeant Griggs: ^7Oh, la merde !"
+
+REFERENCE           AMBUSH_GRG_OHNO23103
+LANG_FRENCH         "^2Sergeant Griggs: ^7Oh, putain de merde !"
+
+REFERENCE           AMBUSH_KMR_BESTWAYIN11
+LANG_FRENCH         "^2Sgt. Kamarov: ^7C'est le meilleur endroit.\nLe poste de contrôle est juste devant."
+
+REFERENCE           AMBUSH_RU1_PAPERSWHATPAPERS32
+LANG_FRENCH         "^1Ultranationaliste: ^7Des papiers, de quels papiers parlez-vous ?"
+
+REFERENCE           AMBUSH_RU1_FATPOLITICIAN33
+LANG_FRENCH         "^1Ultranationaliste: ^7Qui diable pensez-vous être, planté là comme un politicien obèse, me demandant quoi que ce soit ?"
+
+REFERENCE           AMBUSH_RU1_WHATAREYOUWAITINGFOR34
+LANG_FRENCH         "^1Ultranationaliste: ^7Qu'est-ce que vous attendez, comme un idiot ? Ouvrez la porte !"
+
+REFERENCE           AMBUSH_RU2_PAPERSPLEASE31
+LANG_FRENCH         "^2Loyaliste russe: ^7Les papiers, s'il vous plaît !"
+
+REFERENCE           AMBUSH_RU2_ILLDOTHATRIGHTNOW35
+LANG_FRENCH         "^2Loyaliste russe: ^7Désolé, Camarade Commandant. Je vais le faire tout de suite."
+
+REFERENCE           AMBUSH_SOZ_STOPTHEBLOODSHED81
+LANG_FRENCH         "^1Victor Zakhaev: ^7Penses-tu que cela arrêtera le carnage ? Penses-tu que cela arrêtera mon père ?"
+
+REFERENCE           AMBUSH_SOZ_DEADSOONANYWAY85
+LANG_FRENCH         "^1Victor Zakhaev: ^7Vous allez tous mourir bientôt de toute façon."
+
+REFERENCE           AMBUSH_SOZ_GOFYOURSELF87
+LANG_FRENCH         "^1Victor Zakhaev: ^7Allez vous faire foutre."
+
+REFERENCE           ARMADA_GM1_GOGOGO42
+LANG_FRENCH         "^2Marine: ^7Go! Go! Go!"
+
+REFERENCE           ARMADA_GM1_BREACHING56
+LANG_FRENCH         "^2Marine: ^7On entre, on y va !"
+
+REFERENCE           ARMADA_GM1_BREACHINGBREACHING84
+LANG_FRENCH         "^2Marine: ^7On entre, on y va !"
+
+REFERENCE           ARMADA_GM1_GOESOURBOYS102
+LANG_FRENCH         "^2Marine: ^7Ouais, nos gars sont en route."
+
+REFERENCE           ARMADA_GM1_CLEAR1114
+LANG_FRENCH         "^2Marine: ^7RAS !"
+
+REFERENCE           ARMADA_GM2_MOVEITMOVEIT43
+LANG_FRENCH         "^2Marine: ^7On y va !"
+
+REFERENCE           ARMADA_GM2_OORAH103
+LANG_FRENCH         "^2Marine: ^7Ouais..."
+
+REFERENCE           ARMADA_GM3_BLOCKINGPOSITIONS51
+LANG_FRENCH         "^2Marine: ^7Établissez les barrages. Allez!"
+
+REFERENCE           ARMADA_GM3_OORAH104
+LANG_FRENCH         "^2Marine: ^7OOuais..."
+
+REFERENCE           ARMADA_FHP_COPYSTRIKERSIXFOUR12
+LANG_FRENCH         "^2Pilote de Black Hawk: ^7Entendu, Striker Six-Quatre."
+
+REFERENCE           ARMADA_FHP_COPY14
+LANG_FRENCH         "^2Pilote de Black Hawk: ^7Bien reçu."
+
+REFERENCE           ARMADA_FHP_ROGERTHAT22
+LANG_FRENCH         "^2Pilote de Black Hawk: ^7Compris, on a des lance-roquettes, en ba?."
+
+REFERENCE           ARMADA_FHP_GOTVISUAL31
+LANG_FRENCH         "^2Pilote de Black Hawk: ^7J'ai la cible envisuel."
+
+REFERENCE           ARMADA_HP1_SHORELINEINVIEW11
+LANG_FRENCH         "^2Striker Six-Quatre: ^7Le littoral est en vue."
+
+REFERENCE           ARMADA_HP1_FEETDRYTENSECONDS13
+LANG_FRENCH         "^2Striker Six-Quatre: ^7On sera à terre dans dix secondes."
+
+REFERENCE           ARMADA_HP1_TAKINGFIREHERE21
+LANG_FRENCH         "^2Striker Six-Quatre: ^7On nous tire dessus..."
+
+REFERENCE           ARMADA_HP1_THATWASCLOSE23
+LANG_FRENCH         "^2Striker Six-Quatre: ^7Merde, c'est pas passé loin!"
+
+REFERENCE           ARMADA_HP1_COPYTHAT32
+LANG_FRENCH         "^2Striker Six-Quatre: ^7Entendu."
+
+REFERENCE           ARMADA_HP1_FIVESECONDS33
+LANG_FRENCH         "^2Striker Six-Quatre: ^7Cinq secondes."
+
+REFERENCE           ARMADA_HP1_STANDBYGREENLIGHT34
+LANG_FRENCH         "^2Striker Six-Quatre: ^7Attendez le feu vert."
+
+REFERENCE           ARMADA_VSQ_DOWNTHEROPES41
+LANG_FRENCH         "^2Lt. Vasquez: ^7Descendez! Allez ! Allez !"
+
+REFERENCE           ARMADA_VSQ_BREACHING57
+LANG_FRENCH         "^2Lt. Vasquez: ^7On entre, on y va !"
+
+REFERENCE           ARMADA_VSQ_GOGOGO58
+LANG_FRENCH         "^2Lt. Vasquez: ^7Go! Go! Go!"
+
+REFERENCE           ARMADA_VSQ_DOIT83
+LANG_FRENCH         "^2Lt. Vasquez: ^7En avant !"
+
+REFERENCE           ARMADA_VSQ_GOGOGO85
+LANG_FRENCH         "^2Lt. Vasquez: ^7Allez, allez, allez !"
+
+REFERENCE           ARMADA_VSQ_OORAH105
+LANG_FRENCH         "^2Lt. Vasquez: ^7Ouais."
+
+REFERENCE           ARMADA_GRG_YEAHOORAH1110
+LANG_FRENCH         "^2Sergeant Griggs: ^7Ouais. Ouais."
+
+REFERENCE           BLACKOUT_GAZ_LOYALISTSEH12
+LANG_FRENCH         "^2Gaz: ^7Des loyalistes? Et eux, ce sont\n les bons Russes ou les mauvais?"
+
+REFERENCE           BLACKOUT_PRI_HALFACLICK11
+LANG_FRENCH         "^2Capitaine Price: ^7Les loyalistes nous attendent à 500 m au nord, en avant."
+
+REFERENCE           BLACKOUT_KMR_PREPAREATTACK38
+LANG_FRENCH         "^2Sgt. Kamarov: ^7Vanya, avance et prépare toi à attaquer. Attends mon signal."
+
+REFERENCE           BLACKOUT_KMR_STALLING4121_FULL
+LANG_FRENCH         "^2Sgt. Kamarov: ^7Quel est votre état ? Combien de temps avez-vous encore besoin ? D'accord, je vais les retarder."
+
+REFERENCE           BLACKOUT_KMR_STALLING4121_CUT
+LANG_FRENCH         "^2Sgt. Kamarov: ^7Quel est votre état ? Combien de temps avez-vous encore besoin ? D'accord, je vais... eux."
+
+REFERENCE           BLACKOUT_KMR_OUTOFMIND516
+LANG_FRENCH         "^2Sgt. Kamarov: ^7Qu'est-ce que tu fais, es-tu fou ? Qui tu crois être ?"
+
+REFERENCE           BLACKOUT_NKD_WHOAREYOU641
+LANG_FRENCH         "^2Nikolai: ^7Qu'est-ce que tu veux ? Qui es-tu ? Forces spéciales ?"
+
+REFERENCE           BLACKOUT_RU1_VIKTOR631
+LANG_FRENCH         "^1Ultranationaliste: ^7Hm ? Qu'est-ce qui s'est passé avec l'électricité ?"
+
+REFERENCE           BLACKOUT_RU1_ELECTRICIAN632
+LANG_FRENCH         "^1Ultranationaliste: ^7Viktor ! L'électricité est coupée !"
+
+REFERENCE           BLACKOUT_RU2_GETTINGCLOSER633
+LANG_FRENCH         "^1Ultranationaliste: ^7Je sais. Les forces ennemies se rapprochent."
+
+REFERENCE           BLACKOUT_RU2_STAY635
+LANG_FRENCH         "^1Ultranationaliste: ^7Non, je pense que tu surestimes leurs capacités. Restez ici et gardez le prisonnier."
+
+REFERENCE           BLACKOUT_RU1_SASHA636
+LANG_FRENCH         "^1Ultranationaliste: ^7Sasha... ? Es-tu ici ? Sasha... ?"
+
+REFERENCE           BLACKOUT_RU4_THEYREINSIDE437
+LANG_FRENCH         "^1Ultranationaliste: ^7Je pense qu'ils sont à l'intérieur. Viktor... ? Sasha... ?"
+
+REFERENCE           BLACKOUT_RU4_HOWCLOSE634
+LANG_FRENCH         "^1Ultranationaliste: ^7À quelle distance sont les forces ennemies ? Nous devons évacuer."
+
+REFERENCE           BOG_GM1_OORAH1015
+LANG_FRENCH         "^2Marine: ^7Ouais."
+
+REFERENCE           BOG_GM1_THREECOMIN
+LANG_FRENCH         "^2Marine: ^7Trois qui sortent !"
+
+REFERENCE           BOG_GM2_MOVEIT12
+LANG_FRENCH         "^2Marine: ^7On y va !"
+
+REFERENCE           BOG_GM2_CLEAR137
+LANG_FRENCH         "^2Marine: ^7Dégagée !"
+
+REFERENCE           BOG_GM2_CLEAR268
+LANG_FRENCH         "^2Marine: ^7Dégagée !"
+
+REFERENCE           BOG_GM2_OORAH1016
+LANG_FRENCH         "^2Marine: ^7Ouais."
+
+REFERENCE           BOG_GM3_RPG17
+LANG_FRENCH         "^2Marine: ^7R-P-G!"
+
+REFERENCE           BOG_GM3_CLEAR38
+LANG_FRENCH         "^2Marine: ^7Dégagée !"
+
+REFERENCE           BOG_GM3_ALLCLEAR69
+LANG_FRENCH         "^2Marine: ^7C'est dégagé !"
+
+REFERENCE           BOG_GM3_OORAH1017
+LANG_FRENCH         "^2Marine: ^7Ouais."
+
+REFERENCE           BOG_VSQ_HALFACLICK11
+LANG_FRENCH         "^2Lt. Vasquez: ^7Un char de la compagnie 'Alfa' est bloqué à 500 mètres au sud.\nOn doit se bousculer ! En avant !"
+
+REFERENCE           BOG_AS1_LETENTER41
+LANG_FRENCH         "^1Soldat arabe: ^7Laissez-les entrer, puis attaquez-les une fois qu'ils sont passés !"
+
+REFERENCE           BOG_AS2_GETREADY42
+LANG_FRENCH         "^1Soldat arabe: ^7Ils sont en bas, préparez-vous."
+
+REFERENCE           BOG_GM1_GETYOURASS11
+LANG_FRENCH         "^2Marine: ^7Jackson! Ramène tes fesses sur la ligne !\nOn a des ennemis en approche, au nord!"
+
+REFERENCE           BOG_GM1_WOOYEAH1100
+LANG_FRENCH         "^2Marine: ^7Woo ! Ouais ! Woo !"
+
+REFERENCE           BOG_GM2_HOLYSHIT1111
+LANG_FRENCH         "^2Marine: ^7Putain de merde, tu as vu ça ?"
+
+REFERENCE           BOG_GM3_HELLYEAH1112
+LANG_FRENCH         "^2Marine: ^7Ouais !"
+
+REFERENCE           BOG_GM4_YEAHWOO1113
+LANG_FRENCH         "^2Marine: ^7Ouais ! Woo ! Woo !"
+
+REFERENCE           BOG_GM4_TALKINABOUT114
+LANG_FRENCH         "^2Marine: ^7Ouais! Ça c'est un putain de beau carton !"
+
+REFERENCE           BOG_TCM_3STORY11_2NDFLOOR32
+LANG_FRENCH         "^2Sanglier: ^7Artilleur ! Batiment a trois etages a 11 heures ! 2e etage !"
+
+REFERENCE           BOG_TCM_3STORY1130_2NDFLOOR36
+LANG_FRENCH         "^2Sanglier: ^7Artilleur ! Bâtiment à trois étages à 11 heures 30 ! Balcon du 2e étage !"
+
+REFERENCE           BOG_TCM_2STORY1_GROUND310
+LANG_FRENCH         "^2Sanglier: ^7Artilleur ! Bâtiment à deux étages à 1 heure, rez-de-chaussée !"
+
+REFERENCE           BOG_TCM_2STORY1_2NDFLOOR314
+LANG_FRENCH         "^2Sanglier: ^7Artilleur ! Bâtiment à deux étages à 1 heure, 2e étage !"
+
+REFERENCE           BOG_TCM_3STORY1230_2NDFLOOR318
+LANG_FRENCH         "^2Sanglier: ^7Artilleur ! Bâtiment à trois étages à midi ! Deuxième étage !"
+
+REFERENCE           BOG_TCM_FIRE134
+LANG_FRENCH         "^2Sanglier: ^7Feu !"
+
+REFERENCE           BOG_TCM_FIRE138
+LANG_FRENCH         "^2Sanglier: ^7Feu !"
+
+REFERENCE           BOG_TCM_FIRE1312
+LANG_FRENCH         "^2Sanglier: ^7Feu !"
+
+REFERENCE           BOG_TCM_FIRE1316
+LANG_FRENCH         "^2Sanglier: ^7Feu !"
+
+REFERENCE           BOG_TCM_FIRE1320
+LANG_FRENCH         "^2Sanglier: ^7Feu !"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED133
+LANG_FRENCH         "^2Canonnier de char: ^7Cible en visée !"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED137
+LANG_FRENCH         "^2Canonnier de char: ^7Cible en visée !"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED2311
+LANG_FRENCH         "^2Canonnier de char: ^7Cible en visée !"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED2315
+LANG_FRENCH         "^2Canonnier de char: ^7Cible en visée !"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED3319
+LANG_FRENCH         "^2Canonnier de char: ^7Cible en visée !"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED385
+LANG_FRENCH         "^2Canonnier de char: ^7Cible en visée !"
+
+REFERENCE           BOG_TLD_UP31
+LANG_FRENCH         "^2Chargeur de char: ^7OK !"
+
+REFERENCE           BOG_TLD_UP135
+LANG_FRENCH         "^2Chargeur de char: ^7OK !"
+
+REFERENCE           BOG_TLD_UP239
+LANG_FRENCH         "^2Chargeur de char: ^7OK !"
+
+REFERENCE           BOG_TLD_UP3313
+LANG_FRENCH         "^2Chargeur de char: ^7OK !"
+
+REFERENCE           BOG_TLD_UP4317
+LANG_FRENCH         "^2Chargeur de char: ^7OK !"
+
+REFERENCE           CARGOSHIP_PRI_CREWEXPEND14
+LANG_FRENCH         "^2Capitaine Price: ^7Parés et chargées."
+
+REFERENCE           CARGOSHIP_HP1_BASEPLATEHAMMERTWO11
+LANG_FRENCH         "^2Marteau Deux-Quatre: ^7Pivot, ici Marteau Deux-Quatre. On a la cible en visuel.\nArrivée estimée dans 60 secondes."
+
+REFERENCE           CARGOSHIP_HP1_THIRTYSECDARK13
+LANG_FRENCH         "^2Marteau Deux-Quatre: ^730 secondes, on éteint."
+
+REFERENCE           CARGOSHIP_HP1_TENSECONDSRADIO113
+LANG_FRENCH         "^2Marteau Deux-Quatre: ^710 secondes."
+
+REFERENCE           CARGOSHIP_HP1_RADIOCHECK114
+LANG_FRENCH         "^2Marteau Deux-Quatre: ^7Point radio. Passez en fréquence sécurisée."
+
+REFERENCE           CARGOSHIP_HP1_GREENLIGHTGORADIO115
+LANG_FRENCH         "^2Marteau Deux-Quatre: ^7Feu vert! Allez! Allez !"
+
+REFERENCE           CARGOSHIP_HQR_COPYTWOFOUR12
+LANG_FRENCH         "\n^2Baseplate: ^7Entendu, Deux-Quatre."
+
+REFERENCE           CARGOSHIP_RUD_3SEC211
+LANG_FRENCH         "^1Ultranationaliste: ^7Trinquons à la santé, Colonel !"
+
+REFERENCE           CARGOSHIP_RU1_HEY
+LANG_FRENCH         "^1Ultranationaliste: ^7Hé !"
+
+REFERENCE           CARGOSHIP_RU1_GETREADY81
+LANG_FRENCH         "^1Ultranationaliste: ^7Nous sommes encerclés ! Préparez-vous !"
+
+REFERENCE           CARGOSHIP_RU1_CALLFORHELP85
+LANG_FRENCH         "^1Ultranationaliste: ^7Contactez à la radio, demandez de l'aide !"
+
+REFERENCE           CARGOSHIP_RU2_INCARGOHOLDS22
+LANG_FRENCH         "^1Ultranationaliste: ^7Zut ! Qu'est-ce que c'est ?"
+
+REFERENCE           CARGOSHIP_RU2_WHATTHE82
+LANG_FRENCH         "^1Ultranationaliste: ^7Ils sont dans les soutes et viennent ici. Surveillez les portes."
+
+REFERENCE           CARGOSHIP_RU2_ARETHEYAMERICANS83
+LANG_FRENCH         "^1Ultranationaliste: ^7Sont-ils américains ?"
+
+REFERENCE           CARGOSHIP_RU2_THEYREGETTINGCLOSE87
+LANG_FRENCH         "^1Ultranationaliste: ^7Ils arrivent, soyez prêts."
+
+REFERENCE           CARGOSHIP_RU4_GETREADY84
+LANG_FRENCH         "^1Ultranationaliste: ^7Je ne sais pas, préparez-vous !"
+
+REFERENCE           CARGOSHIP_RU4_MIDDLEOFOCEAN86
+LANG_FRENCH         "^1Ultranationaliste: ^7Nous sommes au milieu de l'océan. Personne ne peut nous aider, idiot !"
+
+REFERENCE           KILLHOUSE_GAZ_GETARIFLE211
+LANG_FRENCH         "^2Gaz: ^7Content de te voir mon gars. Prends un fusil à l'armurerie."
+
+REFERENCE           HUNTED_PRI_WHATTHEBLOODY11
+LANG_FRENCH         "^2Capitaine Price: ^7C'est quoi ce truc là ?!"
+
+REFERENCE           HUNTED_HP1_MISSILEINBOUND12
+LANG_FRENCH         "^2Marteau Six-Quatre: ^7Missile inbound..."
+
+REFERENCE           HUNTED_HP1_MAYDAYMAYDAY14
+LANG_FRENCH         "^2Marteau Six-Quatre: ^7Mayday mayday, c'est Marteau Six-Quatre, nous nous écrasons, je répète, nous nous écrasons à trois kilomètres au sud du point cinq..."
+
+REFERENCE           HUNTED_HP1_GOINGDOWN15
+LANG_FRENCH         "^2Marteau Six-Quatre: ^7Six-Quatre s'écrase ! On s'écrase ! Accrochez vous !"
+
+REFERENCE           HUNTED_RUF_WHATSGOINGON41
+LANG_FRENCH         "^2Fermier: ^7Qu'est-ce qui se passe ici ? Que voulez-vous ?"
+
+REFERENCE           HUNTED_RUF_HIDINGWHO43
+LANG_FRENCH         "^2Fermier: ^7Qui se cache ? De quoi diable parlez-vous ?"
+
+REFERENCE           HUNTED_RUF_BRITISH45
+LANG_FRENCH         "^2Fermier: ^7Des Britanniques ?"
+
+REFERENCE           HUNTED_RU1_ISADUMP33
+LANG_FRENCH         "^1Ultranationaliste: ^7Cet endroit est un dépotoir."
+
+REFERENCE           HUNTED_RU1_DONTPLAYSTUPID42
+LANG_FRENCH         "^1Ultranationaliste: ^7Ne fais pas l'idiot. Nous savons que vous les cachez quelque part."
+
+REFERENCE           HUNTED_RU1_HIDINGSOLDIERS44
+LANG_FRENCH         "^1Ultranationaliste: ^7Vous avez des soldats britanniques là-dedans ?"
+
+REFERENCE           HUNTED_RU1_FORGETIT46
+LANG_FRENCH         "^1Ultranationaliste: ^7Vous perdez mon temps..."
+
+REFERENCE           HUNTED_RU1_BYTHEHOUSE61
+LANG_FRENCH         "^1Ultranationaliste: ^7Les voilà ! Là-bas, près de la maison."
+
+REFERENCE           HUNTED_RU1_INTHEFIELD116
+LANG_FRENCH         "^1Ultranationaliste: ^7Je vois l'ennemi ! Ils sont dans le champ."
+
+REFERENCE           HUNTED_RU2_BYTHECREEK115
+LANG_FRENCH         "^1Ultranationaliste: ^7Là, près du ruisseau."
+
+REFERENCE           HUNTED_RU4_OUTONFIELD117
+LANG_FRENCH         "^1Ultranationaliste: ^7Ils sont dehors dans le champ."
+
+REFERENCE           HUNTED_BNB_MISSILELOCK16
+LANG_FRENCH         "^2Système: ^7Missiles verrouillés."
+
+REFERENCE           HUNTED_BNB_ALTITUDE17
+LANG_FRENCH         "^2Système: ^7Altitude. Altitude. Altitude."
+
+REFERENCE           HUNTED_BNB_CAUTION18
+LANG_FRENCH         "^2Système: ^7Attention. Attention. Attention."
+
+REFERENCE           HUNTED_BNB_WARNING19
+LANG_FRENCH         "^2Système: ^7Danger. Danger. Danger."
+
+REFERENCE           ICBM_PRI_REGROUPONME219
+LANG_FRENCH         "^2Capitaine Price: ^7Avec moi."
+
+REFERENCE           ICBM_GRG_678452056315
+LANG_FRENCH         "^2Sergeant Griggs: ^7Griggs. 678452056."
+
+REFERENCE           ICBM_GRG_678318
+LANG_FRENCH         "^2Sergeant Griggs: ^7Griggs. 678..."
+
+REFERENCE           ICBM_GRG_GETBUSY320
+LANG_FRENCH         "^2Sergeant Griggs: ^7Il fait froid va bientôt devenir infréquentable...si j'étais vous, je ficherais le camp d'ici."
+
+REFERENCE           ICBM_RU1_UNIT4REPORT217
+LANG_FRENCH         "^1Ultranationaliste: ^7Unité 4, en avez-vous trouvé d'autres ? Celui-ci avait des explosifs sur lui, il doit y en avoir d'autres. Unité 4, rapportez !"
+
+REFERENCE           ICBM_RU1_WHEREOTHERS314
+LANG_FRENCH         "^1Ultranationaliste: ^7Où sont les autres ?"
+
+REFERENCE           ICBM_RU1_TOVARISCH316
+LANG_FRENCH         "^1Ultranationaliste: ^7Tu sais Tovarich, la convention de Genève est une belle idée en théorie?\nEt si tu te simplifier la vie et que tu me disais ce que je veux savoir?"
+
+REFERENCE           ICBM_RU1_HOWMANY317
+LANG_FRENCH         "^1Ultranationaliste: ^7Combien vous êtes en tout ?"
+
+REFERENCE           ICBM_RU1_WHOISOFFICER319
+LANG_FRENCH         "^1Ultranationaliste: ^7Qui est votre officier de terrain ?"
+
+REFERENCE           ICBM_RU1_WHERESHACKSAW321
+LANG_FRENCH         "^1Ultranationaliste: ^7Yuri - où est la scie à métaux ?"
+
+REFERENCE           ICBM_RU1_IFIHAD323
+LANG_FRENCH         "^1Ultranationaliste: ^7Si j'avais la scie à métaux, je ne vous demanderais pas, idiot !"
+
+REFERENCE           ICBM_RU2_YOUHADIT322
+LANG_FRENCH         "^1Ultranationaliste: ^7Je pensais que tu l'avais."
+
+REFERENCE           JEEPRIDE_RU1_BARELYBREATHING172
+LANG_FRENCH         "^2Loyaliste russe: ^7Il respire à peine !"
+
+REFERENCE           JEEPRIDE_RU2_ALLRIGHTMYFRIEND173
+LANG_FRENCH         "^2Sgt. Kamarov: ^7YOn a un survivant, ici ! Ça va bien se passer, mon gars !"
+
+REFERENCE           JEEPRIDE_RU2_GETHIMOUTOFHERE174
+LANG_FRENCH         "^2Sgt. Kamarov: ^7Emmenez-le ! Rapidement, allez ! Nous devons l'amener à l'hôpital immédiatement !"
+
+REFERENCE           KILLHOUSE_GAZ_GOODTOSEE21
+LANG_FRENCH         "^2Gaz: ^7Content de te voir mon gars. Prends un fusil sur la table."
+
+REFERENCE           KILLHOUSE_SAS4_FNG1211
+LANG_FRENCH         "^2SAS: ^7C'est le nouveau, chef."
+
+REFERENCE           KILLHOUSE_SAS4_GOEASY1213
+LANG_FRENCH         "^2SAS: ^7Allez-y doucement avec lui, chef, c'est son premier jour ici."
+
+REFERENCE           LAUNCHFACILITY_A_HQR_STILLWORKING19
+LANG_FRENCH         "^2Commandement: ^7Uh, Bravo Six, on travaille encore avec les Russes\n pour obtenir les codes de lancement. On devrait les avoir bientôt. Terminé."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_HIGHALERT11
+LANG_FRENCH         "^1Haut-parleur: ^7La périphérie de la base a été compromise. Toutes les unités, rendez-vous aux positions défensives.\nForce ennemie inconnue se déplaçant depuis le sud ou l'ouest. La base est maintenant en alerte maximale."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_UNDERATTACK12
+LANG_FRENCH         "^1Haut-parleur: ^7Nous sommes attaqués ! Verrouillez immédiatement tous les points d'entrée."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_REDSPENTZNAZ13
+LANG_FRENCH         "^1Haut-parleur: ^7Unités ennemies confirmées comme étant des forces spéciales américaines. Faites preuve d'une extrême prudence. Les unités Red Spetznaz sont en route pour les intercepter."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_PREPTUBES14
+LANG_FRENCH         "^1Haut-parleur: ^7Préparation des tubes de lancement 2 à 6 pour le tir. En attente."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_MOTHERLAND23
+LANG_FRENCH         "^1Haut-parleur: ^7Battez-vous pour la gloire de la Mère Patrie ! Combattez la corruption de notre grande nation d'autrefois !"
+
+REFERENCE           LAUNCHFACILITY_A_RUL_AVENGEFALLEN24
+LANG_FRENCH         "^1Haut-parleur: ^7Camrades ! Souvenez-vous des tombés et vengez-les ! Assurons-nous que leurs sacrifices n'ont pas été faits en vain !"
+
+REFERENCE           LAUNCHFACILITY_A_RUL_RESTOREHONOR25
+LANG_FRENCH         "^1Haut-parleur: ^7Nous restaurerons l'honneur des jours où cette nation était crainte par toutes les autres ! Nous ne serons pas arrêtés ! Nous ne serons pas détournés aussi facilement !"
+
+REFERENCE           LAUNCHFACILITY_B_PRI_LETSMOVE11
+LANG_FRENCH         "^2Capitaine Price: ^7Bon allez, on y va !"
+
+REFERENCE           LAUNCHFACILITY_B_GM1_BASESECURITY12
+LANG_FRENCH         "^2Cinq-Delta Six: ^7Capitaine Price ici Cinq-Delta Six. On nettoie le cote gauche et on se dirige vers la securite de la base. A vous."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_ALERT25
+LANG_FRENCH         "^1Haut-parleur: ^7Alerte ! Des forces ennemies ont pénétré dans la base. Je répète, des forces ennemies ont pénétré dans la base."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_BARRACKS26
+LANG_FRENCH         "^1Haut-parleur: ^7Des forces ennemies ont été engagées dans les casernes. Renforts nécessaires aux casernes."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_STORAGEAREA32
+LANG_FRENCH         "^1Haut-parleur: ^7a zone de stockage a été compromise. Des forces ennemies ont atteint les tubes de lancement. Fermeture de la porte d'accès principale à la zone de contrôle de lancement."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_2NDINITIATED41
+LANG_FRENCH         "^1Haut-parleur: ^7Le deuxième lancement est en cours."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_PRIMARYINITITATED42
+LANG_FRENCH         "^1Haut-parleur: ^7Séquence de lancement principale initiée pour les tubes 3 à 6. En attente."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SECUREMISSILEBAY43
+LANG_FRENCH         "^1Haut-parleur: ^7Sécurisez toutes les baies de missiles. Les lignes de carburant sont déconnectées."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_2MINS44
+LANG_FRENCH         "^1Haut-parleur: ^7Lancement dans deux minutes."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_90SECS46
+LANG_FRENCH         "^1Haut-parleur: ^790 secondes."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_1MIN47
+LANG_FRENCH         "^1Haut-parleur: ^7Une minute. Le niveau du réfrigérant est conforme."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_30SECS48
+LANG_FRENCH         "^1Haut-parleur: ^7Trente secondes. Les coordonnées du missile sont téléchargées."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_20SECS410
+LANG_FRENCH         "^1Haut-parleur: ^720 secondes."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_TEN411
+LANG_FRENCH         "^1Haut-parleur: ^7Dix."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_NINE412
+LANG_FRENCH         "^1Haut-parleur: ^7Neuf."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_EIGHT413
+LANG_FRENCH         "^1Haut-parleur: ^7Huit."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SEVEN414
+LANG_FRENCH         "^1Haut-parleur: ^7Sept."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SIX415
+LANG_FRENCH         "^1Haut-parleur: ^7Six."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_FIVE416
+LANG_FRENCH         "^1Haut-parleur: ^7Cinq."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_FOUR417
+LANG_FRENCH         "^1Haut-parleur: ^7Quatre."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_THREE418
+LANG_FRENCH         "^1Haut-parleur: ^7Trois."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_TWO419
+LANG_FRENCH         "^1Haut-parleur: ^7Deux."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_ONE420
+LANG_FRENCH         "^1Haut-parleur: ^7Un."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_LAUNCHCOMPLETE421
+LANG_FRENCH         "^1Haut-parleur: ^7Allumage. La séquence de lancement est terminée."
+
+REFERENCE           LAUNCHFACILITY_B_RU1_GO15
+LANG_FRENCH         "^1Ultranationaliste: ^7Allez ! Dépêchez-vous ! Nous sommes attaqués."
+
+REFERENCE           LAUNCHFACILITY_B_RU3_GETREADY110
+LANG_FRENCH         "^1Ultranationaliste: ^7Ils viennent de notre côté ! Préparez-vous !"
+
+REFERENCE           LAUNCHFACILITY_B_RU3_DAMNYOU71
+LANG_FRENCH         "^1Ultranationaliste: ^7Va au diable..."
+
+REFERENCE           LAUNCHFACILITY_B_RU2_GRABWEAPONS16
+LANG_FRENCH         "^1Ultranationaliste: ^7Prenez les armes et prenez des positions défensives ! Allez ! Allez !"
+
+REFERENCE           LAUNCHFACILITY_B_RU2_OPENFIRE72
+LANG_FRENCH         "^1Ultranationaliste: ^7Ouvrez le feu ! Détruisez-les !"
+
+REFERENCE           SCOUTSNIPER_RU1_OTHERTEAM210
+LANG_FRENCH         "^1Ultranationaliste: ^7L'autre equipe a trouve quelque chose dans le village, allons-y !"
+
+REFERENCE           SCOUTSNIPER_RU1_WANDERING24
+LANG_FRENCH         "^1Ultranationaliste: ^7He, Serguei ! Pourquoi errons-nous dans ce champ ?"
+
+REFERENCE           SCOUTSNIPER_RU1_WASTELAND26
+LANG_FRENCH         "^1Ultranationaliste: ^7Pourquoi patrouiller ? Il n'y a personne ici sur 120 kilometres. Terre desolee."
+
+REFERENCE           SCOUTSNIPER_RU1_TAKEALOOK28
+LANG_FRENCH         "^1Ultranationaliste: ^7Numero Six. Nous avons des problemes dans le village. Va voir par toi-meme."
+
+REFERENCE           SCOUTSNIPER_RU1_ONOURWAY29
+LANG_FRENCH         "^1Ultranationaliste: ^7Entendu. Numero Deux, nous sommes en route."
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY139
+LANG_FRENCH         "^1Ultranationaliste: ^7Attendez, c'est un etranger. Emmenez-le !"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY2311
+LANG_FRENCH         "^1Ultranationaliste: ^7Aghh ! Sniper ! Sniper ! Feu !"
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS1313
+LANG_FRENCH         "^1Ultranationaliste: ^7Quelque chose ne va pas ici... Je suis sur d'avoir vu quelque chose."
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS2314
+LANG_FRENCH         "^1Ultranationaliste: ^7Quelque chose d'etrange se passe ici..."
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS3315
+LANG_FRENCH         "^1Ultranationaliste: ^7Gardez les yeux ouverts. Je pense avoir vu quelque chose..."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES1316
+LANG_FRENCH         "^1Ultranationaliste: ^7Probablement rien... detendez-vous."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES2317
+LANG_FRENCH         "^1Ultranationaliste: ^7Ne vous inquietez pas autant."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES3318
+LANG_FRENCH         "^1Ultranationaliste: ^7Je ne vois rien, vous devez etre fatigue."
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY4319
+LANG_FRENCH         "^1Ultranationaliste: ^7Qu'est-ce que c'est ? SNIPER !"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY5320
+LANG_FRENCH         "^1Ultranationaliste: ^7Forces ennemies en camouflage, termine !"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY6321
+LANG_FRENCH         "^1Ultranationaliste: ^7Les forces ennemies sont sur nos positions !"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY1322
+LANG_FRENCH         "^1Ultranationaliste: ^7Un soldat est mort ! Il est mort ! Il est mort !"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY2323
+LANG_FRENCH         "^1Ultranationaliste: ^7J'ai trouve un corps ici ! Ennemi a proximite !"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY3324
+LANG_FRENCH         "^1Ultranationaliste: ^7Il est mort. Soldat tue ! Il est tue !"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION1359
+LANG_FRENCH         "^1Ultranationaliste: ^7Qu'est-ce que c'etait ?"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION2360
+LANG_FRENCH         "^1Ultranationaliste: ^7C'est une explosion ?"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION3361
+LANG_FRENCH         "^1Ultranationaliste: ^7Quelque chose a explose ?"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION4362
+LANG_FRENCH         "^1Ultranationaliste: ^7Quelqu'un est blesse ?"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION5363
+LANG_FRENCH         "^1Ultranationaliste: ^7Tout va bien ?"
+
+REFERENCE           SCOUTSNIPER_RU1_SAWSOMETHING41
+LANG_FRENCH         "^1Ultranationaliste: ^7He ! Dmitriy ! J'ai vu un mouvement dans le champ. Va verifier."
+
+REFERENCE           SCOUTSNIPER_RU1_ALLCLEAR43
+LANG_FRENCH         "^1Ultranationaliste: ^7Il n'y a personne ici ! Tout est calme."
+
+REFERENCE           SCOUTSNIPER_RU1_PASSCIG121
+LANG_FRENCH         "^1Ultranationaliste: ^7Passe-moi les cigarettes."
+
+REFERENCE           SCOUTSNIPER_RU1_WAKEUP123
+LANG_FRENCH         "^1Ultranationaliste: ^7C'est ton tour, Yuri ! He, Yuri ! Ne dors pas, c'est ton tour ! Anatoly a augmente la mise de deux dollars."
+
+REFERENCE           SCOUTSNIPER_RU1_TOOEXPENSIVE125
+LANG_FRENCH         "^1Ultranationaliste: ^7Trop cher ? Zakhaev nous paie le double pour ce boulot. De l'argent facile. Pas de danger, pas de risque de fusillade. Qui vient ici ? C'est une zone de catastrophe nucleaire. Tu preferes mourir du cancer ici que d'une balle."
+
+REFERENCE           SCOUTSNIPER_RU1_MERCENARIES127
+LANG_FRENCH         "^1Ultranationaliste: ^7Ces mercenaires ukrainiens sont si incompetents. Ils ont eu ce qu'ils meritaient. N'importe qui avec des competences au combat aurait tue ces chiens sans probleme."
+
+REFERENCE           SCOUTSNIPER_RU1_FIVEDOLLARS129
+LANG_FRENCH         "^1Ultranationaliste: ^7Cinq dollars. Tu veux suivre, relancer la mise ou abandonner comme un faible ?"
+
+REFERENCE           SCOUTSNIPER_RU1_PAIROFJACKS1211
+LANG_FRENCH         "^1Ultranationaliste: ^7J'ai une paire de valets."
+
+REFERENCE           SCOUTSNIPER_RU1_OWNMONEY1215
+LANG_FRENCH         "^1Ultranationaliste: ^7Les chanceux... mais je te paie avec ton propre argent."
+
+REFERENCE           SCOUTSNIPER_RU1_CANTBELIEVE1220
+LANG_FRENCH         "^1Ultranationaliste: ^7Incroyable. J'ai perdu ma partie."
+
+REFERENCE           SCOUTSNIPER_RU1_PAYTHEMAN1221
+LANG_FRENCH         "^1Ultranationaliste: ^7Paye l'homme son argent. Il a gagne honnetement."
+
+REFERENCE           SCOUTSNIPER_RU1_READYTOMOVE181
+LANG_FRENCH         "^1Ultranationaliste: ^7Preparez les camions pour dans deux heures !"
+
+REFERENCE           SCOUTSNIPER_RU1_HELICOPTERONWAY183
+LANG_FRENCH         "^1Ultranationaliste: ^7Helicoptere en route."
+
+REFERENCE           SCOUTSNIPER_RU1_ZONESAFE184
+LANG_FRENCH         "^1Ultranationaliste: ^7Il attend le signal ! La zone d'atterrissage est-elle claire ?"
+
+REFERENCE           SCOUTSNIPER_RU1_OKBRINGIN185
+LANG_FRENCH         "^1Ultranationaliste: ^7D'accord. Faites venir l'helicoptere. Tout est calme ici."
+
+REFERENCE           SCOUTSNIPER_RU1_CHECKTHEWOODS187
+LANG_FRENCH         "^1Ultranationaliste: ^7He, toi ! Contourne la foret et dirige-toi vers l'est. Je ne veux pas que ces chiens sauvages trainent ici."
+
+REFERENCE           SCOUTSNIPER_RU1_REPLACEDBATTERIES189
+LANG_FRENCH         "^1Ultranationaliste: ^7J'ai remplace les piles quand nous etions a Kiev. Ne t'inquiete pas."
+
+REFERENCE           SCOUTSNIPER_RU1_GETSWORSE1810
+LANG_FRENCH         "^1Ultranationaliste: ^7D'apres ce que je comprends, plus on s'eloigne de Tchernobyl, plus la radiation empire la-bas."
+
+REFERENCE           SCOUTSNIPER_RU1_DOGSDONTGETCLOSE1812
+LANG_FRENCH         "^1Ultranationaliste: ^7Crois ce que tu veux ! Mais quand nous partirons, je ne veux pas que ces chiens s'approchent davantage !"
+
+REFERENCE           SCOUTSNIPER_RU1_WHATHAPPENED1815
+LANG_FRENCH         "^1Ultranationaliste: ^7Que s'est-il passe ?"
+
+REFERENCE           SCOUTSNIPER_RU1_SPECIALFORCES1817
+LANG_FRENCH         "^1Ultranationaliste: ^7Forces speciales ukrainiennes ?"
+
+REFERENCE           SCOUTSNIPER_RU1_NUCLEARREACTOR1820
+LANG_FRENCH         "^1Ultranationaliste: ^7C'est a Zakhaev de decider. Notre travail est de proteger les camions et de les deplacer vers le reacteur nucleaire."
+
+REFERENCE           SCOUTSNIPER_RU1_GOTTADOSOMETHING1822
+LANG_FRENCH         "^1Ultranationaliste: ^7Il faut faire quelque chose a ce sujet... ce salaud sans valeur."
+
+REFERENCE           SCOUTSNIPER_RU1_HATEGUARDDUTY1825
+LANG_FRENCH         "^1Ultranationaliste: ^7Je deteste faire la garde, mes pieds me font mal."
+
+REFERENCE           SCOUTSNIPER_RU2_NOTWANDERING25
+LANG_FRENCH         "^1Ultranationaliste: ^7Nous ne sommes pas en train de errer. Nous faisons une patrouille ici, idiot."
+
+REFERENCE           SCOUTSNIPER_RU2_ZAHKAEVSPAYINGGOOD27
+LANG_FRENCH         "^1Ultranationaliste: ^7Ecoute... Zakhaev nous paie bien pour patrouiller ce territoire. Si tu sais ce qui est bon pour toi, tu te tais. Si c'est paranoiaque, c'est son probleme."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY4310
+LANG_FRENCH         "^1Ultranationaliste: ^7Maudit, sniper... Emmenez-le !"
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS1325
+LANG_FRENCH         "^1Ultranationaliste: ^7Quelque chose ne va pas ici... Je suis sur d'avoir vu quelque chose."
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS2326
+LANG_FRENCH         "^1Ultranationaliste: ^7Quelque chose d'etrange se passe ici..."
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS3327
+LANG_FRENCH         "^1Ultranationaliste: ^7Gardez les yeux ouverts. Je pense avoir vu quelque chose..."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES1328
+LANG_FRENCH         "^1Ultranationaliste: ^7Tu as du l'imaginer... detends-toi."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES2329
+LANG_FRENCH         "^1Ultranationaliste: ^7Ouais, tu t'inquietes beaucoup."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES3330
+LANG_FRENCH         "^1Ultranationaliste: ^7Je ne vois rien, je suis probablement fatigue."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY1331
+LANG_FRENCH         "^1Ultranationaliste: ^7Qu'est-ce que c'est ? SNIPER !"
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY2332
+LANG_FRENCH         "^1Ultranationaliste: ^7Contact ! Ennemis en camouflage."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY3332
+LANG_FRENCH         "^1Ultranationaliste: ^7Les ennemis sont sur nos positions !"
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY1334
+LANG_FRENCH         "^1Ultranationaliste: ^7Le camarade est tue ! Soyez prudent ! L'ennemi est quelque part ici."
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY2335
+LANG_FRENCH         "^1Ultranationaliste: ^7J'ai trouve un corps ! L'ennemi doit etre a proximite !"
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY3336
+LANG_FRENCH         "^1Ultranationaliste: ^7Il est mort. Il est tue ! Tue !"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION1354
+LANG_FRENCH         "^1Ultranationaliste: ^7Qu'est-ce que c'est que ca ?! Qu'est-ce que c'est ?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION2355
+LANG_FRENCH         "^1Ultranationaliste: ^7C'est une explosion ?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION3356
+LANG_FRENCH         "^1Ultranationaliste: ^7Quelque chose a explose ?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION4357
+LANG_FRENCH         "^1Ultranationaliste: ^7Quelqu'un est blesse ?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION5358
+LANG_FRENCH         "^1Ultranationaliste: ^7Tout va bien ?!"
+
+REFERENCE           SCOUTSNIPER_RU2_IMONIT42
+LANG_FRENCH         "^1Ultranationaliste: ^7Je vais aller verifier."
+
+REFERENCE           SCOUTSNIPER_RU2_WHOSETURNISIT122
+LANG_FRENCH         "^1Ultranationaliste: ^7C'est a qui le tour ?"
+
+REFERENCE           SCOUTSNIPER_RU2_ANYONESEEDOGS126
+LANG_FRENCH         "^1Ultranationaliste: ^7Quelqu'un a vu des chiens sauvages courir ici ? J'ai entendu dire que les Ukrainiens ont perdu quelques-uns des leurs pres du complexe de natation la nuit derniere."
+
+REFERENCE           SCOUTSNIPER_RU2_YOUIDIOT1213
+LANG_FRENCH         "^1Ultranationaliste: ^7Idiot. On dirait une personne qui peut etre battue par des valets ?"
+
+REFERENCE           SCOUTSNIPER_RU2_CALL1217
+LANG_FRENCH         "^1Ultranationaliste: ^7Appelle."
+
+REFERENCE           SCOUTSNIPER_RU2_BUYMOTORBIKE131
+LANG_FRENCH         "^1Ultranationaliste: ^7Oui, quand j'aurai l'argent pour ce boulot, j'acheterai une moto et je parcourrai cette region."
+
+REFERENCE           SCOUTSNIPER_RU2_AMERICAGOINGTOSTARTWAR132
+LANG_FRENCH         "^1Ultranationaliste: ^7Penses-tu que les Americains vont declencher une guerre contre nous alors que nous sommes faibles ? Ce pays se dirige vers l'effondrement. Tout est possible."
+
+REFERENCE           SCOUTSNIPER_RU2_YESTHATMAKESSENSE133
+LANG_FRENCH         "^1Ultranationaliste: ^7Oui, ca a du sens."
+
+REFERENCE           SCOUTSNIPER_RU2_ISEE134
+LANG_FRENCH         "^1Ultranationaliste: ^7Entendu."
+
+REFERENCE           SCOUTSNIPER_RU2_YESIUNDERSTAND135
+LANG_FRENCH         "^1Ultranationaliste: ^7Oui, je comprends."
+
+REFERENCE           SCOUTSNIPER_RU2_ILLTAKECAREOFIT136
+LANG_FRENCH         "^1Ultranationaliste: ^7Oui, camarade commandant. Ca sera fait."
+
+REFERENCE           SCOUTSNIPER_RU2_HAVENTSEENANYONE141
+LANG_FRENCH         "^1Ultranationaliste: ^7Non, je n'ai vu personne. Je vous tiendrai au courant si quelque chose se passe."
+
+REFERENCE           SCOUTSNIPER_RU2_AFRICANOREUROPEAN142
+LANG_FRENCH         "^1Ultranationaliste: ^7Hmm, ouais, bonne question : africaine ou europeenne ?"
+
+REFERENCE           SCOUTSNIPER_RU2_WHAT143
+LANG_FRENCH         "^1Ultranationaliste: ^7Quoi ?"
+
+REFERENCE           SCOUTSNIPER_RU2_TIMEFORSHIFTCHANGE144
+LANG_FRENCH         "^1Ultranationaliste: ^7Dmitriy, il est temps de changer de poste de garde. Tu aurais du etre la il y a 15 minutes. Ou vas-tu ?"
+
+REFERENCE           SCOUTSNIPER_RU2_COMEIN145
+LANG_FRENCH         "^1Ultranationaliste: ^7Dmitriy, rentre, reception."
+
+REFERENCE           SCOUTSNIPER_RU2_LOSTCONTACTDMITRI146
+LANG_FRENCH         "^1Ultranationaliste: ^7Nikolai, j'ai perdu le contact avec Dmitriy. Sa radio est cassee."
+
+REFERENCE           SCOUTSNIPER_RU2_SENDSOMEONETOCHECK147
+LANG_FRENCH         "^1Ultranationaliste: ^7Envoie quelqu'un verifier."
+
+REFERENCE           SCOUTSNIPER_RU2_ANDREIBRINGINGFOOD152
+LANG_FRENCH         "^1Ultranationaliste: ^7Quand est-ce qu'Andrei apportera la nourriture ?"
+
+REFERENCE           SCOUTSNIPER_RU2_QUICKLYASPOSSIBLE154
+LANG_FRENCH         "^1Ultranationaliste: ^7Faisons-le aussi rapidement que possible. Les cadavres commencent a se decomposer."
+
+REFERENCE           SCOUTSNIPER_RU2_YESCOMRADE182
+LANG_FRENCH         "^1Ultranationaliste: ^7Oui, camarade commandant."
+
+REFERENCE           SCOUTSNIPER_RU2_CLEARROTORBLADES186
+LANG_FRENCH         "^1Ultranationaliste: ^7Attention aux pales de l'helicoptere."
+
+REFERENCE           SCOUTSNIPER_RU2_RADIATIONDOSIMETERS188
+LANG_FRENCH         "^1Ultranationaliste: ^7Es-tu sur que ces dosimetres de radiation fonctionnent ? Je ne veux pas tomber malade."
+
+REFERENCE           SCOUTSNIPER_RU2_DONTBELIEVEATALL1811
+LANG_FRENCH         "^1Ultranationaliste: ^7Je n'y crois pas du tout."
+
+REFERENCE           SCOUTSNIPER_RU2_OK1813
+LANG_FRENCH         "^1Ultranationaliste: ^7D'accord."
+
+REFERENCE           SCOUTSNIPER_RU2_PROFESSIONALJOB1816
+LANG_FRENCH         "^1Ultranationaliste: ^7Certains de nos gars ont ete tues. On dirait un travail professionnel."
+
+REFERENCE           SCOUTSNIPER_RU2_POSSIBLYSPETZNAZ1818
+LANG_FRENCH         "^1Ultranationaliste: ^7Possiblement, peut-etre que c'etait Spetsnaz. Quelqu'un n'aime pas Zakhaev."
+
+REFERENCE           SCOUTSNIPER_RU2_BEBACKINAMINUTE1821
+LANG_FRENCH         "^1Ultranationaliste: ^7Je vais aux toilettes pendant une minute."
+
+REFERENCE           SCOUTSNIPER_RU2_IMSOBORED1823
+LANG_FRENCH         "^1Ultranationaliste: ^7Tristesse... Peut-etre jouer a la roulette russe ?"
+
+REFERENCE           SCOUTSNIPER_RU2_GUESSITWASNOTHING1826
+LANG_FRENCH         "^1Ultranationaliste: ^7Je suppose que c'etait rien, peut-etre que c'etait le vent, je voyais quelque chose."
+
+REFERENCE           SCOUTSNIPER_RU4_SNIPER312
+LANG_FRENCH         "^1Ultranationaliste: ^7Aghh, Sniper !"
+
+REFERENCE           SCOUTSNIPER_RU4_TOOEXPENSIVE124
+LANG_FRENCH         "^1Ultranationaliste: ^7Trop cher pour moi. Je passe."
+
+REFERENCE           SCOUTSNIPER_RU4_RADIATIONDOGS128
+LANG_FRENCH         "^1Ultranationaliste: ^7Les radiations rendent ces chiens fous et forts. Tu les sous-estimes, camarade. Quel est le pari ?"
+
+REFERENCE           SCOUTSNIPER_RU4_TWENTYDOLLARS1210
+LANG_FRENCH         "^1Ultranationaliste: ^7Voyons ce que tu as. Vingt dollars. Alors, tu bluffes."
+
+REFERENCE           SCOUTSNIPER_RU4_THREEKINGS1212
+LANG_FRENCH         "^1Ultranationaliste: ^7Trois rois."
+
+REFERENCE           SCOUTSNIPER_RU4_WELLPLAYEDCOMRADE1214
+LANG_FRENCH         "^1Ultranationaliste: ^7Bien joue, camarade ! Tu veux boire ?"
+
+REFERENCE           SCOUTSNIPER_RU4_SEEABOUTTHAT1216
+LANG_FRENCH         "^1Ultranationaliste: ^7Nous verrons ca. Distribuez les cartes."
+
+REFERENCE           SCOUTSNIPER_RU4_RAISE1218
+LANG_FRENCH         "^1Ultranationaliste: ^7Relance."
+
+REFERENCE           SCOUTSNIPER_RU4_IFOLD1219
+LANG_FRENCH         "^1Ultranationaliste: ^7Je me retire du jeu."
+
+REFERENCE           SCOUTSNIPER_RU4_THISONESHEAVY151
+LANG_FRENCH         "^1Ultranationaliste: ^7Wow ! Celui-ci est lourd !"
+
+REFERENCE           SCOUTSNIPER_RU4_DIDNTEATBREAKFAST153
+LANG_FRENCH         "^1Ultranationaliste: ^7Je ne sais pas, mais j'espere bientot. J'ai tellement faim, je n'ai pas mange depuis le petit dejeuner."
+
+REFERENCE           SCOUTSNIPER_RU4_TAKENZAKHAEVSOFFER155
+LANG_FRENCH         "^1Ultranationaliste: ^7Fous... Mieux vaut accepter l'offre de Zakhaev."
+
+REFERENCE           SCOUTSNIPER_RU4_MAYHAVEPROBLEM1814
+LANG_FRENCH         "^1Ultranationaliste: ^7Je viens de recevoir un message du renseignement ! Il semble que nous ayons un probleme !"
+
+REFERENCE           SCOUTSNIPER_RU4_CANCELTRANSACTIONS1819
+LANG_FRENCH         "^1Ultranationaliste: ^7Peut-etre annuler la transaction avec les Ukrainiens ?"
+
+REFERENCE           SCOUTSNIPER_RU4_CANTWAITFORSHIFTEND1824
+LANG_FRENCH         "^1Ultranationaliste: ^7Je ne peux pas attendre la fin du service. Au moins, Zakhaev paye bien pour rester ici."
+
+REFERENCE           SCOUTSNIPER_RU4_HOPEITDOESNTRAIN1827
+LANG_FRENCH         "^1Ultranationaliste: ^7J'espere qu'il ne pleuvra pas, j'ai oublie mon impermeable."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTONE49
+LANG_FRENCH         "^2Cpt. MacMillan: ^7J'en ai un."
+
+REFERENCE           SNIPERESCAPE_MCM_TANGODOWN410
+LANG_FRENCH         "^2Cpt. MacMillan: ^7Ennemi à terre."
+
+REFERENCE           SNIPERESCAPE_MCM_HESDOWN411
+LANG_FRENCH         "^2Cpt. MacMillan: ^7Il est à terre."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTANOTHER412
+LANG_FRENCH         "^2Cpt. MacMillan: ^7Encore un."
+
+REFERENCE           SNIPERESCAPE_MCM_TARGETNEUTRALIZED413
+LANG_FRENCH         "^2Cpt. MacMillan: ^7Cible neutralisée."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTHIM414
+LANG_FRENCH         "^2Cpt. MacMillan: ^7Je l'ai eu."
+
+REFERENCE           SNIPERESCAPE_RUL_NEARPOOL51
+LANG_FRENCH         "^1Haut-parleur: ^7Les fugitifs sont près du complexe de la piscine ! Envoyez les Groupes A et B pour les intercepter maintenant !"
+
+REFERENCE           SNIPERESCAPE_RUL_AMUSEMENTPK52
+LANG_FRENCH         "^1Haut-parleur: ^7Ils se dirigent vers le parc d'attractions ! Nous avons besoin de renforts dans le secteur trois !"
+
+REFERENCE           SNIPERESCAPE_RUL_HOTELPOLISSA53
+LANG_FRENCH         "^1Haut-parleur: ^7Ennemi repéré près de l'Hôtel "Polissia" ! Je répète, des soldats ennemis se déplacent depuis l'Hôtel "Polissia" !"
+
+REFERENCE           SNIPERESCAPE_RUL_CUTOFFEXITS54
+LANG_FRENCH         "^1Haut-parleur: ^7Ils sont entrés dans le Bloc D de l'appartement, nous ne pouvons pas les suivre là-dedans. Coupez toutes les sorties et arrêtez-les au parc."
+
+REFERENCE           SNIPERESCAPE_RUL_SNIPERSINAREA55
+LANG_FRENCH         "^1Haut-parleur: ^7Des tireurs d'élite ennemis sont dans la zone ! Ils se cachent dans les immeubles d'appartements ! Trouvez-les !"
+
+REFERENCE           SNIPERESCAPE_RUL_SOUTHOFCITY56
+LANG_FRENCH         "^1Haut-parleur: ^7Équipe cinq, fouillez la zone de la piscine ! Équipe six, fouillez les bâtiments au sud de la ville !"
+
+REFERENCE           SNIPERESCAPE_RUL_COVERWOODS57
+LANG_FRENCH         "^1Haut-parleur: ^7Ils pourraient se diriger vers l'extrémité nord de la ville ! Envoyez deux équipes de plus pour couvrir les bois au nord !"
+
+REFERENCE           SNIPERESCAPE_RUL_MOVEMOVE58
+LANG_FRENCH         "^1Haut-parleur: ^7Les tireurs d'élite ennemis ont été repérés se déplaçant à travers les cours entre les immeubles d'appartements ! Bougez ! Bougez !"
+
+REFERENCE           VASSAULT_PRI_KAMAROVSMAN111
+LANG_FRENCH         "^2Capitaine Price: ^7Voilà l'homme de Kamarov, on y va."
+
+REFERENCE           VASSAULT_RU1_READYAIMFIRE12
+LANG_FRENCH         "^1Ultranationaliste: ^7Ce village servira d'exemple pour vous tous. Vous avez tous aidé et contribué aux crimes des autorités corrompues ! À cause de gens comme vous, notre grande nation s'est affaiblie ! Et maintenant, vous récolterez les fruits de votre trahison."
+
+REFERENCE           VASSAULT_RU1_KILLTHEM13
+LANG_FRENCH         "^1Ultranationaliste: ^7Prêts... Viser... Feu !"
+
+REFERENCE           VASSAULT_RU1_MAKEEXAMPLE14
+LANG_FRENCH         "^1Ultranationaliste: ^7Tuez-les ! Tuez-les tous !"
+
+REFERENCE           VASSAULT_RU1_DIEYOUTRAITOR15
+LANG_FRENCH         "^1Ultranationaliste: ^7Meurs traître !"
+
+REFERENCE           VASSAULT_RU1_EXECUTETHEM16
+LANG_FRENCH         "^1Ultranationaliste: ^7Exécutez-les ! Suivez l'ordre maintenant !"
+
+REFERENCE           VASSAULT_KAA_WASNTME1452
+LANG_FRENCH         "^1Khaled Al-Asad: ^7Ce n'était pas moi !"
+
+REFERENCE           VASSAULT_KAA_WASNTME2454
+LANG_FRENCH         "^1Khaled Al-Asad: ^7Ce n'était pas moi !"
+
+REFERENCE           VILLAGEDEF_RUL_SURRENDERATONCE11
+LANG_FRENCH         "^1Haut-parleur: ^7Rendez-vous et vos vies seront épargnées. Vu les circonstances, je suis sûr que vous ferez le bon choix."
+
+REFERENCE           VILLAGEDEF_RUL_DROPYOURWEAPONS12
+LANG_FRENCH         "^1Haut-parleur: ^7Lâchez vos armes et rendez-vous. Aucun mal ne vous sera fait si vous capitulez."
+
+REFERENCE           VILLAGEDEF_RUL_WEKNOWYOUREHIDING13
+LANG_FRENCH         "^1Haut-parleur: ^7Nous savons que vous vous cachez dans le village. Vous êtes encerclés, vous ne pouvez pas vous enfuir. Evitons le bain de sang et rendez-vous."
+
+REFERENCE           VILLAGEDEF_RU1_WHATWASTHAT112
+LANG_FRENCH         "^1Ultranationaliste : ^7Qu'était-ce ?"
+
+REFERENCE           VILLAGEDEF_RU1_NOICANTMOVE117
+LANG_FRENCH         "^1Ultranationaliste : ^7Je ne peux pas bouger ! Où sont mes jambes ?! Quelqu'un m'aide !"
+
+REFERENCE           VILLAGEDEF_RU1_ICANTSEETHEM121
+LANG_FRENCH         "^1Ultranationaliste : ^7Ils doivent être là-haut sur la colline, mais je ne les vois pas."
+
+REFERENCE           VILLAGEDEF_RU1_GOAROUNDWEST129
+LANG_FRENCH         "^1Ultranationaliste : ^7Contournez par le flanc à l'ouest !"
+
+REFERENCE           VILLAGEDEF_RU1_MEDIC131
+LANG_FRENCH         "^1Ultranationaliste : ^7MÉDECIN !"
+
+REFERENCE           VILLAGEDEF_RU1_MUSTBETWOPLATOONS135
+LANG_FRENCH         "^1Ultranationaliste : ^7Il pourrait y avoir deux pelotons !"
+
+REFERENCE           VILLAGEDEF_RU2_DIDYOUHEARTHAT113
+LANG_FRENCH         "^1Ultranationaliste : ^7Tu as entendu ça ?"
+
+REFERENCE           VILLAGEDEF_RU2_UNDERHEAVYFIRE122
+LANG_FRENCH         "^1Ultranationaliste : ^7Nous sommes sous un feu nourri ! Nous avons besoin de renforts !"
+
+REFERENCE           VILLAGEDEF_RU2_PUTUPSMOKESCREEN132
+LANG_FRENCH         "^1Ultranationaliste : ^7Déployez l'écran de fumée ! Lancez vos grenades fumigènes !"
+
+REFERENCE           VILLAGEDEF_RU3_WHATTHEHELL114
+LANG_FRENCH         "^1Ultranationaliste : ^7Qu'est-ce que c'est que ça ?!"
+
+REFERENCE           VILLAGEDEF_RU4_HELPMEIMWOUNDED116
+LANG_FRENCH         "^1Ultranationaliste : ^7Hé, à l'aide ! Aidez-moi ! Je suis blessé ! Ahhh !"
+
+REFERENCE           VILLAGEDEF_RU4_WHERETHEYSHOOTING120
+LANG_FRENCH         "^1Ultranationaliste : ^7Où ils tirent ?"
+
+REFERENCE           VILLAGEDEF_RU4_REINFORCEMENTS123
+LANG_FRENCH         "^1Ultranationaliste : ^7Des renforts arrivent !"
+
+REFERENCE           VILLAGEDEF_RU4_IMHITMEDIC130
+LANG_FRENCH         "^1Ultranationaliste : ^7Je suis touché ! Médecin ! MÉDECIN !"
+
+REFERENCE           VILLAGEDEF_SAS3_TARGETDOWN120
+LANG_FRENCH         "^2Gaz: ^7Cible à terre."
+
+REFERENCE           VILLAGEDEF_SAS3_GOTHIM121
+LANG_FRENCH         "^2Gaz: ^7Je l'ai eu."
+
+REFERENCE           VILLAGEDEF_SAS3_TARGETELIMINATED122
+LANG_FRENCH         "^2Gaz: ^7Cible éliminée."
+
+REFERENCE           VILLAGEDEF_GRG_NEEDARIDE81
+LANG_FRENCH         "^2Sergeant Griggs: ^7J'ai appris que vous aviez besoin de faire un tour !"
+
+REFERENCE           VILLAGEDEF_GRG_GETONBOARD83
+LANG_FRENCH         "^2Sergeant Griggs: ^7Montez ! Allez ! Allez ! Allez !"
+
+REFERENCE           VILLAGEDEF_GRG_LETSGO84
+LANG_FRENCH         "^2Sergeant Griggs: ^7En avant, en avant !"
+
+REFERENCE           VILLAGEDEF_GRG_WEREALLABOARD85
+LANG_FRENCH         "^2Sergeant Griggs: ^7Tout le monde est là ! Allez ! Allez !"
+
+ENDMARKER

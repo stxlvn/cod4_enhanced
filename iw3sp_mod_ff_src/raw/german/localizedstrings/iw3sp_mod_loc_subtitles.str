@@ -1,0 +1,1241 @@
+VERSION             "1"
+CONFIG              "C:\trees\cod2\bin\StringEd.cfg"
+FILENOTES           "Additional subtitles for some voice lines"
+
+REFERENCE           AC130_PRI_TOWNTOEAST12
+LANG_GERMAN         "^2Captain Price: ^7Wildfire, Wir bewegen uns die Straße entlang auf eine Stadt Richtung Osten zu. Haben Sie Sichtkontakt?"
+
+REFERENCE           AFTERMATH_MMR_ROMEO11
+LANG_GERMAN         "^2US-Militärfunk: ^7Flash. NBC-1 Nuklear. Bravo - NB-0 6-2, 6-3-4. Charlie - Grad Gitter. Hotel - Oberfläche. Juliet - 90 Sekunden. Lima - 10 Grad. Romeo - 2.3 Grad Celsius."
+
+REFERENCE           AFTERMATH_FMR_EPICENTER12
+LANG_GERMAN         "^2US-Militärfunk: ^7Achtung, nukleare Detonation, radioaktiver Niederschlag im Umkreis von zwölf Kilometern, Epizentrum bei N-B-0-5-8-6-8-0."
+
+REFERENCE           AFTERMATH_FMR_EVACUATION13
+LANG_GERMAN         "^2US-Militärfunk: ^7Sofortige Evakuierung aller Personen innerhalb der Kernzone angeordnet."
+
+REFERENCE           AFTERMATH_FMR_CONTCENTERS14
+LANG_GERMAN         "^2US-Militärfunk: ^7Kontaminationszentren werden eingerichtet und sind innerhalb von zwei Stunden voll einsatzbereit."
+
+REFERENCE           AFTERMATH_FMR_DOSIMETER15
+LANG_GERMAN         "^2US-Militärfunk: ^7Das Personal wird angewiesen, den IM-9-3-8 an die Dosimeter zu überprüfen und den Grad der Strahlungskontaminierung zu messen."
+
+REFERENCE           AFTERMATH_FMR_ELEVATEDLEVELS16
+LANG_GERMAN         "^2US-Militärfunk: ^7Personen mit stark erhöhten Werten werden aufgefordert, sich schnellstmöglich unter medizinischer Aufsicht zu begeben."
+
+REFERENCE           AIRLIFT_VSQ_LETSGO73
+LANG_GERMAN         "^2Lt. Vasquez: ^7Abrücken! Los doch! Los doch!"
+
+REFERENCE           AIRLIFT_VSQ_HANGON115
+LANG_GERMAN         "^2Lt. Vasquez: ^7Festhalten, Männer!"
+
+REFERENCE           AIRLIFT_COP_ROGERTHAT113
+LANG_GERMAN         "^2Co Pilot: ^7Verstanden."
+
+REFERENCE           AIRLIFT_HCC_LETSGO43
+LANG_GERMAN         "^2Truppleiter: ^7Los! Los! Aufgepasst! Gehen wir!"
+
+REFERENCE           AIRLIFT_HCC_DOWNRAMP44
+LANG_GERMAN         "^2Truppleiter: ^7Die Rampe runter! Bewegung! Los! Los! Los!"	
+
+REFERENCE           AIRLIFT_HCC_WHEELSUP75
+LANG_GERMAN         "^2Truppleiter: ^7Bewegung! Wir müssen in 10 Sekunden auf den Rädern sein! Los!"
+
+REFERENCE           AIRLIFT_HCC_WHEELSUP75B
+LANG_GERMAN         "^2Truppleiter: ^7Bewegung. Bewegung! Es geht los."
+
+REFERENCE           AIRLIFT_GM1_FIREBALCONY51
+LANG_GERMAN         "^2Marine: ^7Mörserbeschuss! Achtung!"
+
+REFERENCE           AIRLIFT_GM2_FIREBALCONY61
+LANG_GERMAN         "^2Marine: ^7Auf dem Balkon schießen."
+
+REFERENCE           AIRLIFT_GM3_REINFORCEMENTS62
+LANG_GERMAN         "^2Marine: ^7Verstärkungen seilen sich im Osten ab!"
+
+REFERENCE           AIRLIFT_GM3_HELLYEAH72
+LANG_GERMAN         "^2Marine: ^7Und ob."
+
+REFERENCE           AIRLIFT_GM4_HELLYEAH77
+LANG_GERMAN         "^2Marine: ^7Danke fürs Mitnehmen!"
+
+REFERENCE           AIRLIFT_HQR_ALLCALLSIGNS12
+LANG_GERMAN         "^2Kommando: ^7An alle, hier Adlerauge. Wir sehen feindliche Panzer im Palmenhain westlich des Flusses."
+
+REFERENCE           AIRLIFT_HQR_HOSTILESADVANCING101
+LANG_GERMAN         "^2Kommando: ^7Vorsicht, Zwei-Fünf, Feinde kommen zur Absturzstelle südwestlich eurer Position."
+
+REFERENCE           AIRLIFT_HQR_CONFIRMED114
+LANG_GERMAN         "^2Kommando: ^7An alle US-Streitkräfte, wir haben eine bestätigte nukleare Bedrohung in der Stadt. Einsatzteams sind vor Ort und versuchen zu entschärfen. Wiederhole: Wir haben..."
+
+REFERENCE           AIRLIFT_MHP_INFORMATION11
+LANG_GERMAN         "^2Outlaw Zwei-Fünf: ^7In Formation.\nAnnäherung ans Ziel. Dreißig Sekunden."
+
+REFERENCE           AIRLIFT_MHP_TAKINGFIRE21
+LANG_GERMAN         "^2Outlaw Zwei-Fünf: ^7Beim beschossen."
+
+REFERENCE           AIRLIFT_MHP_RPGROOFTOPS22
+LANG_GERMAN         "^2Outlaw Zwei-Fünf: ^7Raketenwerfer auf den Dächern."
+
+REFERENCE           AIRLIFT_MHP_HOSTILESRPGS23
+LANG_GERMAN         "^2Outlaw Zwei-Fünf: ^7Feinde mit Raketenwerfer."
+
+REFERENCE           AIRLIFT_MHP_GROUNDINFANTRY24
+LANG_GERMAN         "^2Outlaw Zwei-Fünf: ^7Mehr Infanterie, aufpassen."
+
+REFERENCE           AIRLIFT_MHP_WEVEGOTRPGS25
+LANG_GERMAN         "^2Outlaw Zwei-Fünf: ^7Wir haben Raketenwerfer auf den Dächern."
+
+REFERENCE           AIRLIFT_MHP_LIGHTARMOR26
+LANG_GERMAN         "^2Outlaw Zwei-Fünf: ^7Leichtpanzer. Ausschalten, Jackson."
+
+REFERENCE           AIRLIFT_MHP_ANTIAIRROOFTOP27
+LANG_GERMAN         "^2Outlaw Zwei-Fünf: ^7Luftabwehrkanone auf dem Dach."
+
+REFERENCE           AIRLIFT_MHP_ANTIAIRGROUND28
+LANG_GERMAN         "^2Outlaw Zwei-Fünf: ^7Luftabwehrkanone am Boden."
+
+REFERENCE           AIRLIFT_MHP_INFORCHOP112
+LANG_GERMAN         "^2Outlaw Zwei-Fünf: ^7Ladies und Gentlemen, hier spricht ihr Kapitän. Wir erwarten ein paar Turbulenzen! Festhalten! Jake, gib mir vollen Schub."
+
+REFERENCE           AIRPLANE_TER_ILLKILLHIM83
+LANG_GERMAN         "^1Ultranationalist: ^7Zurück! Ich blase ihm den Kopf weg! Ich sagte, geh zurück!"
+
+REFERENCE           AIRPLANE_SAS1_TANGODOWN41
+LANG_GERMAN         "^2Echo Eins-Eins: ^7Ziel erledigt!"
+
+REFERENCE           AIRPLANE_SAS1_XRAYDOWN42
+LANG_GERMAN         "^2Echo Eins-Eins: ^7Ziel erledigt!"
+
+REFERENCE           AIRPLANE_SAS1_HOSTILENEUT43
+LANG_GERMAN         "^2Echo Eins-Eins: ^7Feind neutralisiert!"
+
+REFERENCE           AIRPLANE_SAS1_TARGNEUT44
+LANG_GERMAN         "^2Echo Eins-Eins: ^7Ziel neutralisiert!"
+
+REFERENCE           AIRPLANE_SAS1_AREACLEAR45
+LANG_GERMAN         "^2Echo Eins-Eins: ^7Gebiet gesichert!"
+
+REFERENCE           AIRPLANE_SAS1_SECTIONCLEAR46
+LANG_GERMAN         "^2Echo Eins-Eins: ^7Sektion gesichert!"
+
+REFERENCE           AIRPLANE_SAS1_CLEAR47
+LANG_GERMAN         "^2Echo Eins-Eins: ^7Sicher!"
+
+REFERENCE           AIRPLANE_RU4_DONTHURTME93
+LANG_GERMAN         "^2Russischer Zivilist: ^7Ich muss zu einem Telefon gelangen. Was passiert hier? Ich verdiene das nicht..."
+
+REFERENCE           AIRPLANE_RU4_GETTOAPHONE94
+LANG_GERMAN         "^2Russischer Zivilist: ^7Ich muss zu einem Telefon gelangen. Was passiert hier? Ich verdiene das nicht..."
+
+REFERENCE           AIRPLANE_RU4_NOPARACHUTE96
+LANG_GERMAN         "^2Russischer Zivilist: ^7Was? Nein!... Warte! Was machst du? Ich habe keinen Fallschirm..."
+
+REFERENCE           AIRPLANE_GAZ_OKGETREADY151
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Ok, bereitmachen."
+
+REFERENCE           AIRPLANE_GAZ_STANDBY16
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Moment...moment...los!"
+
+REFERENCE           AIRPLANE_GAZ_WEAPONSFREE22
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Waffenfreigabe."
+
+REFERENCE           AIRPLANE_GAZ_MOVE24
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Bewegung."
+
+REFERENCE           AIRPLANE_GAZ_MOVEUP25
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Vorwärts."
+
+REFERENCE           AIRPLANE_GAZ_KEEPMOVING26
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Immer weiter!"
+
+REFERENCE           AIRPLANE_GAZ_STAIRWAYCLEAR27
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Treppen gesichert!"
+
+REFERENCE           AIRPLANE_GAZ_TANGODOWN31
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Ziel erledigt!"
+
+REFERENCE           AIRPLANE_GAZ_XRAYDOWN32
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Ziel erledigt!"
+
+REFERENCE           AIRPLANE_GAZ_HOSTILENEUT33
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Feind neutralisiert!"
+
+REFERENCE           AIRPLANE_GAZ_TARGNEUT34
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Ziel neutralisiert!"
+
+REFERENCE           AIRPLANE_GAZ_AREACLEAR35
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Gebiet gesichert!"
+
+REFERENCE           AIRPLANE_GAZ_SECTIONCLEAR36
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Sektion gesichert!"
+
+REFERENCE           AIRPLANE_GAZ_CLEAR37
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Sicher!"
+
+REFERENCE           AIRPLANE_SAS4_ONEALPHA21
+LANG_GERMAN         "^2Charlie Eins-Eins: ^7Ziel erledigt in Sektion eins Alpha."
+
+REFERENCE           AIRPLANE_SAS4_MULTIPLECONT23
+LANG_GERMAN         "^2Charlie Eins-Eins: ^7Mehrere Kontakte."
+
+REFERENCE           AIRPLANE_SAS4_TANGODOWN51
+LANG_GERMAN         "^2Charlie Eins-Eins: ^7Ziel erledigt!"
+
+REFERENCE           AIRPLANE_SAS4_XRAYDOWN52
+LANG_GERMAN         "^2Charlie Eins-Eins: ^7Ziel erledigt!"
+
+REFERENCE           AIRPLANE_SAS4_HOSTILENEUT53
+LANG_GERMAN         "^2Charlie Eins-Eins: ^7Feind neutralisiert!"
+
+REFERENCE           AIRPLANE_SAS4_TARGNEUT54
+LANG_GERMAN         "^2Charlie Eins-Eins: ^7Ziel neutralisiert!"
+
+REFERENCE           AIRPLANE_SAS4_AREACLEAR55
+LANG_GERMAN         "^2Charlie Eins-Eins: ^7Gebiet gesichert!"
+
+REFERENCE           AIRPLANE_SAS4_SECTIONCLEAR56
+LANG_GERMAN         "^2Charlie Eins-Eins: ^7Sektion gesichert!"
+
+REFERENCE           AIRPLANE_SAS4_CLEAR57
+LANG_GERMAN         "^2Charlie Eins-Eins: ^7Sicher!"
+
+REFERENCE           AIRPLANE_GAZ_SEEYA101
+LANG_GERMAN         "^2Romeo Eins-Eins: ^7Mission erfüllt. Bis zum nächsten Mal, Kumpel!"
+
+REFERENCE           AMBUSH_PRI_NOTBAD12
+LANG_GERMAN         "^2Captain Price: ^7Nicht schlecht, Kamarov. Das könnte klappen. Vulture Eins-Sechs, wir sind in Position."
+
+REFERENCE           AMBUSH_GRG_NOTHINGLIKERUSSIAN23
+LANG_GERMAN         "^2SSgt. Griggs: ^7Gut, dass du hier oben bist, denn du siehst nicht aus wie ein Russe."
+
+REFERENCE           AMBUSH_GRG_OHNO13102
+LANG_GERMAN         "^2SSgt. Griggs: ^7Oh, Scheiße!"
+
+REFERENCE           AMBUSH_GRG_OHNO23103
+LANG_GERMAN         "^2SSgt. Griggs: ^7Scheiße!"
+
+REFERENCE           AMBUSH_KMR_BESTWAYIN11
+LANG_GERMAN         "^2Sgt. Kamarov: ^7Das ist der beste Weg rein.\nDer Fahrzeugkontrollpunkt ist direkt vor uns."
+
+REFERENCE           AMBUSH_RU1_PAPERSWHATPAPERS32
+LANG_GERMAN         "^1Ultranationalist: ^7Papiere, wovon redest du?"
+
+REFERENCE           AMBUSH_RU1_FATPOLITICIAN33
+LANG_GERMAN         "^1Ultranationalist: ^7Wer zum Teufel denkst du, wer du bist, da stehst du wie ein fetter Politiker und verlangst etwas von mir?"
+
+REFERENCE           AMBUSH_RU1_WHATAREYOUWAITINGFOR34
+LANG_GERMAN         "^1Ultranationalist: ^7Worauf wartest du, wie ein Idiot? Öffne das Tor!"
+
+REFERENCE           AMBUSH_RU2_PAPERSPLEASE31
+LANG_GERMAN         "^2Russischer Loyalist: ^7Papiere, bitte!"
+
+REFERENCE           AMBUSH_RU2_ILLDOTHATRIGHTNOW35
+LANG_GERMAN         "^2Russischer Loyalist: ^7Entschuldigen Sie, Genosse Commander. Ich mache das sofort."
+
+REFERENCE           AMBUSH_SOZ_STOPTHEBLOODSHED81
+LANG_GERMAN         "^1Victor Zakhaev: ^7Glaubst du, das wird das Blutvergießen stoppen? Glaubst du, das wird meinen Vater stoppen?"
+
+REFERENCE           AMBUSH_SOZ_DEADSOONANYWAY85
+LANG_GERMAN         "^1Victor Zakhaev: ^7Ihr werdet sowieso bald alle tot sein."
+
+REFERENCE           AMBUSH_SOZ_GOFYOURSELF87
+LANG_GERMAN         "^1Victor Zakhaev: ^7Fick dich selbst."
+
+REFERENCE           ARMADA_GM1_GOGOGO42
+LANG_GERMAN         "^2Marine: ^7Los! Los! Los!"
+
+REFERENCE           ARMADA_GM1_BREACHING56
+LANG_GERMAN         "^2Marine: ^7Gehen rein, gehen rein!"
+
+REFERENCE           ARMADA_GM1_BREACHINGBREACHING84
+LANG_ENGLISH        "^2Marine: ^7Gehen rein, gehen rein!"
+
+REFERENCE           ARMADA_GM1_GOESOURBOYS102
+LANG_GERMAN         "^2Marine: ^7Jaaa. Da kommen unsere Jungs."
+
+REFERENCE           ARMADA_GM1_CLEAR1114
+LANG_GERMAN         "^2Marine: ^7Sicher!"
+
+REFERENCE           ARMADA_GM2_MOVEITMOVEIT43
+LANG_GERMAN         "^2Marine: ^7Bewegung, Bewegung!"
+
+REFERENCE           ARMADA_GM2_OORAH103
+LANG_GERMAN         "^2Marine: ^7Oo-rah..."
+
+REFERENCE           ARMADA_GM3_BLOCKINGPOSITIONS51
+LANG_GERMAN         "^2Marine: ^7Die Blockadestellungen errichten. Los!"
+
+REFERENCE           ARMADA_GM3_OORAH104
+LANG_GERMAN         "^2Marine: ^7Ooo-rah..."
+
+REFERENCE           ARMADA_FHP_COPYSTRIKERSIXFOUR12
+LANG_GERMAN         "^2Black Hawk Pilot: ^7Verstanden, Striker Sechs-Vier"
+
+REFERENCE           ARMADA_FHP_COPY14
+LANG_GERMAN         "^2Black Hawk Pilot: ^7Verstanden."
+
+REFERENCE           ARMADA_FHP_ROGERTHAT22
+LANG_GERMAN         "^2Black Hawk Pilot: ^7Verstanden, wir haben Raketenwerfer da unten."
+
+REFERENCE           ARMADA_FHP_GOTVISUAL31
+LANG_GERMAN         "^2Black Hawk Pilot: ^7Habe Sichtkontakt zum Ziel."
+
+REFERENCE           ARMADA_HP1_SHORELINEINVIEW11
+LANG_GERMAN         "^2Striker Sechs-Vier: ^7Die Küste kommt in Sichtweite."
+
+REFERENCE           ARMADA_HP1_FEETDRYTENSECONDS13
+LANG_GERMAN         "^2Striker Sechs-Vier: ^7Trockene Füße in Zehn Sekunden."
+
+REFERENCE           ARMADA_HP1_TAKINGFIREHERE21
+LANG_GERMAN         "^2Striker Sechs-Vier: ^7Wir stehen unter Beschuss..."
+
+REFERENCE           ARMADA_HP1_THATWASCLOSE23
+LANG_GERMAN         "^2Striker Sechs-Vier: ^7Scheiße, das war knapp!"
+
+REFERENCE           ARMADA_HP1_COPYTHAT32
+LANG_GERMAN         "^2Striker Sechs-Vier: ^7Verstanden."
+
+REFERENCE           ARMADA_HP1_FIVESECONDS33
+LANG_GERMAN         "^2Striker Sechs-Vier: ^7Fünf Sekunden."
+
+REFERENCE           ARMADA_HP1_STANDBYGREENLIGHT34
+LANG_GERMAN         "^2Striker Sechs-Vier: ^7Bereitmachen zum Start."
+
+REFERENCE           ARMADA_VSQ_DOWNTHEROPES41
+LANG_GERMAN         "^2Lt. Vasquez: ^7Abseilen! Los! Los!"
+
+REFERENCE           ARMADA_VSQ_BREACHING57
+LANG_GERMAN         "^2Lt. Vasquez: ^7Gehen rein, gehen rein!"
+
+REFERENCE           ARMADA_VSQ_GOGOGO58
+LANG_GERMAN         "^2Lt. Vasquez: ^7Los! Los!"
+
+REFERENCE           ARMADA_VSQ_DOIT83
+LANG_GERMAN         "^2Lt. Vasquez: ^7Und los!"
+
+REFERENCE           ARMADA_VSQ_GOGOGO85
+LANG_ENGLISH        "^2Lt. Vasquez: ^7Los! Los!"
+
+REFERENCE           ARMADA_VSQ_OORAH105
+LANG_GERMAN         "^2Lt. Vasquez: ^7Oorah."
+
+REFERENCE           ARMADA_GRG_YEAHOORAH1110
+LANG_GERMAN         "^2SSgt. Griggs: ^7Ja. Oorah."
+
+REFERENCE           BLACKOUT_GAZ_LOYALISTSEH12
+LANG_GERMAN         "^2Gaz: ^7Loyalisten. Was sind das?\nDie guten Russen oder die bösen Russen?"
+
+REFERENCE           BLACKOUT_PRI_HALFACLICK11
+LANG_GERMAN         "^2Captain Price: ^7Die Loyalisten erwarten uns\n etwa einen halben Kilometer nördlich. Abrücken."
+
+REFERENCE           BLACKOUT_KMR_PREPAREATTACK38
+LANG_GERMAN         "^2Sgt. Kamarov: ^7Vanya, gehen Sie rein und greifen Sie auf mein Zeichen hin an!"
+
+REFERENCE           BLACKOUT_KMR_STALLING4121_FULL
+LANG_GERMAN         "^2Sgt. Kamarov: ^7Wie ist dein Status? Wie viel länger brauchst du? In Ordnung, ich werde sie weiter hinhalten."
+
+REFERENCE           BLACKOUT_KMR_STALLING4121_CUT
+LANG_GERMAN         "^2Sgt. Kamarov: ^7Wie ist dein Status? Wie viel länger brauchst du? In Ordnung, ich werde..."
+
+REFERENCE           BLACKOUT_KMR_OUTOFMIND516
+LANG_GERMAN         "^2Sgt. Kamarov: ^7Was machst du - bist du verrückt geworden? Wer glaubst du, wer du bist?"
+
+REFERENCE           BLACKOUT_NKD_WHOAREYOU641
+LANG_GERMAN         "^2Nikolai: ^7Was willst du? Wer bist du? Spezialeinheiten?"
+
+REFERENCE           BLACKOUT_RU1_VIKTOR631
+LANG_GERMAN         "^1Ultranationalist: ^7Hm? Was ist mit der Elektrizität passiert?"
+
+REFERENCE           BLACKOUT_RU1_ELECTRICIAN632
+LANG_GERMAN         "^1Ultranationalist: ^7Viktor! Die Elektrizität ist ausgefallen!"
+
+REFERENCE           BLACKOUT_RU2_GETTINGCLOSER633
+LANG_GERMAN         "^1Ultranationalist: ^7Ich weiß. Feindliche Kräfte kommen näher."
+
+REFERENCE           BLACKOUT_RU2_STAY635
+LANG_GERMAN         "^1Ultranationalist: ^7Nein, ich denke, du überschätzt ihre Fähigkeiten. Bleib hier und bewache den Gefangenen."
+
+REFERENCE           BLACKOUT_RU1_SASHA636
+LANG_GERMAN         "^1Ultranationalist: ^7Sasha...? Bist du hier? Sasha...?"
+
+REFERENCE           BLACKOUT_RU4_THEYREINSIDE437
+LANG_GERMAN         "^1Ultranationalist: ^7Ich glaube, sie sind drinnen. Viktor...? Sasha...?"
+
+REFERENCE           BLACKOUT_RU4_HOWCLOSE634
+LANG_GERMAN         "^1Ultranationalist: ^7Wie nah sind die feindlichen Kräfte? Wir müssen evakuieren."
+
+REFERENCE           BOG_GM1_OORAH1015
+LANG_GERMAN         "^2Marine: ^7Oorah."
+
+REFERENCE           BOG_GM1_THREECOMIN
+LANG_GERMAN         "^2Marine: ^7Drei kommen heraus!"
+
+REFERENCE           BOG_GM2_MOVEIT12
+LANG_GERMAN         "^2Marine: ^7Bewegung! Bewegung!"
+
+REFERENCE           BOG_GM2_CLEAR137
+LANG_GERMAN         "^2Marine: ^7Sicher!"
+
+REFERENCE           BOG_GM2_CLEAR268
+LANG_GERMAN         "^2Marine: ^7Sicher!"
+
+REFERENCE           BOG_GM2_OORAH1016
+LANG_GERMAN         "^2Marine: ^7Oorah."
+
+REFERENCE           BOG_GM3_RPG17
+LANG_GERMAN         "^2Marine: ^7Raketenwerfer!"
+
+REFERENCE           BOG_GM3_CLEAR38
+LANG_GERMAN         "^2Marine: ^7Sicher!"
+
+REFERENCE           BOG_GM3_ALLCLEAR69
+LANG_GERMAN         "^2Marine: ^7Alles gesichert!"
+
+REFERENCE           BOG_GM3_OORAH1017
+LANG_GERMAN         "^2Marine: ^7Oorah."
+
+REFERENCE           BOG_VSQ_HALFACLICK11
+LANG_GERMAN         "^2Lt. Vasquez: ^7Der Panzer steckt einen halben\nKilometer südlich von hier fest. Los jetzt!"
+
+REFERENCE           BOG_AS1_LETENTER41
+LANG_GERMAN         "^1Arab Soldier: ^7Lass sie eintreten, dann greifen wir sie an, sobald sie vorbei sind!"
+
+REFERENCE           BOG_AS2_GETREADY42
+LANG_GERMAN         "^1Arab Soldier: ^7Sie sind unten, macht euch bereit."
+
+REFERENCE           BOG_GM1_GETYOURASS11
+LANG_GERMAN         "^2Marine: ^7Jackson! Beweg deinen Hintern! Da kommen\n Feinde aus dem Norden!"
+
+REFERENCE           BOG_GM1_WOOYEAH1100
+LANG_GERMAN         "^2Marine: ^7Woo! Ja! Woo!"
+
+REFERENCE           BOG_GM2_HOLYSHIT1111
+LANG_GERMAN         "^2Marine: ^7Heilige Scheiße, hast du das gesehen?"
+
+REFERENCE           BOG_GM3_HELLYEAH1112
+LANG_GERMAN         "^2Marine: ^7Und ob."
+
+REFERENCE           BOG_GM4_YEAHWOO1113
+LANG_GERMAN         "^2Marine: ^7Ja! Woo! Woo!"
+
+REFERENCE           BOG_GM4_TALKINABOUT114
+LANG_GERMAN         "^2Marine: ^7Ja! das hab ich gemeint, Baby!"
+
+REFERENCE           BOG_TCM_3STORY11_2NDFLOOR32
+LANG_GERMAN         "^2Warpig: ^7Schütze! Dreistöckiges Gebäude! 11 Uhr, erster Stock!"
+
+REFERENCE           BOG_TCM_3STORY1130_2NDFLOOR36
+LANG_GERMAN         "^2Warpig: ^7Dreistöckiges Gebäude! 11 Uhr 30! Erster Stock, Balkon!"
+
+REFERENCE           BOG_TCM_2STORY1_GROUND310
+LANG_GERMAN         "^2Warpig: ^7Schütze! Zweistöckiges Gebäude auf 1 Uhr, Erdgeschoss!"
+
+REFERENCE           BOG_TCM_2STORY1_2NDFLOOR314
+LANG_GERMAN         "^2Warpig: ^7Schütze! Zweistöckiges Gebäude auf 1 Uhr, erster Stock!"
+
+REFERENCE           BOG_TCM_3STORY1230_2NDFLOOR318
+LANG_GERMAN         "^2Warpig: ^7Schütze! Dreistöckiges Gebäude! 12:30 Uhr, erster Stock!"
+
+REFERENCE           BOG_TCM_FIRE134
+LANG_GERMAN         "^2Warpig: ^7Feure!"
+
+REFERENCE           BOG_TCM_FIRE138
+LANG_GERMAN         "^2Warpig: ^7Feure!"
+
+REFERENCE           BOG_TCM_FIRE1312
+LANG_GERMAN         "^2Warpig: ^7Feure!"
+
+REFERENCE           BOG_TCM_FIRE1316
+LANG_GERMAN         "^2Warpig: ^7Feure!"
+
+REFERENCE           BOG_TCM_FIRE1320
+LANG_GERMAN         "^2Warpig: ^7Feure!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED133
+LANG_GERMAN         "^2Panzerschütze: ^7Ziel erfasst!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED137
+LANG_GERMAN         "^2Panzerschütze: ^7Ziel erfasst!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED2311
+LANG_GERMAN         "^2Panzerschütze: ^7Ziel erfasst!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED2315
+LANG_GERMAN         "^2Panzerschütze: ^7Ziel erfasst!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED3319
+LANG_GERMAN         "^2Panzerschütze: ^7Ziel erfasst!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED385
+LANG_GERMAN         "^2Panzerschütze: ^7Ziel erfasst!"
+
+REFERENCE           BOG_TLD_UP31
+LANG_GERMAN         "^2Panzerlader: ^7Bereit!"
+
+REFERENCE           BOG_TLD_UP135
+LANG_GERMAN         "^2Panzerlader: ^7Bereit!"
+
+REFERENCE           BOG_TLD_UP239
+LANG_GERMAN         "^2Panzerlader: ^7Bereit!"
+
+REFERENCE           BOG_TLD_UP3313
+LANG_GERMAN         "^2Panzerlader: ^7Bereit!"
+
+REFERENCE           BOG_TLD_UP4317
+LANG_GERMAN         "^2Panzerlader: ^7Bereit!"
+
+REFERENCE           CARGOSHIP_PRI_CREWEXPEND14
+LANG_GERMAN         "^2Captain Price: ^7Ziel erfasst!"
+
+REFERENCE           CARGOSHIP_HP1_BASEPLATEHAMMERTWO11
+LANG_GERMAN         "^2Hammer Zwei-Vier: ^7Baseplate, hier Hammer Zwei-Vier. Wir haben Sichtkontakt zum Ziel. Noch Sechzig Sekunden."
+
+REFERENCE           CARGOSHIP_HP1_THIRTYSECDARK13
+LANG_GERMAN         "^2Hammer Zwei-Vier: ^7Dreißig Sekunden, Lichter aus."
+
+REFERENCE           CARGOSHIP_HP1_TENSECONDSRADIO113
+LANG_GERMAN         "^2Hammer Zwei-Vier: ^7Zehn Sekunden."
+
+REFERENCE           CARGOSHIP_HP1_RADIOCHECK114
+LANG_GERMAN         "^2Hammer Zwei-Vier: ^7Funktest. Auf sicheren Kanal wechseln."
+
+REFERENCE           CARGOSHIP_HP1_GREENLIGHTGORADIO115
+LANG_GERMAN         "^2Hammer Zwei-Vier: ^7Grünes Licht! Los, los, los!"
+
+REFERENCE           CARGOSHIP_HQR_COPYTWOFOUR12
+LANG_GERMAN         "\n^2Baseplate: ^7Verstanden, Zwei-Vier."
+
+REFERENCE           CARGOSHIP_RUD_3SEC211
+LANG_GERMAN         "^1Ultranationalist: ^7Auf die trinken Gesundheit, Colonel!"
+
+REFERENCE           CARGOSHIP_RU1_HEY
+LANG_GERMAN         "^1Ultranationalist: ^7Hey!"
+
+REFERENCE           CARGOSHIP_RU1_GETREADY81
+LANG_GERMAN         "^1Ultranationalist: ^7Wir sind umzingelt! Macht euch bereit!"
+
+REFERENCE           CARGOSHIP_RU1_CALLFORHELP85
+LANG_GERMAN         "^1Ultranationalist: ^7Kontakt über das Funkgerät, ruft um Hilfe!"
+
+REFERENCE           CARGOSHIP_RU2_INCARGOHOLDS22
+LANG_GERMAN         "^1Ultranationalist: ^7Verdammt! Was ist das hier?"
+
+REFERENCE           CARGOSHIP_RU2_WHATTHE82
+LANG_GERMAN         "^1Ultranationalist: ^7Sie sind in den Laderäumen und kommen hierher. Achtet auf die Türen."
+
+REFERENCE           CARGOSHIP_RU2_ARETHEYAMERICANS83
+LANG_GERMAN         "^1Ultranationalist: ^7Sind es Amerikaner?"
+
+REFERENCE           CARGOSHIP_RU2_THEYREGETTINGCLOSE87
+LANG_GERMAN         "^1Ultranationalist: ^7Sie kommen näher, seid bereit."
+
+REFERENCE           CARGOSHIP_RU4_GETREADY84
+LANG_GERMAN         "^1Ultranationalist: ^7Ich weiß es nicht, macht euch bereit!"
+
+REFERENCE           CARGOSHIP_RU4_MIDDLEOFOCEAN86
+LANG_GERMAN         "^1Ultranationalist: ^7Wir sind mitten im Ozean. Niemand kann uns helfen, Idiot!"
+
+REFERENCE           HUNTED_PRI_WHATTHEBLOODY11
+LANG_GERMAN         "^2Captain Price: ^7Was zum Teufel noch mal ist das?!"
+
+REFERENCE           HUNTED_HP1_MISSILEINBOUND12
+LANG_GERMAN         "^2Hammer Sechs-Vier: ^7Rakete im Anflug nach rechts ausweichen."
+
+REFERENCE           HUNTED_HP1_MAYDAYMAYDAY14
+LANG_GERMAN         "^2Hammer Sechs-Vier: ^7Mayday! Mayday. Hier Hammer Sechs-Vier. Wir gehen runter. Wiederhole: Gehen runter. Zwei Meilen südlich von Wegpunkt Fünf..."
+
+REFERENCE           HUNTED_HP1_GOINGDOWN15
+LANG_GERMAN         "^2Hammer Sechs-Vier: ^7Sechs-Vier gehen runter! Wir gehen runter! Festhalten!"
+
+REFERENCE           HUNTED_RUF_WHATSGOINGON41
+LANG_GERMAN         "^2Bauer: ^7Was passiert hier? Was wollt ihr?"
+
+REFERENCE           HUNTED_RUF_HIDINGWHO43
+LANG_GERMAN         "^2Bauer: ^7Wer versteckt sich? Wovon zum Teufel redest du?"
+
+REFERENCE           HUNTED_RUF_BRITISH45
+LANG_GERMAN         "^2Bauer: ^7Briten?"
+
+REFERENCE           HUNTED_RU1_ISADUMP33
+LANG_GERMAN         "^1Ultranationalist: ^7Dieser Ort ist eine Müllhalde."
+
+REFERENCE           HUNTED_RU1_DONTPLAYSTUPID42
+LANG_GERMAN         "^1Ultranationalist: ^7Tu nicht so, als wärst du ein Narr. Wir wissen, dass du sie irgendwo versteckst."
+
+REFERENCE           HUNTED_RU1_HIDINGSOLDIERS44
+LANG_GERMAN         "^1Ultranationalist: ^7Hast du britische Soldaten da drin versteckt?"
+
+REFERENCE           HUNTED_RU1_FORGETIT46
+LANG_GERMAN         "^1Ultranationalist: ^7Du verschwendest meine Zeit..."
+
+REFERENCE           HUNTED_RU1_BYTHEHOUSE61
+LANG_GERMAN         "^1Ultranationalist: ^7Hier sind sie! Dort beim Haus."
+
+REFERENCE           HUNTED_RU1_INTHEFIELD116
+LANG_GERMAN         "^1Ultranationalist: ^7Ich sehe den Feind! Sie sind auf dem Feld."
+
+REFERENCE           HUNTED_RU2_BYTHECREEK115
+LANG_GERMAN         "^1Ultranationalist: ^7Dort am Bach."
+
+REFERENCE           HUNTED_BNB_MISSILELOCK16
+LANG_GERMAN         "^2System: ^7Raketen-Zielverriegelung."
+
+REFERENCE           HUNTED_BNB_ALTITUDE17
+LANG_GERMAN         "^2System: ^7Höhe. Höhe. Höhe."
+
+REFERENCE           HUNTED_BNB_CAUTION18
+LANG_GERMAN         "^2System: ^7Vorsicht. Vorsicht. Vorsicht."
+
+REFERENCE           HUNTED_BNB_WARNING19
+LANG_GERMAN         "^2System: ^7Warnung. Warnung. Warnung."
+
+REFERENCE           ICBM_PRI_REGROUPONME219
+LANG_GERMAN         "^2Captain Price: ^7Bei mir neu formieren."
+
+REFERENCE           ICBM_GRG_678452056315
+LANG_GERMAN         "^2SSgt. Griggs: ^7Griggs. 6-7-8-4-5-2-0-5-6."
+
+REFERENCE           ICBM_GRG_678318
+LANG_GERMAN         "^2SSgt. Griggs: ^7Griggs. 6-7-8..."
+
+REFERENCE           ICBM_GRG_GETBUSY320
+LANG_GERMAN         "^2SSgt. Griggs: ^7Hier geht es gleich ziemlich rund ...ha, an deiner Stelle würde ich meinen Arsch hier rausholen."
+
+REFERENCE           ICBM_RU1_UNIT4REPORT217
+LANG_GERMAN         "^1Ultranationalist: ^7Einheit 4, habt ihr andere gefunden? Dieser hier hatte Sprengstoff bei sich, es müssen mehr von ihnen da sein. Einheit 4, Bericht!"
+
+REFERENCE           ICBM_RU1_WHEREOTHERS314
+LANG_GERMAN         "^1Ultranationalist: ^7Wo sind die anderen?"
+
+REFERENCE           ICBM_RU1_TOVARISCH316
+LANG_GERMAN         "^1Ultranationalist: ^7Weißt du, Tawarisch, die Genfer Konvention ist in der Theorie eine nette Idee. Wieso ersparst du dir nicht die Ärger und beantwortest meine Fragen?"
+
+REFERENCE           ICBM_RU1_HOWMANY317
+LANG_GERMAN         "^1Ultranationalist: ^7Wie viele sind noch hier?"
+
+REFERENCE           ICBM_RU1_WHOISOFFICER319
+LANG_GERMAN         "^1Ultranationalist: ^7Wer ist dein Vorgesetzter?"
+
+REFERENCE           ICBM_RU1_WHERESHACKSAW321
+LANG_GERMAN         "^1Ultranationalist: ^7Yuri - wo ist die Eisensäge?"
+
+REFERENCE           ICBM_RU1_IFIHAD323
+LANG_GERMAN         "^1Ultranationalist: ^7Wenn ich die Eisensäge hätte, würde ich dich nicht fragen, Idiot!"
+
+REFERENCE           ICBM_RU2_YOUHADIT322
+LANG_GERMAN         "^1Ultranationalist: ^7Ich dachte, du hättest sie."
+
+REFERENCE           JEEPRIDE_RU1_BARELYBREATHING172
+LANG_GERMAN         "^2Russischer Loyalist: ^7Er atmet kaum noch!"
+
+REFERENCE           JEEPRIDE_RU2_ALLRIGHTMYFRIEND173
+LANG_GERMAN         "^2Sgt. Kamarov: ^7Hast du es geschafft, mein Junge!"
+
+REFERENCE           JEEPRIDE_RU2_GETHIMOUTOFHERE174
+LANG_GERMAN         "^2Sgt. Kamarov: ^7Bringt ihn weg! Schnell, los! Wir müssen ihn sofort ins Krankenhaus bringen!"
+
+REFERENCE           KILLHOUSE_GAZ_GETARIFLE211
+LANG_GERMAN         "^2Gaz: ^7Schön Sie zu sehen. Nehmen Sie eines der Gewehre."
+
+REFERENCE           KILLHOUSE_GAZ_GOODTOSEE21
+LANG_GERMAN         "^2Gaz: ^7Schön Sie zu sehen. Nehmen Sie eines der Gewehre vom Tisch."
+
+REFERENCE           KILLHOUSE_SAS4_FNG1211
+LANG_GERMAN         "^2SAS: ^7Er ist der Neue, Sir."
+
+REFERENCE           KILLHOUSE_SAS4_GOEASY1213
+LANG_GERMAN         "^2SAS: ^7Nehmen Sie ihn nicht zu hart ran, es ist sein erster Tag."
+
+REFERENCE           LAUNCHFACILITY_A_HQR_STILLWORKING19
+LANG_GERMAN         "^2Kommando: ^7Bravo Sechs, wir arbeiten immer noch mit den Russen an den Startcodes.\nWir sollten sie bald haben. Weitermachen. Ende."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_HIGHALERT11
+LANG_GERMAN         "^1Lautsprecher: ^7Die Anlagenperipherie wurde kompromittiert. Alle Einheiten begeben sich zu Verteidigungspositionen.\nUnbekannte feindliche Kräfte nähern sich aus dem Süden oder Westen. Die Anlage befindet sich jetzt in höchster Alarmbereitschaft."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_UNDERATTACK12
+LANG_GERMAN         "^1Lautsprecher: ^7Wir werden angegriffen! Sichern Sie sofort alle Eingangspunkte."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_REDSPENTZNAZ13
+LANG_GERMAN         "^1Lautsprecher: ^7Bestätigten Feindeinheiten handelt es sich um amerikanische Spezialeinheiten. Üben Sie äußerste Vorsicht aus. Rote Spetznaz-Einheiten sind auf dem Weg zur Abwehr."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_PREPTUBES14
+LANG_GERMAN         "^1Lautsprecher: ^7Vorbereitung der Abschussrohre 2 bis 6 für den Abschuss. Bereithalten."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_MOTHERLAND23
+LANG_GERMAN         "^1Lautsprecher: ^7Kämpft für den Ruhm der Heimat! Bekämpft die Korruption unserer einst großartigen Nation!"
+
+REFERENCE           LAUNCHFACILITY_A_RUL_AVENGEFALLEN24
+LANG_GERMAN         "^1Lautsprecher: ^7Kameraden! Gedenkt der Gefallenen und rächt sie! Lasst uns sicherstellen, dass ihre Opfer nicht vergeblich waren!"
+
+REFERENCE           LAUNCHFACILITY_A_RUL_RESTOREHONOR25
+LANG_GERMAN         "^1Lautsprecher: ^7Wir werden die Ehre der Tage wiederherstellen, als diese Nation von allen anderen gefürchtet wurde! Wir werden nicht aufgehalten! Wir werden nicht so leicht beiseite geschoben!"
+
+REFERENCE           LAUNCHFACILITY_B_PRI_LETSMOVE11
+LANG_GERMAN         "^2Captain Price: ^7Alles klar, dann weiter!"
+
+REFERENCE           LAUNCHFACILITY_B_GM1_BASESECURITY12
+LANG_GERMAN         "^2Five-Delta Six: ^7Captain Price, hier ist Fünf-Delta Sechs. Wir räumen den Ostflügel und begeben uns zur Basissicherheitszentrale, over."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_ALERT25
+LANG_GERMAN         "^1Lautsprecher: ^7Alarm! Feindliche Truppen haben die Basis betreten. Ich wiederhole, feindliche Truppen haben die Basis betreten."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_BARRACKS26
+LANG_GERMAN         "^1Lautsprecher: ^7Feindliche Truppen wurden in den Kasernen bekämpft. Verstärkung benötigt in den Kasernen."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_STORAGEAREA32
+LANG_GERMAN         "^1Lautsprecher: ^7Der Lagerbereich wurde kompromittiert. Feindliche Truppen haben die Startrohre erreicht. Verschließen der primären Zugangstür zum Startkontrollbereich."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_2NDINITIATED41
+LANG_GERMAN         "^1Lautsprecher: ^7Die zweite gestartete Abschussfolge wurde eingeleitet."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_PRIMARYINITITATED42
+LANG_GERMAN         "^1Lautsprecher: ^7Primäre Abschusssequenz wurde für Rohre 3 bis 6 gestartet. Bereithalten."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SECUREMISSILEBAY43
+LANG_GERMAN         "^1Lautsprecher: ^7Alle Raketenschächte sichern. Treibstoffleitungen abgetrennt."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_2MINS44
+LANG_GERMAN         "^1Lautsprecher: ^7Start in zwei Minuten."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_90SECS46
+LANG_GERMAN         "^1Lautsprecher: ^790 Sekunden."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_1MIN47
+LANG_GERMAN         "^1Lautsprecher: ^7Eine Minute. Die Kühlmittelstufe ist bewertet."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_30SECS48
+LANG_GERMAN         "^1Lautsprecher: ^7Dreißig Sekunden. Die Missilkoordinaten sind hochgeladen."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_20SECS410
+LANG_GERMAN         "^1Lautsprecher: ^7Zwanzig Sekunden."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_TEN411
+LANG_GERMAN         "^1Lautsprecher: ^7Zehn."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_NINE412
+LANG_GERMAN         "^1Lautsprecher: ^7Neun."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_EIGHT413
+LANG_GERMAN         "^1Lautsprecher: ^7Acht."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SEVEN414
+LANG_GERMAN         "^1Lautsprecher: ^7Sieben."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SIX415
+LANG_GERMAN         "^1Lautsprecher: ^7Sechs."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_FIVE416
+LANG_GERMAN         "^1Lautsprecher: ^7Fünf."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_FOUR417
+LANG_GERMAN         "^1Lautsprecher: ^7Vier."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_THREE418
+LANG_GERMAN         "^1Lautsprecher: ^7Drei."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_TWO419
+LANG_GERMAN         "^1Lautsprecher: ^7Zwei."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_ONE420
+LANG_GERMAN         "^1Lautsprecher: ^7Eins."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_LAUNCHCOMPLETE421
+LANG_GERMAN         "^1Lautsprecher: ^7Zündung. Die Startsequenz ist abgeschlossen."
+
+REFERENCE           LAUNCHFACILITY_B_RU1_GO15
+LANG_GERMAN         "^1Ultranationalist: ^7Los! Beeilt euch! Wir werden angegriffen."
+
+REFERENCE           LAUNCHFACILITY_B_RU3_GETREADY110
+LANG_GERMAN         "^1Ultranationalist: ^7Sie kommen auf unsere Seite! Macht euch bereit!"
+
+REFERENCE           LAUNCHFACILITY_B_RU3_DAMNYOU71
+LANG_GERMAN         "^1Ultranationalist: ^7Verdammt..."
+
+REFERENCE           LAUNCHFACILITY_B_RU2_GRABWEAPONS16
+LANG_GERMAN         "^1Ultranationalist: ^7Nehmt die Waffen und bezieht Verteidigungspositionen! Los, los!"
+
+REFERENCE           LAUNCHFACILITY_B_RU2_OPENFIRE72
+LANG_GERMAN         "^1Ultranationalist: ^7Eröffnet das Feuer! Zerstört sie!"
+
+REFERENCE           SCOUTSNIPER_RU1_OTHERTEAM210
+LANG_GERMAN         "^1Ultranationalist: ^7Das andere Team hat etwas im Dorf gefunden, lasst uns gehen!"
+
+REFERENCE           SCOUTSNIPER_RU1_WANDERING24
+LANG_GERMAN         "^1Ultranationalist: ^7Hey, Sergei! Warum wandern wir durch dieses Feld?"
+
+REFERENCE           SCOUTSNIPER_RU1_WASTELAND26
+LANG_GERMAN         "^1Ultranationalist: ^7Warum patrouillieren? Hier gibt es nichts für 120 Kilometer. Ödland."
+
+REFERENCE           SCOUTSNIPER_RU1_TAKEALOOK28
+LANG_GERMAN         "^1Ultranationalist: ^7Nummer Sechs. Wir haben Probleme im Dorf. Geh selbst und schau nach."
+
+REFERENCE           SCOUTSNIPER_RU1_ONOURWAY29
+LANG_GERMAN         "^1Ultranationalist: ^7Verstanden. Nummer Zwei, wir sind unterwegs."
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY139
+LANG_GERMAN         "^1Ultranationalist: ^7Warte, das ist ein Fremder. Bringt ihn weg!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY2311
+LANG_GERMAN         "^1Ultranationalist: ^7Aghh! Scharfschütze! Scharfschütze! Feuer!"
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS1313
+LANG_GERMAN         "^1Ultranationalist: ^7Hier stimmt etwas nicht... Ich bin sicher, ich habe etwas gesehen."
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS2314
+LANG_GERMAN         "^1Ultranationalist: ^7Hier passiert etwas Seltsames..."
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS3315
+LANG_GERMAN         "^1Ultranationalist: ^7Haltet die Augen offen. Ich glaube, ich habe etwas gesehen..."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES1316
+LANG_GERMAN         "^1Ultranationalist: ^7Wahrscheinlich nichts... entspann dich."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES2317
+LANG_GERMAN         "^1Ultranationalist: ^7Mach dir nicht so viele Sorgen."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES3318
+LANG_GERMAN         "^1Ultranationalist: ^7Ich sehe nichts, du bist vielleicht müde."
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY4319
+LANG_GERMAN         "^1Ultranationalist: ^7Was ist los? SNIPER!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY5320
+LANG_GERMAN         "^1Ultranationalist: ^7Feindliche Kräfte in Tarnung, bestätigt!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY6321
+LANG_GERMAN         "^1Ultranationalist: ^7Feindliche Kräfte auf unseren Positionen!"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY1322
+LANG_GERMAN         "^1Ultranationalist: ^7Ein Soldat ist tot! Er ist tot! Er ist tot!"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY2323
+LANG_GERMAN         "^1Ultranationalist: ^7Ich habe hier eine Leiche gefunden! Feind in der Nähe!"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY3324
+LANG_GERMAN         "^1Ultranationalist: ^7Er ist tot. Soldat getötet! Er ist getötet!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION1359
+LANG_GERMAN         "^1Ultranationalist: ^7Was war das?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION2360
+LANG_GERMAN         "^1Ultranationalist: ^7Ist das eine Explosion?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION3361
+LANG_GERMAN         "^1Ultranationalist: ^7Ist etwas explodiert?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION4362
+LANG_GERMAN         "^1Ultranationalist: ^7Ist jemand verletzt?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION5363
+LANG_GERMAN         "^1Ultranationalist: ^7Ist alles in Ordnung?!"
+
+REFERENCE           SCOUTSNIPER_RU1_SAWSOMETHING41
+LANG_GERMAN         "^1Ultranationalist: ^7Hey! Dmitriy! Ich habe eine Bewegung im Feld gesehen. Geh und schau nach."
+
+REFERENCE           SCOUTSNIPER_RU1_ALLCLEAR43
+LANG_GERMAN         "^1Ultranationalist: ^7Hier ist niemand! Alles ist ruhig."
+
+REFERENCE           SCOUTSNIPER_RU1_PASSCIG121
+LANG_GERMAN         "^1Ultranationalist: ^7Gib die Zigaretten weiter."
+
+REFERENCE           SCOUTSNIPER_RU1_WAKEUP123
+LANG_GERMAN         "^1Ultranationalist: ^7Du bist dran, Yuri! Hey, Yuri! Schlaf nicht, du bist dran! Anatoly hat den Einsatz um zwei Dollar erhöht."
+
+REFERENCE           SCOUTSNIPER_RU1_TOOEXPENSIVE125
+LANG_GERMAN         "^1Ultranationalist: ^7Zu teuer? Zakhaev zahlt uns das doppelte für diesen Job. Einfaches Geld. Es besteht keine Gefahr, keine Chance auf eine Schießerei. Wer kommt hierher? Das ist eine Zone der nuklearen Katastrophe. Hier stirbt man lieber an Krebs als durch eine Kugel."
+
+REFERENCE           SCOUTSNIPER_RU1_MERCENARIES127
+LANG_GERMAN         "^1Ultranationalist: ^7Diese ukrainischen Söldner sind so inkompetent. Sie haben bekommen, was sie verdient haben. Jeder mit Kampferfahrung hätte diese Hunde ohne Probleme getötet."
+
+REFERENCE           SCOUTSNIPER_RU1_FIVEDOLLARS129
+LANG_GERMAN         "^1Ultranationalist: ^7Fünf Dollar. Willst du mitgehen oder den Einsatz erhöhen oder wie ein Schwächling aufgeben?"
+
+REFERENCE           SCOUTSNIPER_RU1_PAIROFJACKS1211
+LANG_GERMAN         "^1Ultranationalist: ^7Ich habe ein Paar Buben."
+
+REFERENCE           SCOUTSNIPER_RU1_OWNMONEY1215
+LANG_GERMAN         "^1Ultranationalist: ^7Die Glücklichen... aber ich bezahle dich aus deiner eigenen Tasche."
+
+REFERENCE           SCOUTSNIPER_RU1_CANTBELIEVE1220
+LANG_GERMAN         "^1Ultranationalist: ^7Unglaublich. Ich habe mein Spiel verloren."
+
+REFERENCE           SCOUTSNIPER_RU1_PAYTHEMAN1221
+LANG_GERMAN         "^1Ultranationalist: ^7Bezahl den Mann, sein Geld. Er hat fair gewonnen."
+
+REFERENCE           SCOUTSNIPER_RU1_READYTOMOVE181
+LANG_GERMAN         "^1Ultranationalist: ^7Bereitet die Lastwagen für zwei Stunden vor!"
+
+REFERENCE           SCOUTSNIPER_RU1_HELICOPTERONWAY183
+LANG_GERMAN         "^1Ultranationalist: ^7Helikopter ist unterwegs."
+
+REFERENCE           SCOUTSNIPER_RU1_ZONESAFE184
+LANG_GERMAN         "^1Ultranationalist: ^7Er wartet auf das Signal! Ist die Landezone klar?"
+
+REFERENCE           SCOUTSNIPER_RU1_OKBRINGIN185
+LANG_GERMAN         "^1Ultranationalist: ^7Okay. Bringt den Hubschrauber rein. Hier ist alles ruhig."
+
+REFERENCE           SCOUTSNIPER_RU1_CHECKTHEWOODS187
+LANG_GERMAN         "^1Ultranationalist: ^7Hey, du! Geh um den Wald herum und bewege dich nach Osten. Ich möchte nicht, dass diese wilden Hunde hier frei herumlaufen."
+
+REFERENCE           SCOUTSNIPER_RU1_REPLACEDBATTERIES189
+LANG_GERMAN         "^1Ultranationalist: ^7Ich habe die Batterien ausgetauscht, als wir in Kiew waren. Mach dir keine Sorgen."
+
+REFERENCE           SCOUTSNIPER_RU1_GETSWORSE1810
+LANG_GERMAN         "^1Ultranationalist: ^7Wie ich es verstehe, wird die Strahlung schlechter, je weiter wir uns von Tschernobyl entfernen."
+
+REFERENCE           SCOUTSNIPER_RU1_DOGSDONTGETCLOSE1812
+LANG_GERMAN         "^1Ultranationalist: ^7Glaub, was du willst! Aber wenn wir gehen, möchte ich nicht, dass diese Hunde näher kommen!"
+
+REFERENCE           SCOUTSNIPER_RU1_WHATHAPPENED1815
+LANG_GERMAN         "^1Ultranationalist: ^7Was ist passiert?"
+
+REFERENCE           SCOUTSNIPER_RU1_SPECIALFORCES1817
+LANG_GERMAN         "^1Ultranationalist: ^7Ukrainische Spezialkräfte?"
+
+REFERENCE           SCOUTSNIPER_RU1_NUCLEARREACTOR1820
+LANG_GERMAN         "^1Ultranationalist: ^7Das entscheidet Zakhaev. Unsere Aufgabe ist es, die Lastwagen zu bewachen und sie zum Kernkraftwerk zu bringen."
+
+REFERENCE           SCOUTSNIPER_RU1_GOTTADOSOMETHING1822
+LANG_GERMAN         "^1Ultranationalist: ^7Wir müssen etwas dagegen tun... nutzloser Bastard."
+
+REFERENCE           SCOUTSNIPER_RU1_HATEGUARDDUTY1825
+LANG_GERMAN         "^1Ultranationalist: ^7Ich hasse es, Wachdienst zu haben, meine Füße tun weh."
+
+REFERENCE           SCOUTSNIPER_RU2_NOTWANDERING25
+LANG_GERMAN         "^1Ultranationalist: ^7Wir irren nicht umher. Wir patrouillieren hier, Idiot."
+
+REFERENCE           SCOUTSNIPER_RU2_ZAHKAEVSPAYINGGOOD27
+LANG_GERMAN         "^1Ultranationalist: ^7Hör mal... Zakhaev zahlt uns gutes Geld, um dieses Gebiet zu patrouillieren. Wenn du klug bist, halt den Mund. Wenn er paranoid ist, ist das sein Problem."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY4310
+LANG_GERMAN         "^1Ultranationalist: ^7Verdammt, ein Scharfschütze... Weg damit!"
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS1325
+LANG_GERMAN         "^1Ultranationalist: ^7Hier stimmt etwas nicht... Ich bin sicher, ich habe etwas gesehen."
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS2326
+LANG_GERMAN         "^1Ultranationalist: ^7Hier passiert etwas Seltsames..."
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS3327
+LANG_GERMAN         "^1Ultranationalist: ^7Augen offen halten. Ich glaube, ich habe etwas gesehen..."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES1328
+LANG_GERMAN         "^1Ultranationalist: ^7Du hast es dir wohl eingebildet... entspann dich."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES2329
+LANG_GERMAN         "^1Ultranationalist: ^7Ja, du machst dir zu viele Sorgen."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES3330
+LANG_GERMAN         "^1Ultranationalist: ^7Ich sehe nichts, ich bin wahrscheinlich müde."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY1331
+LANG_GERMAN         "^1Ultranationalist: ^7Was ist das? SNIPER!"
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY2332
+LANG_GERMAN         "^1Ultranationalist: ^7Kontakt! Feinde in Tarnkleidung."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY3332
+LANG_GERMAN         "^1Ultranationalist: ^7Feinde auf unseren Positionen!"
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY1334
+LANG_GERMAN         "^1Ultranationalist: ^7Kamerad ist getötet! Seid vorsichtig! Der Feind ist hier irgendwo."
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY2335
+LANG_GERMAN         "^1Ultranationalist: ^7Ich habe eine Leiche gefunden! Der Feind muss in der Nähe sein!"
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY3336
+LANG_GERMAN         "^1Ultranationalist: ^7Er ist tot. Er ist getötet! Getötet!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION1354
+LANG_GERMAN         "^1Ultranationalist: ^7Was zum Teufel ist das?! Was ist das?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION2355
+LANG_GERMAN         "^1Ultranationalist: ^7Ist das eine Explosion?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION3356
+LANG_GERMAN         "^1Ultranationalist: ^7Ist etwas explodiert?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION4357
+LANG_GERMAN         "^1Ultranationalist: ^7Ist jemand verletzt?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION5358
+LANG_GERMAN         "^1Ultranationalist: ^7Ist alles in Ordnung?!"
+
+REFERENCE           SCOUTSNIPER_RU2_IMONIT42
+LANG_GERMAN         "^1Ultranationalist: ^7Ich gehe mal nachsehen."
+
+REFERENCE           SCOUTSNIPER_RU2_WHOSETURNISIT122
+LANG_GERMAN         "^1Ultranationalist: ^7Wessen Runde ist es?"
+
+REFERENCE           SCOUTSNIPER_RU2_ANYONESEEDOGS126
+LANG_GERMAN         "^1Ultranationalist: ^7Hat jemand wilde Hunde hier gesehen? Ich habe gehört, dass die Ukrainer letzte Nacht ein paar ihrer eigenen in der Nähe des Schwimmbadkomplexes verloren haben."
+
+REFERENCE           SCOUTSNIPER_RU2_YOUIDIOT1213
+LANG_GERMAN         "^1Ultranationalist: ^7Narr. Sieht dieser Mensch so aus, als könnte er von Bauern geschlagen werden?"
+
+REFERENCE           SCOUTSNIPER_RU2_CALL1217
+LANG_GERMAN         "^1Ultranationalist: ^7Anruf."
+
+REFERENCE           SCOUTSNIPER_RU2_BUYMOTORBIKE131
+LANG_GERMAN         "^1Ultranationalist: ^7Ja, wenn ich das Geld für diesen Job bekomme, kaufe ich mir ein Motorrad und fahre durch diese Gegend."
+
+REFERENCE           SCOUTSNIPER_RU2_AMERICAGOINGTOSTARTWAR132
+LANG_GERMAN         "^1Ultranationalist: ^7Denkst du, die Amerikaner werden einen Krieg beginnen, während wir schwach sind? Dieses Land steuert auf den Zusammenbruch zu. Alles ist möglich."
+
+REFERENCE           SCOUTSNIPER_RU2_YESTHATMAKESSENSE133
+LANG_GERMAN         "^1Ultranationalist: ^7Ja, das ergibt Sinn."
+
+REFERENCE           SCOUTSNIPER_RU2_ISEE134
+LANG_GERMAN         "^1Ultranationalist: ^7Verstanden."
+
+REFERENCE           SCOUTSNIPER_RU2_YESIUNDERSTAND135
+LANG_GERMAN         "^1Ultranationalist: ^7Ja, ich verstehe."
+
+REFERENCE           SCOUTSNIPER_RU2_ILLTAKECAREOFIT136
+LANG_GERMAN         "^1Ultranationalist: ^7Ja, Herr Kommandant. Es wird erledigt."
+
+REFERENCE           SCOUTSNIPER_RU2_HAVENTSEENANYONE141
+LANG_GERMAN         "^1Ultranationalist: ^7Nein, ich habe niemanden gesehen. Ich werde Bescheid sagen, wenn etwas passiert."
+
+REFERENCE           SCOUTSNIPER_RU2_AFRICANOREUROPEAN142
+LANG_GERMAN         "^1Ultranationalist: ^7Hmm, ja, gute Frage: Afrikaner oder Europäer?"
+
+REFERENCE           SCOUTSNIPER_RU2_WHAT143
+LANG_GERMAN         "^1Ultranationalist: ^7Was?"
+
+REFERENCE           SCOUTSNIPER_RU2_TIMEFORSHIFTCHANGE144
+LANG_GERMAN         "^1Ultranationalist: ^7Dmitriy, es ist Zeit für den Schichtwechsel in der Wache. Du hättest vor 15 Minuten hier sein sollen. Wo gehst du hin?"
+
+REFERENCE           SCOUTSNIPER_RU2_COMEIN145
+LANG_GERMAN         "^1Ultranationalist: ^7Dmitriy, komm rein, over."
+
+REFERENCE           SCOUTSNIPER_RU2_LOSTCONTACTDMITRI146
+LANG_GERMAN         "^1Ultranationalist: ^7Nikolai, ich habe den Kontakt zu Dmitriy verloren. Sein Funkgerät ist kaputt."
+
+REFERENCE           SCOUTSNIPER_RU2_SENDSOMEONETOCHECK147
+LANG_GERMAN         "^1Ultranationalist: ^7Schick jemanden nachsehen."
+
+REFERENCE           SCOUTSNIPER_RU2_ANDREIBRINGINGFOOD152
+LANG_GERMAN         "^1Ultranationalist: ^7Wann bringt Andrei das Essen herein?"
+
+REFERENCE           SCOUTSNIPER_RU2_QUICKLYASPOSSIBLE154
+LANG_GERMAN         "^1Ultranationalist: ^7Lass uns das so schnell wie möglich erledigen. Die Leichen fangen an zu verrotten."
+
+REFERENCE           SCOUTSNIPER_RU2_YESCOMRADE182
+LANG_GERMAN         "^1Ultranationalist: ^7Ja, Herr Kommandant."
+
+REFERENCE           SCOUTSNIPER_RU2_CLEARROTORBLADES186
+LANG_GERMAN         "^1Ultranationalist: ^7Pass auf die Hubschrauberrotoren auf."
+
+REFERENCE           SCOUTSNIPER_RU2_RADIATIONDOSIMETERS188
+LANG_GERMAN         "^1Ultranationalist: ^7Bist du sicher, dass diese Strahlendosimeter funktionieren? Ich will nicht krank werden."
+
+REFERENCE           SCOUTSNIPER_RU2_DONTBELIEVEATALL1811
+LANG_GERMAN         "^1Ultranationalist: ^7Ich glaube das überhaupt nicht."
+
+REFERENCE           SCOUTSNIPER_RU2_OK1813
+LANG_GERMAN         "^1Ultranationalist: ^7Okay."
+
+REFERENCE           SCOUTSNIPER_RU2_PROFESSIONALJOB1816
+LANG_GERMAN         "^1Ultranationalist: ^7Einige unserer Leute wurden getötet. Es schien wie ein professioneller Job."
+
+REFERENCE           SCOUTSNIPER_RU2_POSSIBLYSPETZNAZ1818
+LANG_GERMAN         "^1Ultranationalist: ^7Möglicherweise, vielleicht waren es Spetsnaz. Jemand mag Zakhaev nicht."
+
+REFERENCE           SCOUTSNIPER_RU2_BEBACKINAMINUTE1821
+LANG_GERMAN         "^1Ultranationalist: ^7Ich gehe mal für eine Minute auf die Toilette."
+
+REFERENCE           SCOUTSNIPER_RU2_IMSOBORED1823
+LANG_GERMAN         "^1Ultranationalist: ^7Traurig... Vielleicht ein bisschen russisches Roulette spielen?"
+
+REFERENCE           SCOUTSNIPER_RU2_GUESSITWASNOTHING1826
+LANG_GERMAN         "^1Ultranationalist: ^7Ich denke, es war nichts, vielleicht war es der Wind, ich habe etwas gesehen."
+
+REFERENCE           SCOUTSNIPER_RU4_SNIPER312
+LANG_GERMAN         "^1Ultranationalist: ^7Aghh, Scharfschütze!"
+
+REFERENCE           SCOUTSNIPER_RU4_TOOEXPENSIVE124
+LANG_GERMAN         "^1Ultranationalist: ^7Zu teuer für mich. Ich lehne ab."
+
+REFERENCE           SCOUTSNIPER_RU4_RADIATIONDOGS128
+LANG_GERMAN         "^1Ultranationalist: ^7Die Strahlung macht diese Hunde verrückt und stark. Du unterschätzt sie, Kamerad. Was ist die Wette?"
+
+REFERENCE           SCOUTSNIPER_RU4_TWENTYDOLLARS1210
+LANG_GERMAN         "^1Ultranationalist: ^7Lass sehen, was du hast. Zwanzig Dollar. Also bluffst du."
+
+REFERENCE           SCOUTSNIPER_RU4_THREEKINGS1212
+LANG_GERMAN         "^1Ultranationalist: ^7Drei Könige."
+
+REFERENCE           SCOUTSNIPER_RU4_WELLPLAYEDCOMRADE1214
+LANG_GERMAN         "^1Ultranationalist: ^7Gut gespielt, Kamerad! Möchtest du etwas trinken?"
+
+REFERENCE           SCOUTSNIPER_RU4_SEEABOUTTHAT1216
+LANG_GERMAN         "^1Ultranationalist: ^7Das werden wir sehen. Austeilen."
+
+REFERENCE           SCOUTSNIPER_RU4_RAISE1218
+LANG_GERMAN         "^1Ultranationalist: ^7Erhöhen."
+
+REFERENCE           SCOUTSNIPER_RU4_IFOLD1219
+LANG_GERMAN         "^1Ultranationalist: ^7Ich steige aus dem Spiel aus."
+
+REFERENCE           SCOUTSNIPER_RU4_THISONESHEAVY151
+LANG_GERMAN         "^1Ultranationalist: ^7Wow! Dieser hier ist schwer!"
+
+REFERENCE           SCOUTSNIPER_RU4_DIDNTEATBREAKFAST153
+LANG_GERMAN         "^1Ultranationalist: ^7Ich weiß nicht, aber ich hoffe bald. Ich bin so hungrig, habe seit dem Frühstück nichts mehr gegessen."
+
+REFERENCE           SCOUTSNIPER_RU4_TAKENZAKHAEVSOFFER155
+LANG_GERMAN         "^1Ultranationalist: ^7Törichte... Besser Zakhaevs Angebot annehmen."
+
+REFERENCE           SCOUTSNIPER_RU4_MAYHAVEPROBLEM1814
+LANG_GERMAN         "^1Ultranationalist: ^7Ich habe gerade eine Nachricht von der Geheimdienstabteilung bekommen! Es scheint, als hätten wir ein Problem!"
+
+REFERENCE           SCOUTSNIPER_RU4_CANCELTRANSACTIONS1819
+LANG_GERMAN         "^1Ultranationalist: ^7Vielleicht die Transaktion mit den Ukrainern abbrechen?"
+
+REFERENCE           SCOUTSNIPER_RU4_CANTWAITFORSHIFTEND1824
+LANG_GERMAN         "^1Ultranationalist: ^7Ich kann es kaum erwarten, dass die Schicht endet. Zumindest zahlt Zakhaev gut, um hier zu stehen."
+
+REFERENCE           SCOUTSNIPER_RU4_HOPEITDOESNTRAIN1827
+LANG_GERMAN         "^1Ultranationalist: ^7Ich hoffe, es regnet nicht. Ich habe meinen Regenmantel vergessen."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTONE49
+LANG_GERMAN         "^2Cpt. MacMillan: ^7Hab ein."
+
+REFERENCE           SNIPERESCAPE_MCM_TANGODOWN410
+LANG_GERMAN         "^2Cpt. MacMillan: ^7Ziel erledigt."
+
+REFERENCE           SNIPERESCAPE_MCM_HESDOWN411
+LANG_GERMAN         "^2Cpt. MacMillan: ^7Er ist erledigt."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTANOTHER412
+LANG_GERMAN         "^2Cpt. MacMillan: ^7Hab noch einen."
+
+REFERENCE           SNIPERESCAPE_MCM_TARGETNEUTRALIZED413
+LANG_GERMAN         "^2Cpt. MacMillan: ^7Ziel neutralisiert."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTHIM414
+LANG_GERMAN         "^2Cpt. MacMillan: ^7Hab ihn."
+
+REFERENCE           SNIPERESCAPE_RUL_NEARPOOL51
+LANG_GERMAN         "^1Lautsprecher: ^7Die Flüchtigen sind in der Nähe des Schwimmbadkomplexes! Schickt Gruppen A und B, um sie jetzt abzuschneiden!"
+
+REFERENCE           SNIPERESCAPE_RUL_AMUSEMENTPK52
+LANG_GERMAN         "^1Lautsprecher: ^7Sie bewegen sich in Richtung des Vergnügungsparks! Wir brauchen Verstärkung im Sektor drei!"
+
+REFERENCE           SNIPERESCAPE_RUL_HOTELPOLISSA53
+LANG_GERMAN         "^1Lautsprecher: ^7Feind gesichtet in der Nähe des Hotel Polissia! Ich wiederhole, feindliche Soldaten bewegen sich vom Hotel Polissia!"
+
+REFERENCE           SNIPERESCAPE_RUL_CUTOFFEXITS54
+LANG_GERMAN         "^1Lautsprecher: ^7Sie sind in Apartmentblock D eingedrungen, wir können ihnen dort nicht folgen. Schneidet alle Ausgänge ab und stoppt sie im Park."
+
+REFERENCE           SNIPERESCAPE_RUL_SNIPERSINAREA55
+LANG_GERMAN         "^1Lautsprecher: ^7Feindliche Scharfschützen sind in der Gegend! Sie verstecken sich in den Apartmentblöcken! Findet sie!"
+
+REFERENCE           SNIPERESCAPE_RUL_SOUTHOFCITY56
+LANG_GERMAN         "^1Lautsprecher: ^7Team fünf, durchsucht den Bereich um das Schwimmbad! Team sechs, durchsucht die Gebäude südlich der Stadt!"
+
+REFERENCE           SNIPERESCAPE_RUL_COVERWOODS57
+LANG_GERMAN         "^1Lautsprecher: ^7Sie bewegen sich möglicherweise in Richtung des nördlichen Endes der Stadt! Schickt zwei weitere Teams, um den Wald im Norden abzudecken!"
+
+REFERENCE           SNIPERESCAPE_RUL_MOVEMOVE58
+LANG_GERMAN         "^1Lautsprecher: ^7Die feindlichen Scharfschützen wurden dabei beobachtet, wie sie durch die Innenhöfe zwischen den Apartmentgebäuden gehen! Bewegt euch! Bewegt euch!"
+
+REFERENCE           VASSAULT_PRI_KAMAROVSMAN111
+LANG_GERMAN         "^2Captain Price: ^7Da ist Kamarovs Mann, na los."
+
+REFERENCE           VASSAULT_RU1_READYAIMFIRE12
+LANG_GERMAN         "^1Ultranationalist: ^7Dieses Dorf wird als Beispiel für euch alle dienen. Ihr alle habt bei den Verbrechen der korrupten Behörden geholfen und dazu beigetragen! Wegen Leuten wie euch hat unsere großartige Nation geschwächt! Und jetzt werdet ihr die Früchte eures Verrats ernten."
+
+REFERENCE           VASSAULT_RU1_KILLTHEM13
+LANG_GERMAN         "^1Ultranationalist: ^7Bereit... Zielen... Feuer!"
+
+REFERENCE           VASSAULT_RU1_MAKEEXAMPLE14
+LANG_GERMAN         "^1Ultranationalist: ^7Tötet sie! Tötet sie alle!"
+
+REFERENCE           VASSAULT_RU1_DIEYOUTRAITOR15
+LANG_GERMAN         "^1Ultranationalist: ^7Stirb, Verräter!"
+
+REFERENCE           VASSAULT_RU1_EXECUTETHEM16
+LANG_GERMAN         "^1Ultranationalist: ^7Exekutiert sie! Folgt jetzt dem Befehl!"
+
+REFERENCE           VASSAULT_KAA_WASNTME1452
+LANG_GERMAN         "^1Khaled Al-Asad: ^7Ich war es nicht!"
+
+REFERENCE           VASSAULT_KAA_WASNTME2454
+LANG_GERMAN         "^1Khaled Al-Asad: ^7Ich war es nicht!"
+
+REFERENCE           VILLAGEDEF_RUL_SURRENDERATONCE11
+LANG_GERMAN         "^1Lautsprecher: ^7Ergeben Sie sich und Ihr Leben wird verschont. Ich bin sicher, Sie treffen unter diesen Umständen die richtige Entscheidung."
+
+REFERENCE           VILLAGEDEF_RUL_DROPYOURWEAPONS12
+LANG_GERMAN         "^1Lautsprecher: ^7Lassen Sie die Waffen fallen und ergeben Sie sich. Wenn Sie aufgeben, passiert ihnen nichts."
+
+REFERENCE           VILLAGEDEF_RUL_WEKNOWYOUREHIDING13
+LANG_GERMAN         "^1Lautsprecher: ^7Wir wissen, dass Sie sich im Dorf verstecken. Sie sind umstellt und es gibt keinen Ausweg. Machen Sie es sich leicht und geben Sie auf."
+
+REFERENCE           VILLAGEDEF_RU1_WHATWASTHAT112
+LANG_GERMAN         "^1Ultranationalist: ^7Was war das?"
+
+REFERENCE           VILLAGEDEF_RU1_NOICANTMOVE117
+LANG_GERMAN         "^1Ultranationalist: ^7Ich kann mich nicht bewegen! Wo sind meine Beine?! Jemand hilf mir!"
+
+REFERENCE           VILLAGEDEF_RU1_ICANTSEETHEM121
+LANG_GERMAN         "^1Ultranationalist: ^7Sie sind wahrscheinlich dort oben auf dem Hügel, aber ich sehe sie nicht."
+
+REFERENCE           VILLAGEDEF_RU1_GOAROUNDWEST129
+LANG_GERMAN         "^1Ultranationalist: ^7Geh von der Seite nach Westen!"
+
+REFERENCE           VILLAGEDEF_RU1_MEDIC131
+LANG_GERMAN         "^1Ultranationalist: ^7SANITÄTER!"
+
+REFERENCE           VILLAGEDEF_RU1_MUSTBETWOPLATOONS135
+LANG_GERMAN         "^1Ultranationalist: ^7Es könnten zwei Züge sein!"
+
+REFERENCE           VILLAGEDEF_RU2_DIDYOUHEARTHAT113
+LANG_GERMAN         "^1Ultranationalist: ^7Hast du das gehört?"
+
+REFERENCE           VILLAGEDEF_RU2_UNDERHEAVYFIRE122
+LANG_GERMAN         "^1Ultranationalist: ^7Wir stehen unter starkem Feuer! Wir brauchen Verstärkung!"
+
+REFERENCE           VILLAGEDEF_RU2_PUTUPSMOKESCREEN132
+LANG_GERMAN         "^1Ultranationalist: ^7Errichtet den Rauchschutz! Werft eure Rauchgranaten!"
+
+REFERENCE           VILLAGEDEF_RU3_WHATTHEHELL114
+LANG_GERMAN         "^1Ultranationalist: ^7Was zur Hölle?!"
+
+REFERENCE           VILLAGEDEF_RU4_HELPMEIMWOUNDED116
+LANG_GERMAN         "^1Ultranationalist: ^7Oi, Hilfe! Hilf mir! Ich bin verwundet! Ahhh!"
+
+REFERENCE           VILLAGEDEF_RU4_WHERETHEYSHOOTING120
+LANG_GERMAN         "^1Ultranationalist: ^7Wo schießen sie hin?"
+
+REFERENCE           VILLAGEDEF_RU4_REINFORCEMENTS123
+LANG_GERMAN         "^1Ultranationalist: ^7Verstärkungen auf dem Weg!"
+
+REFERENCE           VILLAGEDEF_RU4_IMHITMEDIC130
+LANG_GERMAN         "^1Ultranationalist: ^7Ich bin getroffen! SANITÄTER! SANITÄTER!"
+
+REFERENCE           VILLAGEDEF_SAS3_TARGETDOWN120
+LANG_GERMAN         "^2Gaz: ^7Ziel erledigt."
+
+REFERENCE           VILLAGEDEF_SAS3_GOTHIM121
+LANG_GERMAN         "^2Gaz: ^7Hab ihn."
+
+REFERENCE           VILLAGEDEF_SAS3_TARGETELIMINATED122
+LANG_GERMAN         "^2Gaz: ^7Ziel eliminiert."
+
+REFERENCE           VILLAGEDEF_GRG_NEEDARIDE81
+LANG_GERMAN         "^2SSgt. Griggs: ^7Hab gehört, ihr Jungs braucht ein Taxi!"
+
+REFERENCE           VILLAGEDEF_GRG_GETONBOARD83
+LANG_GERMAN         "^2SSgt. Griggs: ^7An Bord, alles an Bord, los!"
+
+REFERENCE           VILLAGEDEF_GRG_LETSGO84
+LANG_GERMAN         "^2SSgt. Griggs: ^7Los geht's! Los geht's!"
+
+REFERENCE           VILLAGEDEF_GRG_WEREALLABOARD85
+LANG_GERMAN         "^2SSgt. Griggs: ^7Okay, wir sind alle an Bord. Los! Los!"
+
+ENDMARKER

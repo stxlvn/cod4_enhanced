@@ -1,0 +1,247 @@
+// Note to translators:
+// If a sentence is the same in your language then please change it to "#same"
+//
+// eg:
+// LANG_ENGLISH  "HALT"
+// LANG_GERMAN   "#same"
+//
+// (This is so we can tell which strings have been signed-off as ok to be the same words for QA
+//  and because we do not store duplicate strings, which will then get exported again next time
+//  as being untranslated.)
+//
+VERSION             "1"
+CONFIG              "C:\trees\cod2\bin\StringEd.cfg"
+FILENOTES           ""
+
+REFERENCE           EARNED
+LANG_PORTUGUESE     "Achievement Unlocked!"
+
+REFERENCE           NAME_0
+LANG_PORTUGUESE     "Just another day at the office"
+
+REFERENCE           DETAIL_0
+LANG_PORTUGUESE     "Earn all available trophies for Call of Duty 4: Modern Warfare."
+
+REFERENCE           NAME_1
+LANG_PORTUGUESE     "Earn a Winged Dagger"
+
+REFERENCE           DETAIL_1
+LANG_PORTUGUESE     "Complete 'F.N.G.'."
+
+REFERENCE           NAME_2
+LANG_PORTUGUESE     "Make the Jump"
+
+REFERENCE           DETAIL_2
+LANG_PORTUGUESE     "Infiltrate a cargo ship."
+
+REFERENCE           NAME_3
+LANG_PORTUGUESE     "Dancing in the Dark"
+
+REFERENCE           DETAIL_3
+LANG_PORTUGUESE     "Kill the power."
+
+REFERENCE           NAME_4
+LANG_PORTUGUESE     "Save the Bacon"
+
+REFERENCE           DETAIL_4
+LANG_PORTUGUESE     "Protect 'War Pig', the Abrams tank."
+
+REFERENCE           NAME_5
+LANG_PORTUGUESE     "Death From Above"
+
+REFERENCE           DETAIL_5
+LANG_PORTUGUESE     "Operate an AC-130 gun ship."
+
+REFERENCE           NAME_6
+LANG_PORTUGUESE     "Wrong Number"
+
+REFERENCE           DETAIL_6
+LANG_PORTUGUESE     "Wrong Number"
+
+REFERENCE           NAME_7
+LANG_PORTUGUESE     "Piggyback Ride"
+
+REFERENCE           DETAIL_7
+LANG_PORTUGUESE     "Carry Cpt. MacMillan to safety."
+
+REFERENCE           NAME_8
+LANG_PORTUGUESE     "Desperate Measures"
+
+REFERENCE           DETAIL_8
+LANG_PORTUGUESE     "Corner Zakhaev's Son."
+
+REFERENCE           NAME_9
+LANG_PORTUGUESE     "Win the War"
+
+REFERENCE           DETAIL_9
+LANG_PORTUGUESE     "Complete the game on any difficulty."
+
+REFERENCE           NAME_10
+LANG_PORTUGUESE     "Look Sharp"
+
+REFERENCE           DETAIL_10
+LANG_PORTUGUESE     "Find 15 enemy intel items."
+
+REFERENCE           NAME_11
+LANG_PORTUGUESE     "Eyes and Ears"
+
+REFERENCE           DETAIL_11
+LANG_PORTUGUESE     "Find 30 enemy intel items."
+
+REFERENCE           NAME_12
+LANG_PORTUGUESE     "Down Boy Down"
+
+REFERENCE           DETAIL_12
+LANG_PORTUGUESE     "Survive a dog attack."
+
+REFERENCE           NAME_13
+LANG_PORTUGUESE     "New Squadron Record"
+
+REFERENCE           DETAIL_13
+LANG_PORTUGUESE     "Complete the cargo ship mockup in less than 19 seconds."
+
+REFERENCE           NAME_14
+LANG_PORTUGUESE     "Rescue Roycewicz"
+
+REFERENCE           DETAIL_14
+LANG_PORTUGUESE     "Save Pvt. Roycewicz on the stairs."
+
+REFERENCE           NAME_15
+LANG_PORTUGUESE     "Your Show Sucks"
+
+REFERENCE           DETAIL_15
+LANG_PORTUGUESE     "Destroy all the TVs showing Al-Asad's speech"
+
+REFERENCE           NAME_16
+LANG_PORTUGUESE     "Man of the People"
+
+REFERENCE           DETAIL_16
+LANG_PORTUGUESE     "Save the farmer."
+
+REFERENCE           NAME_17
+LANG_PORTUGUESE     "Straight Flush"
+
+REFERENCE           DETAIL_17
+LANG_PORTUGUESE     "Kill 5 enemies with one shot while in the AC-130 gunship."
+
+REFERENCE           NAME_18
+LANG_PORTUGUESE     "Ghillies In The Mist"
+
+REFERENCE           DETAIL_18
+LANG_PORTUGUESE     "Complete 'All Ghillied Up' without alerting any enemies."
+
+REFERENCE           NAME_19
+LANG_PORTUGUESE     "Mile High Club"
+
+REFERENCE           DETAIL_19
+LANG_PORTUGUESE     "Sky dive to safety on Veteran difficulty."
+
+REFERENCE           NAME_20
+LANG_PORTUGUESE     "No Rest for the Weary"
+
+REFERENCE           DETAIL_20
+LANG_PORTUGUESE     "Stab an injured crawling enemy."
+
+REFERENCE           NAME_21
+LANG_PORTUGUESE     "Deep and Hard"
+
+REFERENCE           DETAIL_21
+LANG_PORTUGUESE     "Complete the game on Hardened or Veteran difficulty."
+
+REFERENCE           NAME_22
+LANG_PORTUGUESE     "The Package"
+
+REFERENCE           DETAIL_22
+LANG_PORTUGUESE     "Complete 'Crew Expendable' on Veteran difficulty."
+
+REFERENCE           NAME_23
+LANG_PORTUGUESE     "The Rescue"
+
+REFERENCE           DETAIL_23
+LANG_PORTUGUESE     "Complete 'Blackout' on Veteran difficulty."
+
+REFERENCE           NAME_24
+LANG_PORTUGUESE     "The Search"
+
+REFERENCE           DETAIL_24
+LANG_PORTUGUESE     "Complete 'Charlie Don't Surf' on Veteran difficulty."
+
+REFERENCE           NAME_25
+LANG_PORTUGUESE     "The Bog"
+
+REFERENCE           DETAIL_25
+LANG_PORTUGUESE     "Complete 'The Bog' and 'War Pig' on Veteran difficulty."
+
+REFERENCE           NAME_26
+LANG_PORTUGUESE     "The Escape"
+
+REFERENCE           DETAIL_26
+LANG_PORTUGUESE     "Complete 'Hunted' and 'Death From Above' on Veteran difficulty."
+
+REFERENCE           NAME_27
+LANG_PORTUGUESE     "The First Horseman"
+
+REFERENCE           DETAIL_27
+LANG_PORTUGUESE     "Complete 'Shock and Awe' on Veteran difficulty."
+
+REFERENCE           NAME_28
+LANG_PORTUGUESE     "The Second Horseman"
+
+REFERENCE           DETAIL_28
+LANG_PORTUGUESE     "Complete 'Safehouse' on Veteran difficulty."
+
+REFERENCE           NAME_29
+LANG_PORTUGUESE     "The Shot"
+
+REFERENCE           DETAIL_29
+LANG_PORTUGUESE     "Complete 'All Ghillied Up' and 'One Shot, One Kill' on Veteran difficulty."
+
+REFERENCE           NAME_30
+LANG_PORTUGUESE     "The Third Horseman"
+
+REFERENCE           DETAIL_30
+LANG_PORTUGUESE     "Complete 'Heat' and 'The Sins of the Father' on Veteran difficulty."
+
+REFERENCE           NAME_31
+LANG_PORTUGUESE     "The Ultimatum"
+
+REFERENCE           DETAIL_31
+LANG_PORTUGUESE     "Complete 'Ultimatum', 'All In', and 'No Fighting in the War Room' on Veteran difficulty."
+
+REFERENCE           NAME_32
+LANG_PORTUGUESE     "The Fourth Horseman"
+
+REFERENCE           DETAIL_32
+LANG_PORTUGUESE     "Complete 'Game Over' on Veteran difficulty."
+
+REFERENCE           NAME_33
+LANG_PORTUGUESE     "Daredevil"
+
+REFERENCE           DETAIL_33
+LANG_PORTUGUESE     "Kill an enemy while blinded by a flashbang in the single player campaign."
+
+REFERENCE           NAME_34
+LANG_PORTUGUESE     "Roadkill"
+
+REFERENCE           DETAIL_34
+LANG_PORTUGUESE     "Kill 2 enemies by blowing up a car in the single player campaign."
+
+REFERENCE           NAME_35
+LANG_PORTUGUESE     "Bird on the Ground"
+
+REFERENCE           DETAIL_35
+LANG_PORTUGUESE     "Shoot down an enemy helicopter with an RPG in the single player campaign."
+
+REFERENCE           NAME_36
+LANG_PORTUGUESE     "Four of a Kind"
+
+REFERENCE           DETAIL_36
+LANG_PORTUGUESE     "Kill 4 enemies in a row with headshots in the single player campaign."
+
+REFERENCE           NAME_37
+LANG_PORTUGUESE     "Three of a Kind"
+
+REFERENCE           DETAIL_37
+LANG_PORTUGUESE     "Kill 3 enemies in a row with your knife in the single player campaign."
+
+ENDMARKER

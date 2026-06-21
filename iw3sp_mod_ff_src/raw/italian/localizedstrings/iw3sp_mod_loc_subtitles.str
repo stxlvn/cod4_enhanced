@@ -1,0 +1,1255 @@
+// Note to translators:
+// If a sentence is the same in your language then please change it to "#same"
+//
+// eg:
+// LANG_ENGLISH  "HALT"
+// LANG_GERMAN   "#same"
+//
+// (This is so we can tell which strings have been signed-off as ok to be the same words for QA
+//  and because we do not store duplicate strings, which will then get exported again next time
+//  as being untranslated.)
+//
+VERSION             "1"
+CONFIG              "C:\trees\cod2\bin\StringEd.cfg"
+FILENOTES           "Additional subtitles for some voice lines"
+
+REFERENCE           AC130_PRI_TOWNTOEAST12
+LANG_ITALIAN        "^2Captain Price: ^7Procediamo lungo la strada verso una cittadina a est.\nRichiediamo conferma di copertura."
+
+REFERENCE           AFTERMATH_MMR_ROMEO11
+LANG_ITALIAN        "^2Radio: ^7NBC-1 con priorità  flash. Bravo - NB-0 6-2, 6-3-4. Charlie - quadrante 90. Hotel - superficie. Juliet - 90 secondi. Lima - 10 gradi. Romeo - 2.3 gradi centigradi."
+
+REFERENCE           AFTERMATH_FMR_EPICENTER12
+LANG_ITALIAN        "^2Radio: ^7Attenzione, rilevata Detonazione nucleare, pioggia radioattiva prevista entro un raggio di 11,91 chilometri epicentro NB-0-5-8-6-8-0."
+
+REFERENCE           AFTERMATH_FMR_EVACUATION13
+LANG_ITALIAN        "^2Radio: ^7Tutto il personale all'interno. Ordine di evacuazione immediata."
+
+REFERENCE           AFTERMATH_FMR_CONTCENTERS14
+LANG_ITALIAN        "^2Radio: ^7Il centro di contaminazione à stato ormai designato e diventerà operativo entro le prossime 2 ore."
+
+REFERENCE           AFTERMATH_FMR_DOSIMETER15
+LANG_ITALIAN        "^2Radio: ^7Il personale è invitato a condurre esami tramite visometro IM-9-3-8 A. D. per determinare l 'entità della contaminazione."
+
+REFERENCE           AFTERMATH_FMR_ELEVATEDLEVELS16
+LANG_ITALIAN        "^2Radio: ^7Per coloro che ancora hanno un livello di contaminazione elevato, sono invitati a sottoporsi a un controllo medico appena possibile."
+
+REFERENCE           AIRLIFT_VSQ_LETSGO73
+LANG_ITALIAN        "^2Lt. Vasquez: ^7Muoversi! Andiamo! Andiamo!"
+
+REFERENCE           AIRLIFT_VSQ_HANGON115
+LANG_ITALIAN        "^2Lt. Vasquez: ^7Tenetevi forte!"
+
+REFERENCE           AIRLIFT_COP_ROGERTHAT113
+LANG_ITALIAN        "^2Co Pilot: ^7Ricevuto!"
+
+REFERENCE           AIRLIFT_HCC_LETSGO43
+LANG_ITALIAN        "^2Crew Chief: ^7Muoversi! Muoversi! Attenti! Andiamo!"
+
+REFERENCE           AIRLIFT_HCC_DOWNRAMP44
+LANG_ITALIAN        "^2Crew Chief: ^7Giù per la rampa! Muoversi! Via! Via! Via!"
+
+REFERENCE           AIRLIFT_HCC_WHEELSUP75
+LANG_ITALIAN        "^2Crew Chief: ^7Muovetevi! Dobbiamo andarcene in 10 secondi!"
+
+REFERENCE           AIRLIFT_HCC_WHEELSUP75B
+LANG_ITALIAN        "^2Crew Chief: ^7Muovetevi! Dobbiamo andarcene!"
+
+REFERENCE           AIRLIFT_GM1_FIREBALCONY51
+LANG_ITALIAN        "^2Marine: ^7Fuoco da mortaio in arrivo!"
+
+REFERENCE           AIRLIFT_GM2_FIREBALCONY61
+LANG_ITALIAN        "^2Marine: ^7Indirizzate il fuoco su quel balcone!"
+
+REFERENCE           AIRLIFT_GM3_REINFORCEMENTS62
+LANG_ITALIAN        "^2Marine: ^7Rinforzi si stanno calando a est!"
+
+REFERENCE           AIRLIFT_GM3_HELLYEAH72
+LANG_ITALIAN        "^2Marine: ^7Di brutto!"
+
+REFERENCE           AIRLIFT_GM4_HELLYEAH77
+LANG_ITALIAN        "^2Marine: ^7Grazie per il passaggio!"
+
+REFERENCE           AIRLIFT_HQR_ALLCALLSIGNS12
+LANG_ITALIAN        "^2Comando: ^7Tutti i segnali di chiamata, qui Overlook. Corazzato nemico nel palmeto a ovest del fiume."
+
+REFERENCE           AIRLIFT_HQR_HOSTILESADVANCING101
+LANG_ITALIAN        "^2Comando: ^7Attenzione, 2-5, nemici in avanzamento parallelo a sud ovest della vostra posizione verso il luogo dello schianto."
+
+REFERENCE           AIRLIFT_HQR_CONFIRMED114
+LANG_ITALIAN        "^2Comando: ^7A tutte le forze americane: confermiamo la presenza di una minaccia nucleare nella città . Le squadre NEST sono già  sul posto per il disarmo. Ripeto: confermiamo la..."
+
+REFERENCE           AIRLIFT_MHP_INFORMATION11
+LANG_ITALIAN        "^2Outlaw Two-Five: ^7In formazione. Ci avviciniamo all'obiettivo. 30 secondi."
+
+REFERENCE           AIRLIFT_MHP_TAKINGFIRE21
+LANG_ITALIAN        "^2Outlaw Two-Five: ^7Ci attaccano."
+
+REFERENCE           AIRLIFT_MHP_RPGROOFTOPS22
+LANG_ITALIAN        "^2Outlaw Two-Five: ^7RPG sui tetti."
+
+REFERENCE           AIRLIFT_MHP_HOSTILESRPGS23
+LANG_ITALIAN        "^2Outlaw Two-Five: ^7Nemici armati di RPG."
+
+REFERENCE           AIRLIFT_MHP_GROUNDINFANTRY24
+LANG_ITALIAN        "^2Outlaw Two-Five: ^7Altra fanteria a terra, attenzione."
+
+REFERENCE           AIRLIFT_MHP_WEVEGOTRPGS25
+LANG_ITALIAN        "^2Outlaw Two-Five: ^7Confermati RPG sui tetti."
+
+REFERENCE           AIRLIFT_MHP_LIGHTARMOR26
+LANG_ITALIAN        "^2Outlaw Two-Five: ^7Corazzato leggero. Fatto a pezzi, Jackson."
+
+REFERENCE           AIRLIFT_MHP_ANTIAIRROOFTOP27
+LANG_ITALIAN        "^2Outlaw Two-Five: ^7Batteria contraerea sul tetto."
+
+REFERENCE           AIRLIFT_MHP_ANTIAIRGROUND28
+LANG_ITALIAN        "^2Outlaw Two-Five: ^7Contraerea a terra."
+
+REFERENCE           AIRLIFT_MHP_INFORCHOP112
+LANG_ITALIAN        "^2Outlaw Two-Five: ^7Signore e signori, à il vostro capitano che vi parla. Stiamo per filarcela da qui! Tenetevi forte. Jake, motori al massimo."
+
+REFERENCE           AIRPLANE_TER_ILLKILLHIM83
+LANG_ITALIAN        "^1Ultranacionalista: ^7Indietro! Gli sparo in testa! Ho detto indietro!"
+
+REFERENCE           AIRPLANE_SAS1_TANGODOWN41
+LANG_ITALIAN        "^2Echo One-One: ^7Bersaglio abbattuto!"
+
+REFERENCE           AIRPLANE_SAS1_XRAYDOWN42
+LANG_ITALIAN        "^2Echo One-One: ^7Raggi X disattivati!"
+
+REFERENCE           AIRPLANE_SAS1_HOSTILENEUT43
+LANG_ITALIAN        "^2Echo One-One: ^7Nemico neutralizzato!"
+
+REFERENCE           AIRPLANE_SAS1_TARGNEUT44
+LANG_ITALIAN        "^2Echo One-One: ^7Bersaglio neutralizzato!"
+
+REFERENCE           AIRPLANE_SAS1_AREACLEAR45
+LANG_ITALIAN        "^2Echo One-One: ^7Area sicura!"
+
+REFERENCE           AIRPLANE_SAS1_SECTIONCLEAR46
+LANG_ITALIAN        "^2Echo One-One: ^7Sezione sicura!"
+
+REFERENCE           AIRPLANE_SAS1_CLEAR47
+LANG_ITALIAN        "^2Echo One-One: ^7Via libera!"
+
+REFERENCE           AIRPLANE_RU4_DONTHURTME93
+LANG_ITALIAN        "^2Civile Russo: ^7Per favore! Non uccidermi. Voglio solo tornare a casa, voglio solo andarmene da qui..."
+
+REFERENCE           AIRPLANE_RU4_GETTOAPHONE94
+LANG_ITALIAN        "^2Civile Russo: ^7Devo trovare un telefono. Che sta succedendo qui? Non merito questo..."
+
+REFERENCE           AIRPLANE_RU4_NOPARACHUTE96
+LANG_ITALIAN        "^2Civile Russo: ^7Cosa? No!... Aspetta! Cosa stai facendo? Non ho un paracaduuuuuuu..."
+
+REFERENCE           AIRPLANE_GAZ_OKGETREADY151
+LANG_ITALIAN        "^2Romeo One-One: ^7Ok, preparati."
+
+REFERENCE           AIRPLANE_GAZ_STANDBY16
+LANG_ITALIAN        "^2Romeo One-One: ^7Attendete...attendete...via!"
+
+REFERENCE           AIRPLANE_GAZ_WEAPONSFREE22
+LANG_ITALIAN        "^2Romeo One-One: ^7Aprite il fuoco."
+
+REFERENCE           AIRPLANE_GAZ_MOVE24
+LANG_ITALIAN        "^2Romeo One-One: ^7Avanzare."
+
+REFERENCE           AIRPLANE_GAZ_MOVEUP25
+LANG_ITALIAN        "^2Romeo One-One: ^7Saliamo."
+
+REFERENCE           AIRPLANE_GAZ_KEEPMOVING26
+LANG_ITALIAN        "^2Romeo One-One: ^7Muovetevi!"
+
+REFERENCE           AIRPLANE_GAZ_STAIRWAYCLEAR27
+LANG_ITALIAN        "^2Romeo One-One: ^7Scale sicure!"
+
+REFERENCE           AIRPLANE_GAZ_TANGODOWN31
+LANG_ITALIAN        "^2Romeo One-One: ^7Bersaglio abbattuto!"
+
+REFERENCE           AIRPLANE_GAZ_XRAYDOWN32
+LANG_ITALIAN        "^2Romeo One-One: ^7Raggi X disattivati!"
+
+REFERENCE           AIRPLANE_GAZ_HOSTILENEUT33
+LANG_ITALIAN        "^2Romeo One-One: ^7Nemico neutralizzato!"
+
+REFERENCE           AIRPLANE_GAZ_TARGNEUT34
+LANG_ITALIAN        "^2Romeo One-One: ^7Bersaglio neutralizzato!"
+
+REFERENCE           AIRPLANE_GAZ_AREACLEAR35
+LANG_ITALIAN        "^2Romeo One-One: ^7Area sicura!"
+
+REFERENCE           AIRPLANE_GAZ_SECTIONCLEAR36
+LANG_ITALIAN        "^2Romeo One-One: ^7Sezione sicura!"
+
+REFERENCE           AIRPLANE_GAZ_CLEAR37
+LANG_ITALIAN        "^2Romeo One-One: ^7Via libera!"
+
+REFERENCE           AIRPLANE_SAS4_ONEALPHA21
+LANG_ITALIAN        "^2Charlie One-One: ^7Nemico abbattuto nella sezione 'Uno-Alfa'."
+
+REFERENCE           AIRPLANE_SAS4_MULTIPLECONT23
+LANG_ITALIAN        "^2Charlie One-One: ^7Contatti multipli."
+
+REFERENCE           AIRPLANE_SAS4_TANGODOWN51
+LANG_ITALIAN        "^2Charlie One-One: ^7Bersaglio abbattuto!"
+
+REFERENCE           AIRPLANE_SAS4_XRAYDOWN52
+LANG_ITALIAN        "^2Charlie One-One: ^7Raggi X disattivati!"
+
+REFERENCE           AIRPLANE_SAS4_HOSTILENEUT53
+LANG_ITALIAN        "^2Charlie One-One: ^7Nemico neutralizzato!"
+
+REFERENCE           AIRPLANE_SAS4_TARGNEUT54
+LANG_ITALIAN        "^2Charlie One-One: ^7Bersaglio neutralizzato!"
+
+REFERENCE           AIRPLANE_SAS4_AREACLEAR55
+LANG_ITALIAN        "^2Charlie One-One: ^7Area sicura!"
+
+REFERENCE           AIRPLANE_SAS4_SECTIONCLEAR56
+LANG_ITALIAN        "^2Charlie One-One: ^7Sezione sicura!"
+
+REFERENCE           AIRPLANE_SAS4_CLEAR57
+LANG_ITALIAN        "^2Charlie One-One: ^7Via libera!"
+
+REFERENCE           AIRPLANE_GAZ_SEEYA101
+LANG_ITALIAN        "^2Romeo One-One: ^7Missione compiuta! Alla prossima volta!"
+
+REFERENCE           AMBUSH_PRI_NOTBAD12
+LANG_ITALIAN        "^2Captain Price: ^7Non male, Kamarov. Andrà  a meraviglia. Vulture 1-6, siamo in posizione."
+
+REFERENCE           AMBUSH_GRG_NOTHINGLIKERUSSIAN23
+LANG_ITALIAN        "^2SSgt. Griggs: ^7Per fortuna sei quassù, perché di russo non hai proprio nulla."
+
+REFERENCE           AMBUSH_GRG_OHNO13102
+LANG_ITALIAN        "^2SSgt. Griggs: ^7Da, caz..."
+
+REFERENCE           AMBUSH_GRG_OHNO23103
+LANG_ITALIAN        "^2SSgt. Griggs: ^7Da, merd..."
+
+REFERENCE           AMBUSH_KMR_BESTWAYIN11
+LANG_ITALIAN        "^2Sgt. Kamarov: ^7Questa à la strada migliore.\nIl posto di blocco à proprio qui davanti."
+
+REFERENCE           AMBUSH_RU1_PAPERSWHATPAPERS32
+LANG_ITALIAN        "^1Ultranacionalista: ^7Carte, di che carte stai parlando?"
+
+REFERENCE           AMBUSH_RU1_FATPOLITICIAN33
+LANG_ITALIAN        "^1Ultranacionalista: ^7Ma chi ti credi di essere là¬ in piedi come un politico grasso, chiedendomi qualcosa?"
+
+REFERENCE           AMBUSH_RU1_WHATAREYOUWAITINGFOR34
+LANG_ITALIAN        "^1Ultranacionalista: ^7Cosa stai aspettando, come un idiota? Apri il cancello!"
+
+REFERENCE           AMBUSH_RU2_PAPERSPLEASE31
+LANG_ITALIAN        "^2Lealista Russo: ^7Carte, per favore!"
+
+REFERENCE           AMBUSH_RU2_ILLDOTHATRIGHTNOW35
+LANG_ITALIAN        "^2Lealista Russo: ^7Scusa, Compagno Comandante. Lo farà² subito."
+
+REFERENCE           AMBUSH_SOZ_STOPTHEBLOODSHED81
+LANG_ITALIAN        "^1Victor Zakhaev: ^7Pensi che questo fermerà  il massacro? Pensi che fermerà  mio padre?"
+
+REFERENCE           AMBUSH_SOZ_DEADSOONANYWAY85
+LANG_ITALIAN        "^1Victor Zakhaev: ^7Morirete comunque presto."
+
+REFERENCE           AMBUSH_SOZ_GOFYOURSELF87
+LANG_ITALIAN        "^1Victor Zakhaev: ^7Vai a farti fottere."
+
+REFERENCE           ARMADA_GM1_GOGOGO42
+LANG_ITALIAN        "^2Marine: ^7Via! Via! Via!"
+
+REFERENCE           ARMADA_GM1_BREACHING56
+LANG_ITALIAN        "^2Marine: ^7Irrompiamo!"
+
+REFERENCE           ARMADA_GM1_BREACHINGBREACHING84
+LANG_ITALIAN        "^2Marine: ^7Irrompiamo!"
+
+REFERENCE           ARMADA_GM1_GOESOURBOYS102
+LANG_ITALIAN        "^2Marine: ^7Sà¬! Ecco i nostri ragazzi!"
+
+REFERENCE           ARMADA_GM1_CLEAR1114
+LANG_ITALIAN        "^2Marine: ^7Via libera!"
+
+REFERENCE           ARMADA_GM2_MOVEITMOVEIT43
+LANG_ITALIAN        "^2Marine: ^7Muovetevi, muovetevi!"
+
+REFERENCE           ARMADA_GM2_OORAH103
+LANG_ITALIAN        "^2Marine: ^7Urrà !"
+
+REFERENCE           ARMADA_GM3_BLOCKINGPOSITIONS51
+LANG_ITALIAN        "^2Marine: ^7Allestire posizioni difensive! Forza!"
+
+REFERENCE           ARMADA_GM3_OORAH104
+LANG_ITALIAN        "^2Marine: ^7Uuurrà !"
+
+REFERENCE           ARMADA_FHP_COPYSTRIKERSIXFOUR12
+LANG_ITALIAN        "^2Pilota Black Hawk: ^7Ricevuto, Striker Sei-Quattro."
+
+REFERENCE           ARMADA_FHP_COPY14
+LANG_ITALIAN        "^2Pilota Black Hawk: ^7Ricevuto."
+
+REFERENCE           ARMADA_FHP_ROGERTHAT22
+LANG_ITALIAN        "^2Pilota Black Hawk: ^7Ricevuto, avvistati RPG a terra."
+
+REFERENCE           ARMADA_FHP_GOTVISUAL31
+LANG_ITALIAN        "^2Pilota Black Hawk: ^7Contatto visivo con bersaglio."
+
+REFERENCE           ARMADA_HP1_SHORELINEINVIEW11
+LANG_ITALIAN        "^2Striker 6-4: ^7Linea costiera in vista."
+
+REFERENCE           ARMADA_HP1_FEETDRYTENSECONDS13
+LANG_ITALIAN        "^2Striker 6-4: ^7Dieci secondi e ci siamo."
+
+REFERENCE           ARMADA_HP1_TAKINGFIREHERE21
+LANG_ITALIAN        "^2Striker 6-4: ^7Sono sotto fuoco nemico..."
+
+REFERENCE           ARMADA_HP1_THATWASCLOSE23
+LANG_ITALIAN        "^2Striker 6-4: ^7Merda, per un pelo!"
+
+REFERENCE           ARMADA_HP1_COPYTHAT32
+LANG_ITALIAN        "^2Striker 6-4: ^7Ricevuto."
+
+REFERENCE           ARMADA_HP1_FIVESECONDS33
+LANG_ITALIAN        "^2Striker 6-4: ^7Cinque secondi."
+
+REFERENCE           ARMADA_HP1_STANDBYGREENLIGHT34
+LANG_ITALIAN        "^2Striker 6-4: ^7Attendete il via."
+
+REFERENCE           ARMADA_VSQ_DOWNTHEROPES41
+LANG_ITALIAN        "^2Lt. Vasquez: ^7Calatevi! Via! Via!"
+
+REFERENCE           ARMADA_VSQ_BREACHING57
+LANG_ITALIAN        "^2Lt. Vasquez: ^7Procediamo all'irruzione!"
+
+REFERENCE           ARMADA_VSQ_GOGOGO58
+LANG_ITALIAN        "^2Lt. Vasquez: ^7Via! Via! Via!"
+
+REFERENCE           ARMADA_VSQ_DOIT83
+LANG_ITALIAN        "^2Lt. Vasquez: ^7Via!"
+
+REFERENCE           ARMADA_VSQ_GOGOGO85
+LANG_ITALIAN        "^2Lt. Vasquez: ^7Via! Via! Via!"
+
+REFERENCE           ARMADA_VSQ_OORAH105
+LANG_ITALIAN        "^2Lt. Vasquez: ^7Urrà !"
+
+REFERENCE           ARMADA_GRG_YEAHOORAH1110
+LANG_ITALIAN        "^2SSgt. Griggs: ^7Sà¬. Urrà ."
+
+REFERENCE           BLACKOUT_GAZ_LOYALISTSEH12
+LANG_ITALIAN        "^2Gaz: ^7Lealisti, eh? Si tratta dei russi buoni\n o di quelli cattivi?"
+
+REFERENCE           BLACKOUT_PRI_HALFACLICK11
+LANG_ITALIAN        "^2Captain Price: ^7I Lealisti ci attendono a 500 metri\n a nord da qui. Muoviamoci."
+
+REFERENCE           BLACKOUT_KMR_PREPAREATTACK38
+LANG_ITALIAN        "^2Sgt. Kamarov: ^7Vanya, avanzate e preparatevi ad attaccare al mio segnale."
+
+REFERENCE           BLACKOUT_KMR_STALLING4121_FULL
+LANG_ITALIAN        "^2Sgt. Kamarov: ^7Qual à la tua situazione? Quanto ancora ti serve? Va bene, continuerà² a tenerli impegnati."
+
+REFERENCE           BLACKOUT_KMR_STALLING4121_CUT
+LANG_ITALIAN        "^2Sgt. Kamarov: ^7Qual à la tua situazione? Quanto ancora ti serve? Va bene, continuerà² a tener..."
+
+REFERENCE           BLACKOUT_KMR_OUTOFMIND516
+LANG_ITALIAN        "^2Sgt. Kamarov: ^7Cosa stai facendo, sei fuori di testa? Chi pensi di essere?"
+
+REFERENCE           BLACKOUT_NKD_WHOAREYOU641
+LANG_ITALIAN        "^2Nikolai: ^7Cosa vuoi? Chi sei? Forze speciali?"
+
+REFERENCE           BLACKOUT_RU1_VIKTOR631
+LANG_ITALIAN        "^1Ultranazionalista: ^7Hm? Che cosa à successo con l'elettricità ?"
+
+REFERENCE           BLACKOUT_RU1_ELECTRICIAN632
+LANG_ITALIAN        "^1Ultranazionalista: ^7Viktor! L'elettricità  à andata via!"
+
+REFERENCE           BLACKOUT_RU2_GETTINGCLOSER633
+LANG_ITALIAN        "^1Ultranazionalista: ^7Lo so. Le forze nemiche si stanno avvicinando."
+
+REFERENCE           BLACKOUT_RU2_STAY635
+LANG_ITALIAN        "^1Ultranazionalista: ^7No, penso che tu sopravvaluti le loro capacità . Resta qui e custodisci il prigioniero."
+
+REFERENCE           BLACKOUT_RU1_SASHA636
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sasha...? Sei qui? Sasha...?"
+
+REFERENCE           BLACKOUT_RU4_THEYREINSIDE437
+LANG_ITALIAN        "^1Ultranazionalista: ^7Penso che siano dentro. Viktor...? Sasha...?"
+
+REFERENCE           BLACKOUT_RU4_HOWCLOSE634
+LANG_ITALIAN        "^1Ultranazionalista: ^7Quanto sono vicine le forze nemiche? Dobbiamo evacuare."
+
+REFERENCE           BOG_GM1_OORAH1015
+LANG_ITALIAN        "^2Marine: ^7OK."
+
+REFERENCE           BOG_GM1_THREECOMIN
+LANG_ITALIAN        "^2Marine: ^7Tre che escono!"
+
+REFERENCE           BOG_GM2_MOVEIT12
+LANG_ITALIAN        "^2Marine: ^7Muoversi! Muoversi!"
+
+REFERENCE           BOG_GM2_CLEAR137
+LANG_ITALIAN        "^2Marine: ^7Via libera!"
+
+REFERENCE           BOG_GM2_CLEAR268
+LANG_ITALIAN        "^2Marine: ^7Via libera!"
+
+REFERENCE           BOG_GM2_OORAH1016
+LANG_ITALIAN        "^2Marine: ^7OK."
+
+REFERENCE           BOG_GM3_RPG17
+LANG_ITALIAN        "^2Marine: ^7R-P-G!"
+
+REFERENCE           BOG_GM3_CLEAR38
+LANG_ITALIAN        "^2Marine: ^7Via libera!"
+
+REFERENCE           BOG_GM3_ALLCLEAR69
+LANG_ITALIAN        "^2Marine: ^7Tutto OK!"
+
+REFERENCE           BOG_GM3_OORAH1017
+LANG_ITALIAN        "^2Marine: ^7OK."
+
+REFERENCE           BOG_VSQ_HALFACLICK11
+LANG_ITALIAN        "^2Lt. Vasquez: ^7Il carro armato della compagnia "Alfa" à bloccato a 500 metri a sud da qui. Andiamo!"
+
+REFERENCE           BOG_AS1_LETENTER41
+LANG_ITALIAN        "^1Soldato Arabo: ^7Lasciali entrare, poi attaccali una volta che sono passati!"
+
+REFERENCE           BOG_AS2_GETREADY42
+LANG_ITALIAN        "^1Soldato Arabo: ^7Sono al piano di sotto, preparati."
+
+REFERENCE           BOG_GM1_GETYOURASS11
+LANG_ITALIAN        "^2Marine: ^7Jackson! Porta subito il culo in prima linea!\nAbbiamo nemici in arrivo da nord!"
+
+REFERENCE           BOG_GM1_WOOYEAH1100
+LANG_ITALIAN        "^2Marine: ^7Woo! Sà¬! Ha-ha!"
+
+REFERENCE           BOG_GM2_HOLYSHIT1111
+LANG_ITALIAN        "^2Marine: ^7Porca miseria! Avete visto che roba?"
+
+REFERENCE           BOG_GM3_HELLYEAH1112
+LANG_ITALIAN        "^2Marine: ^7Di brutto!"
+
+REFERENCE           BOG_GM4_YEAHWOO1113
+LANG_ITALIAN        "^2Marine: ^7Sà¬! Woo! Woo!"
+
+REFERENCE           BOG_GM4_TALKINABOUT114
+LANG_ITALIAN        "^2Marine: ^7Sà¬! proprio lo spettacolo che volevamo vedere!"
+
+REFERENCE           BOG_TCM_3STORY11_2NDFLOOR32
+LANG_ITALIAN        "^2Warpig: ^7Artigliere! Sull'edificio a tre piani! Secondo piano, ore 11!"
+
+REFERENCE           BOG_TCM_3STORY1130_2NDFLOOR36
+LANG_ITALIAN        "^2Warpig: ^7Edificio a tre piani! Ore 11:30! Balcone al secondo piano!"
+
+REFERENCE           BOG_TCM_2STORY1_GROUND310
+LANG_ITALIAN        "^2Warpig: ^7Artigliere! Edificio a due piani a ore 1, piano terra!"
+
+REFERENCE           BOG_TCM_2STORY1_2NDFLOOR314
+LANG_ITALIAN        "^2Warpig: ^7Artigliere! Edificio a due piani a ore 1, secondo piano!"
+
+REFERENCE           BOG_TCM_3STORY1230_2NDFLOOR318
+LANG_ITALIAN        "^2Warpig: ^7Artigliere! Edificio a tre piani a ore 12:30, secondo piano!"
+
+REFERENCE           BOG_TCM_FIRE134
+LANG_ITALIAN        "^2Warpig: ^7Fuoco!"
+
+REFERENCE           BOG_TCM_FIRE138
+LANG_ITALIAN        "^2Warpig: ^7Fuoco!"
+
+REFERENCE           BOG_TCM_FIRE1312
+LANG_ITALIAN        "^2Warpig: ^7Fuoco!"
+
+REFERENCE           BOG_TCM_FIRE1316
+LANG_ITALIAN        "^2Warpig: ^7Fuoco!"
+
+REFERENCE           BOG_TCM_FIRE1320
+LANG_ITALIAN        "^2Warpig: ^7Fuoco!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED133
+LANG_ITALIAN        "^2Mitragliere del Carro: ^7Bersaglio acquisito!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED137
+LANG_ITALIAN        "^2Mitragliere del Carro: ^7Bersaglio acquisito!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED2311
+LANG_ITALIAN        "^2Mitragliere del Carro: ^7Bersaglio acquisito!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED2315
+LANG_ITALIAN        "^2Mitragliere del Carro: ^7Bersaglio acquisito!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED3319
+LANG_ITALIAN        "^2Mitragliere del Carro: ^7Bersaglio acquisito!"
+
+REFERENCE           BOG_TGN_TARGETACQUIRED385
+LANG_ITALIAN        "^2Mitragliere del Carro: ^7Bersaglio acquisito!"
+
+REFERENCE           BOG_TLD_UP31
+LANG_ITALIAN        "^2Caricatore del Carro armato: ^7Su!"
+
+REFERENCE           BOG_TLD_UP135
+LANG_ITALIAN        "^2Caricatore del Carro armato: ^7Su!"
+
+REFERENCE           BOG_TLD_UP239
+LANG_ITALIAN        "^2Caricatore del Carro armato: ^7Su!"
+
+REFERENCE           BOG_TLD_UP3313
+LANG_ITALIAN        "^2Caricatore del Carro armato: ^7Su!"
+
+REFERENCE           BOG_TLD_UP4317
+LANG_ITALIAN        "^2Caricatore del Carro armato: ^7Su!"
+
+REFERENCE           CARGOSHIP_PRI_CREWEXPEND14
+LANG_ITALIAN        "^2Captain Price: ^7Pronti a sparare."
+
+REFERENCE           CARGOSHIP_HP1_BASEPLATEHAMMERTWO11
+LANG_ITALIAN        "^2Hammer 2-4: ^7Baseplate, qui Hammer 2-4. Contatto visivo col bersaglio. Arrivo stimato in 60 secondi."
+
+REFERENCE           CARGOSHIP_HP1_THIRTYSECDARK13
+LANG_ITALIAN        "^2Hammer 2-4: ^730 secondi, tolgo le luci."
+
+REFERENCE           CARGOSHIP_HP1_TENSECONDSRADIO113
+LANG_ITALIAN        "^2Hammer 2-4: ^710 secondi."
+
+REFERENCE           CARGOSHIP_HP1_RADIOCHECK114
+LANG_ITALIAN        "^2Hammer 2-4: ^7Verifica radio. Passate alla frequenza sicura."
+
+REFERENCE           CARGOSHIP_HP1_GREENLIGHTGORADIO115
+LANG_ITALIAN        "^2Hammer 2-4: ^7Andate! Via! Via! Via!"
+
+REFERENCE           CARGOSHIP_HQR_COPYTWOFOUR12
+LANG_ITALIAN        "^2Baseplate: ^7Ricevuto, 2-4."
+
+REFERENCE           CARGOSHIP_RUD_3SEC211
+LANG_ITALIAN        "^1Ultranazionalista: ^7Bevi alla salute, Colonnello!"
+
+REFERENCE           CARGOSHIP_RU1_HEY
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ehi!"
+
+REFERENCE           CARGOSHIP_RU1_GETREADY81
+LANG_ITALIAN        "^1Ultranazionalista: ^7Siamo circondati! Preparati!"
+
+REFERENCE           CARGOSHIP_RU1_CALLFORHELP85
+LANG_ITALIAN        "^1Ultranazionalista: ^7Contatto alla radio, chiamate aiuto!"
+
+REFERENCE           CARGOSHIP_RU2_INCARGOHOLDS22
+LANG_ITALIAN        "^1Ultranazionalista: ^7Maledizione! Cos'è questo?"
+
+REFERENCE           CARGOSHIP_RU2_WHATTHE82
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sono nei compartimenti di carico e stanno venendo qui. Guardate le porte."
+
+REFERENCE           CARGOSHIP_RU2_ARETHEYAMERICANS83
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sono americani?"
+
+REFERENCE           CARGOSHIP_RU2_THEYREGETTINGCLOSE87
+LANG_ITALIAN        "^1Ultranazionalista: ^7Stanno arrivando, preparatevi."
+
+REFERENCE           CARGOSHIP_RU4_GETREADY84
+LANG_ITALIAN        "^1Ultranazionalista: ^7Non lo so, preparatevi!"
+
+REFERENCE           CARGOSHIP_RU4_MIDDLEOFOCEAN86
+LANG_ITALIAN        "^1Ultranazionalista: ^7Siamo nel mezzo dell'oceano. Nessuno può aiutarci, idiota!"
+
+REFERENCE           KILLHOUSE_GAZ_GETARIFLE211
+LANG_ITALIAN        "^2Gaz: ^7Felice di vederti amico. Vai al armeria e prendi un fucile."
+
+REFERENCE           HUNTED_PRI_WHATTHEBLOODY11
+LANG_ITALIAN        "^2Captain Price: ^7Cosa diavolo è quello?!"
+
+REFERENCE           HUNTED_HP1_MISSILEINBOUND12
+LANG_ITALIAN        "^2Hammer 6-4: ^7Miscela in arrivo! A destra! A destra!"
+
+REFERENCE           HUNTED_HP1_MAYDAYMAYDAY14
+LANG_ITALIAN        "^2Hammer 6-4: ^7Mayday mayday, qui Hammer 6-4, stiamo precipitando, ripeto stiamo precipitando due miglia a sud dal punto cinque..."
+
+REFERENCE           HUNTED_HP1_GOINGDOWN15
+LANG_ITALIAN        "^2Hammer 6-4: ^7Qui Sei-Quattro stiamo precipitando! Tenetevi!"
+
+REFERENCE           HUNTED_RUF_WHATSGOINGON41
+LANG_ITALIAN        "^2Contadino: ^7Cosa sta succedendo qui? Cosa volete?"
+
+REFERENCE           HUNTED_RUF_HIDINGWHO43
+LANG_ITALIAN        "^2Contadino: ^7Chi si sta nascondendo? Di cosa diavolo state parlando?"
+
+REFERENCE           HUNTED_RUF_BRITISH45
+LANG_ITALIAN        "^2Contadino: ^7Britannici?"
+
+REFERENCE           HUNTED_RU1_ISADUMP33
+LANG_ITALIAN        "^1Ultranazionalista: ^7Questo posto e ' una discarica."
+
+REFERENCE           HUNTED_RU1_DONTPLAYSTUPID42
+LANG_ITALIAN        "^1Ultranazionalista: ^7Non fare lo stupido. Sappiamo che li stai nascondendo da qualche parte."
+
+REFERENCE           HUNTED_RU1_HIDINGSOLDIERS44
+LANG_ITALIAN        "^1Ultranazionalista: ^7Hai soldati britannici là dentro?"
+
+REFERENCE           HUNTED_RU1_FORGETIT46
+LANG_ITALIAN        "^1Ultranazionalista: ^7Mi hai fatto perdere tempo..."
+
+REFERENCE           HUNTED_RU1_BYTHEHOUSE61
+LANG_ITALIAN        "^1Ultranazionalista: ^7Eccoli! Là vicino alla casa."
+
+REFERENCE           HUNTED_RU1_INTHEFIELD116
+LANG_ITALIAN        "^1Ultranazionalista: ^7Vedo il nemico! Sono nel campo."
+
+REFERENCE           HUNTED_RU2_BYTHECREEK115
+LANG_ITALIAN        "^1Ultranazionalista: ^7Là vicino al ruscello."
+
+REFERENCE           HUNTED_RU4_OUTONFIELD117
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sono fuori dal campo."
+
+REFERENCE           HUNTED_BNB_MISSILELOCK16
+LANG_ITALIAN        "^2Sistema: ^7Missile agganciato. Missile agganciato."
+
+REFERENCE           HUNTED_BNB_ALTITUDE17
+LANG_ITALIAN        "^2Sistema: ^7Quota. Quota. Quota."
+
+REFERENCE           HUNTED_BNB_CAUTION18
+LANG_ITALIAN        "^2Sistema: ^7Cautela. Cautela. Cautela."
+
+REFERENCE           HUNTED_BNB_WARNING19
+LANG_ITALIAN        "^2Sistema: ^7Allarme. Allarme. Allarme."
+
+REFERENCE           ICBM_PRI_REGROUPONME219
+LANG_ITALIAN        "^2Captain Price: ^7Qui da me."
+
+REFERENCE           ICBM_GRG_678452056315
+LANG_ITALIAN        "^2SSgt. Griggs: ^7Griggs. 6-7-8-4-5-2-0-5-6."
+
+REFERENCE           ICBM_GRG_678318
+LANG_ITALIAN        "^2SSgt. Griggs: ^7Griggs. 6-7-8..."
+
+REFERENCE           ICBM_GRG_GETBUSY320
+LANG_ITALIAN        "^2SSgt. Griggs: ^7Fra poco la situazione si scalderà parecchio...ha, se fossi in voi me ne andrei alla svelta."
+
+REFERENCE           ICBM_RU1_UNIT4REPORT217
+LANG_ITALIAN        "^1Ultranacionalista: ^7Unit 4, have you found any others? This one had explosives on him, there must be more of them. Unit 4, report!"
+
+REFERENCE           ICBM_RU1_WHEREOTHERS314
+LANG_ITALIAN        "^1Ultranacionalista: ^7Dove sono gli altri?"
+
+REFERENCE           ICBM_RU1_TOVARISCH316
+LANG_ITALIAN        "^1Ultranacionalista: ^7Sai tovarisch, la Convenzione di Ginevra è una bella cosa, peccato che sia solo teoria.\nPerché non mi rispondi così Ti tiri fuori dai guai?"
+
+REFERENCE           ICBM_RU1_HOWMANY317
+LANG_ITALIAN        "^1Ultranacionalista: ^7Quanti altri ci sono?"
+
+REFERENCE           ICBM_RU1_WHOISOFFICER319
+LANG_ITALIAN        "^1Ultranacionalista: ^7Chi è il tuo comandante?"
+
+REFERENCE           ICBM_RU1_WHERESHACKSAW321
+LANG_ITALIAN        "^1Ultranazionalista: ^7Yuri - dov'è la sega?"
+
+REFERENCE           ICBM_RU1_IFIHAD323
+LANG_ITALIAN        "^1Ultranazionalista: ^7Se avessi la sega, non te lo chiederei, idiota!"
+
+REFERENCE           ICBM_RU2_YOUHADIT322
+LANG_ITALIAN        "^1Ultranazionalista: ^7Pensavo l'avessi tu."
+
+REFERENCE           JEEPRIDE_RU1_BARELYBREATHING172
+LANG_ITALIAN        "^2Lealista Russo: ^7Sta respirando a malapena!"
+
+REFERENCE           JEEPRIDE_RU2_ALLRIGHTMYFRIEND173
+LANG_ITALIAN        "^2Sgt. Kamarov: ^7Andrà tutto bene, amico mio!"
+
+REFERENCE           JEEPRIDE_RU2_GETHIMOUTOFHERE174
+LANG_ITALIAN        "^2Sgt. Kamarov: ^7Portatelo via! Velocemente, su! Dobbiamo portarlo all'ospedale immediatamente!"
+
+REFERENCE           KILLHOUSE_GAZ_GOODTOSEE21
+LANG_ITALIAN        "^2Gaz: ^7Piacere di vederti, amico. Prendi un fucile dal tavolo."
+
+REFERENCE           KILLHOUSE_SAS4_FNG1211
+LANG_ITALIAN        "^2SAS: ^7Il nuovo arrivato, signore."
+
+REFERENCE           KILLHOUSE_SAS4_GOEASY1213
+LANG_ITALIAN        "^2SAS: ^7Ci vada piano, signore, è il suo primo giorno nel reggimento."
+
+REFERENCE           LAUNCHFACILITY_A_HQR_STILLWORKING19
+LANG_ITALIAN        "^2Comando: ^7Bravo 6, siamo ancora impegnati con i russi.\nA breve dovremmo tenere i codici avanzati. Passo e chiudo."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_HIGHALERT11
+LANG_ITALIAN        "^1Altoparlante: ^7Il perimetro della struttura è stato compromesso. Tutte le unità procedano alle posizioni di difesa.\nForze nemiche sconosciute si stanno muovendo da Sud o Ovest. La struttura è ora in massima allerta."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_UNDERATTACK12
+LANG_ITALIAN        "^1Altoparlante: ^7Siamo sotto attacco! Chiudete immediatamente tutti i punti di ingresso."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_REDSPENTZNAZ13
+LANG_ITALIAN        "^1Altoparlante: ^7Unità nemiche confermate come forze speciali americane. Usate estrema cautela. Unità Red Spetznaz sono in arrivo per intercettare."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_PREPTUBES14
+LANG_ITALIAN        "^1Altoparlante: ^7Preparazione tubi di lancio 2-6. Pronti."
+
+REFERENCE           LAUNCHFACILITY_A_RUL_MOTHERLAND23
+LANG_ITALIAN        "^1Altoparlante: ^7Combattete per la gloria della Madrepatria! Combattete contro la corruzione della nostra un tempo grande nazione!"
+
+REFERENCE           LAUNCHFACILITY_A_RUL_AVENGEFALLEN24
+LANG_ITALIAN        "^1Altoparlante: ^7Compagni! Ricordate i caduti e vendicateli! Assicuriamoci che il loro sacrificio non sia stato vano!"
+
+REFERENCE           LAUNCHFACILITY_A_RUL_RESTOREHONOR25
+LANG_ITALIAN        "^1Altoparlante: ^7Ristabiliramo l'onore dei giorni in cui questa nazione era temuta da tutte le altre! Non saremo fermati! Non ci lasceremo facilmente deviare!"
+
+REFERENCE           LAUNCHFACILITY_B_PRI_LETSMOVE11
+LANG_ITALIAN        "^2Captain Price: ^7Bene, muoviamoci!"
+
+REFERENCE           LAUNCHFACILITY_B_GM1_BASESECURITY12
+LANG_ITALIAN        "^25-Delta 6: ^7Capitano Price qui 5-Delta 6. Stiamo liberando l'area a est verso la sala di sorveglianza."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_ALERT25
+LANG_ITALIAN        "^1Altoparlante: ^7Allarme! Forze nemiche sono entrate nella base. Ripeto, forze nemiche sono entrate nella base."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_BARRACKS26
+LANG_ITALIAN        "^1Altoparlante: ^7Forze nemiche sono state impegnate presso le caserme. Rinforzi necessari presso le caserme."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_STORAGEAREA32
+LANG_ITALIAN        "^1Altoparlante: ^7L'area di stoccaggio è stata compromessa. Forze nemiche hanno raggiunto i tubi di lancio. Chiusura della porta di accesso principale all'area di controllo dei lanci."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_2NDINITIATED41
+LANG_ITALIAN        "^1Altoparlante: ^7Il secondo lancio è stato avviato."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_PRIMARYINITITATED42
+LANG_ITALIAN        "^1Altoparlante: ^7Sequenza di lancio primaria avviata per i tubi 3-6. In attesa."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SECUREMISSILEBAY43
+LANG_ITALIAN        "^1Altoparlante: ^7Sicurezza su tutti i banchi missilistici. Linee di carburante staccate."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_2MINS44
+LANG_ITALIAN        "^1Altoparlante: ^7Lancio tra due minuti."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_90SECS46
+LANG_ITALIAN        "^1Altoparlante: ^7Novanta secondi."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_1MIN47
+LANG_ITALIAN        "^1Altoparlante: ^7Un minuto. Il livello del refrigerante è a norma."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_30SECS48
+LANG_ITALIAN        "^1Altoparlante: ^7Trenta secondi. Le coordinate del missile sono caricate."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_20SECS410
+LANG_ITALIAN        "^1Altoparlante: ^7Vent'anni secondi."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_TEN411
+LANG_ITALIAN        "^1Altoparlante: ^7Dieci."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_NINE412
+LANG_ITALIAN        "^1Altoparlante: ^7Nove."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_EIGHT413
+LANG_ITALIAN        "^1Altoparlante: ^7Otto."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SEVEN414
+LANG_ITALIAN        "^1Altoparlante: ^7Sette."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_SIX415
+LANG_ITALIAN        "^1Altoparlante: ^7Sei."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_FIVE416
+LANG_ITALIAN        "^1Altoparlante: ^7Cinque."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_FOUR417
+LANG_ITALIAN        "^1Altoparlante: ^7Quattro."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_THREE418
+LANG_ITALIAN        "^1Altoparlante: ^7Tre."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_TWO419
+LANG_ITALIAN        "^1Altoparlante: ^7Due."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_ONE420
+LANG_ITALIAN        "^1Altoparlante: ^7Uno."
+
+REFERENCE           LAUNCHFACILITY_B_RUL_LAUNCHCOMPLETE421
+LANG_ITALIAN        "^1Altoparlante: ^7Accensione. La sequenza di lancio è completa."
+
+REFERENCE           LAUNCHFACILITY_B_RU1_GO15
+LANG_ITALIAN        "^1Ultranazionalista: ^7Vai! Sbrigati! Siamo sotto attacco."
+
+REFERENCE           LAUNCHFACILITY_B_RU3_GETREADY110
+LANG_ITALIAN        "^1Ultranazionalista: ^7Stanno arrivando dal nostro lato! Preparati!"
+
+REFERENCE           LAUNCHFACILITY_B_RU3_DAMNYOU71
+LANG_ITALIAN        "^1Ultranazionalista: ^7Maledizione..."
+
+REFERENCE           LAUNCHFACILITY_B_RU2_GRABWEAPONS16
+LANG_ITALIAN        "^1Ultranazionalista: ^7Prendi le armi e prendi posizioni di difesa! Dai su! Dai su!"
+
+REFERENCE           LAUNCHFACILITY_B_RU2_OPENFIRE72
+LANG_ITALIAN        "^1Ultranazionalista: ^7Aprite il fuoco! Distruggeteli!"
+
+REFERENCE           SCOUTSNIPER_RU1_OTHERTEAM210
+LANG_ITALIAN        "^1Ultranazionalista: ^7L'altra squadra ha trovato qualcosa nel villaggio, andiamo!"
+
+REFERENCE           SCOUTSNIPER_RU1_WANDERING24
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ehi, Sergei! Perché stiamo girovagando per questo campo?"
+
+REFERENCE           SCOUTSNIPER_RU1_WASTELAND26
+LANG_ITALIAN        "^1Ultranazionalista: ^7Perché fare pattuglia? Non c'è nessuno qui per 120 chilometri. Deserto."
+
+REFERENCE           SCOUTSNIPER_RU1_TAKEALOOK28
+LANG_ITALIAN        "^1Ultranazionalista: ^7Numero Sei. Abbiamo problemi nel villaggio. Vai e controlla tu stesso."
+
+REFERENCE           SCOUTSNIPER_RU1_ONOURWAY29
+LANG_ITALIAN        "^1Ultranazionalista: ^7Compreso. Numero Due, siamo in viaggio."
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY139
+LANG_ITALIAN        "^1Ultranazionalista: ^7Aspetta, questo è uno sconosciuto. Portatelo via!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY2311
+LANG_ITALIAN        "^1Ultranazionalista: ^7Aghh! Cecchino! Cecchino! Fuoco!"
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS1313
+LANG_ITALIAN        "^1Ultranazionalista: ^7Qualcosa non va qui... sono sicuro di aver visto qualcosa."
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS2314
+LANG_ITALIAN        "^1Ultranazionalista: ^7Qualcosa di strano sta succedendo qui..."
+
+REFERENCE           SCOUTSNIPER_RU1_SUSPICIOUS3315
+LANG_ITALIAN        "^1Ultranazionalista: ^7Tenete gli occhi aperti. Penso di aver visto qualcosa..."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES1316
+LANG_ITALIAN        "^1Ultranazionalista: ^7Probabilmente niente... rilassati."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES2317
+LANG_ITALIAN        "^1Ultranazionalista: ^7Non preoccuparti così tanto."
+
+REFERENCE           SCOUTSNIPER_RU1_NOWORRIES3318
+LANG_ITALIAN        "^1Ultranazionalista: ^7Non vedo niente, potresti essere stanco."
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY4319
+LANG_ITALIAN        "^1Ultranazionalista: ^7Che cos'è? CECCHINO!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY5320
+LANG_ITALIAN        "^1Ultranazionalista: ^7Forze nemiche mimetizzate, sopra!"
+
+REFERENCE           SCOUTSNIPER_RU1_FOUNDENEMY6321
+LANG_ITALIAN        "^1Ultranazionalista: ^7Forze nemiche sulle nostre posizioni!"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY1322
+LANG_ITALIAN        "^1Ultranazionalista: ^7Un soldato è morto! È morto! È morto!"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY2323
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ho trovato un corpo qui! Nemici nelle vicinanze!"
+
+REFERENCE           SCOUTSNIPER_RU1_DEADBODY3324
+LANG_ITALIAN        "^1Ultranazionalista: ^7È morto. Soldato ucciso! È stato ucciso!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION1359
+LANG_ITALIAN        "^1Ultranazionalista: ^7Che cos'era quello?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION2360
+LANG_ITALIAN        "^1Ultranazionalista: ^7Questa è un'esplosione?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION3361
+LANG_ITALIAN        "^1Ultranazionalista: ^7È esploso qualcosa?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION4362
+LANG_ITALIAN        "^1Ultranazionalista: ^7Qualcuno è ferito?!"
+
+REFERENCE           SCOUTSNIPER_RU1_ANEXPLOSION5363
+LANG_ITALIAN        "^1Ultranazionalista: ^7È tutto a posto?!"
+
+REFERENCE           SCOUTSNIPER_RU1_SAWSOMETHING41
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ehi! Dmitriy! Ho visto dei movimenti nel campo. Vai a controllare."
+
+REFERENCE           SCOUTSNIPER_RU1_ALLCLEAR43
+LANG_ITALIAN        "^1Ultranazionalista: ^7Non c'è nessuno qui! Tutto è calmo."
+
+REFERENCE           SCOUTSNIPER_RU1_PASSCIG121
+LANG_ITALIAN        "^1Ultranazionalista: ^7Passa le sigarette."
+
+REFERENCE           SCOUTSNIPER_RU1_WAKEUP123
+LANG_ITALIAN        "^1Ultranazionalista: ^7È il tuo turno, Yuri! Ehi, Yuri! Non dormire, è il tuo turno! Anatoly ha aumentato la posta di due dollari."
+
+REFERENCE           SCOUTSNIPER_RU1_TOOEXPENSIVE125
+LANG_ITALIAN        "^1Ultranazionalista: ^7Troppo costoso? Zakhaev ci paga il doppio per questo lavoro. Soldi facili. Non c'è pericolo, nessuna possibilità di scontro a fuoco. Chi viene qui? Questa è una zona di disastro nucleare. Preferiresti morire di cancro qui che da un proiettile."
+
+REFERENCE           SCOUTSNIPER_RU1_MERCENARIES127
+LANG_ITALIAN        "^1Ultranazionalista: ^7Questi mercenari ucraini sono così incompetenti. Hanno ottenuto quello che si meritavano. Chiunque con abilità di combattimento avrebbe ucciso quei cani senza problemi."
+
+REFERENCE           SCOUTSNIPER_RU1_FIVEDOLLARS129
+LANG_ITALIAN        "^1Ultranazionalista: ^7Cinque dollari. Vuoi mantenere o aumentare la scommessa o arrenderti come un debole?"
+
+REFERENCE           SCOUTSNIPER_RU1_PAIROFJACKS1211
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ho una coppia di jack."
+
+REFERENCE           SCOUTSNIPER_RU1_OWNMONEY1215
+LANG_ITALIAN        "^1Ultranazionalista: ^7I fortunati... ma ti pago con i tuoi soldi."
+
+REFERENCE           SCOUTSNIPER_RU1_CANTBELIEVE1220
+LANG_ITALIAN        "^1Ultranazionalista: ^7Incredibile. Ho perso la mia partita."
+
+REFERENCE           SCOUTSNIPER_RU1_PAYTHEMAN1221
+LANG_ITALIAN        "^1Ultranazionalista: ^7Paga l'uomo i suoi soldi. Ha vinto in modo leale."
+
+REFERENCE           SCOUTSNIPER_RU1_READYTOMOVE181
+LANG_ITALIAN        "^1Ultranazionalista: ^7Preparate i camion per due ore!"
+
+REFERENCE           SCOUTSNIPER_RU1_HELICOPTERONWAY183
+LANG_ITALIAN        "^1Ultranazionalista: ^7Elicottero in arrivo."
+
+REFERENCE           SCOUTSNIPER_RU1_ZONESAFE184
+LANG_ITALIAN        "^1Ultranazionalista: ^7Aspetta il segnale! La zona di atterraggio è libera?"
+
+REFERENCE           SCOUTSNIPER_RU1_OKBRINGIN185
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ok. Portate l'elicottero. Qui è tutto tranquillo."
+
+REFERENCE           SCOUTSNIPER_RU1_CHECKTHEWOODS187
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ehi, tu! Girati intorno alla foresta e dirigiti verso est. Non voglio che questi cani selvatici corriano liberi qui."
+
+REFERENCE           SCOUTSNIPER_RU1_REPLACEDBATTERIES189
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ho sostituito le batterie quando eravamo a Kiev. Non preoccuparti."
+
+REFERENCE           SCOUTSNIPER_RU1_GETSWORSE1810
+LANG_ITALIAN        "^1Ultranazionalista: ^7Come la vedo io, più ci allontaniamo da Chernobyl, peggio diventa la radiazione là."
+
+REFERENCE           SCOUTSNIPER_RU1_DOGSDONTGETCLOSE1812
+LANG_ITALIAN        "^1Ultranazionalista: ^7Credi a tutto quello che vuoi! Ma quando ce ne andremo, non voglio che quei cani si avvicinino troppo!"
+
+REFERENCE           SCOUTSNIPER_RU1_WHATHAPPENED1815
+LANG_ITALIAN        "^1Ultranazionalista: ^7Che cosa è successo?"
+
+REFERENCE           SCOUTSNIPER_RU1_SPECIALFORCES1817
+LANG_ITALIAN        "^1Ultranazionalista: ^7Forze speciali ucraine?"
+
+REFERENCE           SCOUTSNIPER_RU1_NUCLEARREACTOR1820
+LANG_ITALIAN        "^1Ultranazionalista: ^7Spetta a Zakhaev decidere. Il nostro compito è sorvegliare i camion e spostarli al reattore nucleare."
+
+REFERENCE           SCOUTSNIPER_RU1_GOTTADOSOMETHING1822
+LANG_ITALIAN        "^1Ultranazionalista: ^7Dobbiamo fare qualcosa al riguardo... bastardo inutile."
+
+REFERENCE           SCOUTSNIPER_RU1_HATEGUARDDUTY1825
+LANG_ITALIAN        "^1Ultranazionalista: ^7Odio fare la guardia, mi fanno male i piedi."
+
+REFERENCE           SCOUTSNIPER_RU2_NOTWANDERING25
+LANG_ITALIAN        "^1Ultranacionalista: ^7We're not wandering. We're patrolling here, idiot."
+
+REFERENCE           SCOUTSNIPER_RU2_ZAHKAEVSPAYINGGOOD27
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ascolta... Zakhaev ci sta pagando bene per pattugliare questo territorio. Se sai cosa è meglio per te, stai zitto. Se è paranoico, è il suo problema."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY4310
+LANG_ITALIAN        "^1Ultranazionalista: ^7Maledizione, cecchino... Portatelo via!"
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS1325
+LANG_ITALIAN        "^1Ultranazionalista: ^7Qualcosa non va qui... sono sicuro di aver visto qualcosa."
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS2326
+LANG_ITALIAN        "^1Ultranazionalista: ^7Qualcosa di strano sta succedendo qui..."
+
+REFERENCE           SCOUTSNIPER_RU2_SUSPICIOUS3327
+LANG_ITALIAN        "^1Ultranazionalista: ^7Tenete gli occhi aperti. Penso di aver visto qualcosa..."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES1328
+LANG_ITALIAN        "^1Ultranazionalista: ^7Devi averlo immaginato... rilassati."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES2329
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sì, ti preoccupi troppo."
+
+REFERENCE           SCOUTSNIPER_RU2_NOWORRIES3330
+LANG_ITALIAN        "^1Ultranazionalista: ^7Non vedo niente, probabilmente sono stanco."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY1331
+LANG_ITALIAN        "^1Ultranazionalista: ^7Che cos'è? CECCHINO!"
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY2332
+LANG_ITALIAN        "^1Ultranazionalista: ^7Contatto! Nemici mimetizzati."
+
+REFERENCE           SCOUTSNIPER_RU2_FOUNDENEMY3332
+LANG_ITALIAN        "^1Ultranazionalista: ^7I nemici sono sulle nostre posizioni!"
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY1334
+LANG_ITALIAN        "^1Ultranazionalista: ^7Il compagno è morto! Fate attenzione! Il nemico è qui da qualche parte."
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY2335
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ho trovato un corpo! Il nemico deve essere nelle vicinanze!"
+
+REFERENCE           SCOUTSNIPER_RU2_DEADBODY3336
+LANG_ITALIAN        "^1Ultranazionalista: ^7È morto. È stato ucciso! Ucciso!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION1354
+LANG_ITALIAN        "^1Ultranazionalista: ^7Che diavolo è quello?! Che cos'è?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION2355
+LANG_ITALIAN        "^1Ultranazionalista: ^7Questa è un'esplosione?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION3356
+LANG_ITALIAN        "^1Ultranazionalista: ^7È esploso qualcosa?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION4357
+LANG_ITALIAN        "^1Ultranazionalista: ^7Qualcuno è ferito?!"
+
+REFERENCE           SCOUTSNIPER_RU2_ANEXPLOSION5358
+LANG_ITALIAN        "^1Ultranazionalista: ^7È tutto a posto?!"
+
+REFERENCE           SCOUTSNIPER_RU2_IMONIT42
+LANG_ITALIAN        "^1Ultranazionalista: ^7Vado a controllare."
+
+REFERENCE           SCOUTSNIPER_RU2_WHOSETURNISIT122
+LANG_ITALIAN        "^1Ultranazionalista: ^7A chi tocca?"
+
+REFERENCE           SCOUTSNIPER_RU2_ANYONESEEDOGS126
+LANG_ITALIAN        "^1Ultranazionalista: ^7Qualcuno ha visto dei cani selvatici correre qui? Ho sentito dire che gli ucraini hanno perso un paio dei loro vicino al complesso delle piscine la scorsa notte."
+
+REFERENCE           SCOUTSNIPER_RU2_YOUIDIOT1213
+LANG_ITALIAN        "^1Ultranazionalista: ^7Stolto. Questo sembra una persona che può essere sconfitta dai jack?"
+
+REFERENCE           SCOUTSNIPER_RU2_CALL1217
+LANG_ITALIAN        "^1Ultranazionalista: ^7Chiamata."
+
+REFERENCE           SCOUTSNIPER_RU2_BUYMOTORBIKE131
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sì, quando avrò i soldi per questo lavoro, comprerò una motocicletta e girerò in questa zona."
+
+REFERENCE           SCOUTSNIPER_RU2_AMERICAGOINGTOSTARTWAR132
+LANG_ITALIAN        "^1Ultranazionalista: ^7Pensi che gli americani inizieranno una guerra con noi mentre siamo deboli? Questo paese sta precipitando nel collasso. Tutto è possibile."
+
+REFERENCE           SCOUTSNIPER_RU2_YESTHATMAKESSENSE133
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sì, ha senso."
+
+REFERENCE           SCOUTSNIPER_RU2_ISEE134
+LANG_ITALIAN        "^1Ultranazionalista: ^7Compreso."
+
+REFERENCE           SCOUTSNIPER_RU2_YESIUNDERSTAND135
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sì, capisco."
+
+REFERENCE           SCOUTSNIPER_RU2_ILLTAKECAREOFIT136
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sì, compagno Comandante. Sarà fatto."
+
+REFERENCE           SCOUTSNIPER_RU2_HAVENTSEENANYONE141
+LANG_ITALIAN        "^1Ultranazionalista: ^7No, non ho visto nessuno. Ti faccio sapere se succede qualcosa."
+
+REFERENCE           SCOUTSNIPER_RU2_AFRICANOREUROPEAN142
+LANG_ITALIAN        "^1Ultranazionalista: ^7Hmm, sì, bella domanda: africano o europeo?"
+
+REFERENCE           SCOUTSNIPER_RU2_WHAT143
+LANG_ITALIAN        "^1Ultranazionalista: ^7Cosa?"
+
+REFERENCE           SCOUTSNIPER_RU2_TIMEFORSHIFTCHANGE144
+LANG_ITALIAN        "^1Ultranazionalista: ^7Dmitriy, è ora del cambio di turno nella guardia. Dovevi essere qui 15 minuti fa. Dove stai andando?"
+
+REFERENCE           SCOUTSNIPER_RU2_COMEIN145
+LANG_ITALIAN        "^1Ultranazionalista: ^7Dmitriy, entra, coperto."
+
+REFERENCE           SCOUTSNIPER_RU2_LOSTCONTACTDMITRI146
+LANG_ITALIAN        "^1Ultranazionalista: ^7Nikolai, ho perso il contatto con Dmitriy. La sua radio è rotta."
+
+REFERENCE           SCOUTSNIPER_RU2_SENDSOMEONETOCHECK147
+LANG_ITALIAN        "^1Ultranazionalista: ^7Manda qualcuno a controllare."
+
+REFERENCE           SCOUTSNIPER_RU2_ANDREIBRINGINGFOOD152
+LANG_ITALIAN        "^1Ultranazionalista: ^7Quando Andrei porterà il cibo?"
+
+REFERENCE           SCOUTSNIPER_RU2_QUICKLYASPOSSIBLE154
+LANG_ITALIAN        "^1Ultranazionalista: ^7Facciamolo il più velocemente possibile. I cadaveri stanno iniziando a decomporre."
+
+REFERENCE           SCOUTSNIPER_RU2_YESCOMRADE182
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sì, compagno Comandante."
+
+REFERENCE           SCOUTSNIPER_RU2_CLEARROTORBLADES186
+LANG_ITALIAN        "^1Ultranazionalista: ^7Attenzione alle pale dell'elicottero."
+
+REFERENCE           SCOUTSNIPER_RU2_RADIATIONDOSIMETERS188
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sei sicuro che questi dosimetri di radiazioni funzionino? Non voglio ammalarmi."
+
+REFERENCE           SCOUTSNIPER_RU2_DONTBELIEVEATALL1811
+LANG_ITALIAN        "^1Ultranazionalista: ^7Non ci credo per niente."
+
+REFERENCE           SCOUTSNIPER_RU2_OK1813
+LANG_ITALIAN        "^1Ultranazionalista: ^7Va bene."
+
+REFERENCE           SCOUTSNIPER_RU2_PROFESSIONALJOB1816
+LANG_ITALIAN        "^1Ultranazionalista: ^7Alcuni dei nostri ragazzi sono stati uccisi. Sembrava un lavoro professionale."
+
+REFERENCE           SCOUTSNIPER_RU2_POSSIBLYSPETZNAZ1818
+LANG_ITALIAN        "^1Ultranazionalista: ^7Possibilmente, forse doveva essere Spetsnaz. A qualcuno Zakhaev non piace."
+
+REFERENCE           SCOUTSNIPER_RU2_BEBACKINAMINUTE1821
+LANG_ITALIAN        "^1Ultranazionalista: ^7Vado al bagno per un minuto."
+
+REFERENCE           SCOUTSNIPER_RU2_IMSOBORED1823
+LANG_ITALIAN        "^1Ultranazionalista: ^7Tristezza... Forse gioco un po' alla roulette russa?"
+
+REFERENCE           SCOUTSNIPER_RU2_GUESSITWASNOTHING1826
+LANG_ITALIAN        "^1Ultranazionalista: ^7Immagino che non fosse niente, forse era il vento, stavo vedendo qualcosa."
+
+REFERENCE           SCOUTSNIPER_RU4_SNIPER312
+LANG_ITALIAN        "^1Ultranazionalista: ^7Aghh, Cecchino!"
+
+REFERENCE           SCOUTSNIPER_RU4_TOOEXPENSIVE124
+LANG_ITALIAN        "^1Ultranazionalista: ^7Troppo costoso per me. Passo."
+
+REFERENCE           SCOUTSNIPER_RU4_RADIATIONDOGS128
+LANG_ITALIAN        "^1Ultranazionalista: ^7La radiazione fa impazzire questi cani e li rende forti. Li stai sottovalutando, compagno. Qual è la scommessa?"
+
+REFERENCE           SCOUTSNIPER_RU4_TWENTYDOLLARS1210
+LANG_ITALIAN        "^1Ultranazionalista: ^7Vediamo cosa hai. Vent'anni. Allora, stai bluffando."
+
+REFERENCE           SCOUTSNIPER_RU4_THREEKINGS1212
+LANG_ITALIAN        "^1Ultranazionalista: ^7Tre re."
+
+REFERENCE           SCOUTSNIPER_RU4_WELLPLAYEDCOMRADE1214
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ben giocato, compagno! Vuoi un drink?"
+
+REFERENCE           SCOUTSNIPER_RU4_SEEABOUTTHAT1216
+LANG_ITALIAN        "^1Ultranazionalista: ^7Vedremo. Distribuisci le carte."
+
+REFERENCE           SCOUTSNIPER_RU4_RAISE1218
+LANG_ITALIAN        "^1Ultranazionalista: ^7Rilancia."
+
+REFERENCE           SCOUTSNIPER_RU4_IFOLD1219
+LANG_ITALIAN        "^1Ultranazionalista: ^7Esco dal gioco."
+
+REFERENCE           SCOUTSNIPER_RU4_THISONESHEAVY151
+LANG_ITALIAN        "^1Ultranazionalista: ^7Wow! Questo è pesante!"
+
+REFERENCE           SCOUTSNIPER_RU4_DIDNTEATBREAKFAST153
+LANG_ITALIAN        "^1Ultranazionalista: ^7Non lo so, ma spero presto. Ho così fame, non ho mangiato dalla colazione."
+
+REFERENCE           SCOUTSNIPER_RU4_TAKENZAKHAEVSOFFER155
+LANG_ITALIAN        "^1Ultranazionalista: ^7Sciocchi... Meglio accettare l'offerta di Zakhaev."
+
+REFERENCE           SCOUTSNIPER_RU4_MAYHAVEPROBLEM1814
+LANG_ITALIAN        "^1Ultranazionalista: ^7Ho appena ricevuto un messaggio dai servizi segreti! Sembra che abbiamo un problema!"
+
+REFERENCE           SCOUTSNIPER_RU4_CANCELTRANSACTIONS1819
+LANG_ITALIAN        "^1Ultranazionalista: ^7Forse annullare la transazione con gli ucraini?"
+
+REFERENCE           SCOUTSNIPER_RU4_CANTWAITFORSHIFTEND1824
+LANG_ITALIAN        "^1Ultranazionalista: ^7Non vedo l'ora che finisca il turno. Almeno Zakhaev paga bene per stare qui."
+
+REFERENCE           SCOUTSNIPER_RU4_HOPEITDOESNTRAIN1827
+LANG_ITALIAN        "^1Ultranazionalista: ^7Spero che non piova, ho dimenticato il mio impermeabile."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTONE49
+LANG_ITALIAN        "^2Cpt. MacMillan: ^7Meno uno."
+
+REFERENCE           SNIPERESCAPE_MCM_TANGODOWN410
+LANG_ITALIAN        "^2Cpt. MacMillan: ^7Bersaglio abbattuto."
+
+REFERENCE           SNIPERESCAPE_MCM_HESDOWN411
+LANG_ITALIAN        "^2Cpt. MacMillan: ^7Abbattuto."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTANOTHER412
+LANG_ITALIAN        "^2Cpt. MacMillan: ^7Un altro in meno."
+
+REFERENCE           SNIPERESCAPE_MCM_TARGETNEUTRALIZED413
+LANG_ITALIAN        "^2Cpt. MacMillan: ^7Bersaglio neutralizzato."
+
+REFERENCE           SNIPERESCAPE_MCM_GOTHIM414
+LANG_ITALIAN        "^2Cpt. MacMillan: ^7Preso."
+
+REFERENCE           SNIPERESCAPE_RUL_NEARPOOL51
+LANG_ITALIAN        "^1Altoparlante: ^7I fuggitivi sono vicino al complesso della piscina! Inviate i Gruppi A e B per tagliarli fuori subito!"
+
+REFERENCE           SNIPERESCAPE_RUL_AMUSEMENTPK52
+LANG_ITALIAN        "^1Altoparlante: ^7Si stanno dirigendo verso il parco divertimenti! Abbiamo bisogno di rinforzi nel settore tre!"
+
+REFERENCE           SNIPERESCAPE_RUL_HOTELPOLISSA53
+LANG_ITALIAN        "^1Altoparlante: ^7Avvistati nemici vicino all'Hotel Polissia! Ripeto, soldati nemici si stanno spostando dall'Hotel Polissia!"
+
+REFERENCE           SNIPERESCAPE_RUL_CUTOFFEXITS54
+LANG_ITALIAN        "^1Altoparlante: ^7Si sono diretti nel Blocco Appartamenti D, non possiamo seguirli lì. Tagliate tutte le uscite e fermateli al parco."
+
+REFERENCE           SNIPERESCAPE_RUL_SNIPERSINAREA55
+LANG_ITALIAN        "^1Altoparlante: ^7Cecchini nemici sono nella zona! Si stanno nascondendo nei blocchi appartamenti! Trovateli!"
+
+REFERENCE           SNIPERESCAPE_RUL_SOUTHOFCITY56
+LANG_ITALIAN        "^1Altoparlante: ^7Team cinque, cercate nell'area della piscina! Team sei, cercate gli edifici a sud della città!"
+
+REFERENCE           SNIPERESCAPE_RUL_COVERWOODS57
+LANG_ITALIAN        "^1Altoparlante: ^7Potrebbero muoversi verso l'estremità settentrionale della città! Inviate altri due team per coprire il bosco a nord!"
+
+REFERENCE           SNIPERESCAPE_RUL_MOVEMOVE58
+LANG_ITALIAN        "^1Altoparlante: ^7I cecchini nemici sono stati avvistati muoversi attraverso i cortili tra i palazzi! Muovetevi! Muovetevi!"
+
+REFERENCE           VASSAULT_PRI_KAMAROVSMAN111
+LANG_ITALIAN        "^2Captain Price: ^7Ecco l'uomo di Kamarov, andiamo."
+
+REFERENCE           VASSAULT_RU1_READYAIMFIRE12
+LANG_ITALIAN        "^1Ultranacionalista: ^7Questo villaggio servirà da esempio a tutti voi. Tutti voi avete aiutato e contribuito ai crimini delle autorità corrotte! A causa di persone come voi, la nostra grande nazione si è indebolita! E ora raccoglierete i frutti del vostro tradimento."
+
+REFERENCE           VASSAULT_RU1_KILLTHEM13
+LANG_ITALIAN        "^1Ultranacionalista: ^7Pronti... Puntate... Fuoco!"
+
+REFERENCE           VASSAULT_RU1_MAKEEXAMPLE14
+LANG_ITALIAN        "^1Ultranacionalista: ^7Uccideteli! Uccideteli tutti!"
+
+REFERENCE           VASSAULT_RU1_DIEYOUTRAITOR15
+LANG_ITALIAN        "^1Ultranacionalista: ^7Muori traditore!"
+
+REFERENCE           VASSAULT_RU1_EXECUTETHEM16
+LANG_ITALIAN        "^1Ultranacionalista: ^7Eseguite li! Seguite l'ordine ora!"
+
+REFERENCE           VASSAULT_KAA_WASNTME1452
+LANG_ITALIAN        "^1Khaled Al-Asad: ^7Non sono stato io!"
+
+REFERENCE           VASSAULT_KAA_WASNTME2454
+LANG_ITALIAN        "^1Khaled Al-Asad: ^7Non sono stato io!"
+
+REFERENCE           VILLAGEDEF_RUL_SURRENDERATONCE11
+LANG_ITALIAN        "^1Altoparlante: ^7Arrendetevi subito e vi risparmieremo la vita. Sono sicuro che, viste le circostanze, farete la scelta giusta."
+
+REFERENCE           VILLAGEDEF_RUL_DROPYOURWEAPONS12
+LANG_ITALIAN        "^1Altoparlante: ^7Gettate le armi e arrendetevi subito. Fatelo e non vi sarà fatto alcun male."
+
+REFERENCE           VILLAGEDEF_RUL_WEKNOWYOUREHIDING13
+LANG_ITALIAN        "^1Altoparlante: ^7Sappiamo che vi nascondete nel villaggio. Siete circondati, non avete via di scampo. Arrendetevi e sarà tutto più facile anche per voi."
+
+REFERENCE           VILLAGEDEF_RU1_WHATWASTHAT112
+LANG_ITALIAN        "^1Ultranacionalista: ^7Cos'è stato quello?"
+
+REFERENCE           VILLAGEDEF_RU1_NOICANTMOVE117
+LANG_ITALIAN        "^1Ultranacionalista: ^7Non posso muovermi! Dove sono le mie gambe?! Qualcuno mi aiuti!"
+
+REFERENCE           VILLAGEDEF_RU1_ICANTSEETHEM121
+LANG_ITALIAN        "^1Ultranacionalista: ^7Probabilmente sono lassù sulla collina, ma non li vedo."
+
+REFERENCE           VILLAGEDEF_RU1_GOAROUNDWEST129
+LANG_ITALIAN        "^1Ultranacionalista: ^7Andate di fianco a ovest!"
+
+REFERENCE           VILLAGEDEF_RU1_MEDIC131
+LANG_ITALIAN        "^1Ultranacionalista: ^7MEDICO!"
+
+REFERENCE           VILLAGEDEF_RU1_MUSTBETWOPLATOONS135
+LANG_ITALIAN        "^1Ultranacionalista: ^7Potrebbero esserci due plotoni!"
+
+REFERENCE           VILLAGEDEF_RU2_DIDYOUHEARTHAT113
+LANG_ITALIAN        "^1Ultranacionalista: ^7Hai sentito quello?"
+
+REFERENCE           VILLAGEDEF_RU2_UNDERHEAVYFIRE122
+LANG_ITALIAN        "^1Ultranacionalista: ^7Siamo sotto pesante fuoco! Abbiamo bisogno di rinforzi!"
+
+REFERENCE           VILLAGEDEF_RU2_PUTUPSMOKESCREEN132
+LANG_ITALIAN        "^1Ultranacionalista: ^7Alzate il fumo! Lanciate le vostre granate fumogene!"
+
+REFERENCE           VILLAGEDEF_RU3_WHATTHEHELL114
+LANG_ITALIAN        "^1Ultranacionalista: ^7Che cavolo?!"
+
+REFERENCE           VILLAGEDEF_RU4_HELPMEIMWOUNDED116
+LANG_ITALIAN        "^1Ultranacionalista: ^7Aghh! Aiuto! Aiutatemi! Sono ferito! Ahhh!"
+
+REFERENCE           VILLAGEDEF_RU4_WHERETHEYSHOOTING120
+LANG_ITALIAN        "^1Ultranacionalista: ^7Dove stanno sparando?"
+
+REFERENCE           VILLAGEDEF_RU4_REINFORCEMENTS123
+LANG_ITALIAN        "^1Ultranacionalista: ^7Rinforzi in arrivo!"
+
+REFERENCE           VILLAGEDEF_RU4_IMHITMEDIC130
+LANG_ITALIAN        "^1Ultranacionalista: ^7Sono colpito! Medico! MEDICO!"
+
+REFERENCE           VILLAGEDEF_SAS3_TARGETDOWN120
+LANG_ITALIAN        "^2Gaz: ^7Bersaglio eliminato."
+
+REFERENCE           VILLAGEDEF_SAS3_GOTHIM121
+LANG_ITALIAN        "^2Gaz: ^7Preso."
+
+REFERENCE           VILLAGEDEF_SAS3_TARGETELIMINATED122
+LANG_ITALIAN        "^2Gaz: ^7Bersaglio eliminato."
+
+REFERENCE           VILLAGEDEF_GRG_NEEDARIDE81
+LANG_ITALIAN        "^2SSgt. Griggs: ^7Mi hanno detto che vi serviva uno strappo!"
+
+REFERENCE           VILLAGEDEF_GRG_GETONBOARD83
+LANG_ITALIAN        "^2SSgt. Griggs: ^7Tutti a bordo! Svelti! Svelti!"
+
+REFERENCE           VILLAGEDEF_GRG_LETSGO84
+LANG_ITALIAN        "^2SSgt. Griggs: ^7Andiamo! Andiamo!"
+
+REFERENCE           VILLAGEDEF_GRG_WEREALLABOARD85
+LANG_ITALIAN        "^2SSgt. Griggs: ^7OK, siamo tutti a bordo! Via! Via!"
+
+ENDMARKER

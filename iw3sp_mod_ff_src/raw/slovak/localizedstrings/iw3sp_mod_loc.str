@@ -1,0 +1,342 @@
+
+VERSION             "1"
+CONFIG              "C:\trees\cod2\bin\StringEd.cfg"
+FILENOTES           ""
+
+REFERENCE           MENU_UNLOCK_ALL
+LANG_SLOVAK         "Unlock All Missions & Cheats"
+
+REFERENCE           MENU_RESET_ALL
+LANG_SLOVAK         "Reset Missions Progress & Cheats"
+
+REFERENCE           MENU_ARE_YOU_SURE_UNLOCK
+LANG_SLOVAK         "Unlock all missions and cheats?"
+
+REFERENCE           MENU_ARE_YOU_SURE_RESET
+LANG_SLOVAK         "Are you sure you want to reset your mission progress and cheats?"
+
+REFERENCE           MENU_QUIT_TO_DESKTOP
+LANG_SLOVAK         "Quit to Desktop"
+
+REFERENCE           MENU_LASTCHECKPOINT
+LANG_SLOVAK         "Last Checkpoint"
+
+REFERENCE           MENU_LASTCHECKPOINT_DESC
+LANG_SLOVAK         "Restart to the last checkpoint?"
+
+REFERENCE           MENU_STATSHASBEENRESET
+LANG_SLOVAK         "Your profile progress, including missions and cheats, has been reset."
+
+REFERENCE           MENU_UPDATE_NEW_UPDATE
+LANG_SLOVAK         "New client update available.\n Do you want to download the new update?"
+
+REFERENCE           MENU_UPDATE_REQUIRES_RESTART
+LANG_SLOVAK         "Update requires restart."
+
+REFERENCE           MENU_UPDATE_RESTART
+LANG_SLOVAK         "Restart the game"
+
+REFERENCE           MENU_ENABLE_AUTOUPDATE
+LANG_SLOVAK         "Automatic Update"
+
+REFERENCE           MENU_CHECK_FOR_UPDATE
+LANG_SLOVAK         "Check For Update"
+
+REFERENCE           MENU_CHECKING_UPDATE
+LANG_SLOVAK         "Checking for updates"
+
+REFERENCE           MENU_NO_UPDATES_AVAILABLE
+LANG_SLOVAK         "No updates available"
+
+REFERENCE           MENU_SERVER_OFFLINE
+LANG_SLOVAK         "Update download unavailable. Server offline."
+
+REFERENCE           MENU_UPDATER_CUR_DOWNLOAD_SPEED
+LANG_SLOVAK         "Current Download Speed: "
+
+REFERENCE           MENU_ACHIEVEMENTS
+LANG_SLOVAK         "Achievements"
+
+REFERENCE           MENU_ACHIEVEMENTS_TITLE
+LANG_SLOVAK         "ACHIEVEMENTS"
+
+REFERENCE           MENU_ACHIEVEMENTS_DATE_RECEIVED
+LANG_SLOVAK         "Date Received:"
+
+REFERENCE           MENU_IW3SP_MOD_OPTIONS
+LANG_SLOVAK         "IW3SP-MOD"
+
+REFERENCE           MENU_RESET_ACHIEVEMENTS
+LANG_SLOVAK         "Reset Achievements"
+
+REFERENCE           MENU_RESET_ACHIEVEMENTS_SURE
+LANG_SLOVAK         "Are you want to reset the progress of achievements?"
+
+REFERENCE           MENU_RESET_ACHIEVEMENTS_COMPELETED
+LANG_SLOVAK         "The progress of achievements has been reset"
+
+REFERENCE           MENU_ENEMY_INTEL_TITLE
+LANG_SLOVAK         "Enemy Intelligence"
+
+REFERENCE           MENU_ENEMY_INTEL_COUNT
+LANG_SLOVAK         "&&1/&&2 Intel found"
+
+REFERENCE           MENU_EXTERNAL_CONSOLE
+LANG_SLOVAK         "External Console"
+
+REFERENCE           MENU_BRANDING
+LANG_SLOVAK         "Version Showcase"
+
+REFERENCE           MENU_WIP
+LANG_SLOVAK         "WORK IN PROGRESS"
+
+REFERENCE           MENU_STATS_TITLE
+LANG_SLOVAK         "STATS"
+
+REFERENCE           MENU_STATS
+LANG_SLOVAK         "Stats"
+
+REFERENCE           MENU_CAREER_BULLETS_FIRED
+LANG_SLOVAK         "Bullets fired"
+
+REFERENCE           MENU_CAREER_BULLETS_HIT
+LANG_SLOVAK         "Bullets hit"
+
+REFERENCE           MENU_CAREER_DEATHS
+LANG_SLOVAK         "Deaths"
+
+REFERENCE           MENU_CAREER_HEADSHOTS
+LANG_SLOVAK         "Headshots"
+
+REFERENCE           MENU_CAREER_KILLS
+LANG_SLOVAK         "Kills"
+
+REFERENCE           MENU_CAREER_PLAYTIMESP
+LANG_SLOVAK         "Total Play Time"
+
+REFERENCE           MENU_CAREER_KILLS_MELEE
+LANG_SLOVAK         "Melee Kills"
+
+REFERENCE           MENU_CAREER_KILLS_VEHICLES
+LANG_SLOVAK         "Vehicle Killed"
+
+REFERENCE           MENU_CAREER_KILLS_EXPLOSIVES
+LANG_SLOVAK         "Explosives Kills"
+
+REFERENCE           MENU_CAREER_ACCURACY
+LANG_SLOVAK         "Accuracy"
+
+REFERENCE           MENU_CAREER_SP_STATS
+LANG_SLOVAK         "Singleplayer Stats"
+
+REFERENCE           MENU_CAREER_SP_COMPLETED
+LANG_SLOVAK         "Campaign Completed"
+
+REFERENCE           MENU_CAREER_INTEL
+LANG_SLOVAK         "Intel"
+
+REFERENCE           MENU_CAREER_ACHIEVEMENT_UNLOCKED
+LANG_SLOVAK         "Achievements"
+
+REFERENCE           MENU_CAREER_SP_PROGRESS
+LANG_SLOVAK         "Campaign Progress"
+
+REFERENCE           MENU_SP_STAT_TIME_FORMAT
+LANG_SLOVAK         "D      H        M       S"
+
+REFERENCE           MENU_MUSIC_VOLUME
+LANG_SLOVAK         "Music Volume"
+
+REFERENCE           MENU_VOICE_VOLUME
+LANG_SLOVAK         "Voice Volume"
+
+REFERENCE           MENU_CINEMATIC_VOLUME
+LANG_SLOVAK         "Cinematic Volume"
+
+REFERENCE           MENU_KEYBOARD_AND_MOUSE_OPTIONS
+LANG_SLOVAK         "Keyboard/Mouse"
+
+REFERENCE           MENU_GAMEPAD_OPTIONS
+LANG_SLOVAK         "Gamepad"
+
+REFERENCE           MENU_GAMEPAD_MISC_SETTINGS
+LANG_SLOVAK         "Misc Settings"
+
+REFERENCE           MENU_GAMEPAD_BUTTONS_AND_STICKS_SETTINGS
+LANG_SLOVAK         "Button/Sticks"
+
+REFERENCE           MENU_GAMEPAD_RESET_DEFAULT_SETTINGS
+LANG_SLOVAK         "Reset Default Controls"
+
+REFERENCE           MENU_GAMEPAD_ENABLED
+LANG_SLOVAK         "Gamepad Enabled"
+
+REFERENCE           MENU_GAMEPAD_BUTTON_STYLE
+LANG_SLOVAK         "Button Style"
+
+REFERENCE           MENU_GAMEPAD_BUTTON_STYLE_XBOX
+LANG_SLOVAK         "Xbox"
+
+REFERENCE           MENU_GAMEPAD_BUTTON_STYLE_SONY
+LANG_SLOVAK         "PlayStation"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_LOW
+LANG_SLOVAK         "Low"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_MEDIUM
+LANG_SLOVAK         "Medium"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_HIGH
+LANG_SLOVAK         "High"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_VERY_HIGH
+LANG_SLOVAK         "Very High"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_INSANE
+LANG_SLOVAK         "Insane"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_CUSTOM_3
+LANG_SLOVAK         "(Custom): 3"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_CUSTOM_5
+LANG_SLOVAK         "(Custom): 5"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_CUSTOM_6
+LANG_SLOVAK         "(Custom): 6"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_CUSTOM_8
+LANG_SLOVAK         "(Custom): 8"
+
+REFERENCE           MENU_GAMEPAD_SENSITIVITY_CUSTOM_9
+LANG_SLOVAK         "(Custom): 9"
+
+REFERENCE           MENU_CHANGELOG
+LANG_SLOVAK         "Changelog"
+
+REFERENCE           MENU_CHANGELOG_TITLE
+LANG_SLOVAK         "CHANGELOG"
+
+REFERENCE           MENU_CHANGELOG_CANT_GET
+LANG_SLOVAK         "Unable to get changelog."
+
+REFERENCE           MENU_ALLOW_CHEATS_CMD
+LANG_SLOVAK         "Allow Cheat Commands"
+
+REFERENCE           MENU_VIDEO
+LANG_SLOVAK         "Video"
+
+REFERENCE           MENU_VIDEO_SETTINGS
+LANG_SLOVAK         "Video Settings"
+
+REFERENCE           MENU_GRAPHICS_SETTINGS
+LANG_SLOVAK         "Graphics Settings"
+
+REFERENCE           MENU_BRIGHTNESS_WARNING
+LANG_SLOVAK         "Brightness adjustment has no effect when playing in a window."
+
+REFERENCE           MENU_8X
+LANG_SLOVAK         "8x"
+
+REFERENCE           MENU_16X
+LANG_SLOVAK         "16x"
+
+REFERENCE           MENU_DISPLAY_MODE
+LANG_SLOVAK         "Display Mode"
+
+REFERENCE           MENU_DISPLAY_MODE_FULL
+LANG_SLOVAK         "Fullscreen"
+
+REFERENCE           MENU_DISPLAY_MODE_WIN
+LANG_SLOVAK         "Windowed"
+
+REFERENCE           MENU_DISPLAY_MODE_WIN_NO_BORD
+LANG_SLOVAK         "Windowed (No Borders)"
+
+REFERENCE           MENU_D3D9EX
+LANG_SLOVAK         "Direct3D 9 Ex"
+
+REFERENCE           CREDIT_IW3SPMOD_TITLE
+LANG_SLOVAK         "IW3SP-MOD"
+
+REFERENCE           CREDIT_SPECIAL_THANKS_TITLE
+LANG_SLOVAK         "Special Thanks"
+
+REFERENCE           CREDIT_MAIN_DEVELOPER_TITLE
+LANG_SLOVAK         "Main Developer"
+
+REFERENCE           CREDIT_HOLD_USE_TO_SKIP
+LANG_SLOVAK         "Hold ^3[{+activate}]^7 to skip."
+
+REFERENCE           CREDIT_NIKO
+LANG_SLOVAK         "Bogdan Konstantinou"
+
+REFERENCE           CREDIT_XOXOR
+LANG_SLOVAK         "xoxor4d (IW3xo)"
+
+REFERENCE           CREDIT_FED
+LANG_SLOVAK         "fed (h2-mod)"
+
+REFERENCE           CREDIT_VLAD
+LANG_SLOVAK         "Vlad Loktionov"
+
+REFERENCE           CREDIT_NUKEM9
+LANG_SLOVAK         "Nukem9 (Black Ops Linker Mod)"
+
+REFERENCE           CREDIT_XLABS
+LANG_SLOVAK         "X Labs Team (IW4x)"
+
+REFERENCE           CREDIT_ALTERWARE
+LANG_SLOVAK         "AlterWare Team (IW4x)"
+
+REFERENCE           CREDIT_COD4X
+LANG_SLOVAK         "CoD4x Team"
+
+REFERENCE           CREDIT_JERRY
+LANG_SLOVAK         "JerryALT"
+
+REFERENCE           MENU_PORTUGUESE
+LANG_SLOVAK         "Portuguese"
+
+REFERENCE           MENU_SLOVAK
+LANG_SLOVAK         "Slovakian"
+
+REFERENCE           MENU_MOUSE_RAW_INPUT
+LANG_SLOVAK         "Mouse Raw Input"
+
+REFERENCE           MENU_ENABLE_HITMARKERS
+LANG_SLOVAK         "Hit Marker"
+
+REFERENCE           MENU_ENABLE_HIT_SOUND
+LANG_SLOVAK         "Hit Sound Feedback"
+
+REFERENCE           PLATFORM_RELOAD_GAMEPAD
+LANG_SLOVAK         "&&1 Reload"
+
+REFERENCE           PLATFORM_PICKUPNEWWEAPON_HOLD
+LANG_SLOVAK         "Hold^3 &&1 ^7to pick up"
+
+REFERENCE           PLATFORM_SWAPWEAPONS_HOLD
+LANG_SLOVAK         "Press and hold^3 &&1 ^7 for"
+
+REFERENCE           PLATFORM_UI_SELECTBUTTON_XBOX
+LANG_SLOVAK         ""
+
+REFERENCE           PLATFORM_UI_SELECTBUTTON_SONY
+LANG_SLOVAK         ""
+
+REFERENCE           PLATFORM_BACK_GAMEPAD_XBOX
+LANG_SLOVAK         ""
+
+REFERENCE           PLATFORM_BACK_GAMEPAD_SONY
+LANG_SLOVAK         ""
+
+REFERENCE           MENU_SIGNEDINAS
+LANG_SLOVAK         "Signed in as: &&1"
+
+REFERENCE           MENU_CHEATS_NAME9
+LANG_SLOVAK         "Paintball"
+
+REFERENCE           MENU_CHEATS_DESC9
+LANG_SLOVAK         "Can't handle the brutality of war? Try paintball guns."
+
+ENDMARKER

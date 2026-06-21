@@ -1,0 +1,68 @@
+#include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
+#define OPTIONS_STYLE			1
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+
+#undef	CHOICE_SIZE_X
+#define CHOICE_SIZE_X		220
+
+{
+	menuDef 
+	{
+		name iw3sp_mod_gamepad_default
+		fullScreen 0				
+		rect 0 0 640 480				// Size and position of the menu
+		focusColor COLOR_FOCUSED			// Menu focus color for text and items
+		soundloop ""
+		onOpen
+		{
+			setLocalVarBool ui_hideBack 1;
+		}
+		onClose
+		{
+			setLocalVarBool ui_hideBack 0;
+		}
+		onESC 
+		{ 
+			close iw3sp_mod_gamepad_default;		
+		}
+
+		#include "ui_mp/leftside_controls_gamepad.inc"
+		
+		CHOICE_SECTION_TITLE( 21, "@MENU_SET_DEFAULT_CONTROLS" )
+		
+		PREPROC_TEXT_DRAW_ALIGNED( CHOICE_ORIGIN( 23 ) 300 80 CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN, 0 0, text "@MENU_RESTORE_EACH_SETTING", TEXTSIZE_SMALL, 0, 0, ITEM_ALIGN_CENTER, CHOICE_TEXTCOLOR autowrapped )
+
+		#define APPLY_GPAD_CONTROL \
+			play "mouse_click"; \
+			exec "set gpad_sticksConfig thumbstick_default"; \
+			exec "set gpad_buttonConfig buttons_default"; \
+			exec "reset input_viewSensitivity"; \
+			exec "reset input_invertPitch"; \
+			exec "reset gpad_aimassist"; \
+			exec "reset gpad_style"; \
+			exec "reset gpad_menu_scroll_delay_first"; \
+			exec "reset gpad_menu_scroll_delay_rest"; \
+			exec "reset gpad_stick_pressed_hysteresis"; \
+			exec "reset gpad_stick_pressed"; \
+			exec "reset gpad_stick_deadzone_min"; \
+			exec "reset gpad_stick_deadzone_max"; \
+			exec "reset gpad_button_deadzone"; \
+			exec "reset gpad_button_lstick_deflect_max"; \
+			exec "reset gpad_button_rstick_deflect_max"; \
+			exec "reset gpad_use_hold_time"; \
+			exec "reset gpad_lockon_enabled"; \
+			exec "reset gpad_slowdown_enabled"; \
+			exec "reset gpad_autoaim_enabled"; \
+			exec "reset aim_aimAssistRangeScale"; \
+			exec "reset aim_autoAimRangeScale"; \
+			exec "reset aim_lockon_pitch_strength"; \
+			exec "bindgpsticksconfigs"; \
+			exec "bindgpbuttonsconfigs"; \
+			
+		CHOICE_BUTTON( 26, "@MENU_YES", APPLY_GPAD_CONTROL; close self; open iw3sp_mod_gamepad_settings; )
+		CHOICE_BUTTON( 27, "@MENU_NO", close self; open iw3sp_mod_gamepad_settings; )
+		
+	}
+}
