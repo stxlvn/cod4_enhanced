@@ -74,6 +74,7 @@ coop_change_weapons()
 	for ( i = 0; i < level.players.size; i++ )
 		level.players[ i ] thread coop_fire_effects();
 	level.players[ 1 ] thread coop_first_gun();
+	thread coop_qa_trace();
 	// one entry in the command table: the key notifies the player who pressed it (CoopNet coopcmdn)
 	level.players[ 0 ] notifyOnCommand( "switch weapons", "weapnext" );
 	for ( i = 0; i < level.players.size; i++ )
@@ -143,7 +144,8 @@ coop_set_gun( i, initial )
 	setdvar( "coop_ac_guns", level.players[ 0 ].coop_gun + "-" + level.players[ 1 ].coop_gun ); // QA trace
 }
 
-// the gun list on self's HUD: his gun blinks, the other gunner's is dim, the free one half
+// the gun list on self's HUD: his gun pulses between 0.6 and 1 (never darker than the others: the game's blink to 0 left the free
+// gun, steady at 0.5, looking selected half of the time), the free gun 0.3, the other gunner's 0.1
 coop_blink_gun_list()
 {
 	self notify( "coop_blink_list" );
@@ -154,20 +156,20 @@ coop_blink_gun_list()
 	other = coop_other( self );
 	for ( i = 0; i < list.size; i++ )
 	{
-		list[ i ].alpha = 0.5;
+		list[ i ].alpha = 0.3;
 		if ( i == other.coop_gun )
-			list[ i ].alpha = 0.15;
+			list[ i ].alpha = 0.1;
 	}
 	h = list[ self.coop_gun ];
 	h.alpha = 1;
 	for ( ;; )
 	{
-		h fadeOverTime( 0.2 );
-		h.alpha = 0;
-		wait 0.2;
-		h fadeOverTime( 0.2 );
+		h fadeOverTime( 0.4 );
+		h.alpha = 0.6;
+		wait 0.4;
+		h fadeOverTime( 0.4 );
 		h.alpha = 1;
-		wait 0.2;
+		wait 0.4;
 	}
 }
 
@@ -479,4 +481,14 @@ coop_hud_text( owner, align, valign, x, y, text )
 	h settext( text );
 	h.alpha = 1.0;
 	return h;
+}
+
+// QA trace: the weapon in each gunner's hands (server side), coop_ac_cur = "<player 1's>/<player 2's>"
+coop_qa_trace()
+{
+	for ( ;; )
+	{
+		wait 0.5;
+		setdvar( "coop_ac_cur", level.players[ 0 ] getcurrentweapon() + "/" + level.players[ 1 ] getcurrentweapon() );
+	}
 }
