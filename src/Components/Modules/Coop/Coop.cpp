@@ -603,6 +603,16 @@ namespace Components
 				*reinterpret_cast<int*>(LEVEL_MAXCLIENTS), *reinterpret_cast<int*>(LEVEL_NUM_ENTITIES), players, sp ? sp->current.string : "(unset)");
 			for (int i = 0; i < players; i++)
 			{
+				const auto* bd = Dvars::Functions::Dvar_FindVar(i ? "coop_body1" : "coop_body0");
+				if (bd && bd->type == Game::dvar_type::string && bd->current.string && *bd->current.string)
+				{
+					const int bn = std::atoi(bd->current.string);
+					if (bn > 1 && bn < 0x880)
+					{
+						const float* bo = reinterpret_cast<float*>(Entity(bn) + ENT_ORIGIN);
+						Log("status: body of player %d = entity %d inuse %d at (%.0f %.0f %.0f)", i + 1, bn, Entity(bn)[ENT_INUSE], bo[0], bo[1], bo[2]);
+					}
+				}
 				std::uint8_t* cl = GameClient(i);
 				std::uint8_t* ent = Entity(i);
 				const float* o = reinterpret_cast<float*>(cl + GC_ORIGIN);

@@ -696,6 +696,39 @@ namespace Components
 			}
 		}
 
+		// Bodies (Phase 3, maps/_coop.gsc): every player has a body entity (script model) in the simulation; this PC's own player's body
+		// is left out of this PC's snapshots (svFlags SVF_NOCLIENT 0x1 at +0xA6 only while the snapshot is built), so the camera is not
+		// inside it. The script publishes the entity numbers in the dvars coop_body0 / coop_body1 (same on both PCs).
+		int hiddenBodyEnt = -1;
+		std::uint8_t hiddenBodyFlags = 0;
+
+		void __cdecl BeforeSnapshot()
+		{
+			hiddenBodyEnt = -1;
+			if (Coop::Players() < 2)
+				return;
+			const int local = snapshotOffset ? 1 : 0;
+			const auto* d = Dvars::Functions::Dvar_FindVar(local ? "coop_body1" : "coop_body0");
+			if (!d || d->type != Game::dvar_type::string || !d->current.string)
+				return;
+			const int n = std::atoi(d->current.string);
+			if (n < 2 || n >= 0x880)
+				return;
+			std::uint8_t* e = Coop::Entity(n);
+			if (!e[0xA8])
+				return;
+			hiddenBodyFlags = e[0xA6];
+			e[0xA6] |= 1;
+			hiddenBodyEnt = n;
+		}
+
+		void __cdecl AfterSnapshot()
+		{
+			if (hiddenBodyEnt >= 0)
+				Coop::Entity(hiddenBodyEnt)[0xA6] = hiddenBodyFlags;
+			hiddenBodyEnt = -1;
+		}
+
 		void __declspec(naked) Snapshot_Stub()
 		{
 			__asm
@@ -705,8 +738,15 @@ namespace Components
 				je go
 				inc snapshotShifted
 			go:
+				pushad
+				call BeforeSnapshot
+				popad
 				add ecx, snapshotOffset // a global: memory operand
-				push 0x5C8A50
+				mov eax, 0x5C8A50
+				call eax
+				pushad
+				call AfterSnapshot
+				popad
 				ret
 			}
 		}
@@ -1045,6 +1085,10 @@ namespace Components
 		void Pump()
 		{
 			sessionActive = CoopNet::Active() ? 1 : 0;
+			// IW3SP-MOD's own code reads the local player's game client through Game::g_clients (stock 0xE0DA00, no longer used since
+			// level.clients is a 2-entry array of ours): point it at this PC's player.
+			Game::g_clients = *reinterpret_cast<void**>(0xE18E18) ? reinterpret_cast<Game::gclient_s*>(Coop::GameClient(CoopNet::LocalClient()))
+				: reinterpret_cast<Game::gclient_s*>(0xE0DA00); // no level yet: the stock (zeroed) storage, as before
 			snapshotOffset = (CoopNet::Active() && role == CoopNet::ROLE_PARTNER) ? 0xD728 : 0;
 			if (role == CoopNet::ROLE_OFF || sock == INVALID_SOCKET)
 				return;
@@ -1177,8 +1221,21 @@ namespace Components
 				lastStatus = now;
 				const float* o0 = reinterpret_cast<float*>(Coop::Entity(0) + 0xE0);
 				const float* o1 = reinterpret_cast<float*>(Coop::Entity(1) + 0xE0);
-				Coop::Log("net: view: snapshots %d (to client 1: %d), cg.clientNum %d, offset 0x%x", snapshotCalls, snapshotShifted,
-					*reinterpret_cast<int*>(0x6FA590), snapshotOffset);
+				const auto* pps = reinterpret_cast<std::uint8_t*>(0x714BA8); // cg.predictedPlayerState
+				const auto* snapP = *reinterpret_cast<std::uint8_t**>(0x6FA5B4); // cg.snap / cg.nextSnap (cg_s at 0x6FA590)
+				const auto* nextP = *reinterpret_cast<std::uint8_t**>(0x6FA5B8);
+				Coop::Log("net: view: skipRendering %d menuType %d cl_paused %d connState %d | cg.time %d snap %d next %d frameInterp %.2f",
+					*reinterpret_cast<std::uint8_t*>(0x1E20960), *reinterpret_cast<int*>(UI_MENU_TYPE),
+					(*reinterpret_cast<Game::dvar_s**>(0xF8CE50))->current.integer, *reinterpret_cast<int*>(0x85BD7C),
+					*reinterpret_cast<int*>(0x714B9C), snapP ? *reinterpret_cast<const int*>(snapP + 8) : -1, nextP ? *reinterpret_cast<const int*>(nextP + 8) : -1,
+					*reinterpret_cast<float*>(0x714B90));
+				Coop::Log("net: view: refdef vieworg (%.0f %.0f %.0f) yaw %.0f (cg_s layout %s)", Game::cgs->refdef.vieworg[0],
+					Game::cgs->refdef.vieworg[1], Game::cgs->refdef.vieworg[2], Game::cgs->refdefViewAngles[1],
+					offsetof(Game::cg_s, predictedPlayerState) == 0x1A618 ? "ok" : "MISMATCH");
+				Coop::Log("net: view: snapshots %d (to client 1: %d), cg.clientNum %d, offset 0x%x | cg pps clientNum %d commandTime %d origin (%.0f %.0f %.0f)",
+					snapshotCalls, snapshotShifted, *reinterpret_cast<int*>(0x6FA590), snapshotOffset, *reinterpret_cast<const int*>(pps + 0xB8),
+					*reinterpret_cast<const int*>(pps), reinterpret_cast<const float*>(pps + 0x1C)[0], reinterpret_cast<const float*>(pps + 0x1C)[1],
+					reinterpret_cast<const float*>(pps + 0x1C)[2]);
 				Coop::Log("net: %s tick %d frames %zu ack %d hold %d | hash ok %d bad %d missing %d | p1 (%.0f %.0f %.0f) hp %d p2 (%.0f %.0f %.0f) hp %d | silent %llu ms | dropped %d/%d",
 					role == CoopNet::ROLE_HOST ? "host" : "partner", LevelTime(), frames.size(), role == CoopNet::ROLE_HOST ? partnerAck : lastExecuted,
 					hostHolding, hashOk, hashBad, missing, o0[0], o0[1], o0[2], *reinterpret_cast<int*>(Coop::Entity(0) + 0x144),

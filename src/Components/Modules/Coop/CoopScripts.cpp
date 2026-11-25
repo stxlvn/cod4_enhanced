@@ -96,8 +96,34 @@ namespace Components
 				"\t\tlevel.player2 = level.players[ 1 ];\n"
 				"\t\tlevel.player2.a = spawnStruct();\n"
 				"\t}\n"
-				"\tsetdvar( \"coop_script_players\", level.players.size );" },
+				"\tsetdvar( \"coop_script_players\", level.players.size );\n"
+				"\tif ( level.players.size > 1 )\n"
+				"\t\tthread maps\\_coop::main();" },
 		};
+
+		// The mod's own scripts: cod4coop/scripts/<name> in the game folder (e.g. maps/_coop.gsc), served before the fastfiles.
+		std::unordered_map<std::string, std::unique_ptr<Patched>> ownScripts;
+
+		const RawFile* OwnScript(const char* name)
+		{
+			auto it = ownScripts.find(name);
+			if (it != ownScripts.end())
+				return it->second ? &it->second->raw : nullptr;
+			std::ifstream f(std::string("cod4coop/scripts/") + name, std::ios::binary);
+			if (!f)
+			{
+				ownScripts.emplace(name, nullptr);
+				return nullptr;
+			}
+			auto p = std::make_unique<Patched>();
+			p->name = name;
+			p->text.assign(std::istreambuf_iterator<char>(f), std::istreambuf_iterator<char>());
+			p->raw = RawFile{ p->name.c_str(), static_cast<int>(p->text.size()), p->text.c_str() };
+			Coop::Log("own script %s (%zu bytes)", name, p->text.size());
+			const RawFile* r = &p->raw;
+			ownScripts.emplace(name, std::move(p));
+			return r;
+		}
 
 		int ApplyTextPatches(const char* name, std::string& text)
 		{
@@ -120,6 +146,15 @@ namespace Components
 
 		Game::XAssetHeader __cdecl FindScriptRawfile(Game::XAssetType type, const char* name)
 		{
+			if (name)
+			{
+				if (const RawFile* own = OwnScript(name))
+				{
+					Game::XAssetHeader h;
+					h.data = const_cast<RawFile*>(own);
+					return h;
+				}
+			}
 			Game::XAssetHeader header = Game::DB_FindXAssetHeader(type, name);
 			if (!header.data || !name)
 				return header;
