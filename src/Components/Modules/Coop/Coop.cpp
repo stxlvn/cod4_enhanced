@@ -169,10 +169,12 @@ namespace Components
 
 		bool consoleReady = false;
 
-		// Downed players = IW4 Spec Ops last stand (maps\_coop.gsc does the rest). The mark lives in the player state: pm_flags bit 24
-		// (SP uses bits 0-23), so it is saved and loaded with the player, reaches the player's own client in the snapshot (SP copies
-		// the whole playerState) and the client's prediction runs the same last stand movement as the server.
-		constexpr std::uint32_t PMF_COOP_DOWNED = 0x01000000;
+		// Downed players = IW4 Spec Ops last stand (maps\_coop.gsc does the rest). The mark lives in the player state: pm_flags bit 27,
+		// so it is saved and loaded with the player, reaches the player's own client in the snapshot (SP copies the whole playerState)
+		// and the client's prediction runs the same last stand movement as the server. Not bit 24 (the first choice): the game's
+		// PlayerLinkToAbsolute 0x4CAD10 sets 0x1000000 (OR at 0x4CAE1B), so every first-person scene looked like both players down;
+		// bit 25 is the game's too (an OR / TEST / AND on +0xC in the exe); 26-31 have none.
+		constexpr std::uint32_t PMF_COOP_DOWNED = 0x08000000;
 		int reviveUse[2] = { 0, 0 };
 		int botWeaponSelect = 0; // one-process bot: the last "sw" the server sent to player 2
 
@@ -247,7 +249,7 @@ namespace Components
 			{
 				mov eax, [esp + 4]       // pm
 				mov eax, [eax]           // ps
-				test dword ptr [eax + 0xC], 0x01000000
+				test dword ptr [eax + 0xC], 0x08000000
 				jnz down
 				mov eax, 0x5B99C0
 				jmp eax
@@ -392,12 +394,32 @@ namespace Components
 			}
 		}
 
+		// getweaponmodel( weapon [, index] ) (GScr_GetWeaponModel 0x4C9080, function table entry 0x6DDF30) reads
+		// weaponDef (bg_weaponDefs 0x14227A8)->worldModel[index] (+0x2BC) and dereferences it unchecked: a weapon without a world
+		// model (cargoship's intro gear) crashed at 0x4C9143. maps\_coop asks it every frame for the weapon in a body's hand: "" then.
+		void __cdecl GetWeaponModel_Safe()
+		{
+			const char* name = Game::Scr_GetString(0);
+			const int index = name && *name ? Utils::Hook::Call<int(const char*)>(0x5BEC90)(name) : 0; // BG_FindWeaponIndexForName
+			if (index > 0 && index < 128)
+			{
+				const auto* def = *reinterpret_cast<const std::uint8_t* const*>(0x14227A8 + index * 4);
+				const int model = Game::Scr_GetNumParam() > 1 ? Game::Scr_GetInt(1) : 0;
+				if (!def || model < 0 || model >= 16 || !*reinterpret_cast<void* const*>(def + 0x2BC + model * 4))
+				{
+					Game::Scr_AddString("");
+					return;
+				}
+			}
+			Utils::Hook::Call<void()>(0x4C9080)();
+		}
+
 		void __declspec(naked) CmdScaleForStance_Stub()
 		{
 			__asm
 			{
 				mov ecx, [eax]           // pm->ps
-				test dword ptr [ecx + 0xC], 0x01000000
+				test dword ptr [ecx + 0xC], 0x08000000
 				jnz down
 				mov ecx, 0x5B82A0
 				jmp ecx
@@ -409,6 +431,7 @@ namespace Components
 		void DecidePlayers()
 		{
 			botWeaponSelect = 0;
+			CoopNet::ClearShowOnly();
 			int want = coop_players ? coop_players->current.integer : 1;
 			if (CoopNet::Active())
 			{
@@ -903,6 +926,8 @@ namespace Components
 				cmd[0x14] = static_cast<std::uint8_t>(*reinterpret_cast<int*>(GameClient(other) + GC_WEAPON)); // the other player's weapon
 			if (has("lookup"))
 				reinterpret_cast<int*>(cmd + 0x8)[0] = Angle2Short(-40.0f - delta[0]);
+			if (has("use"))
+				b |= 0x28; // +activate / +usereload held
 			if (has("lookdown"))
 				reinterpret_cast<int*>(cmd + 0x8)[0] = Angle2Short(40.0f - delta[0]);
 			if (const char* pitch = std::strstr(pose, "pitch="))
@@ -962,7 +987,7 @@ namespace Components
 			coop_botgod = Dvars::Register::Dvar_RegisterBool("coop_botgod", "Test: player 2 cannot die", false, Game::none);
 			coop_qa_nodown = Dvars::Register::Dvar_RegisterBool("coop_qa_nodown", "Test: players die without going down first", false, Game::none);
 			coop_botpose = Dvars::Register::Dvar_RegisterString("coop_botpose", "Test: bot actions on top of its mode (forward back left right "
-				"slow sprint crouch prone ads fire reload melee frag jump copyweapon lookup lookdown pitch=<deg>)", "", Game::none);
+				"slow sprint crouch prone ads fire reload melee frag jump copyweapon lookup lookdown pitch=<deg> use)", "", Game::none);
 			coop_botkit = Dvars::Register::Dvar_RegisterBool("coop_botkit", "Test: player 2 gets player 1's weapons as soon as player 1 has one", false, Game::none);
 			coop_crawlscale = Dvars::Register::Dvar_RegisterFloat("coop_crawlscale", "Downed player's crawl speed scale (IW4 player_lastStandCrawlSpeedScale)", 0.2f, 0.0f, 1.0f, Game::none);
 		});
@@ -994,6 +1019,7 @@ namespace Components
 		Utils::Hook(0x4A3F70, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 1 (0x4A3F60)
 		Utils::Hook(0x4BAB99, UpdatePlayerTriggers_Stub, HOOK_CALL).install()->quick(); // G_UpdatePlayerTriggers for every player
 		Utils::Hook(0x4B31FD, HudSetDefaults_Stub, HOOK_CALL).install()->quick();        // newHudElem: owner of the new element
+		Utils::Hook::Set<void*>(0x6DDF34, reinterpret_cast<void*>(GetWeaponModel_Safe)); // getweaponmodel: "" for a weapon without a world model
 		Utils::Hook(0x4B4560, HudUpdateClient, HOOK_JUMP).install()->quick();           // ps.hud without the other player's elements
 
 		psLayoutOk = sizeof(Game::playerState_s) == 0xB2D8 && offsetof(Game::playerState_s, clientNum) == GC_CLIENTNUM &&
@@ -1020,6 +1046,12 @@ namespace Components
 		GSC::AddMethod("coopsetdowned", [](Game::scr_entref_t entref)
 		{
 			SetDown(entref.entnum, Game::Scr_GetInt(0) != 0);
+		}, false);
+		// ent coopshowonlyto( n ): this entity only on player n's PC (0 / 1: a first-person rig); n -1 = on both again
+		GSC::AddMethod("coopshowonlyto", [](Game::scr_entref_t entref)
+		{
+			const int n = Game::Scr_GetNumParam() > 0 ? Game::Scr_GetInt(0) : -1;
+			CoopNet::ShowOnlyTo(static_cast<int>(entref.entnum), n >= 0 && n < 2 ? n : -1);
 		}, false);
 		// player coophudnext(): the next newHudElem() is this player's only
 		GSC::AddMethod("coophudnext", [](Game::scr_entref_t entref)

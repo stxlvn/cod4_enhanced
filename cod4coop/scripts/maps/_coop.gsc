@@ -470,10 +470,12 @@ body_follow( index )
 		view = self getplayerangles();
 		body.origin = pos;
 		body.angles = ( 0, view[ 1 ], 0 );
-		// a level can hide both bodies (ac130: both gunners sit at the same tag, a body would fill the other one's view)
-		if ( isdefined( level.coop_hide_bodies ) != isdefined( body.coop_hidden ) )
+		// a level can hide both bodies (ac130: both gunners sit at the same tag, a body would fill the other one's view), a scene one
+		// player's (self.coop_scene_hide: he is a first-person rig, e.g. caught by Price on the Seaknight's ramp)
+		hide_now = isdefined( level.coop_hide_bodies ) || isdefined( self.coop_scene_hide );
+		if ( hide_now != isdefined( body.coop_hidden ) )
 		{
-			if ( isdefined( level.coop_hide_bodies ) )
+			if ( hide_now )
 			{
 				body hide();
 				body.coop_hidden = true;
@@ -499,7 +501,8 @@ body_follow( index )
 			gun = want_gun;
 		}
 
-		if ( isdefined( self.coop_isdown ) )
+		// last stand, or a scene that knocks the player down (self.coop_scene_down, e.g. the cargoship explosion): on his back
+		if ( isdefined( self.coop_isdown ) || isdefined( self.coop_scene_down ) )
 		{
 			body.coop_key = ""; // the standing poses start again after a revive
 			// last stand: the CoD4 AI's wounded-on-the-back set (animscripts\pain.gsc dying crawl) for IW4's pb_laststand_*:
@@ -1112,6 +1115,10 @@ qa_keep_health()
 //   "switch <n> <weapon>"         switch player n to a weapon he has
 //   "notify <n> <message>"        notify player n (e.g. "switch weapons", as his key would)
 //   "notifyall <message>"         the same notify on every player in one frame
+//   "flagwatch <n> <flag>"        mirror a level flag into dvar coop_f_<flag> (0 / 1)
+//   "flagset <n> <flag>"          set a level flag
+//   "heroes3tp <n> <key> <x> <y> <z>"  move level.heroes3[ key ] there
+//   "trigon <n> <script_noteworthy>"   turn those triggers on
 qa_commands()
 {
 	setdvar( "coop_qa_cmd", "" );
@@ -1125,6 +1132,31 @@ qa_commands()
 		w = strtok( cmd, " " );
 		if ( w.size < 2 )
 			continue;
+		if ( w[ 0 ] == "flagwatch" && w.size >= 3 )
+		{
+			// the level flag w[ 2 ] mirrored into dvar coop_f_<flag> (0 / 1) for the test runner's waitdvar
+			thread qa_flag_mirror( w[ 2 ] );
+			continue;
+		}
+		if ( w[ 0 ] == "flagset" && w.size >= 3 )
+		{
+			common_scripts\utility::flag_set( w[ 2 ] ); // a level flag a test start point leaves unset
+			continue;
+		}
+		if ( w[ 0 ] == "heroes3tp" && w.size >= 6 && isdefined( level.heroes3 ) && isdefined( level.heroes3[ w[ 2 ] ] ) )
+		{
+			// a hero of the level (level.heroes3[ key ]) moved like the level's own start points do (cargoship jumptoActor)
+			level.heroes3[ w[ 2 ] ] thread qa_actor_tp( ( int( w[ 3 ] ), int( w[ 4 ] ), int( w[ 5 ] ) ) );
+			continue;
+		}
+		if ( w[ 0 ] == "trigon" && w.size >= 3 )
+		{
+			// the triggers with this script_noteworthy on (a test start point that skips where the level turns them on)
+			trigs = getentarray( w[ 2 ], "script_noteworthy" );
+			for ( k = 0; k < trigs.size; k++ )
+				trigs[ k ] common_scripts\utility::trigger_on();
+			continue;
+		}
 		if ( w[ 0 ] == "notifyall" )
 		{
 			// the same notify on every player in one frame, player 1 first (both keys at one tick)
@@ -1162,4 +1194,35 @@ qa_commands()
 			p notify( msg );
 		}
 	}
+}
+
+qa_flag_mirror( name )
+{
+	was = -1;
+	while ( true )
+	{
+		v = 0;
+		if ( isdefined( level.flag[ name ] ) && level.flag[ name ] )
+			v = 1;
+		if ( v != was )
+		{
+			was = v;
+			setdvar( "coop_f_" + name, v );
+		}
+		wait 0.05;
+	}
+}
+
+qa_actor_tp( org )
+{
+	self notify( "overtakenow" );
+	self unlink();
+	self stopanimscripted();
+	link = spawn( "script_origin", self.origin );
+	self linkto( link );
+	link moveto( org, .2 );
+	wait .25;
+	self unlink();
+	link delete();
+	self setgoalpos( org );
 }

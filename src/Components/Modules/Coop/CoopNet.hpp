@@ -14,6 +14,9 @@ namespace Components
 		static void Install();
 		static int Role();
 		static int LocalClient();
+		// an entity shown only on that player's PC (-1: on both again); cleared at each level start
+		static void ShowOnlyTo(int ent, int player);
+		static void ClearShowOnly();
 		// a lockstep session drives the running level
 		static bool Active();
 		// session seed for G_InitGame's holdrand (valid when Active)

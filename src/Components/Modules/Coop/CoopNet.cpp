@@ -840,12 +840,38 @@ namespace Components
 		int hiddenBodyEnt = -1;
 		std::uint8_t hiddenBodyFlags = 0;
 
+		// Entities a scene shows on one player's PC only (the view-hands rig of a first-person scene: on the other PC it would hang in
+		// the air): "ent coopshowonlyto( player )". Left out of the other PC's snapshots the same way as the own body.
+		std::vector<std::pair<int, int>> ownedEnts;                 // entity number -> player
+		std::vector<std::pair<int, std::uint8_t>> ownedHidden;      // hidden in the snapshot being built, with its svFlags
+
+		void HideOwnedFor(int local)
+		{
+			ownedHidden.clear();
+			for (size_t i = 0; i < ownedEnts.size();)
+			{
+				std::uint8_t* e = Coop::Entity(ownedEnts[i].first);
+				if (!e[0xA8])
+				{
+					ownedEnts.erase(ownedEnts.begin() + i); // freed: forget it
+					continue;
+				}
+				if (ownedEnts[i].second != local)
+				{
+					ownedHidden.emplace_back(ownedEnts[i].first, e[0xA6]);
+					e[0xA6] |= 1;
+				}
+				i++;
+			}
+		}
+
 		void __cdecl BeforeSnapshot()
 		{
 			hiddenBodyEnt = -1;
 			if (Coop::Players() < 2)
 				return;
 			const int local = snapshotOffset ? 1 : 0;
+			HideOwnedFor(local);
 			const auto* d = Dvars::Functions::Dvar_FindVar(local ? "coop_body1" : "coop_body0");
 			if (!d || d->type != Game::dvar_type::string || !d->current.string)
 				return;
@@ -865,6 +891,9 @@ namespace Components
 			if (hiddenBodyEnt >= 0)
 				Coop::Entity(hiddenBodyEnt)[0xA6] = hiddenBodyFlags;
 			hiddenBodyEnt = -1;
+			for (auto it = ownedHidden.rbegin(); it != ownedHidden.rend(); ++it)
+				Coop::Entity(it->first)[0xA6] = it->second;
+			ownedHidden.clear();
 		}
 
 		void __declspec(naked) Snapshot_Stub()
@@ -1561,6 +1590,25 @@ namespace Components
 	int CoopNet::Role()
 	{
 		return role;
+	}
+
+	void CoopNet::ShowOnlyTo(int ent, int player)
+	{
+		for (size_t i = 0; i < ownedEnts.size(); i++)
+		{
+			if (ownedEnts[i].first == ent)
+			{
+				ownedEnts.erase(ownedEnts.begin() + i);
+				break;
+			}
+		}
+		if (player >= 0 && ent >= 2 && ent < 0x880)
+			ownedEnts.emplace_back(ent, player);
+	}
+
+	void CoopNet::ClearShowOnly()
+	{
+		ownedEnts.clear();
 	}
 
 	int CoopNet::LocalClient()
