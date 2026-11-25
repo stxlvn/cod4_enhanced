@@ -1,4 +1,5 @@
 #include "STDInc.hpp"
+#include "Coop/CoopNet.hpp"
 
 namespace Components
 {
@@ -30,6 +31,7 @@ namespace Components
 	void Branding::VersionOfTheGameStub()
 	{
 		Branding::DrawClientVersion();
+		CoopNet::DrawOverlay(); // co-op fork: "waiting for the other player"
 		Utils::Hook::Call<void()>(0x438B20)();
 	}
 

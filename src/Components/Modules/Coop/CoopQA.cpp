@@ -15,6 +15,8 @@ namespace Components
 		size_t next = 0;
 		ULONGLONG waitUntil = 0;
 		int waitLevel = -1;
+		int waitMenu = -1;
+		ULONGLONG waitMenuUntil = 0;
 		bool started = false;
 
 		int LevelTimeIfRunning()
@@ -39,7 +41,22 @@ namespace Components
 				Coop::Log("qa: level.time %d reached", LevelTimeIfRunning());
 				waitLevel = -1;
 			}
+			if (waitMenu >= 0)
+			{
+				const int type = *reinterpret_cast<int*>(0x1E209B4); // g_currentMenuType (5 = pregame / briefing)
+				if (type != waitMenu && GetTickCount64() < waitMenuUntil)
+					return;
+				Coop::Log("qa: menu type %d %s", type, type == waitMenu ? "reached" : "NOT reached (timeout)");
+				waitMenu = -1;
+			}
 			const std::string line = steps[next++];
+			if (line.rfind("waitmenu ", 0) == 0)
+			{
+				waitMenu = std::atoi(line.c_str() + 9);
+				waitMenuUntil = GetTickCount64() + 120000;
+				Coop::Log("qa: wait for menu type %d", waitMenu);
+				return;
+			}
 			if (line.rfind("wait ", 0) == 0)
 			{
 				waitUntil = GetTickCount64() + std::strtoul(line.c_str() + 5, nullptr, 10);

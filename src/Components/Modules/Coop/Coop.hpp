@@ -18,6 +18,11 @@ namespace Components
 		static std::uint8_t* Entity(int num);
 		static std::uint8_t* GameClient(int num);
 		static std::uint8_t* ServerClient(int num);
+		static int LevelTimeNow();
+		// lastUsercmd of client n = cmd (0x38 bytes), then ClientThink(n)
+		static void Think(int n, const std::uint8_t* cmd);
+		// test bot: moves/angles/buttons/weapon for player self, relative to player other
+		static void FillBotCmd(int self, int other, std::uint8_t* cmd, const char* mode, bool fire);
 
 	private:
 		static int __cdecl ClientConnect_Hook();

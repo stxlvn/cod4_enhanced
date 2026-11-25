@@ -1,6 +1,7 @@
 #include "STDInc.hpp"
 #include "CoopScripts.hpp"
 #include "CoopQA.hpp"
+#include "CoopNet.hpp"
 
 // Co-op Phase 1: a second player in one SP process.
 // Addresses are for iw3sp_mod.exe of IW3SP-MOD v4.1.5 (image base 0x400000). Reverse engineering notes: local/cod4/PORT-PLAN.md,
@@ -169,6 +170,12 @@ namespace Components
 		void DecidePlayers()
 		{
 			int want = coop_players ? coop_players->current.integer : 1;
+			if (CoopNet::Active())
+			{
+				want = 2;
+				*reinterpret_cast<int*>(0x6DDAAC) = CoopNet::Seed(); // holdrand: same game RNG on both PCs (stock: timeGetTime at map load)
+				Coop::Log("G_InitGame: session seed %d", CoopNet::Seed());
+			}
 			players = want >= 2 ? 2 : 1;
 			Coop::Log("G_InitGame: %d player(s), level.clients %p, svs.clients %p", players, *reinterpret_cast<void**>(LEVEL_CLIENTS),
 				*reinterpret_cast<void**>(SVS_CLIENTS));
@@ -418,25 +425,31 @@ namespace Components
 	void __cdecl Coop::PlayerTrail_Hook(std::uint8_t* ent)
 	{
 		Utils::Hook::Call<void(std::uint8_t*)>(PlayerTrail_f)(ent);
-		if (players > 1 && *reinterpret_cast<int*>(GameClient(1) + GC_CONNECTED) == 2)
+		if (players > 1 && !CoopNet::Active() && *reinterpret_cast<int*>(GameClient(1) + GC_CONNECTED) == 2)
 			BotThink();
 	}
 
 	// Test input for player 2 (Phase 1). Lockstep input replaces this in Phase 2.
-	void Coop::BotThink()
+	int Coop::LevelTimeNow()
 	{
-		std::uint8_t* cl = GameClient(1);
-		const int serverTime = *reinterpret_cast<int*>(ServerClient(0) + SVCL_LASTCMD);
-		if (serverTime <= *reinterpret_cast<int*>(cl)) // ps.commandTime
-			return;
-		std::uint8_t cmd[USERCMD_SIZE] = {};
-		*reinterpret_cast<int*>(cmd + 0x0) = serverTime;
+		return LevelTime();
+	}
+
+	void Coop::Think(int n, const std::uint8_t* cmd)
+	{
+		std::memcpy(ServerClient(n) + SVCL_LASTCMD, cmd, USERCMD_SIZE);
+		ClientThink(n);
+	}
+
+	// Moves, angles, buttons and weapon of a test bot for player self (serverTime is left as it is).
+	void Coop::FillBotCmd(int self, int other, std::uint8_t* cmd, const char* mode, bool fire)
+	{
+		std::uint8_t* cl = GameClient(self);
 		const float* o = reinterpret_cast<float*>(cl + GC_ORIGIN);
-		const float* p1 = reinterpret_cast<float*>(Entity(0) + ENT_ORIGIN);
+		const float* p1 = reinterpret_cast<float*>(Entity(other) + ENT_ORIGIN);
 		const float* delta = reinterpret_cast<float*>(cl + GC_DELTA_ANGLES);
 		const float dx = p1[0] - o[0], dy = p1[1] - o[1];
 		const float dist = std::sqrt(dx * dx + dy * dy);
-		const char* mode = coop_bot ? coop_bot->current.string : "follow";
 		float yaw = reinterpret_cast<float*>(cl + GC_VIEWANGLES)[1];
 		int forward = 0;
 		const int t = LevelTime();
@@ -447,8 +460,8 @@ namespace Components
 		}
 		else if (!std::strcmp(mode, "front"))
 		{
-			// stand 150 units in front of player 1's view, facing him (to see player 2 from player 1's camera)
-			const float pyaw = reinterpret_cast<float*>(GameClient(0) + GC_VIEWANGLES)[1] * 3.14159265f / 180.0f;
+			// stand 150 units in front of the other player's view, facing him
+			const float pyaw = reinterpret_cast<float*>(GameClient(other) + GC_VIEWANGLES)[1] * 3.14159265f / 180.0f;
 			const float tx = p1[0] + std::cos(pyaw) * 150.0f - o[0], ty = p1[1] + std::sin(pyaw) * 150.0f - o[1];
 			if (std::sqrt(tx * tx + ty * ty) > 24.0f)
 			{
@@ -466,13 +479,8 @@ namespace Components
 			forward = (t % 3000) < 2000 ? 127 : 0;
 		}
 		int buttons = 0;
-		if (coop_botfire && coop_botfire->current.enabled && (t % 4000) < 150)
+		if (fire && (t % 4000) < 150)
 			buttons |= 1; // attack
-		if (coop_botkit && coop_botkit->current.enabled && psLayoutOk && *reinterpret_cast<int*>(GameClient(0) + GC_WEAPON) != 0 &&
-			*reinterpret_cast<int*>(cl + GC_WEAPON) == 0 && *reinterpret_cast<int*>(cl + GC_PMTYPE) < 4)
-			MirrorKit();
-		if (coop_botgod && coop_botgod->current.enabled && reinterpret_cast<Game::gentity_s*>(Entity(1))->health > 0)
-			reinterpret_cast<Game::gentity_s*>(Entity(1))->health = 100; // test only: keep player 2 alive
 		*reinterpret_cast<int*>(cmd + 0x4) = buttons;
 		reinterpret_cast<int*>(cmd + 0x8)[0] = Angle2Short(0.0f - delta[0]);
 		reinterpret_cast<int*>(cmd + 0x8)[1] = Angle2Short(yaw - delta[1]);
@@ -480,12 +488,35 @@ namespace Components
 		cmd[0x14] = static_cast<std::uint8_t>(*reinterpret_cast<int*>(cl + GC_WEAPON));
 		cmd[0x15] = static_cast<std::uint8_t>(*reinterpret_cast<int*>(cl + GC_OFFHAND));
 		cmd[0x16] = static_cast<std::uint8_t>(forward);
-		std::memcpy(ServerClient(1) + SVCL_LASTCMD, cmd, USERCMD_SIZE);
-		ClientThink(1);
+		cmd[0x17] = 0;
+		cmd[0x18] = 0;
+	}
 
+	// One-process test (Phase 1): player 2 is a bot thinking right after player 1's input.
+	void Coop::BotThink()
+	{
+		std::uint8_t* cl = GameClient(1);
+		const int serverTime = *reinterpret_cast<int*>(ServerClient(0) + SVCL_LASTCMD);
+		if (serverTime <= *reinterpret_cast<int*>(cl)) // ps.commandTime
+			return;
+		std::uint8_t cmd[USERCMD_SIZE] = {};
+		*reinterpret_cast<int*>(cmd + 0x0) = serverTime;
+		const char* mode = coop_bot ? coop_bot->current.string : "follow";
+		if (coop_botkit && coop_botkit->current.enabled && psLayoutOk && *reinterpret_cast<int*>(GameClient(0) + GC_WEAPON) != 0 &&
+			*reinterpret_cast<int*>(cl + GC_WEAPON) == 0 && *reinterpret_cast<int*>(cl + GC_PMTYPE) < 4)
+			MirrorKit();
+		if (coop_botgod && coop_botgod->current.enabled && reinterpret_cast<Game::gentity_s*>(Entity(1))->health > 0)
+			reinterpret_cast<Game::gentity_s*>(Entity(1))->health = 100; // test only: keep player 2 alive
+		FillBotCmd(1, 0, cmd, mode, coop_botfire && coop_botfire->current.enabled);
+		Think(1, cmd);
+
+		const int t = LevelTime();
 		if (t - lastLog >= 1000 || t < lastLog)
 		{
 			lastLog = t;
+			const float* o = reinterpret_cast<float*>(cl + GC_ORIGIN);
+			const float* p1 = reinterpret_cast<float*>(Entity(0) + ENT_ORIGIN);
+			const float dx = p1[0] - o[0], dy = p1[1] - o[1];
 			const auto* e1 = reinterpret_cast<Game::gentity_s*>(Entity(1));
 			const auto* e0 = reinterpret_cast<Game::gentity_s*>(Entity(0));
 			const auto* ps2 = reinterpret_cast<Game::playerState_s*>(cl);
@@ -498,7 +529,7 @@ namespace Components
 			}
 			Log("t %d p2 (%.0f %.0f %.0f) hp %d pm %d weapon %d clips %d | p1 (%.0f %.0f %.0f) hp %d weapon %d | dist %.0f mode %s",
 				t, o[0], o[1], o[2], e1->health, *reinterpret_cast<int*>(cl + GC_PMTYPE), *reinterpret_cast<int*>(cl + GC_WEAPON), clip,
-				p1[0], p1[1], p1[2], e0->health, *reinterpret_cast<int*>(GameClient(0) + GC_WEAPON), dist, mode);
+				p1[0], p1[1], p1[2], e0->health, *reinterpret_cast<int*>(GameClient(0) + GC_WEAPON), std::sqrt(dx * dx + dy * dy), mode);
 		}
 	}
 
@@ -575,6 +606,7 @@ namespace Components
 
 		CoopScripts::Install();
 		CoopQA::Install();
+		CoopNet::Install();
 
 		Log("playerState_s layout %s (size 0x%x, ammo +0x%x, weapons +0x%x)", psLayoutOk ? "matches the exe" : "DOES NOT MATCH",
 			static_cast<int>(sizeof(Game::playerState_s)), static_cast<int>(offsetof(Game::playerState_s, ammo)),
