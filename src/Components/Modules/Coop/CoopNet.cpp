@@ -865,12 +865,100 @@ namespace Components
 			}
 		}
 
+		// A player who watches another player's camera (a level told from one player's eyes: The Coup): "player coopspectate( n )",
+		// set on both PCs alike. His PC's snapshots carry player n's playerState (position, head look, shell shock, depth of field,
+		// HUD) in place of his own (his clientNum and commandTime kept), player n's body left out like his own, and his cgame
+		// interpolates the snapshots' view angles instead of predicting with this PC's mouse: cg_nopredict (pointer 0x7F775C, read
+		// by CG_PredictPlayerState 0x426CD5 and CG_TransitionSnapshot 0x42BE61) points at a stand-in that is on, and that path's
+		// CG_InterpolatePlayerState grabAngles push (0x426CE3 push 1 -> 0) takes the angles from the snapshots. The simulation keeps
+		// his own playerState: it is copied back right after the snapshot.
+		constexpr DWORD SPECTATE_NOPREDICT_PTR = 0x7F775C;
+		constexpr DWORD SPECTATE_GRAB_ANGLES = 0x426CE4;
+		int spectating[2] = { -1, -1 };
+		bool spectateCodeOk = false;
+		std::vector<std::uint8_t> spectateSavedPs;
+		bool spectateSwapped = false;
+		Game::dvar_s* spectateRealNoPredict = nullptr;
+		Game::dvar_s spectateNoPredict{};
+		int hiddenTargetBodyEnt = -1;
+		std::uint8_t hiddenTargetBodyFlags = 0;
+
+		void SpectateCgame(bool on)
+		{
+			auto** slot = reinterpret_cast<Game::dvar_s**>(SPECTATE_NOPREDICT_PTR);
+			if (on && !spectateRealNoPredict && spectateCodeOk && *slot)
+			{
+				spectateRealNoPredict = *slot;
+				std::memcpy(&spectateNoPredict, spectateRealNoPredict, sizeof(Game::dvar_s));
+				spectateNoPredict.current.enabled = true;
+				*slot = &spectateNoPredict;
+				Utils::Hook::Set<std::uint8_t>(SPECTATE_GRAB_ANGLES, 0);
+				Coop::Log("spectate: this PC shows player %d's camera", spectating[CoopNet::LocalClient()] + 1);
+			}
+			else if (!on && spectateRealNoPredict)
+			{
+				*slot = spectateRealNoPredict;
+				spectateRealNoPredict = nullptr;
+				Utils::Hook::Set<std::uint8_t>(SPECTATE_GRAB_ANGLES, 1);
+				Coop::Log("spectate: this PC shows its own camera again");
+			}
+		}
+
+		int BodyEnt(int player)
+		{
+			const auto* d = Dvars::Functions::Dvar_FindVar(player ? "coop_body1" : "coop_body0");
+			if (!d || d->type != Game::dvar_type::string || !d->current.string)
+				return -1;
+			const int n = std::atoi(d->current.string);
+			if (n < 2 || n >= 0x880 || !Coop::Entity(n)[0xA8])
+				return -1;
+			return n;
+		}
+
+		void SpectateBefore(int local)
+		{
+			const int target = spectating[local];
+			SpectateCgame(target >= 0);
+			if (target < 0 || sizeof(Game::playerState_s) != 0xB2D8)
+				return;
+			std::uint8_t* mine = Coop::GameClient(local);
+			const std::uint8_t* theirs = Coop::GameClient(target);
+			spectateSavedPs.assign(mine, mine + sizeof(Game::playerState_s));
+			std::memcpy(mine, theirs, sizeof(Game::playerState_s));
+			auto* ps = reinterpret_cast<Game::playerState_s*>(mine);
+			const auto* own = reinterpret_cast<const Game::playerState_s*>(spectateSavedPs.data());
+			ps->commandTime = own->commandTime;
+			ps->clientNum = own->clientNum;
+			spectateSwapped = true;
+			const int n = BodyEnt(target);
+			if (n >= 0)
+			{
+				hiddenTargetBodyFlags = Coop::Entity(n)[0xA6];
+				Coop::Entity(n)[0xA6] |= 1;
+				hiddenTargetBodyEnt = n;
+			}
+		}
+
+		void SpectateAfter(int local)
+		{
+			if (spectateSwapped)
+				std::memcpy(Coop::GameClient(local), spectateSavedPs.data(), spectateSavedPs.size());
+			spectateSwapped = false;
+			if (hiddenTargetBodyEnt >= 0)
+				Coop::Entity(hiddenTargetBodyEnt)[0xA6] = hiddenTargetBodyFlags;
+			hiddenTargetBodyEnt = -1;
+		}
+
 		void __cdecl BeforeSnapshot()
 		{
 			hiddenBodyEnt = -1;
 			if (Coop::Players() < 2)
+			{
+				SpectateCgame(false);
 				return;
+			}
 			const int local = snapshotOffset ? 1 : 0;
+			SpectateBefore(local);
 			HideOwnedFor(local);
 			const auto* d = Dvars::Functions::Dvar_FindVar(local ? "coop_body1" : "coop_body0");
 			if (!d || d->type != Game::dvar_type::string || !d->current.string)
@@ -888,6 +976,7 @@ namespace Components
 
 		void __cdecl AfterSnapshot()
 		{
+			SpectateAfter(snapshotOffset ? 1 : 0);
 			if (hiddenBodyEnt >= 0)
 				Coop::Entity(hiddenBodyEnt)[0xA6] = hiddenBodyFlags;
 			hiddenBodyEnt = -1;
@@ -1609,6 +1698,17 @@ namespace Components
 	void CoopNet::ClearShowOnly()
 	{
 		ownedEnts.clear();
+		spectating[0] = spectating[1] = -1;
+		SpectateCgame(false);
+	}
+
+	void CoopNet::Spectate(int player, int target)
+	{
+		if (player < 0 || player > 1)
+			return;
+		spectating[player] = (target >= 0 && target < 2 && target != player) ? target : -1;
+		if (spectating[player] < 0 && player == LocalClient())
+			SpectateCgame(false);
 	}
 
 	int CoopNet::LocalClient()
@@ -1628,6 +1728,15 @@ namespace Components
 
 	void CoopNet::Install()
 	{
+		// spectate (see SpectateCgame): the cgame code it relies on, byte for byte (mov ecx,[cg_nopredict]; cmp byte [ecx+0Ch],0;
+		// jz; push 1; push 1; call CG_InterpolatePlayerState)
+		{
+			static const std::uint8_t expect[] = { 0x8B, 0x0D, 0x5C, 0x77, 0x7F, 0x00, 0x80, 0x79, 0x0C, 0x00, 0x74, 0x13, 0x6A, 0x01, 0x6A, 0x01, 0xE8 };
+			spectateCodeOk = std::memcmp(reinterpret_cast<const void*>(0x426CD5), expect, sizeof(expect)) == 0;
+			if (!spectateCodeOk)
+				Coop::Log("spectate: cgame code at 0x426CD5 differs from the known exe: spectating off");
+		}
+
 		Events::OnDvarInit([]
 		{
 			coop_port = Dvars::Register::Dvar_RegisterInt("coop_port", "UDP port of the co-op session (host 28960; partner 0 = any)", 28960, 0, 65535, Game::none);

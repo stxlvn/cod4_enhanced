@@ -1195,6 +1195,12 @@ qa_commands()
 			}
 			continue;
 		}
+		if ( w[ 0 ] == "aiwatch" )
+		{
+			// the AI count every 2 s in the console log; at <n> or more a dump of every AI (who fills the actor pool)
+			thread qa_ai_watch( int( w[ 1 ] ) );
+			continue;
+		}
 		if ( w[ 0 ] == "notifyall" )
 		{
 			// the same notify on every player in one frame, player 1 first (both keys at one tick)
@@ -1240,6 +1246,35 @@ qa_commands()
 			for ( k = 3; k < w.size; k++ )
 				msg = msg + " " + w[ k ];
 			p notify( msg );
+		}
+	}
+}
+
+qa_ai_watch( limit )
+{
+	dumped = false;
+	while ( true )
+	{
+		wait 2;
+		ai = getaiarray();
+		setdvar( "coop_qa_ai", ai.size );
+		println( "coop ai " + gettime() + " count " + ai.size );
+		if ( ai.size < limit || dumped )
+			continue;
+		dumped = true;
+		for ( k = 0; k < ai.size; k++ )
+		{
+			a = ai[ k ];
+			t = "coop ai dump " + a getentitynumber() + " " + a.classname + " team " + a.team + " at " + a.origin;
+			if ( isdefined( a.targetname ) )
+				t += " tn " + a.targetname;
+			if ( isdefined( a.script_noteworthy ) )
+				t += " sn " + a.script_noteworthy;
+			if ( isdefined( a.script_deleteai ) )
+				t += " del " + a.script_deleteai;
+			if ( isdefined( a.animname ) )
+				t += " an " + a.animname;
+			println( t );
 		}
 	}
 }

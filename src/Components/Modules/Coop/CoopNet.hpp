@@ -17,6 +17,8 @@ namespace Components
 		// an entity shown only on that player's PC (-1: on both again); cleared at each level start
 		static void ShowOnlyTo(int ent, int player);
 		static void ClearShowOnly();
+		// player's PC shows target's camera (-1: his own again); cleared at each level start (ClearShowOnly)
+		static void Spectate(int player, int target);
 		// a lockstep session drives the running level
 		static bool Active();
 		// session seed for G_InitGame's holdrand (valid when Active)

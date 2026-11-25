@@ -300,10 +300,54 @@ namespace Components
 			}
 		}
 
+		// The actor pool with two players: the stock game has 33 sentients = 32 actors + 1 player; player 2 takes one, so the 32nd
+		// actor got no sentient and its spawn failed (The Coup's drive: "couldn't spawn from sneakattack_victim2 because there are
+		// no free actors", then a script error on the undefined AI, fatal with developer 1). With two players ai_count (Actor_Alloc's
+		// limit, 0x4770F0; dvar pointer 0xE0D980) is held at 31, and SP_actor makes room the stock way (Actor_FreeExpendable: the
+		// farthest actor player 1 cannot see) for every spawn the stock game would still have had a slot for (fewer than 32 actors),
+		// as it does for a forcespawn spawner (spawnflags 2). Spawns beyond that fail as in the stock game.
+		constexpr DWORD AI_COUNT_DVAR = 0xE0D980;
+		constexpr DWORD LEVEL_ACTOR_COUNT = 0xE18E64;
+		constexpr DWORD SP_ACTOR_FORCE_TEST = 0x476DC7;
+		bool actorRoomOk = false;
+		int actorRoom = 0; // read by the naked stub
+
+		void HoldActorLimit()
+		{
+			auto* d = *reinterpret_cast<Game::dvar_s**>(AI_COUNT_DVAR);
+			if (!d)
+				return;
+			const int want = actorRoom ? 31 : 32;
+			if (d->current.integer > want || (!actorRoom && d->current.integer == 31))
+				d->current.integer = want;
+		}
+
+		void __declspec(naked) ActorRoom_Stub()
+		{
+			__asm
+			{
+				test byte ptr [ebx + 0x12C], 2
+				jnz force
+				cmp actorRoom, 0
+				je fail
+				mov eax, dword ptr ds:[0E18E64h]
+				cmp eax, 32
+				jge fail
+			force:
+				push 0x476DD0 // the stock forcespawn path: free expendable actors, then Actor_Alloc again
+				ret
+			fail:
+				push 0x476E1E
+				ret
+			}
+		}
+
 		void __cdecl UpdatePlayerTriggersAll(std::uint8_t* first)
 		{
 			if (players > 1)
 				MirrorThreatBias();
+			if (actorRoomOk)
+				HoldActorLimit();
 			UpdatePlayerTriggersFor(first);
 			for (int n = 1; n < players; n++)
 			{
@@ -461,6 +505,9 @@ namespace Components
 				CoopNet::OnLevelStart();
 			}
 			players = want >= 2 ? 2 : 1;
+			actorRoom = (players > 1 && actorRoomOk) ? 1 : 0;
+			if (actorRoomOk)
+				HoldActorLimit();
 			Coop::Log("G_InitGame: %d player(s), level.clients %p, svs.clients %p", players, *reinterpret_cast<void**>(LEVEL_CLIENTS),
 				*reinterpret_cast<void**>(SVS_CLIENTS));
 		}
@@ -1043,6 +1090,20 @@ namespace Components
 		Utils::Hook(0x4B31FD, HudSetDefaults_Stub, HOOK_CALL).install()->quick();        // newHudElem: owner of the new element
 		Utils::Hook::Set<void*>(0x6DDF34, reinterpret_cast<void*>(GetWeaponModel_Safe)); // getweaponmodel: "" for a weapon without a world model
 		Utils::Hook(0x4B4560, HudUpdateClient, HOOK_JUMP).install()->quick();           // ps.hud without the other player's elements
+		{
+			// actor pool with two players (HoldActorLimit): SP_actor's "test byte [ebx+12Ch], 2; jz fail" and Actor_Alloc's limit check
+			static const std::uint8_t forceTest[] = { 0xF6, 0x83, 0x2C, 0x01, 0x00, 0x00, 0x02, 0x74, 0x4E };
+			static const std::uint8_t allocLimit[] = { 0xA1, 0x80, 0xD9, 0xE0, 0x00, 0x8B, 0x0D, 0x64, 0x8E, 0xE1, 0x00, 0x3B, 0x48, 0x0C };
+			actorRoomOk = std::memcmp(reinterpret_cast<const void*>(SP_ACTOR_FORCE_TEST), forceTest, sizeof(forceTest)) == 0 &&
+				std::memcmp(reinterpret_cast<const void*>(0x4770F0), allocLimit, sizeof(allocLimit)) == 0;
+			if (actorRoomOk)
+			{
+				Utils::Hook(SP_ACTOR_FORCE_TEST, ActorRoom_Stub, HOOK_JUMP).install()->quick();
+				Utils::Hook::Nop(SP_ACTOR_FORCE_TEST + 5, 4);
+			}
+			else
+				Coop::Log("actor pool: SP_actor / Actor_Alloc differ from the known exe: no room making for player 2's sentient");
+		}
 
 		psLayoutOk = sizeof(Game::playerState_s) == 0xB2D8 && offsetof(Game::playerState_s, clientNum) == GC_CLIENTNUM &&
 			offsetof(Game::playerState_s, viewangles) == GC_VIEWANGLES && offsetof(Game::playerState_s, weapon) == GC_WEAPON;
@@ -1074,6 +1135,13 @@ namespace Components
 		{
 			const int n = Game::Scr_GetNumParam() > 0 ? Game::Scr_GetInt(0) : -1;
 			CoopNet::ShowOnlyTo(static_cast<int>(entref.entnum), n >= 0 && n < 2 ? n : -1);
+		}, false);
+		// player coopspectate( n ): his PC shows player n's camera (his view, head look, shell shock, HUD); -1 or no argument: his
+		// own again. Call on both PCs alike (cleared at level start)
+		GSC::AddMethod("coopspectate", [](Game::scr_entref_t entref)
+		{
+			const int n = Game::Scr_GetNumParam() > 0 ? Game::Scr_GetInt(0) : -1;
+			CoopNet::Spectate(static_cast<int>(entref.entnum), n);
 		}, false);
 		// player coophudnext(): the next newHudElem() is this player's only
 		GSC::AddMethod("coophudnext", [](Game::scr_entref_t entref)
