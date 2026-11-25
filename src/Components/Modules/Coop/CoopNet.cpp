@@ -50,8 +50,12 @@ namespace Components
 			int time = 0;
 			std::uint32_t hash = 0;
 			std::vector<Cmd> cmds[2];
+			std::vector<std::pair<int, std::string>> rel[2]; // reliable client commands (seq, text): menu responses, cheats
 			std::vector<std::uint8_t> bytes;
 		};
+
+		constexpr int MAX_REL_PER_BLOCK = 16;
+		constexpr int MAX_REL_TEXT = 1000;
 
 		SOCKET sock = INVALID_SOCKET;
 		sockaddr_in peer{};
@@ -72,6 +76,9 @@ namespace Components
 		std::vector<Cmd> partnerQueue; // host: partner cmds not yet in a frame
 		int partnerQueuedTime = INT_MIN;
 		int lastLocalCmd = 0;          // cl.cmdNumber already taken from the local client
+		std::vector<std::pair<int, std::string>> partnerRelQueue; // host: partner's reliable commands not yet in a frame
+		int partnerRelQueued = INT_MIN;
+		int execRelSeq[2] = { INT_MIN, INT_MIN }; // newest reliable command executed per player
 		int lastExecuted = 0;          // partner: newest executed frame time
 		int hashOk = 0, hashBad = 0, firstBad = -1, missing = 0;
 		int snapshotOffset = 0;        // added to ECX for SV_BuildAndSendClientSnapshot (0 or one client_t)
@@ -185,6 +192,10 @@ namespace Components
 			hashOk = hashBad = missing = 0;
 			firstBad = -1;
 			lastLocalCmd = *reinterpret_cast<int*>(CL_CMDNUMBER);
+			partnerRelQueue.clear();
+			partnerRelQueued = INT_MIN;
+			execRelSeq[0] = execRelSeq[1] = INT_MIN;
+			*reinterpret_cast<int*>(CL_RELACK) = *reinterpret_cast<int*>(CL_RELSEQ); // commands from before the session are dropped
 			localBriefDone = peerBriefDone = false;
 			lastBriefSend = lastTickTime = 0;
 			wasRunning = false;
@@ -228,6 +239,14 @@ namespace Components
 				b.push_back(static_cast<std::uint8_t>(f.cmds[p].size()));
 				for (const auto& c : f.cmds[p])
 					b.insert(b.end(), c.begin(), c.end());
+				b.push_back(static_cast<std::uint8_t>(f.rel[p].size()));
+				for (const auto& [seq, text] : f.rel[p])
+				{
+					put32(static_cast<std::uint32_t>(seq));
+					b.push_back(static_cast<std::uint8_t>(text.size()));
+					b.push_back(static_cast<std::uint8_t>(text.size() >> 8));
+					b.insert(b.end(), text.begin(), text.end());
+				}
 			}
 		}
 
@@ -252,6 +271,22 @@ namespace Components
 					Cmd c;
 					std::memcpy(c.data(), d + at, USERCMD);
 					f.cmds[p].push_back(c);
+				}
+				if (at >= len)
+					return false;
+				const int nr = d[at++];
+				f.rel[p].clear();
+				for (int i = 0; i < nr; i++)
+				{
+					if (at + 6 > len)
+						return false;
+					const int seq = static_cast<int>(get32(at));
+					const int tl = d[at + 4] | (d[at + 5] << 8);
+					at += 6;
+					if (tl > MAX_REL_TEXT || at + tl > len)
+						return false;
+					f.rel[p].emplace_back(seq, std::string(reinterpret_cast<const char*>(d + at), tl));
+					at += tl;
 				}
 			}
 			return true;
@@ -310,7 +345,30 @@ namespace Components
 			return out;
 		}
 
+		const char* ReliableText(int seq)
+		{
+			return reinterpret_cast<const char*>(0x819680 + ((seq & 0xFF) << 10)); // clc.reliableCommands[256][1024]
+		}
+
+		// host: its own new reliable commands go into frame block 0 (they run on both PCs when the frame runs)
+		std::vector<std::pair<int, std::string>> TakeLocalReliable()
+		{
+			std::vector<std::pair<int, std::string>> out;
+			int& seq = *reinterpret_cast<int*>(CL_RELSEQ);
+			int& ack = *reinterpret_cast<int*>(CL_RELACK);
+			while (ack != seq && static_cast<int>(out.size()) < MAX_REL_PER_BLOCK)
+			{
+				ack++;
+				std::string text(ReliableText(ack));
+				if (text.size() > MAX_REL_TEXT)
+					text.resize(MAX_REL_TEXT);
+				out.emplace_back(ack, std::move(text));
+			}
+			return out;
+		}
+
 		// partner -> host: [0x1d][0][serverId][ackTime][n] n x usercmd (its newest cmds; the host keeps the new ones)
+		//                  then [m] m x { u32 seq, u16 len, text } (its reliable commands not yet executed)
 		void SendInput()
 		{
 			std::vector<std::uint8_t> pkt{ static_cast<std::uint8_t>(PROTOCOL), 0 };
@@ -337,7 +395,55 @@ namespace Components
 			pkt.push_back(static_cast<std::uint8_t>(cmds.size()));
 			for (const auto& c : cmds)
 				pkt.insert(pkt.end(), c.begin(), c.end());
+			const int seq = *reinterpret_cast<int*>(CL_RELSEQ);
+			const int relAck = *reinterpret_cast<int*>(CL_RELACK); // set when a frame with the command runs here
+			const int from = std::max(relAck + 1, seq - 7);
+			pkt.push_back(static_cast<std::uint8_t>(seq - from + 1 > 0 ? seq - from + 1 : 0));
+			for (int n = from; n <= seq; n++)
+			{
+				std::string text(ReliableText(n));
+				if (text.size() > MAX_REL_TEXT)
+					text.resize(MAX_REL_TEXT);
+				put32(static_cast<std::uint32_t>(n));
+				pkt.push_back(static_cast<std::uint8_t>(text.size()));
+				pkt.push_back(static_cast<std::uint8_t>(text.size() >> 8));
+				pkt.insert(pkt.end(), text.begin(), text.end());
+			}
 			SendRaw(pkt.data(), static_cast<int>(pkt.size()));
+		}
+
+		const DWORD clientCommandEnt0[] = { 0x4AD915, 0x4AD98D, 0x4AD9B9, 0x4AD9E5, 0x4ADA0E, 0x4ADA37, 0x4ADA60, 0x4ADA89, 0x4ADAB2,
+			0x4ADADB, 0x4ADB22, 0x4ADB4E, 0x4ADB7A, 0x4ADBEE }; // PUSH / MOV EAX / MOV EDI imm32 0xC81418 (&g_entities[0])
+		bool clientCommandSitesOk = false;
+		char clientCommandText[1024];
+
+		void CallClientCommand()
+		{
+			__asm
+			{
+				mov ecx, offset clientCommandText
+				mov eax, 0x4AD860
+				call eax
+			}
+		}
+
+		void ClientCommandFor(int n, const std::string& text)
+		{
+			strncpy_s(clientCommandText, text.c_str(), _TRUNCATE);
+			if (n != 0)
+			{
+				if (!clientCommandSitesOk)
+				{
+					Coop::Log("net: command of player %d NOT run (ClientCommand sites unknown): %s", n + 1, text.c_str());
+					return;
+				}
+				for (const DWORD at : clientCommandEnt0)
+					Utils::Hook::Set<DWORD>(at + 1, reinterpret_cast<DWORD>(Coop::Entity(n)));
+			}
+			CallClientCommand();
+			if (n != 0)
+				for (const DWORD at : clientCommandEnt0)
+					Utils::Hook::Set<DWORD>(at + 1, 0xC81418);
 		}
 
 		void ExecuteInputs(const Frame& f);
@@ -349,6 +455,15 @@ namespace Components
 				for (int p = 0; p < 2; p++)
 					if (*reinterpret_cast<int*>(Coop::Entity(p) + 0x144) > 0)
 						*reinterpret_cast<int*>(Coop::Entity(p) + 0x144) = 100;
+			// level scripts give the view hands only to level.player (setViewModel -> ps.viewmodelIndex +0xE0); without them player 2's
+			// cgame gets no viewmodel DObj (CG_RegisterWeapon 0x430FF0) and crashes at 0x430A28 when he holds a weapon (run p2l).
+			// Same hands for player 2, set at the same point of the tick on both PCs. (Campaign scripts will do it per level later.)
+			{
+				int& hands1 = *reinterpret_cast<int*>(Coop::GameClient(0) + 0xE0);
+				int& hands2 = *reinterpret_cast<int*>(Coop::GameClient(1) + 0xE0);
+				if (hands2 != hands1)
+					hands2 = hands1;
+			}
 			ExecuteInputs(f);
 		}
 
@@ -358,36 +473,22 @@ namespace Components
 			{
 				if (*reinterpret_cast<int*>(Coop::GameClient(p) + 0xB2D8) != 2)
 					continue;
+				for (const auto& [seq, text] : f.rel[p])
+				{
+					if (seq <= execRelSeq[p])
+						continue;
+					execRelSeq[p] = seq;
+					Coop::Log("net: command of player %d (seq %d) at tick %d: %s", p + 1, seq, f.time, text.c_str());
+					ClientCommandFor(p, text);
+					if (p == CoopNet::LocalClient() && role == CoopNet::ROLE_PARTNER)
+						*reinterpret_cast<int*>(CL_RELACK) = std::max(*reinterpret_cast<int*>(CL_RELACK), seq);
+				}
 				for (const auto& c : f.cmds[p])
 				{
 					const int st = *reinterpret_cast<const int*>(c.data());
 					if (st > *reinterpret_cast<int*>(Coop::ServerClient(p) + 0x2410))
 						Coop::Think(p, c.data());
 				}
-			}
-		}
-
-		// Reliable client -> server commands of the local client (menu responses, cheats): not in frames yet.
-		void LocalReliableCommands()
-		{
-			int& seq = *reinterpret_cast<int*>(CL_RELSEQ);
-			int& ack = *reinterpret_cast<int*>(CL_RELACK);
-			if (ack == seq)
-				return;
-			if (role == CoopNet::ROLE_HOST)
-			{
-				const int n = seq - ack;
-				while (ack != seq)
-				{
-					ack++;
-					Utils::Hook::Call<void()>(ClientCommand_f)();
-				}
-				Coop::Log("net: host ran %d reliable command(s) of its own locally (not in frames yet)", n);
-			}
-			else
-			{
-				Coop::Log("net: partner dropped %d reliable command(s) (not in frames yet)", seq - ack);
-				ack = seq;
 			}
 		}
 
@@ -403,15 +504,14 @@ namespace Components
 			if (role == CoopNet::ROLE_HOST)
 			{
 				if (!partnerLoaded)
-				{
-					LocalReliableCommands();
-					return; // load-time frames (settle, G_LoadLevel): no input on either PC
-				}
+					return; // load-time frames (settle, G_LoadLevel): no input on either PC (reliable commands wait in the ring)
 				Frame f;
 				f.time = t;
 				f.hash = StateHash();
-				LocalReliableCommands();
 				f.cmds[0] = TakeLocalCmds(0);
+				f.rel[0] = TakeLocalReliable();
+				f.rel[1] = partnerRelQueue;
+				partnerRelQueue.clear();
 				std::sort(partnerQueue.begin(), partnerQueue.end(), [](const Cmd& a, const Cmd& b)
 				{
 					return *reinterpret_cast<const int*>(a.data()) < *reinterpret_cast<const int*>(b.data());
@@ -427,7 +527,6 @@ namespace Components
 				SendFrames();
 				return;
 			}
-			LocalReliableCommands();
 			auto it = frames.find(t);
 			if (it == frames.end())
 			{
@@ -707,6 +806,25 @@ namespace Components
 					partnerQueue.push_back(c);
 					partnerQueuedTime = st;
 				}
+				int at = 11 + n * USERCMD;
+				if (at < len)
+				{
+					const int m = d[at++];
+					for (int i = 0; i < m && at + 6 <= len; i++)
+					{
+						const int seq = static_cast<int>(d[at] | (d[at + 1] << 8) | (d[at + 2] << 16) | (d[at + 3] << 24));
+						const int tl = d[at + 4] | (d[at + 5] << 8);
+						at += 6;
+						if (tl > MAX_REL_TEXT || at + tl > len)
+							break;
+						if (seq > partnerRelQueued && static_cast<int>(partnerRelQueue.size()) < MAX_REL_PER_BLOCK)
+						{
+							partnerRelQueue.emplace_back(seq, std::string(reinterpret_cast<const char*>(d + at), tl));
+							partnerRelQueued = seq;
+						}
+						at += tl;
+					}
+				}
 				return;
 			}
 			if (role == CoopNet::ROLE_PARTNER && d[1] == 1 && len >= 7)
@@ -956,6 +1074,15 @@ namespace Components
 		Utils::Hook(0x5C74EA, Snapshot_Stub, HOOK_CALL).install()->quick(); // SV_SpawnServer
 		Utils::Hook(0x5C82E7, Snapshot_Stub, HOOK_CALL).install()->quick(); // per server frame
 		Utils::Hook(0x5C6773, Snapshot_Stub, HOOK_CALL).install()->quick(); // SV_CheckLoadLevel
+
+		clientCommandSitesOk = true;
+		for (const DWORD at : clientCommandEnt0)
+		{
+			const BYTE op = *reinterpret_cast<BYTE*>(at);
+			if ((op != 0x68 && op != 0xB8 && op != 0xBF) || *reinterpret_cast<DWORD*>(at + 1) != 0xC81418)
+				clientCommandSitesOk = false;
+		}
+		Coop::Log("net: ClientCommand entity sites %s", clientCommandSitesOk ? "OK" : "DO NOT MATCH (player 2 commands off)");
 
 		// every caller of UI_PlayerStart: Com_Error path, UI_Refresh (film over), uiScript playerstart (skip), SV_SpawnServer, UI_SetActiveMenu
 		for (const DWORD at : { 0x533657u, 0x5653A0u, 0x5671DAu, 0x5C76C4u, 0x567F70u })

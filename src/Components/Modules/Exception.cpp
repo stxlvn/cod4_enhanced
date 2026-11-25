@@ -104,8 +104,10 @@ namespace Components
 			error = Utils::String::VA("Fatal error (0x%08X) at 0x%08X.\nCopy exception address to clipboard?", ExceptionInfo->ExceptionRecord->ExceptionCode, ExceptionInfo->ExceptionRecord->ExceptionAddress);
 		}
 
+		// co-op fork: automated test runs (COD4COOP_QA set) write the dump without asking (the dialog blocked unattended runs)
+		const bool unattended = GetEnvironmentVariableA("COD4COOP_QA", nullptr, 0) > 0;
 		// Message should be copied to the keyboard if no button is pressed
-		if (MessageBoxA(nullptr, error, nullptr, MB_YESNO | MB_ICONERROR) == IDYES)
+		if (!unattended && MessageBoxA(nullptr, error, nullptr, MB_YESNO | MB_ICONERROR) == IDYES)
 		{
 			CopyMessageToClipboard(Utils::String::VA("0x%08X", ExceptionInfo->ExceptionRecord->ExceptionAddress));
 		}
