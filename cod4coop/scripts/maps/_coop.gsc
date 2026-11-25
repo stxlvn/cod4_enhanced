@@ -33,6 +33,8 @@ main()
 loadout_mirror()
 {
 	wait 0.05; // after _load's give_loadout
+	if ( isdefined( level.coop_no_kit_mirror ) )
+		return; // a level module gives player 2 his own kit (ac130: the gunship's other gun)
 	p1 = level.player;
 	list = p1 getweaponslist();
 	// the weapon in player 1's hands: _loadout's switchToWeapon has only been sent to his client yet ("none" for a few frames)
@@ -468,6 +470,20 @@ body_follow( index )
 		view = self getplayerangles();
 		body.origin = pos;
 		body.angles = ( 0, view[ 1 ], 0 );
+		// a level can hide both bodies (ac130: both gunners sit at the same tag, a body would fill the other one's view)
+		if ( isdefined( level.coop_hide_bodies ) != isdefined( body.coop_hidden ) )
+		{
+			if ( isdefined( level.coop_hide_bodies ) )
+			{
+				body hide();
+				body.coop_hidden = true;
+			}
+			else
+			{
+				body show();
+				body.coop_hidden = undefined;
+			}
+		}
 
 		// the player's weapon in the body's hand
 		weapon = self getcurrentweapon();
@@ -1094,6 +1110,7 @@ qa_keep_health()
 //   "shock <n> <seconds>"         shell shock player n ("default")
 //   "give <n> <weapon>"           give player n a weapon and switch to it
 //   "switch <n> <weapon>"         switch player n to a weapon he has
+//   "notify <n> <message>"        notify player n (e.g. "switch weapons", as his key would)
 qa_commands()
 {
 	setdvar( "coop_qa_cmd", "" );
@@ -1125,5 +1142,13 @@ qa_commands()
 		}
 		else if ( w[ 0 ] == "switch" && w.size >= 3 )
 			p switchtoweapon( w[ 2 ] );
+		else if ( w[ 0 ] == "notify" && w.size >= 3 )
+		{
+			// a script notify on player n (the rest of the words), e.g. what his key's notifyOnCommand would send
+			msg = w[ 2 ];
+			for ( k = 3; k < w.size; k++ )
+				msg = msg + " " + w[ k ];
+			p notify( msg );
+		}
 	}
 }

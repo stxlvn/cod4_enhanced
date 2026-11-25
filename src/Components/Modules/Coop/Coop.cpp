@@ -305,6 +305,93 @@ namespace Components
 			}
 		}
 
+		// Per-player script HUD. SP has no newClientHudElem: HudElem_UpdateClient 0x4B4560 (cdecl client) copies every used
+		// g_hudelems 0xC74818 entry (256 x 0xAC) into ps.hud (client +0x6D8), so both players saw every element. "player coophudnext()"
+		// makes the next newHudElem that player's only: GScr_NewHudElem 0x4B31D0 inlines HudElem_Alloc and calls
+		// HudElem_SetDefaults 0x4B2370 (EAX = hud in and out) at 0x4B31FD; the owner goes into the element's flags (+0xA8, SP uses
+		// bits 1/2/4) as 0x100 << player, so a savegame keeps it. HudElem_UpdateClient is replaced by a copy that leaves out the
+		// elements of the other player. All of it is simulation (both PCs build both players' ps alike).
+		constexpr std::uintptr_t G_HUDELEMS = 0xC74818;
+		constexpr int HUDELEM_SIZE = 0xAC;
+		constexpr int HUDELEM_FLAGS = 0xA8;
+		constexpr int PS_HUD = 0x6D8;
+		int hudPending = -1;
+
+		void __cdecl HudAllocated(std::uint8_t* hud)
+		{
+			if (hud && hudPending >= 0 && hudPending < 2)
+				*reinterpret_cast<int*>(hud + HUDELEM_FLAGS) |= 0x100 << hudPending;
+			hudPending = -1;
+		}
+
+		void __declspec(naked) HudSetDefaults_Stub()
+		{
+			__asm
+			{
+				mov ecx, 0x4B2370
+				call ecx // EAX = hud, returned in EAX
+				push eax
+				push eax
+				call HudAllocated
+				add esp, 4
+				pop eax
+				ret
+			}
+		}
+
+		void __cdecl HudUpdateClient(std::uint8_t* client)
+		{
+			int n = -1;
+			for (int i = 0; i < players; i++)
+			{
+				if (Coop::GameClient(i) == client)
+					n = i;
+			}
+			std::uint8_t* dest = client + PS_HUD;
+			int count = 0;
+			for (int h = 0; h < 256; h++)
+			{
+				const std::uint8_t* hud = reinterpret_cast<const std::uint8_t*>(G_HUDELEMS + h * HUDELEM_SIZE);
+				if (!*reinterpret_cast<const int*>(hud))
+					continue;
+				const int owner = (*reinterpret_cast<const int*>(hud + HUDELEM_FLAGS) >> 8) & 3;
+				if (owner && n >= 0 && !(owner & (1 << n)))
+					continue;
+				std::memcpy(dest + count * HUDELEM_SIZE, hud, HUDELEM_SIZE);
+				count++;
+			}
+			for (; count < 256; count++)
+			{
+				int* rest = reinterpret_cast<int*>(dest + count * HUDELEM_SIZE);
+				if (!*rest)
+					break;
+				std::memset(rest, 0, HUDELEM_SIZE);
+			}
+		}
+
+		// this PC's player (one process: player 1)
+		bool IsLocalPlayer(unsigned int entnum)
+		{
+			return static_cast<int>(entnum) == (CoopNet::Active() ? CoopNet::LocalClient() : 0);
+		}
+
+		// a naked vision set lerped on this PC only, as CG_VisionSetConfigString_Naked 0x430260 does for the configstring:
+		// name into cg visionNameNaked 0x7292DC, CG_VisionSetStartLerp_To 0x430160 (ECX = name; mode 0 naked, duration ms)
+		void VisionSetLocal(const char* name, int ms)
+		{
+			char* naked = reinterpret_cast<char*>(0x7292DC);
+			strncpy_s(naked, 64, name, _TRUNCATE);
+			__asm
+			{
+				push ms
+				push 0
+				mov ecx, 0x7292DC
+				mov eax, 0x430160
+				call eax
+				add esp, 8
+			}
+		}
+
 		void __declspec(naked) CmdScaleForStance_Stub()
 		{
 			__asm
@@ -906,6 +993,8 @@ namespace Components
 		Utils::Hook(0x4BB123, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 7
 		Utils::Hook(0x4A3F70, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 1 (0x4A3F60)
 		Utils::Hook(0x4BAB99, UpdatePlayerTriggers_Stub, HOOK_CALL).install()->quick(); // G_UpdatePlayerTriggers for every player
+		Utils::Hook(0x4B31FD, HudSetDefaults_Stub, HOOK_CALL).install()->quick();        // newHudElem: owner of the new element
+		Utils::Hook(0x4B4560, HudUpdateClient, HOOK_JUMP).install()->quick();           // ps.hud without the other player's elements
 
 		psLayoutOk = sizeof(Game::playerState_s) == 0xB2D8 && offsetof(Game::playerState_s, clientNum) == GC_CLIENTNUM &&
 			offsetof(Game::playerState_s, viewangles) == GC_VIEWANGLES && offsetof(Game::playerState_s, weapon) == GC_WEAPON;
@@ -931,6 +1020,29 @@ namespace Components
 		GSC::AddMethod("coopsetdowned", [](Game::scr_entref_t entref)
 		{
 			SetDown(entref.entnum, Game::Scr_GetInt(0) != 0);
+		}, false);
+		// player coophudnext(): the next newHudElem() is this player's only
+		GSC::AddMethod("coophudnext", [](Game::scr_entref_t entref)
+		{
+			hudPending = entref.entnum < 2 ? static_cast<int>(entref.entnum) : -1;
+		}, false);
+		// player coopsetsaveddvar( name, value ): setsaveddvar on this player's PC only (a client dvar such as cg_fov; no effect on
+		// the simulation): the game's own GScr_SetSavedDvar 0x4C8A10 on the same script parameters
+		GSC::AddMethod("coopsetsaveddvar", [](Game::scr_entref_t entref)
+		{
+			if (IsLocalPlayer(entref.entnum))
+				Utils::Hook::Call<void()>(0x4C8A10)();
+		}, false);
+		// player coopvisionlocal( name, seconds ): a naked vision set on this player's PC only (the level's VisionSetNaked is a
+		// configstring, the same on both PCs)
+		GSC::AddMethod("coopvisionlocal", [](Game::scr_entref_t entref)
+		{
+			if (!IsLocalPlayer(entref.entnum))
+				return;
+			const char* name = Game::Scr_GetString(0);
+			const int ms = Game::Scr_GetNumParam() > 1 ? static_cast<int>(Game::Scr_GetFloat(1) * 1000.0f + 0.5f) : 0;
+			if (name && *name)
+				VisionSetLocal(name, ms);
 		}, false);
 		Utils::Hook::Set<void*>(0x6DEBF4, reinterpret_cast<void*>(PlayerDie_Hook)); // entityHandlers[0x11].die
 

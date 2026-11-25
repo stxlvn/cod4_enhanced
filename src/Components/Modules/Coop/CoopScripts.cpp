@@ -77,12 +77,14 @@ namespace Components
 			return n;
 		}
 
-		// Text patches of one script: the anchor must occur exactly once (else the patch is not applied and the log says so).
+		// Text patches of one script: the anchor must occur exactly once (else the patch is not applied and the log says so);
+		// with all = true every occurrence is replaced (at least one).
 		struct TextPatch
 		{
 			const char* file;
 			const char* anchor;
 			const char* replacement;
+			bool all = false;
 		};
 
 		const TextPatch textPatches[] =
@@ -131,6 +133,44 @@ namespace Components
 				"\t\t\t\tlevel.player UploadTime( 19, final_time );" },
 			{ "maps/killhouse.gsc", "\t\t\tthread debrief();",
 				"\t\t\tthread maps\\_coop_killhouse::debrief_gate();" },
+			// Death from Above for two gunners (maps/_coop_ac130.gsc): each _ac130 function that is one player's (the gun, its HUD, FOV,
+			// thermal, ammo, fire, impacts) hands over to the co-op version when two players play it (not in the end credits)
+			{ "maps/_ac130.gsc", "level.player.ignoreme = true;",
+				"level.player.ignoreme = true;\n\tif ( maps\\_coop_ac130::coop_on() )\n\t\tmaps\\_coop_ac130::coop_init();" },
+			{ "maps/_ac130.gsc", "level.HUDItem = [];",
+				"if ( maps\\_coop_ac130::coop_on() )\n\t{\n\t\tmaps\\_coop_ac130::coop_overlay();\n\t\treturn;\n\t}\n\tlevel.HUDItem = [];" },
+			{ "maps/_ac130.gsc", "level.player playerLinkToDelta (level.ac130, \"tag_player\", 1.0, 65, 65, 40, 40 );",
+				"if ( maps\\_coop_ac130::coop_on() )\n\t{\n\t\tmaps\\_coop_ac130::coop_attach();\n\t\treturn;\n\t}\n\tlevel.player playerLinkToDelta (level.ac130, \"tag_player\", 1.0, 65, 65, 40, 40 );" },
+			{ "maps/_ac130.gsc", "level.ac130_weapon = [];",
+				"if ( maps\\_coop_ac130::coop_on() )\n\t{\n\t\tmaps\\_coop_ac130::coop_change_weapons();\n\t\treturn;\n\t}\n\tlevel.ac130_weapon = [];" },
+			{ "maps/_ac130.gsc", "level.player waittill( \"weapon_fired\" );",
+				"if ( maps\\_coop_ac130::coop_on() )\n\t\t{\n\t\t\tmaps\\_coop_ac130::coop_weapon_fired();\n\t\t\treturn;\n\t\t}\n\t\tlevel.player waittill( \"weapon_fired\" );" },
+			{ "maps/_ac130.gsc", "level notify( \"setting_ammo\" );",
+				"if ( maps\\_coop_ac130::coop_on() )\n\t{\n\t\tmaps\\_coop_ac130::coop_set_ammo();\n\t\treturn;\n\t}\n\tlevel notify( \"setting_ammo\" );" },
+			{ "maps/_ac130.gsc", "level.player notifyOnCommand( \"switch thermal\", \"+usereload\" );",
+				"if ( maps\\_coop_ac130::coop_on() )\n\t{\n\t\tmaps\\_coop_ac130::coop_thermal();\n\t\treturn;\n\t}\n\tlevel.player notifyOnCommand( \"switch thermal\", \"+usereload\" );" },
+			{ "maps/_ac130.gsc", "level.ac130_nofire = newHudElem();",
+				"if ( maps\\_coop_ac130::coop_on() )\n\t{\n\t\tmaps\\_coop_ac130::coop_nofire();\n\t\treturn;\n\t}\n\tlevel.ac130_nofire = newHudElem();" },
+			{ "maps/_ac130.gsc", "level.player waittill( \"projectile_impact\", weaponName, position, radius );",
+				"if ( maps\\_coop_ac130::coop_on() )\n\t\t{\n\t\t\tmaps\\_coop_ac130::coop_shot_fired();\n\t\t\treturn;\n\t\t}\n\t\tlevel.player waittill( \"projectile_impact\", weaponName, position, radius );" },
+			{ "maps/_ac130.gsc", "level.player shellshock( \"ac130\", duration );",
+				"if ( maps\\_coop_ac130::coop_on() )\n\t\t\tmaps\\_coop_ac130::coop_shellshock( duration );\n\t\telse\n\t\t\tlevel.player shellshock( \"ac130\", duration );" },
+			{ "maps/_ac130.gsc", "thread blink_crosshairs_stop();",
+				"if ( maps\\_coop_ac130::coop_on() )\n\t\tthread maps\\_coop_ac130::coop_crosshairs_stop();\n\telse\n\t\tthread blink_crosshairs_stop();" },
+			// kills, friendly fire, the church and the civilians count for both gunners
+			{ "maps/_ac130.gsc", "attacker != level.player",
+				"!isplayer( attacker )", true },
+			{ "maps/_ac130.gsc", "attacker == level.player",
+				"isplayer( attacker )", true },
+			{ "maps/ac130_code.gsc", "attacker != level.player",
+				"!isplayer( attacker )", true },
+			{ "maps/ac130_code.gsc", "attacker == level.player",
+				"isplayer( attacker )", true },
+			// every level: player 2's kills and team kills count like player 1's (friendly fire fails the mission for both)
+			{ "maps/_friendlyfire.gsc", "if ( attacker == level.player )",
+				"if ( isplayer( attacker ) )" },
+			{ "maps/_friendlyfire.gsc", "( owner == level.player )",
+				"( isplayer( owner ) )" },
 			// QA helpers of the co-op training level (dvars only: idle unless a test sets coop_qa_kh)
 			{ "maps/killhouse.gsc", "thread clear_hints_on_mission_fail();",
 				"thread clear_hints_on_mission_fail();\n"
@@ -173,6 +213,13 @@ namespace Components
 				if (std::strcmp(p.file, name))
 					continue;
 				const size_t at = text.find(p.anchor);
+				if (p.all && at != std::string::npos)
+				{
+					for (size_t pos = at; pos != std::string::npos; pos = text.find(p.anchor, pos + std::strlen(p.replacement)))
+						text.replace(pos, std::strlen(p.anchor), p.replacement);
+					n++;
+					continue;
+				}
 				if (at == std::string::npos || text.find(p.anchor, at + 1) != std::string::npos)
 				{
 					Coop::Log("script patch %s: anchor \"%s\" %s, patch NOT applied", name, p.anchor, at == std::string::npos ? "not found" : "found twice");
