@@ -2,7 +2,8 @@
 // - Gaz's range (rifle: aim, hip fire, penetration, timed targets; then the sidearm): both at once, each in his own station with his
 //   own targets. Player 1 keeps station one and its targets (lane 1); player 2 takes station two with targets borrowed from the deck
 //   mock-up course, which this level never runs (deck_target, 21 pop-up targets: moved one station over, facing the stations).
-// - The other courses (the watermelon, Captain Price's ship): one player after the other; a coin toss picks who goes first.
+// - The watermelon: one each, knifed at the same time (player 2's is a copy of the map's next to it).
+// - Captain Price's ship: one player after the other; a coin toss picks who goes first.
 // Started from text patches of maps/killhouse.gsc and maps/killhouse_code.gsc (CoopScripts.cpp); the rest of the level is the game's.
 // All of it is simulation (both PCs run it alike): no per-PC input decides anything.
 #include common_scripts\utility;
@@ -576,32 +577,31 @@ coop_melee_training()
 	level notify( "melee_training" );
 	registerObjective( "obj_melee", &"KILLHOUSE_MELEE_THE_WATERMELON", getEnt( "scr_watermelon", "targetname" ) );
 	setObjectiveState( "obj_melee", "current" );
-	order = coop_lot( "melon" );
+	// one watermelon each, knifed at the same time: player 1 the map's (trigger_damage scr_watermelon, melee only: spawnflags 31),
+	// player 2 a copy of its model 40 units along the same table (to -x: the free end), damageable, his knife only
 	melon = getEnt( "scr_watermelon", "targetname" );
 	melon_model = getEnt( melon.target, "targetname" );
+	melon2 = spawn( "script_model", melon_model.origin + ( -40, 0, 0 ) );
+	melon2.angles = melon_model.angles;
+	melon2 setmodel( melon_model.model );
+	level.coop_melon2 = melon2;
 	//All right Soap, come this way.
 	level.waters execDialog( "comethisway" );
 	thread maps\killhouse::melee_run_dialog();
-	for ( k = 0; k < 2; k++ )
-	{
-		p = order[ k ];
-		coop_announce( coop_name( p ) + ": knife the watermelon" );
-		melon_model show();
-		melon_model solid();
-		while ( true )
-		{
-			melon waittill( "trigger", who );
-			if ( isdefined( who ) && who == p )
-				break;
-		}
-		setdvar( "coop_kh_melon", k + 1 ); // QA trace
-		melon playsound( "melee_knife_hit_watermelon" );
-		playfx( level._effect[ "watermelon" ], melon_model.origin );
-		melon_model hide();
-		melon_model notsolid();
-		if ( k == 0 )
-			wait 1.5;
-	}
+	melon_model show();
+	melon_model solid();
+	melon2 show();
+	melon2 solid();
+	melon2 setcandamage( true );
+	coop_announce( "Knife your own watermelon: Player 1 left, Player 2 right" );
+	thread keyHint( "melee", 8 );
+	level.coop_melons_left = 2;
+	thread coop_melon_map( melon, melon_model, level.players[ 0 ] );
+	thread coop_melon_copy( melon2, level.players[ 1 ] );
+	while ( level.coop_melons_left > 0 )
+		wait 0.05;
+	wait 1;
+	melon2 delete();
 	flag_set( "melee_complete" );
 	clear_hints();
 	thread maps\killhouse::open_firing_range_door();
@@ -617,6 +617,77 @@ coop_melee_training()
 	level.waters execDialog( "wantstosee" );
 	setdvar( "coop_kh_step", "price" );
 	thread maps\killhouse::report_to_price();
+}
+
+// player 1's watermelon: the map's damage trigger (melee only); a knife of player 2 on it does not count
+coop_melon_map( melon, model, p )
+{
+	while ( true )
+	{
+		melon waittill( "trigger", who );
+		if ( isdefined( who ) && who == p )
+			break;
+	}
+	setdvar( "coop_kh_melon1", 1 ); // QA trace
+	coop_melon_burst( melon, model );
+}
+
+// player 2's watermelon: the copy of the model has no collision (the map's melon is hit through its damage brush, which cannot be
+// spawned), so his knife counts from the simulation: a melee swing starts (ps weaponstate 12-14, native coopweaponstate) with the
+// melon within knife reach of his eye and in front of his view. QA "melon 1" sends the same "damage" a hit would.
+coop_melon_copy( model, p )
+{
+	thread coop_melon_copy_swing( model, p );
+	thread coop_melon_copy_damage( model, p );
+	model waittill( "coop_melon_hit" );
+	setdvar( "coop_kh_melon2", 1 ); // QA trace
+	coop_melon_burst( model, model );
+}
+
+coop_melon_copy_swing( model, p )
+{
+	model endon( "coop_melon_hit" );
+	was = false;
+	while ( true )
+	{
+		wait 0.05;
+		ws = p coopweaponstate();
+		swing = ws >= 12 && ws <= 14;
+		if ( swing && !was && coop_knife_reaches( p, model.origin + ( 0, 0, 4 ) ) )
+			break;
+		was = swing;
+	}
+	model notify( "coop_melon_hit" );
+}
+
+coop_melon_copy_damage( model, p )
+{
+	model endon( "coop_melon_hit" );
+	while ( true )
+	{
+		model waittill( "damage", amount, attacker, direction_vec, point, type );
+		if ( isdefined( attacker ) && attacker == p && isdefined( type ) && type == "MOD_MELEE" )
+			break;
+	}
+	model notify( "coop_melon_hit" );
+}
+
+// the knife reaches a point: within 80 units of the eye and inside a ~35 degree cone of the view
+coop_knife_reaches( p, org )
+{
+	eye = p geteye();
+	if ( distance( eye, org ) > 80 )
+		return false;
+	return vectordot( vectornormalize( org - eye ), anglestoforward( p getplayerangles() ) ) > 0.82;
+}
+
+coop_melon_burst( snd, model )
+{
+	snd playsound( "melee_knife_hit_watermelon" );
+	playfx( level._effect[ "watermelon" ], model.origin );
+	model hide();
+	model notsolid();
+	level.coop_melons_left--;
 }
 
 // ---- Captain Price's ship, one after the other ----
@@ -706,7 +777,7 @@ debrief_gate()
 }
 
 // ---- QA (coop_qa_kh): "autohit 1" = every 0.3 s a hit on each raised target of both stations by its own player (the flow
-// without aiming bots), "autohit 0" stops; "melon <n>" = player n's knife on the watermelon ----
+// without aiming bots), "autohit 0" stops; "melon <n>" = player n's knife on his own watermelon ----
 coop_kh_qa()
 {
 	if ( isdefined( level.coop_kh_qa_started ) )
@@ -726,8 +797,10 @@ coop_kh_qa()
 		w = strtok( cmd, " " );
 		if ( w[ 0 ] == "autohit" && w.size > 1 )
 			level.coop_qa_autohit = w[ 1 ] == "1";
-		else if ( w[ 0 ] == "melon" && w.size > 1 )
-			getEnt( "scr_watermelon", "targetname" ) notify( "trigger", level.players[ int( w[ 1 ] ) ] );
+		else if ( w[ 0 ] == "melon" && w.size > 1 && int( w[ 1 ] ) == 0 )
+			getEnt( "scr_watermelon", "targetname" ) notify( "trigger", level.players[ 0 ] );
+		else if ( w[ 0 ] == "melon" && w.size > 1 && isdefined( level.coop_melon2 ) )
+			level.coop_melon2 notify( "damage", 50, level.players[ 1 ], ( 0, 0, 1 ), level.coop_melon2.origin, "MOD_MELEE" );
 		// Price's ship, for the player whose run it is (level.player)
 		else if ( w[ 0 ] == "tpactive" && w.size >= 5 )
 		{

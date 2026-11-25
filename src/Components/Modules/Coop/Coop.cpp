@@ -818,6 +818,8 @@ namespace Components
 				reinterpret_cast<int*>(cmd + 0x8)[0] = Angle2Short(-40.0f - delta[0]);
 			if (has("lookdown"))
 				reinterpret_cast<int*>(cmd + 0x8)[0] = Angle2Short(40.0f - delta[0]);
+			if (const char* pitch = std::strstr(pose, "pitch="))
+				reinterpret_cast<int*>(cmd + 0x8)[0] = Angle2Short(static_cast<float>(std::atof(pitch + 6)) - delta[0]); // degrees, + = down
 		}
 	}
 
@@ -873,7 +875,7 @@ namespace Components
 			coop_botgod = Dvars::Register::Dvar_RegisterBool("coop_botgod", "Test: player 2 cannot die", false, Game::none);
 			coop_qa_nodown = Dvars::Register::Dvar_RegisterBool("coop_qa_nodown", "Test: players die without going down first", false, Game::none);
 			coop_botpose = Dvars::Register::Dvar_RegisterString("coop_botpose", "Test: bot actions on top of its mode (forward back left right "
-				"slow sprint crouch prone ads fire reload melee frag jump copyweapon lookup lookdown)", "", Game::none);
+				"slow sprint crouch prone ads fire reload melee frag jump copyweapon lookup lookdown pitch=<deg>)", "", Game::none);
 			coop_botkit = Dvars::Register::Dvar_RegisterBool("coop_botkit", "Test: player 2 gets player 1's weapons as soon as player 1 has one", false, Game::none);
 			coop_crawlscale = Dvars::Register::Dvar_RegisterFloat("coop_crawlscale", "Downed player's crawl speed scale (IW4 player_lastStandCrawlSpeedScale)", 0.2f, 0.0f, 1.0f, Game::none);
 		});
