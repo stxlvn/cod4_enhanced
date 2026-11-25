@@ -175,6 +175,7 @@ namespace Components
 				want = 2;
 				*reinterpret_cast<int*>(0x6DDAAC) = CoopNet::Seed(); // holdrand: same game RNG on both PCs (stock: timeGetTime at map load)
 				Coop::Log("G_InitGame: session seed %d", CoopNet::Seed());
+				CoopNet::OnLevelStart();
 			}
 			players = want >= 2 ? 2 : 1;
 			Coop::Log("G_InitGame: %d player(s), level.clients %p, svs.clients %p", players, *reinterpret_cast<void**>(LEVEL_CLIENTS),
@@ -226,14 +227,22 @@ namespace Components
 
 		// ClientThink_real 0x4A38D0, dead client past its respawn time: 0x4A6050 starts the SP death reload (snd_fade, reload after
 		// g_deathDelay). Only player 1's death does that for now; a dead player 2 stays dead (revive comes with the campaign scripts).
+		void __cdecl DeathArmed()
+		{
+			CoopNet::OnDeathReloadArmed();
+		}
+
 		void __declspec(naked) DeathReload_Stub()
 		{
 			__asm
 			{
 				cmp ebx, dword ptr ds:[0xE18E18] // gclient in EBX == level.clients (client 0)?
 				jne skip
-				push 0x4A6050
-				ret
+				pushad
+				mov eax, 0x4A6050
+				call eax
+				call DeathArmed // a session: the reload goes by simulation time on both PCs
+				popad
 			skip:
 				ret
 			}

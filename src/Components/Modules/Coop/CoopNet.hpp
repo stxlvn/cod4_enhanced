@@ -20,5 +20,9 @@ namespace Components
 		static int Seed();
 		// overlay text while this PC waits for the other one (called from the HUD draw hook)
 		static void DrawOverlay();
+		// G_InitGame in a session: a new level life, the lockstep restarts with a new load barrier
+		static void OnLevelStart();
+		// player 1 died, the SP death reload was armed (ClientThink_real); a session reloads by simulation time
+		static void __cdecl OnDeathReloadArmed();
 	};
 }

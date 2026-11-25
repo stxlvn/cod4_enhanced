@@ -2,6 +2,8 @@
 #include "Coop.hpp"
 #include "CoopNet.hpp"
 
+#include <unordered_set>
+
 #pragma comment(lib, "ws2_32.lib")
 
 // Phase 2: IW4 Spec Ops style lockstep between two PCs. Spec: local/cod4/IW4-NETCODE-SPEC.md (sections 3-7, 9).
@@ -67,6 +69,21 @@ namespace Components
 		bool hostSawFrames = false; // partner: first frame received (stops coopLoaded)
 		int seed = 0;
 		std::uint32_t serverId = 0;
+		std::uint32_t levelEpoch = 0; // level lives in this session (launch, death reload, save load): both PCs count the same
+		std::uint32_t LifeId() { return serverId + levelEpoch; }
+		// player 1's death reload (loadgame_continue) by simulation time: reloadTick = death + g_deathDelay on both PCs
+		int reloadTick = 0;
+		bool reloadPending = false;   // stepper held until the reload runs
+		ULONGLONG reloadPendingSince = 0;
+
+		void QueueReload()
+		{
+			Coop::Log("net: death reload (loadgame_continue) at tick %d", reloadTick);
+			reloadTick = 0;
+			reloadPending = false;
+			Command::Execute("loadgame_continue", false);
+		}
+		ULONGLONG notRunningSince = 0;
 		std::string mapName;
 		ULONGLONG lastRecv = 0, lastConnectSend = 0, lastLaunchSend = 0, lastInputSend = 0, lastResend = 0, lastStatus = 0;
 
@@ -166,10 +183,25 @@ namespace Components
 			sock = INVALID_SOCKET;
 		}
 
+		Game::dvar_s* coop_droptest = nullptr;
+		std::uint32_t dropRng = 12345;
+		int droppedPackets = 0, sentPackets = 0;
+
 		void SendRaw(const void* data, int len)
 		{
 			if (sock == INVALID_SOCKET || !havePeer)
 				return;
+			sentPackets++;
+			// test: lose this share of the outgoing game packets (not OOB handshake text), own RNG (never the game's)
+			if (coop_droptest && coop_droptest->current.integer > 0 && static_cast<const std::uint8_t*>(data)[0] == PROTOCOL)
+			{
+				dropRng = dropRng * 1103515245u + 12345u;
+				if (static_cast<int>((dropRng >> 16) % 100) < coop_droptest->current.integer)
+				{
+					droppedPackets++;
+					return;
+				}
+			}
 			sendto(sock, static_cast<const char*>(data), len, 0, reinterpret_cast<const sockaddr*>(&peer), sizeof(peer));
 		}
 
@@ -300,7 +332,7 @@ namespace Components
 			{
 				pkt.assign({ static_cast<std::uint8_t>(PROTOCOL), 1 });
 				for (int i = 0; i < 4; i++)
-					pkt.push_back(static_cast<std::uint8_t>(serverId >> (8 * i)));
+					pkt.push_back(static_cast<std::uint8_t>(LifeId() >> (8 * i)));
 				pkt.push_back(0);
 			};
 			start();
@@ -373,7 +405,7 @@ namespace Components
 		{
 			std::vector<std::uint8_t> pkt{ static_cast<std::uint8_t>(PROTOCOL), 0 };
 			auto put32 = [&pkt](std::uint32_t v) { for (int i = 0; i < 4; i++) pkt.push_back(static_cast<std::uint8_t>(v >> (8 * i))); };
-			put32(serverId);
+			put32(LifeId());
 			// newest contiguous frame held, counted from the tick this PC runs next (the pending level.time)
 			int ack = NextTick() - TICK;
 			while (frames.count(ack + TICK))
@@ -525,6 +557,12 @@ namespace Components
 				lastTickTime = GetTickCount64();
 				frames[t] = std::move(f);
 				SendFrames();
+				if (reloadTick && t >= reloadTick && !reloadPending)
+				{
+					reloadPending = true; // the host reloads once the partner holds this tick (Pump)
+					reloadPendingSince = GetTickCount64();
+					reloadTick = t;
+				}
 				return;
 			}
 			auto it = frames.find(t);
@@ -549,6 +587,13 @@ namespace Components
 			Execute(it->second);
 			lastExecuted = t;
 			lastTickTime = GetTickCount64();
+			if (reloadTick && t >= reloadTick)
+			{
+				reloadTick = t;
+				reloadPending = true;
+				QueueReload();
+				reloadPending = true; // no more steps of this level life
+			}
 			frames.erase(frames.begin(), frames.upper_bound(t));
 		}
 
@@ -588,14 +633,14 @@ namespace Components
 					hostHolding = false;
 					Coop::Log("net: host resumes at tick %d", t);
 				}
-				skip = !partnerLoaded || hostHolding;
+				skip = !partnerLoaded || hostHolding || reloadPending;
 			}
 			else
 			{
 				int held = 0;
 				while (frames.count(t + held * TICK))
 					held++;
-				if (!held)
+				if (!held || reloadPending)
 					skip = true;
 				else
 				{
@@ -649,6 +694,68 @@ namespace Components
 			}
 		}
 
+		// ---- determinism guards (IW4-NETCODE-SPEC section 9): inputs that differ between PCs must not reach the simulation ----
+		int sessionActive = 0; // mirror of CoopNet::Active() for naked stubs
+
+		// Script getdvar / getdvarint / getdvarfloat: a player's saved settings (archive / userinfo flags: cg_fov, takecoverwarnings,
+		// input_invertpitch, profile progress mis_*) differ per PC; in a session scripts see their default value on both PCs (IW4 gives
+		// the script default for every dvar that is not read-only / gameplay / script-saved / cheat).
+		template <DWORD Original>
+		void __cdecl GetDvarGuard()
+		{
+			if (!sessionActive)
+			{
+				Utils::Hook::Call<void()>(Original)();
+				return;
+			}
+			const char* name = Game::Scr_GetString(0);
+			Game::dvar_s* dv = name ? Dvars::Functions::Dvar_FindVar(name) : nullptr;
+			if (!dv || !(dv->flags & (Game::saved | Game::user_info)))
+			{
+				Utils::Hook::Call<void()>(Original)();
+				return;
+			}
+			static std::unordered_set<std::string> logged;
+			if (logged.insert(name).second)
+				Coop::Log("net: script reads the player setting %s: default used in co-op", name);
+			const Game::DvarValue keep = dv->current;
+			dv->current = dv->reset;
+			Utils::Hook::Call<void()>(Original)();
+			dv->current = keep;
+		}
+
+		// Player method buttonPressed( key ) reads this PC's keyboard: 0 in a session (IW4 removed it; flares and
+		// the debug menu use it: campaign scripts must read usercmd buttons instead).
+		void __cdecl ButtonPressedGuard(Game::scr_entref_t entref)
+		{
+			if (!sessionActive)
+			{
+				Utils::Hook::Call<void(Game::scr_entref_t)>(0x4A8500)(entref);
+				return;
+			}
+			static std::unordered_set<std::string> logged;
+			const char* key = Game::Scr_GetString(0);
+			if (key && logged.insert(key).second)
+				Coop::Log("net: script buttonPressed(\"%s\") = 0 in co-op", key);
+			Game::Scr_AddInt(0);
+		}
+
+		// FX visibility (smoke between an AI and its target, 0x473350): the smoke list comes from this PC's client FX -> 1.0 in a session
+		// (IW4 0x22d160). fastcall start in ECX, end in EDI, result in ST0; one caller 0x4FA092.
+		void __declspec(naked) FxVisibility_Stub()
+		{
+			__asm
+			{
+				cmp sessionActive, 0
+				je stock
+				fld1
+				ret
+			stock:
+				push 0x473350
+				ret
+			}
+		}
+
 		// End of the session: tell the other PC, stop. message: shown as an ERR_DROP error (back to the main menu) when a level runs.
 		void EndSession(const char* reason, const char* message)
 		{
@@ -657,6 +764,7 @@ namespace Components
 			Coop::Log("net: session over (%s)%s%s", reason ? reason : "ended by the other player", message ? ": " : "", message ? message : "");
 			role = CoopNet::ROLE_OFF;
 			launched = false;
+			sessionActive = 0;
 			havePeer = false;
 			snapshotOffset = 0;
 			frames.clear();
@@ -680,6 +788,8 @@ namespace Components
 		void Launch()
 		{
 			launched = true;
+			sessionActive = 1;
+			levelEpoch = 0;
 			ResetSession();
 			// the partner's view = player 2 from the very first snapshot (SV_SpawnServer's), else cg.clientNum stays 0 (run p2c)
 			snapshotOffset = role == CoopNet::ROLE_PARTNER ? 0xD728 : 0;
@@ -727,7 +837,7 @@ namespace Components
 			{
 				std::uint32_t id = 0;
 				in >> id;
-				if (id == serverId && !partnerLoaded)
+				if (id == LifeId() && !partnerLoaded)
 				{
 					partnerLoaded = true;
 					Coop::Log("net: partner loaded, simulation starts at tick %d", NextTick());
@@ -760,7 +870,7 @@ namespace Components
 			{
 				std::uint32_t id = 0;
 				in >> id;
-				if (id == serverId && !peerBriefDone)
+				if (id == LifeId() && !peerBriefDone)
 				{
 					peerBriefDone = true;
 					Coop::Log("net: the other player's briefing is done");
@@ -785,8 +895,8 @@ namespace Components
 			if (len < 6 || d[0] != PROTOCOL)
 				return;
 			const std::uint32_t id = static_cast<std::uint32_t>(d[2] | (d[3] << 8) | (d[4] << 16) | (d[5] << 24));
-			if (id != serverId)
-				return;
+			if (id != LifeId())
+				return; // another level life (the other PC has not reloaded yet, or late packets of the last one)
 			if (role == CoopNet::ROLE_HOST && d[1] == 0 && len >= 11)
 			{
 				const int ack = static_cast<int>(d[6] | (d[7] << 8) | (d[8] << 16) | (d[9] << 24));
@@ -853,6 +963,7 @@ namespace Components
 
 		void Pump()
 		{
+			sessionActive = CoopNet::Active() ? 1 : 0;
 			snapshotOffset = (CoopNet::Active() && role == CoopNet::ROLE_PARTNER) ? 0xD728 : 0;
 			if (role == CoopNet::ROLE_OFF || sock == INVALID_SOCKET)
 				return;
@@ -875,11 +986,27 @@ namespace Components
 			{
 				const bool running = LevelRunning();
 				if (running)
+				{
 					wasRunning = true;
+					notRunningSince = 0;
+				}
 				else if (wasRunning)
 				{
-					EndSession("COOP_LEFT", nullptr); // this player left the level (menu, quit, another map)
-					return;
+					// a reload stops the server for a moment; gone for 3 s = this player left the level (menu, quit, another map)
+					if (!notRunningSince)
+						notRunningSince = now;
+					else if (now - notRunningSince > 3000)
+					{
+						EndSession("COOP_LEFT", nullptr);
+						return;
+					}
+				}
+				// a level life without a briefing (save load, death reload): ready once the client runs unpaused
+				if (!localBriefDone && running && *reinterpret_cast<int*>(0x85BD7C) == 4 && *reinterpret_cast<int*>(UI_MENU_TYPE) != 5 &&
+					!Utils::Hook::Call<int()>(0x570FC0)() && !(*reinterpret_cast<Game::dvar_s**>(0xF8CE50))->current.integer)
+				{
+					localBriefDone = true;
+					Coop::Log("net: ready here (no briefing in this level life)");
 				}
 				// shared briefing: done on one PC = skipped on the other (owner's rule from MW2)
 				if (peerBriefDone && !localBriefDone && *reinterpret_cast<int*>(UI_MENU_TYPE) == 5)
@@ -891,7 +1018,7 @@ namespace Components
 				if (localBriefDone && !started && now - lastBriefSend > 500)
 				{
 					lastBriefSend = now;
-					SendOOB(Utils::String::VA("coopBriefDone %u", serverId));
+					SendOOB(Utils::String::VA("coopBriefDone %u", LifeId()));
 				}
 				// the other PC silent: 90 s while loading (IW4 coop_maxServerLoadWaitTime), 10 s once both run (coop_hosttimeout)
 				const ULONGLONG limit = started ? HOST_TIMEOUT : 90000;
@@ -919,7 +1046,7 @@ namespace Components
 				if (loaded && localBriefDone && !hostSawFrames && now - lastLaunchSend > 500)
 				{
 					lastLaunchSend = now;
-					SendOOB(Utils::String::VA("coopLoaded %u", serverId));
+					SendOOB(Utils::String::VA("coopLoaded %u", LifeId()));
 				}
 				if (launched && LevelRunning() && now - lastInputSend >= 10)
 				{
@@ -929,6 +1056,13 @@ namespace Components
 			}
 			else if (role == CoopNet::ROLE_HOST && launched && havePeer)
 			{
+				if (reloadPending && reloadTick && (partnerAck >= reloadTick || now - reloadPendingSince > 5000))
+				{
+					if (partnerAck < reloadTick)
+						Coop::Log("net: partner did not confirm tick %d in 5 s, reloading anyway", reloadTick);
+					QueueReload();
+					reloadPending = true; // held until the new level life
+				}
 				if (!partnerLoaded && now - lastLaunchSend > 1000)
 				{
 					lastLaunchSend = now;
@@ -947,10 +1081,10 @@ namespace Components
 				const float* o1 = reinterpret_cast<float*>(Coop::Entity(1) + 0xE0);
 				Coop::Log("net: view: snapshots %d (to client 1: %d), cg.clientNum %d, offset 0x%x", snapshotCalls, snapshotShifted,
 					*reinterpret_cast<int*>(0x6FA590), snapshotOffset);
-				Coop::Log("net: %s tick %d frames %zu ack %d hold %d | hash ok %d bad %d missing %d | p1 (%.0f %.0f %.0f) hp %d p2 (%.0f %.0f %.0f) hp %d | silent %llu ms",
+				Coop::Log("net: %s tick %d frames %zu ack %d hold %d | hash ok %d bad %d missing %d | p1 (%.0f %.0f %.0f) hp %d p2 (%.0f %.0f %.0f) hp %d | silent %llu ms | dropped %d/%d",
 					role == CoopNet::ROLE_HOST ? "host" : "partner", LevelTime(), frames.size(), role == CoopNet::ROLE_HOST ? partnerAck : lastExecuted,
 					hostHolding, hashOk, hashBad, missing, o0[0], o0[1], o0[2], *reinterpret_cast<int*>(Coop::Entity(0) + 0x144),
-					o1[0], o1[1], o1[2], *reinterpret_cast<int*>(Coop::Entity(1) + 0x144), lastRecv ? now - lastRecv : 0ULL);
+					o1[0], o1[1], o1[2], *reinterpret_cast<int*>(Coop::Entity(1) + 0x144), lastRecv ? now - lastRecv : 0ULL, droppedPackets, sentPackets);
 			}
 		}
 
@@ -989,6 +1123,47 @@ namespace Components
 		Game::UI_DrawTextWithGlow(1, 1, placement, text, font, 320.0f - width / 2.0f, 250.0f, scale, color, 3, glow, 0, 0);
 	}
 
+	// G_InitGame in a session: a new level life (launch, death reload, loadgame, map_restart). Both PCs run it for the same reasons
+	// (same simulation), so their epochs agree; the lockstep restarts with a new load barrier.
+	void CoopNet::OnLevelStart()
+	{
+		if (!Active())
+			return;
+		levelEpoch++;
+		reloadTick = 0;
+		reloadPending = false;
+		frames.clear();
+		partnerQueue.clear();
+		partnerQueuedTime = INT_MIN;
+		partnerRelQueue.clear();
+		partnerRelQueued = INT_MIN;
+		partnerAck = 0;
+		hostHolding = false;
+		partnerLoaded = false;
+		hostSawFrames = false;
+		lastExecuted = 0;
+		lastTickTime = 0;
+		localBriefDone = peerBriefDone = false;
+		lastBriefSend = 0;
+		lastLocalCmd = *reinterpret_cast<int*>(CL_CMDNUMBER);
+		lastRecv = GetTickCount64();
+		Coop::Log("net: level life %u starts (%s)", levelEpoch, role == ROLE_HOST ? "host" : "partner");
+	}
+
+	// Player 1 died and 0x4A6050 armed the SP death reload with a real-time timer (0xE19878, read by 0x4B9E40): in a session the timer
+	// is cleared and the reload happens at the same simulation tick on both PCs (death + g_deathDelay).
+	void CoopNet::OnDeathReloadArmed()
+	{
+		if (!Active())
+			return;
+		*reinterpret_cast<int*>(0xE19878) = 0;
+		if (reloadTick || reloadPending)
+			return;
+		const int delay = (*reinterpret_cast<Game::dvar_s**>(0xDCF7A0))->current.integer;
+		reloadTick = LevelTime() + delay;
+		Coop::Log("net: player 1 died at tick %d, reload at tick %d", LevelTime(), reloadTick);
+	}
+
 	int CoopNet::Role()
 	{
 		return role;
@@ -1016,6 +1191,7 @@ namespace Components
 			coop_port = Dvars::Register::Dvar_RegisterInt("coop_port", "UDP port of the co-op session (host 28960; partner 0 = any)", 28960, 0, 65535, Game::none);
 			coop_localbot = Dvars::Register::Dvar_RegisterString("coop_localbot", "Test: a bot drives this PC's player in a session (follow, front, walk, stand; empty = off)", "", Game::none);
 			coop_localbotfire = Dvars::Register::Dvar_RegisterBool("coop_localbotfire", "Test: this PC's bot fires every 4 s", false, Game::none);
+			coop_droptest = Dvars::Register::Dvar_RegisterInt("coop_droptest", "Test: percent of outgoing game packets to drop", 0, 0, 90, Game::none);
 			coop_testgod = Dvars::Register::Dvar_RegisterBool("coop_testgod", "Test, set on both PCs: both players keep full health", false, Game::none);
 		});
 
@@ -1083,6 +1259,15 @@ namespace Components
 				clientCommandSitesOk = false;
 		}
 		Coop::Log("net: ClientCommand entity sites %s", clientCommandSitesOk ? "OK" : "DO NOT MATCH (player 2 commands off)");
+
+		// determinism guards: script function table entries {name, function, developer} and the FX visibility call
+		Utils::Hook::Set<void*>(0x6DDE80, reinterpret_cast<void*>(GetDvarGuard<0x4C85C0>)); // getdvar
+		Utils::Hook::Set<void*>(0x6DDE8C, reinterpret_cast<void*>(GetDvarGuard<0x4C8630>)); // getdvarint
+		Utils::Hook::Set<void*>(0x6DDEB0, reinterpret_cast<void*>(GetDvarGuard<0x4C8630>)); // (developer alias)
+		Utils::Hook::Set<void*>(0x6DDE98, reinterpret_cast<void*>(GetDvarGuard<0x4C86D0>)); // getdvarfloat
+		Utils::Hook::Set<void*>(0x6DDEBC, reinterpret_cast<void*>(GetDvarGuard<0x4C86D0>)); // (developer alias)
+		Utils::Hook::Set<void*>(0x6818F4, reinterpret_cast<void*>(ButtonPressedGuard));    // player method buttonpressed
+		Utils::Hook(0x4FA092, FxVisibility_Stub, HOOK_CALL).install()->quick();
 
 		// every caller of UI_PlayerStart: Com_Error path, UI_Refresh (film over), uiScript playerstart (skip), SV_SpawnServer, UI_SetActiveMenu
 		for (const DWORD at : { 0x533657u, 0x5653A0u, 0x5671DAu, 0x5C76C4u, 0x567F70u })
