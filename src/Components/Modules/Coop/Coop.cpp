@@ -73,6 +73,25 @@ namespace Components
 		Game::dvar_s* coop_players = nullptr;
 		Game::dvar_s* coop_bot = nullptr;
 		Game::dvar_s* coop_botfire = nullptr;
+		Game::dvar_s* coop_botgod = nullptr;
+		Game::dvar_s* coop_botkit = nullptr;
+
+		// playerState_s fields used here are taken from the mod's Structs.hpp; its layout is checked at load against offsets read from the exe.
+		bool psLayoutOk = false;
+
+		// Test kit: player 2 gets player 1's weapons and ammo (the level scripts give weapons to level.player only).
+		void MirrorKit()
+		{
+			auto* src = reinterpret_cast<Game::playerState_s*>(Coop::GameClient(0));
+			auto* dst = reinterpret_cast<Game::playerState_s*>(Coop::GameClient(1));
+			std::memcpy(dst->weapons, src->weapons, sizeof(dst->weapons));
+			std::memcpy(dst->ammo, src->ammo, sizeof(dst->ammo));
+			std::memcpy(dst->ammoclip, src->ammoclip, sizeof(dst->ammoclip));
+			std::memcpy(dst->weaponmodels, src->weaponmodels, sizeof(dst->weaponmodels));
+			dst->weapon = src->weapon;
+			Coop::Log("kit: player 2 got player 1's weapons, current %u (clip %d, ammo %d)", src->weapon, src->ammoclip[src->weapon & 127],
+				src->ammo[src->weapon & 127]);
+		}
 
 		struct Trace
 		{
@@ -194,6 +213,21 @@ namespace Components
 				call FixEntityCounts
 				popad
 				push 0x4ADCF0
+				ret
+			}
+		}
+
+		// ClientThink_real 0x4A38D0, dead client past its respawn time: 0x4A6050 starts the SP death reload (snd_fade, reload after
+		// g_deathDelay). Only player 1's death does that for now; a dead player 2 stays dead (revive comes with the campaign scripts).
+		void __declspec(naked) DeathReload_Stub()
+		{
+			__asm
+			{
+				cmp ebx, dword ptr ds:[0xE18E18] // gclient in EBX == level.clients (client 0)?
+				jne skip
+				push 0x4A6050
+				ret
+			skip:
 				ret
 			}
 		}
@@ -411,6 +445,21 @@ namespace Components
 			yaw = std::atan2(dy, dx) * 180.0f / 3.14159265f;
 			forward = dist > 160.0f ? 127 : 0;
 		}
+		else if (!std::strcmp(mode, "front"))
+		{
+			// stand 150 units in front of player 1's view, facing him (to see player 2 from player 1's camera)
+			const float pyaw = reinterpret_cast<float*>(GameClient(0) + GC_VIEWANGLES)[1] * 3.14159265f / 180.0f;
+			const float tx = p1[0] + std::cos(pyaw) * 150.0f - o[0], ty = p1[1] + std::sin(pyaw) * 150.0f - o[1];
+			if (std::sqrt(tx * tx + ty * ty) > 24.0f)
+			{
+				yaw = std::atan2(ty, tx) * 180.0f / 3.14159265f;
+				forward = 127;
+			}
+			else
+			{
+				yaw = std::atan2(dy, dx) * 180.0f / 3.14159265f;
+			}
+		}
 		else if (!std::strcmp(mode, "walk"))
 		{
 			yaw = static_cast<float>((t / 3000) % 4) * 90.0f;
@@ -419,6 +468,11 @@ namespace Components
 		int buttons = 0;
 		if (coop_botfire && coop_botfire->current.enabled && (t % 4000) < 150)
 			buttons |= 1; // attack
+		if (coop_botkit && coop_botkit->current.enabled && psLayoutOk && *reinterpret_cast<int*>(GameClient(0) + GC_WEAPON) != 0 &&
+			*reinterpret_cast<int*>(cl + GC_WEAPON) == 0 && *reinterpret_cast<int*>(cl + GC_PMTYPE) < 4)
+			MirrorKit();
+		if (coop_botgod && coop_botgod->current.enabled && reinterpret_cast<Game::gentity_s*>(Entity(1))->health > 0)
+			reinterpret_cast<Game::gentity_s*>(Entity(1))->health = 100; // test only: keep player 2 alive
 		*reinterpret_cast<int*>(cmd + 0x4) = buttons;
 		reinterpret_cast<int*>(cmd + 0x8)[0] = Angle2Short(0.0f - delta[0]);
 		reinterpret_cast<int*>(cmd + 0x8)[1] = Angle2Short(yaw - delta[1]);
@@ -434,9 +488,17 @@ namespace Components
 			lastLog = t;
 			const auto* e1 = reinterpret_cast<Game::gentity_s*>(Entity(1));
 			const auto* e0 = reinterpret_cast<Game::gentity_s*>(Entity(0));
-			Log("t %d p2 (%.0f %.0f %.0f) hp %d pm %d weapon %d | p1 (%.0f %.0f %.0f) hp %d | dist %.0f mode %s",
-				t, o[0], o[1], o[2], e1->health, *reinterpret_cast<int*>(cl + GC_PMTYPE), *reinterpret_cast<int*>(cl + GC_WEAPON),
-				p1[0], p1[1], p1[2], e0->health, dist, mode);
+			const auto* ps2 = reinterpret_cast<Game::playerState_s*>(cl);
+			int clip = -1; // all rounds in clips: falls when player 2 fires (ammoclip is indexed by clip index, not weapon)
+			if (psLayoutOk)
+			{
+				clip = 0;
+				for (int k = 0; k < 128; k++)
+					clip += ps2->ammoclip[k];
+			}
+			Log("t %d p2 (%.0f %.0f %.0f) hp %d pm %d weapon %d clips %d | p1 (%.0f %.0f %.0f) hp %d weapon %d | dist %.0f mode %s",
+				t, o[0], o[1], o[2], e1->health, *reinterpret_cast<int*>(cl + GC_PMTYPE), *reinterpret_cast<int*>(cl + GC_WEAPON), clip,
+				p1[0], p1[1], p1[2], e0->health, *reinterpret_cast<int*>(GameClient(0) + GC_WEAPON), dist, mode);
 		}
 	}
 
@@ -446,8 +508,10 @@ namespace Components
 		{
 			consoleReady = true;
 			coop_players = Dvars::Register::Dvar_RegisterInt("coop_players", "Players in the next level (1 or 2; 2 = co-op test: player 2 is a bot)", 1, 1, 2, Game::none);
-			coop_bot = Dvars::Register::Dvar_RegisterString("coop_bot", "Test bot for player 2: follow, walk, stand", "follow", Game::none);
+			coop_bot = Dvars::Register::Dvar_RegisterString("coop_bot", "Test bot for player 2: follow, front, walk, stand", "follow", Game::none);
 			coop_botfire = Dvars::Register::Dvar_RegisterBool("coop_botfire", "Test bot fires every 4 s", false, Game::none);
+			coop_botgod = Dvars::Register::Dvar_RegisterBool("coop_botgod", "Test: player 2 cannot die", false, Game::none);
+			coop_botkit = Dvars::Register::Dvar_RegisterBool("coop_botkit", "Test: player 2 gets player 1's weapons as soon as player 1 has one", false, Game::none);
 		});
 
 		// Two-entry client arrays of our own (stock: one client_t at 0x14A39D0, one gclient_s at 0xE0DA00 packed against level_locals).
@@ -468,12 +532,52 @@ namespace Components
 		Utils::Hook(0x4BA53A, ClientSpawn_Hook, HOOK_CALL).install()->quick();      // G_LoadLevel
 		Utils::Hook(0x4A62C1, SelectSpawnPoint_Hook, HOOK_CALL).install()->quick(); // ClientSpawn
 		Utils::Hook(0x4A64D3, ClientSpawnInit_Stub, HOOK_CALL).install()->quick();  // ClientSpawn, after the memset
+		Utils::Hook(0x4A3D1B, DeathReload_Stub, HOOK_CALL).install()->quick();      // ClientThink_real: death reload only for player 1
 		Utils::Hook(0x4BB123, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 7
 		Utils::Hook(0x4A3F70, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 1 (0x4A3F60)
+
+		psLayoutOk = sizeof(Game::playerState_s) == 0xB2D8 && offsetof(Game::playerState_s, clientNum) == GC_CLIENTNUM &&
+			offsetof(Game::playerState_s, viewangles) == GC_VIEWANGLES && offsetof(Game::playerState_s, weapon) == GC_WEAPON;
+		// coop_give: player 1's weapons to player 2 (test kit)
+		Command::Add("coop_give", []
+		{
+			if (!psLayoutOk || players < 2)
+			{
+				Log("coop_give: not available (layout ok %d, players %d)", psLayoutOk, players);
+				return;
+			}
+			MirrorKit();
+		});
+
+		// coop_status: both players' state into cod4coop\coop.log (QA)
+		Command::Add("coop_status", []
+		{
+			const auto* running = Dvars::Functions::Dvar_FindVar("sv_running");
+			if (!running || !running->current.enabled)
+			{
+				Log("status: no level running");
+				return;
+			}
+			Log("status: level.time %d maxclients %d num_entities %d players %d", LevelTime(), *reinterpret_cast<int*>(LEVEL_MAXCLIENTS),
+				*reinterpret_cast<int*>(LEVEL_NUM_ENTITIES), players);
+			for (int i = 0; i < players; i++)
+			{
+				std::uint8_t* cl = GameClient(i);
+				std::uint8_t* ent = Entity(i);
+				const float* o = reinterpret_cast<float*>(cl + GC_ORIGIN);
+				Log("status: client %d connected %d clientNum %d pm %d origin (%.0f %.0f %.0f) view yaw %.0f | ent inuse %d health %d client %p sentient %p",
+					i, *reinterpret_cast<int*>(cl + GC_CONNECTED), *reinterpret_cast<int*>(cl + GC_CLIENTNUM), *reinterpret_cast<int*>(cl + GC_PMTYPE),
+					o[0], o[1], o[2], reinterpret_cast<float*>(cl + GC_VIEWANGLES)[1], ent[ENT_INUSE],
+					reinterpret_cast<Game::gentity_s*>(ent)->health, *reinterpret_cast<void**>(ent + ENT_CLIENT), *reinterpret_cast<void**>(ent + ENT_SENTIENT));
+			}
+		});
 
 		CoopScripts::Install();
 		CoopQA::Install();
 
+		Log("playerState_s layout %s (size 0x%x, ammo +0x%x, weapons +0x%x)", psLayoutOk ? "matches the exe" : "DOES NOT MATCH",
+			static_cast<int>(sizeof(Game::playerState_s)), static_cast<int>(offsetof(Game::playerState_s, ammo)),
+			static_cast<int>(offsetof(Game::playerState_s, weapons)));
 		Log("co-op module loaded (gentity_s.health at +0x%x, client +0x%x, sentient +0x%x)",
 			static_cast<int>(offsetof(Game::gentity_s, health)), static_cast<int>(offsetof(Game::gentity_s, client)),
 			static_cast<int>(offsetof(Game::gentity_s, sentient)));
