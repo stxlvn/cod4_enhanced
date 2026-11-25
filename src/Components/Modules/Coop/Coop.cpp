@@ -558,8 +558,9 @@ namespace Components
 				Log("status: no level running");
 				return;
 			}
-			Log("status: level.time %d maxclients %d num_entities %d players %d", LevelTime(), *reinterpret_cast<int*>(LEVEL_MAXCLIENTS),
-				*reinterpret_cast<int*>(LEVEL_NUM_ENTITIES), players);
+			const auto* sp = Dvars::Functions::Dvar_FindVar("coop_script_players");
+			Log("status: level.time %d maxclients %d num_entities %d players %d | script level.players.size %s", LevelTime(),
+				*reinterpret_cast<int*>(LEVEL_MAXCLIENTS), *reinterpret_cast<int*>(LEVEL_NUM_ENTITIES), players, sp ? sp->current.string : "(unset)");
 			for (int i = 0; i < players; i++)
 			{
 				std::uint8_t* cl = GameClient(i);

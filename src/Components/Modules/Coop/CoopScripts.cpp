@@ -77,6 +77,47 @@ namespace Components
 			return n;
 		}
 
+		// Text patches of one script: the anchor must occur exactly once (else the patch is not applied and the log says so).
+		struct TextPatch
+		{
+			const char* file;
+			const char* anchor;
+			const char* replacement;
+		};
+
+		const TextPatch textPatches[] =
+		{
+			// level.players / level.player2 next to level.player (IW4 SP has them natively)
+			{ "maps/_load.gsc", "level.player.a = spawnStruct();",
+				"level.player.a = spawnStruct();\n"
+				"\tlevel.players = getentarray( \"player\", \"classname\" );\n"
+				"\tif ( level.players.size > 1 )\n"
+				"\t{\n"
+				"\t\tlevel.player2 = level.players[ 1 ];\n"
+				"\t\tlevel.player2.a = spawnStruct();\n"
+				"\t}\n"
+				"\tsetdvar( \"coop_script_players\", level.players.size );" },
+		};
+
+		int ApplyTextPatches(const char* name, std::string& text)
+		{
+			int n = 0;
+			for (const auto& p : textPatches)
+			{
+				if (std::strcmp(p.file, name))
+					continue;
+				const size_t at = text.find(p.anchor);
+				if (at == std::string::npos || text.find(p.anchor, at + 1) != std::string::npos)
+				{
+					Coop::Log("script patch %s: anchor \"%s\" %s, patch NOT applied", name, p.anchor, at == std::string::npos ? "not found" : "found twice");
+					continue;
+				}
+				text.replace(at, std::strlen(p.anchor), p.replacement);
+				n++;
+			}
+			return n;
+		}
+
 		Game::XAssetHeader __cdecl FindScriptRawfile(Game::XAssetType type, const char* name)
 		{
 			Game::XAssetHeader header = Game::DB_FindXAssetHeader(type, name);
@@ -92,8 +133,9 @@ namespace Components
 
 			const auto* raw = static_cast<const RawFile*>(header.data);
 			std::string text(raw->buffer ? raw->buffer : "");
-			int n = PatchGetEntPlayer(text);
-			if (!n)
+			const int n = PatchGetEntPlayer(text);
+			const int t = ApplyTextPatches(name, text);
+			if (!n && !t)
 			{
 				cache.emplace(name, nullptr);
 				return header;
@@ -102,7 +144,7 @@ namespace Components
 			p->name = name;
 			p->text = std::move(text);
 			p->raw = RawFile{ p->name.c_str(), static_cast<int>(p->text.size()), p->text.c_str() };
-			Coop::Log("script patch %s: %d getent(player) -> getentarray(player)[0]", name, n);
+			Coop::Log("script patch %s: %d getent(player) -> getentarray(player)[0], %d text patch(es)", name, n, t);
 			header.data = &p->raw;
 			cache.emplace(name, std::move(p));
 			return header;
