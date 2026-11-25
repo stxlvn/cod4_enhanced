@@ -15,6 +15,7 @@ main()
 		level.players[ i ] thread body_follow( i );
 		level.players[ i ] thread downed_watch();
 		level.players[ i ] thread fire_watch();
+		level.players[ i ] thread hit_watch();
 		level.players[ i ] thread qa_damage_watch();
 	}
 	for ( i = 1; i < level.players.size; i++ )
@@ -460,7 +461,8 @@ body_follow( index )
 	while ( true )
 	{
 		pos = self.origin;
-		speed = distance( pos, last ) * 20; // units per second (server frames are 50 ms)
+		vel = ( pos - last ) * 20; // units per second (server frames are 50 ms)
+		speed = length( ( vel[ 0 ], vel[ 1 ], 0 ) );
 		last = pos;
 		view = self getplayerangles();
 		body.origin = pos;
@@ -482,6 +484,7 @@ body_follow( index )
 
 		if ( isdefined( self.coop_isdown ) )
 		{
+			body.coop_key = ""; // the standing poses start again after a revive
 			// last stand: the CoD4 AI's wounded-on-the-back set (animscripts\pain.gsc dying crawl) for IW4's pb_laststand_*:
 			// fall from his stance onto the back, then idle / crawl / fire with the pistol, death when he bleeds out
 			if ( !isdefined( fall_end ) )
@@ -512,47 +515,483 @@ body_follow( index )
 		else
 		{
 			fall_end = undefined;
-			want = body_anim_key( self, speed );
-			if ( want != key )
-			{
-				key = want;
-				body setanimknoball( body_anim( key ), %root, 1, 0.2, 1 ); // the whole branch up to the root gets weight 1
-			}
+			key = "";
+			// the move over about three frames: one frame's origin step is noisy (a diagonal walk flipped F / L every frame)
+			if ( !isdefined( body.coop_vel ) )
+				body.coop_vel = vel;
+			body.coop_vel = ( body.coop_vel + vel ) * 0.5;
+			smooth = body.coop_vel;
+			self body_update( body, length( ( smooth[ 0 ], smooth[ 1 ], 0 ) ), smooth, view );
 		}
 		wait 0.05;
 	}
 }
 
-body_anim_key( player, speed )
+// ---- Phase 4: the body's poses = IW4's player animations (mp/playeranim.script: pb_* whole body, pt_* torso) with their
+// CoD4 SP analogs, the AI's own tables (animscripts\combat.gsc set_animarray_standing / crouching / prone, pain.gsc, death.gsc).
+// IW4 movetype / event                          CoD4 analog
+//   idle, idlecr, idleprone (+ pistol)          exposed_aim_5, exposed_crouch_aim_5, prone_aim_5, pistol_stand_aim_5, pistol_crouchaim_idle;
+//                                               view pitch on the AI's aim additives (aim_8 up, aim_2 down, +-45 as the AI's limits)
+//   walk, walkbk, strafing left / right         walk_lowready_F / B / L / R
+//   run, runbk, strafing left / right           run_lowready_F / B / L / R
+//   sprint                                      sprint1_loop
+//   walkcr, runcr, walkcrbk, runcrbk, strafing  crouch_fastwalk_F / B / L / R
+//   walkprone, walkpronebk                      prone_crawl
+//   climbup, climbdown (ladder)                 ladder_climbup, ladder_climbdown (rate by the climb speed, still when he stops)
+//   mantle_*                                    traverse40
+//   jump / land                                 traverse_jumpdown_40
+//   crouch_to_prone, prone_to_crouch, ...       crouch_2_prone, prone_2_crouch, stand_2_prone, prone_2_stand, exposed_stand_2_crouch,
+//                                               exposed_crouch_2_stand (when the stance changes standing still)
+//   fireweapon                                  add_fire (the AI's additive recoil) exposed_shoot_semi1
+//   reload                                      exposed_reload, exposed_crouch_reload, prone_reload, pistol_stand_reload_A,
+//                                               run_lowready_reload (moving)
+//   meleeattack                                 melee_1, prone_melee
+//   fireweapon (grenade)                        exposed_grenadeThrowB, crouch_grenade_throw, prone_grenade_A
+//   flinch_forward / backward / left / right    minor_pain: minorpain_chest / head _front / _back / _left / _right, weight by damage
+//   shellshock, stunned                         exposed_flashbang_v1
+//   DEATH (by movetype, explosion by direction) exposed_death, exposed_crouch_death_twist, prone_death_quickdeath, pistol_death_1,
+//                                               death_run_forward_crumple, death_explosion_stand_F / B / L / R_v1
+//   laststand set                               see the downed branch above
+// Inputs (all from the simulation, so both PCs animate alike; GSC has no hex literals: 16384 = 0x4000 ...): stance, the move
+// from the origin delta against the view yaw,
+// pm_flags (coopflags: mantle 0x4, ladder 0x8, jumping 0x4000, sprinting 0x8000, shellshocked 0x10000), weaponstate
+// (coopweaponstate: reload 7-11, melee 12-14, offhand 15-20, sprint 22-24), the weapon class, "weapon_fired", "damage".
+body_update( body, speed, vel, view )
 {
-	if ( player.health <= 0 )
-		return "death";
-	stance = player getstance();
+	t = gettime();
+	stance = self getstance();
+	flags = self coopflags();
+	ws = self coopweaponstate();
+	weapon = self getcurrentweapon();
+	pistol = false;
+	if ( isdefined( weapon ) && weapon != "none" && weaponclass( weapon ) == "pistol" )
+		pistol = true;
+	if ( !isdefined( body.coop_key ) || !isdefined( body.coop_ws ) )
+	{
+		body.coop_key = "";
+		body.coop_action = "";
+		body.coop_action_end = 0;
+		body.coop_stance = stance;
+		body.coop_ws = ws;
+		body.coop_flags = flags;
+		body.coop_fired = 0;
+		body.coop_hitseen = 0;
+		body.coop_aim = false;
+	}
+
+	if ( self.health <= 0 )
+	{
+		if ( body.coop_key != "death" )
+		{
+			body.coop_key = "death";
+			body.coop_action = "";
+			setdvar( "coop_pose" + self.coop_index, "death" );
+			body setanimknoballrestart( self body_death_anim( stance, speed, pistol ), %root, 1, 0.2, 1 );
+		}
+		return;
+	}
+
+	// IW4 events: one-shot animations started by a change of the player's state
+	start = "";
+	if ( ( flags & 4 ) && !( body.coop_flags & 4 ) )
+		start = "mantle";
+	else if ( body_in( ws, 7, 11 ) && !body_in( body.coop_ws, 7, 11 ) )
+		start = "reload";
+	else if ( body_in( ws, 12, 14 ) && !body_in( body.coop_ws, 12, 14 ) )
+		start = "melee";
+	else if ( body_in( ws, 15, 20 ) && !body_in( body.coop_ws, 15, 20 ) )
+		start = "throw";
+	else if ( ( flags & 16384 ) && !( body.coop_flags & 16384 ) && !( flags & 8 ) && stance == "stand" && body.coop_stance == "stand" )
+		start = "jump"; // 0x4000 is also set when he drops prone (the jump slowdown): a jump only standing
+	else if ( stance != body.coop_stance && speed < 30 )
+		start = body.coop_stance + "_2_" + stance;
+	else if ( ( flags & 65536 ) && !( body.coop_flags & 65536 ) )
+		start = "shock";
+	body.coop_flags = flags;
+	body.coop_ws = ws;
+	body.coop_stance = stance;
+	if ( start != "" )
+	{
+		a = body_action_anim( start, stance, speed, pistol );
+		if ( isdefined( a ) )
+		{
+			body.coop_action = start;
+			body.coop_action_end = t + int( getanimlength( a ) * 1000 );
+			body.coop_key = start;
+			body.coop_aim = false;
+			setdvar( "coop_pose" + self.coop_index, start );
+			body setanimknoballrestart( a, %root, 1, 0.15, 1 );
+		}
+	}
+
+	// an action holds the body until its animation ends; reload, melee and throw also end with the player's state
+	if ( body.coop_action != "" )
+	{
+		over = t >= body.coop_action_end;
+		if ( body.coop_action == "reload" && !body_in( ws, 7, 11 ) )
+			over = true;
+		if ( body.coop_action == "melee" && !body_in( ws, 12, 14 ) )
+			over = true;
+		if ( body.coop_action == "throw" && !body_in( ws, 15, 20 ) )
+			over = true;
+		if ( body.coop_action == "jump" && !( flags & 16384 ) )
+			over = true;
+		if ( ( issubstr( body.coop_action, "_2_" ) || body.coop_action == "shock" ) && speed > 30 )
+			over = true;
+		if ( !over )
+		{
+			self body_fire_and_flinch( body, t );
+			return;
+		}
+		body.coop_action = "";
+		body.coop_key = "";
+	}
+
+	// IW4 movetypes: the base pose
+	dir = body_move_dir( vel, view[ 1 ], body.coop_dir );
+	body.coop_dir = dir;
+	rate = 1;
+	if ( flags & 8 )
+	{
+		key = "ladder_up";
+		if ( vel[ 2 ] < -5 )
+			key = "ladder_down";
+		rate = 0;
+		if ( abs( vel[ 2 ] ) > 5 )
+			rate = 1;
+	}
+	else if ( stance == "prone" )
+	{
+		key = "prone";
+		if ( speed > 5 )
+			key = "prone_move";
+	}
+	else if ( stance == "crouch" )
+	{
+		key = "crouch";
+		if ( speed > 15 )
+			key = "crouch_" + dir;
+	}
+	else if ( speed > 15 && ( ( flags & 32768 ) || body_in( ws, 22, 24 ) ) )
+		key = "sprint";
+	else if ( speed > 140 || ( speed > 115 && issubstr( body.coop_key, "run_" ) ) ) // hysteresis: backwards runs at about 130
+		key = "run_" + dir;
+	else if ( speed > 15 )
+		key = "walk_" + dir;
+	else
+		key = "stand";
+	if ( pistol && ( key == "stand" || key == "crouch" ) )
+		key = key + "_pistol";
+	a = body_anim( key );
+	if ( key != body.coop_key )
+	{
+		body.coop_key = key;
+		setdvar( "coop_pose" + self.coop_index, key ); // QA trace
+		body setanimknoball( a, %root, 1, 0.2, 1 ); // the whole branch up to the root gets weight 1
+		body.coop_aim = body body_aim_setup( key );
+	}
+	// the move animations play at the player's speed (no sliding feet); the ladder stands still when he does
+	if ( body_is_move( key ) )
+	{
+		own = body_anim_speed( key, a );
+		if ( own > 1 )
+		{
+			rate = speed / own;
+			if ( rate < 0.5 )
+				rate = 0.5;
+			if ( rate > 1.8 )
+				rate = 1.8;
+		}
+		body setanim( a, 1, 0.2, rate );
+	}
+	else if ( key == "ladder_up" || key == "ladder_down" )
+		body setanim( a, 1, 0.2, rate );
+	if ( body.coop_aim )
+		body body_aim_pitch( view[ 0 ] );
+	self body_fire_and_flinch( body, t );
+}
+
+body_in( value, low, high )
+{
+	return value >= low && value <= high;
+}
+
+// IW4's strafing / back conditions: the move against the view, the bigger of forward and side; the direction it had stays
+// until the other part is clearly bigger (diagonal moves flipped between two animations every frame)
+body_move_dir( vel, yaw, had )
+{
+	forward = anglestoforward( ( 0, yaw, 0 ) );
+	right = anglestoright( ( 0, yaw, 0 ) );
+	f = vel[ 0 ] * forward[ 0 ] + vel[ 1 ] * forward[ 1 ];
+	r = vel[ 0 ] * right[ 0 ] + vel[ 1 ] * right[ 1 ];
+	if ( isdefined( had ) )
+	{
+		if ( ( had == "F" || had == "B" ) && abs( f ) * 1.4 >= abs( r ) )
+			r = 0;
+		else if ( ( had == "L" || had == "R" ) && abs( r ) * 1.4 >= abs( f ) )
+			f = 0;
+	}
+	if ( abs( f ) >= abs( r ) )
+	{
+		if ( f >= 0 )
+			return "F";
+		return "B";
+	}
+	if ( r >= 0 )
+		return "R";
+	return "L";
+}
+
+body_is_move( key )
+{
+	return issubstr( key, "walk_" ) || issubstr( key, "run_" ) || issubstr( key, "crouch_" ) || key == "sprint" || key == "prone_move";
+}
+
+// the animation's own ground speed (root motion over its length), cached per key
+body_anim_speed( key, a )
+{
+	if ( !isdefined( level.coop_animspeed ) )
+		level.coop_animspeed = [];
+	if ( !isdefined( level.coop_animspeed[ key ] ) )
+	{
+		d = getmovedelta( a, 0, 1 );
+		len = getanimlength( a );
+		level.coop_animspeed[ key ] = 0;
+		if ( len > 0 )
+			level.coop_animspeed[ key ] = length( ( d[ 0 ], d[ 1 ], 0 ) ) / len;
+	}
+	return level.coop_animspeed[ key ];
+}
+
+// the AI's aim additives for the still poses (combat.gsc setupAim: add_aim_up / add_aim_down knobs, then the aim_8 / aim_2 weights)
+body_aim_setup( key )
+{
+	up = undefined;
+	down = undefined;
+	switch ( key )
+	{
+		case "stand":
+			up = %exposed_aim_8;
+			down = %exposed_aim_2;
+			break;
+		case "stand_pistol":
+			up = %pistol_stand_aim_8_add;
+			down = %pistol_stand_aim_2_add;
+			break;
+		case "crouch":
+			up = %exposed_crouch_aim_8;
+			down = %exposed_crouch_aim_2;
+			break;
+		case "prone":
+			up = %prone_aim_8_add;
+			down = %prone_aim_2_add;
+			break;
+	}
+	if ( !isdefined( up ) )
+		return false;
+	self setanimknoblimited( up, 1, 0 );
+	self setanimknoblimited( down, 1, 0 );
+	return true;
+}
+
+// view pitch (positive looks down) on the aim additives, +-45 degrees full weight (the AI's upAimLimit / downAimLimit)
+body_aim_pitch( pitch )
+{
+	up = 0 - pitch;
+	if ( up > 0 )
+	{
+		w = up / 45;
+		if ( w > 1 )
+			w = 1;
+		self setanimlimited( %aim_2, 0, 0.05 );
+		self setanimlimited( %aim_8, w, 0.05 );
+	}
+	else
+	{
+		w = pitch / 45;
+		if ( w > 1 )
+			w = 1;
+		self setanimlimited( %aim_8, 0, 0.05 );
+		self setanimlimited( %aim_2, w, 0.05 );
+	}
+}
+
+// fireweapon: the AI's additive recoil; flinch: minor_pain by hit direction (hit_watch), weight by damage as pain.gsc PlayHitAnimation
+body_fire_and_flinch( body, t )
+{
+	if ( isdefined( self.coop_lastfire ) && self.coop_lastfire != body.coop_fired )
+	{
+		body.coop_fired = self.coop_lastfire;
+		body setanim( %add_fire, 1, 0.05, 1 );
+		body setanimknobrestart( %exposed_shoot_semi1, 1, 0, 1 );
+		body.coop_fire_end = t + 250;
+	}
+	else if ( isdefined( body.coop_fire_end ) && t > body.coop_fire_end )
+	{
+		body clearanim( %add_fire, 0.2 );
+		body.coop_fire_end = undefined;
+	}
+	if ( isdefined( self.coop_hit ) && self.coop_hit != body.coop_hitseen )
+	{
+		body.coop_hitseen = self.coop_hit;
+		w = self.coop_hit_weight;
+		body clearanim( %minor_pain, 0.1 );
+		body setanim( self.coop_hit_anim, 1, 0.05, 1 );
+		body setanim( %minor_pain, w, 0.05 / w, 1 );
+		body.coop_hit_end = t + 350;
+	}
+	else if ( isdefined( body.coop_hit_end ) && t > body.coop_hit_end )
+	{
+		body clearanim( %minor_pain, 0.2 );
+		body.coop_hit_end = undefined;
+	}
+}
+
+// IW4 flinch_* / death by hit direction: where the damage came from against the view, and how
+hit_watch()
+{
+	while ( true )
+	{
+		self waittill( "damage", amount, attacker, dir, point, type );
+		self.coop_lastdamagetype = type;
+		self.coop_lastdamagedir = dir;
+		if ( self.health <= 0 || isdefined( self.coop_isdown ) || !isdefined( dir ) )
+			continue;
+		side = body_hit_side( dir, self getplayerangles()[ 1 ] );
+		place = "chest";
+		if ( isdefined( point ) && self getstance() == "stand" && point[ 2 ] > self.origin[ 2 ] + 52 )
+			place = "head";
+		self.coop_hit_anim = body_flinch_anim( place, side );
+		self.coop_hit_weight = ( amount + 50.0 ) / 250;
+		if ( self.coop_hit_weight > 1 )
+			self.coop_hit_weight = 1;
+		self.coop_hit = gettime();
+	}
+}
+
+// "front" = the hit came from in front of him
+body_hit_side( dir, yaw )
+{
+	from = vectortoangles( ( 0 - dir[ 0 ], 0 - dir[ 1 ], 0 ) );
+	rel = from[ 1 ] - yaw;
+	while ( rel > 180 )
+		rel -= 360;
+	while ( rel < -180 )
+		rel += 360;
+	if ( rel >= -45 && rel <= 45 )
+		return "front";
+	if ( rel > 45 && rel < 135 )
+		return "left";
+	if ( rel < -45 && rel > -135 )
+		return "right";
+	return "back";
+}
+
+body_flinch_anim( place, side )
+{
+	if ( place == "head" )
+	{
+		switch ( side )
+		{
+			case "front":
+				return %minorpain_head_front;
+			case "back":
+				return %minorpain_head_back;
+			case "left":
+				return %minorpain_head_left;
+		}
+		return %minorpain_head_right;
+	}
+	switch ( side )
+	{
+		case "front":
+			return %minorpain_chest_front;
+		case "back":
+			return %minorpain_chest_back;
+		case "left":
+			return %minorpain_chest_left;
+	}
+	return %minorpain_chest_right;
+}
+
+body_action_anim( action, stance, speed, pistol )
+{
+	switch ( action )
+	{
+		case "reload":
+			if ( stance == "prone" )
+				return %prone_reload;
+			if ( stance == "crouch" )
+				return %exposed_crouch_reload;
+			if ( pistol )
+				return %pistol_stand_reload_A;
+			if ( speed > 60 )
+				return %run_lowready_reload;
+			return %exposed_reload;
+		case "melee":
+			if ( stance == "prone" )
+				return %prone_melee;
+			return %melee_1;
+		case "throw":
+			if ( stance == "prone" )
+				return %prone_grenade_A;
+			if ( stance == "crouch" )
+				return %crouch_grenade_throw;
+			return %exposed_grenadeThrowB;
+		case "mantle":
+			return %traverse40;
+		case "jump":
+			return %traverse_jumpdown_40;
+		case "shock":
+			return %exposed_flashbang_v1;
+		case "stand_2_crouch":
+			return %exposed_stand_2_crouch;
+		case "crouch_2_stand":
+			return %exposed_crouch_2_stand;
+		case "crouch_2_prone":
+			return %crouch_2_prone;
+		case "prone_2_crouch":
+			return %prone_2_crouch;
+		case "stand_2_prone":
+			return %stand_2_prone;
+		case "prone_2_stand":
+			return %prone_2_stand;
+	}
+	return undefined;
+}
+
+// IW4 DEATH: by movetype, explosions by the direction of the blast
+body_death_anim( stance, speed, pistol )
+{
+	type = self.coop_lastdamagetype;
+	if ( isdefined( type ) && stance != "prone" && ( issubstr( type, "GRENADE" ) || issubstr( type, "EXPLOSIVE" ) || issubstr( type, "PROJECTILE" ) ) && isdefined( self.coop_lastdamagedir ) )
+	{
+		switch ( body_hit_side( self.coop_lastdamagedir, self getplayerangles()[ 1 ] ) )
+		{
+			case "front":
+				return %death_explosion_stand_B_v1; // blown backwards
+			case "back":
+				return %death_explosion_stand_F_v1;
+			case "left":
+				return %death_explosion_stand_R_v1;
+		}
+		return %death_explosion_stand_L_v1;
+	}
 	if ( stance == "prone" )
-	{
-		if ( speed > 20 )
-			return "prone_move";
-		return "prone";
-	}
+		return %prone_death_quickdeath;
 	if ( stance == "crouch" )
-	{
-		if ( speed > 20 )
-			return "crouch_move";
-		return "crouch";
-	}
-	if ( speed > 150 )
-		return "run";
-	if ( speed > 20 )
-		return "walk";
-	return "stand";
+		return %exposed_crouch_death_twist;
+	if ( speed > 130 )
+		return %death_run_forward_crumple;
+	if ( pistol )
+		return %pistol_death_1;
+	return %exposed_death;
 }
 
 body_anim( key )
 {
 	switch ( key )
 	{
-		case "death":
-			return %exposed_crouch_death_twist;
 		case "down_idle":
 			return %dying_back_idle;
 		case "down_crawl":
@@ -561,20 +1000,48 @@ body_anim( key )
 			return %dying_back_fire;
 		case "down_death":
 			return %dying_back_death_v1;
-		case "prone_move":
-			return %prone_crawl;
-		case "prone":
-			return %prone_aim_5;
-		case "crouch_move":
-			return %crouch_fastwalk_F;
+		case "stand_pistol":
+			return %pistol_stand_aim_5;
 		case "crouch":
 			return %exposed_crouch_aim_5;
-		case "run":
-			return %run_lowready_F;
-		case "walk":
+		case "crouch_pistol":
+			return %pistol_crouchaim_idle;
+		case "prone":
+			return %prone_aim_5;
+		case "prone_move":
+			return %prone_crawl;
+		case "walk_F":
 			return %walk_lowready_F;
+		case "walk_B":
+			return %walk_lowready_B;
+		case "walk_L":
+			return %walk_lowready_L;
+		case "walk_R":
+			return %walk_lowready_R;
+		case "run_F":
+			return %run_lowready_F;
+		case "run_B":
+			return %run_lowready_B;
+		case "run_L":
+			return %run_lowready_L;
+		case "run_R":
+			return %run_lowready_R;
+		case "crouch_F":
+			return %crouch_fastwalk_F;
+		case "crouch_B":
+			return %crouch_fastwalk_B;
+		case "crouch_L":
+			return %crouch_fastwalk_L;
+		case "crouch_R":
+			return %crouch_fastwalk_R;
+		case "sprint":
+			return %sprint1_loop;
+		case "ladder_up":
+			return %ladder_climbup;
+		case "ladder_down":
+			return %ladder_climbdown;
 	}
-	return %exposed_aim_5; // base poses: the idle_alert anims are overlays (alone they left the bind pose)
+	return %exposed_aim_5; // stand (the idle_alert anims are overlays: alone they left the bind pose)
 }
 
 // the fall onto the back from the stance he went down in (animscripts\pain.gsc stand_2_back / crouch_2_back / prone_2_back)

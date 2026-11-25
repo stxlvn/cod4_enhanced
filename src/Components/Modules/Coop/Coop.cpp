@@ -75,6 +75,7 @@ namespace Components
 		Game::dvar_s* coop_bot = nullptr;
 		Game::dvar_s* coop_botfire = nullptr;
 		Game::dvar_s* coop_botgod = nullptr;
+		Game::dvar_s* coop_botpose = nullptr;
 		Game::dvar_s* coop_botkit = nullptr;
 
 		// playerState_s fields used here are taken from the mod's Structs.hpp; its layout is checked at load against offsets read from the exe.
@@ -682,6 +683,50 @@ namespace Components
 		cmd[0x16] = static_cast<std::uint8_t>(forward);
 		cmd[0x17] = 0;
 		cmd[0x18] = 0;
+
+		// QA of the body's poses (coop_botpose: words on top of the mode): moves, stance buttons (crouch 0x200 / prone 0x100 held),
+		// sprint 0x2, ADS 0x800, actions pulsed so each happens once in a while (attack 1, reload 0x10, melee 0x4, frag 0x4000,
+		// jump = gostand 0x400), view pitch
+		const char* pose = coop_botpose ? coop_botpose->current.string : "";
+		if (pose && *pose)
+		{
+			auto has = [pose](const char* word) { return std::strstr(pose, word) != nullptr; };
+			auto move = [](int v) { return static_cast<std::uint8_t>(static_cast<std::int8_t>(v)); };
+			const int full = has("slow") ? 50 : 127;
+			auto& b = *reinterpret_cast<int*>(cmd + 4);
+			if (has("forward"))
+				cmd[0x16] = move(full);
+			if (has("back"))
+				cmd[0x16] = move(-full);
+			if (has("left"))
+				cmd[0x17] = move(-full);
+			if (has("right"))
+				cmd[0x17] = move(full);
+			if (has("sprint"))
+				b |= 0x2;
+			if (has("crouch"))
+				b |= 0x200;
+			if (has("prone"))
+				b |= 0x100;
+			if (has("ads"))
+				b |= 0x800;
+			if (has("fire") && (t % 1000) < 100)
+				b |= 1;
+			if (has("reload") && (t % 4000) < 100)
+				b |= 0x10;
+			if (has("melee") && (t % 3000) < 100)
+				b |= 0x4;
+			if (has("frag") && (t % 5000) < 150)
+				b |= 0x4000;
+			if (has("jump") && (t % 2000) < 100)
+				b |= 0x400; // +gostand (CoD4 jumps with it: the usercmd has no upmove)
+			if (has("copyweapon"))
+				cmd[0x14] = static_cast<std::uint8_t>(*reinterpret_cast<int*>(GameClient(other) + GC_WEAPON)); // the other player's weapon
+			if (has("lookup"))
+				reinterpret_cast<int*>(cmd + 0x8)[0] = Angle2Short(-40.0f - delta[0]);
+			if (has("lookdown"))
+				reinterpret_cast<int*>(cmd + 0x8)[0] = Angle2Short(40.0f - delta[0]);
+		}
 	}
 
 	// One-process test (Phase 1): player 2 is a bot thinking right after player 1's input.
@@ -734,6 +779,8 @@ namespace Components
 			coop_bot = Dvars::Register::Dvar_RegisterString("coop_bot", "Test bot for player 2: follow, front, walk, stand", "follow", Game::none);
 			coop_botfire = Dvars::Register::Dvar_RegisterBool("coop_botfire", "Test bot fires every 4 s", false, Game::none);
 			coop_botgod = Dvars::Register::Dvar_RegisterBool("coop_botgod", "Test: player 2 cannot die", false, Game::none);
+			coop_botpose = Dvars::Register::Dvar_RegisterString("coop_botpose", "Test: bot actions on top of its mode (forward back left right "
+				"slow sprint crouch prone ads fire reload melee frag jump copyweapon lookup lookdown)", "", Game::none);
 			coop_botkit = Dvars::Register::Dvar_RegisterBool("coop_botkit", "Test: player 2 gets player 1's weapons as soon as player 1 has one", false, Game::none);
 			coop_crawlscale = Dvars::Register::Dvar_RegisterFloat("coop_crawlscale", "Downed player's crawl speed scale (IW4 player_lastStandCrawlSpeedScale)", 0.2f, 0.0f, 1.0f, Game::none);
 		});
@@ -770,6 +817,16 @@ namespace Components
 		GSC::AddMethod("coopdowned", [](Game::scr_entref_t entref)
 		{
 			Game::Scr_AddInt(IsDown(entref.entnum) ? 1 : 0);
+		}, false);
+		// the body's animation inputs (maps\_coop body_follow): playerState pm_flags (+0xC: ladder 0x8, mantle 0x4, jumping 0x4000,
+		// sprinting 0x8000, ...) and weaponstate (+0xC8: reload 7-11, melee 12-14, offhand 15-20, ...); the same on both PCs
+		GSC::AddMethod("coopflags", [](Game::scr_entref_t entref)
+		{
+			Game::Scr_AddInt(entref.entnum < static_cast<unsigned>(players) ? *reinterpret_cast<int*>(GameClient(entref.entnum) + 0xC) : 0);
+		}, false);
+		GSC::AddMethod("coopweaponstate", [](Game::scr_entref_t entref)
+		{
+			Game::Scr_AddInt(entref.entnum < static_cast<unsigned>(players) ? *reinterpret_cast<int*>(GameClient(entref.entnum) + 0xC8) : 0);
 		}, false);
 		GSC::AddMethod("coopreviveuse", [](Game::scr_entref_t entref)
 		{
