@@ -76,12 +76,18 @@ namespace Components
 		bool reloadPending = false;   // stepper held until the reload runs
 		ULONGLONG reloadPendingSince = 0;
 
+		std::string pendingCmd = "loadgame_continue\n"; // the level command of reloadTick (death reload, level exit)
+		std::string hostMap;                     // partner: map of the host's newest level life (coopMap)
+		std::uint32_t hostMapLife = 0;
+		ULONGLONG hostMapSeen = 0;
+
 		void QueueReload()
 		{
-			Coop::Log("net: death reload (loadgame_continue) at tick %d", reloadTick);
+			Coop::Log("net: level command at tick %d: %s", reloadTick, pendingCmd.c_str());
 			reloadTick = 0;
 			reloadPending = false;
-			Command::Execute("loadgame_continue", false);
+			Game::Cbuf_AddText(0, pendingCmd.c_str());
+			pendingCmd = "loadgame_continue\n";
 		}
 		ULONGLONG notRunningSince = 0;
 		std::string mapName;
@@ -511,6 +517,17 @@ namespace Components
 						continue;
 					execRelSeq[p] = seq;
 					Coop::Log("net: command of player %d (seq %d) at tick %d: %s", p + 1, seq, f.time, text.c_str());
+					// QA (cheats only): "coopexit <map>" = what the script changelevel(map) does (GScr_ChangeLevel 0x4D2ED0), on both PCs
+					// at this tick: map name 0xE0D988, flag 0xE198FC for G_RunFrame's level exit 0x4B9C60 -> 0x4B9E40 -> 0x4B9DC0
+					const auto* cheats = Dvars::Functions::Dvar_FindVar("sv_cheats");
+					if (text.rfind("coopexit ", 0) == 0 && cheats && cheats->current.enabled)
+					{
+						strncpy_s(reinterpret_cast<char*>(0xE0D988), 64, text.c_str() + 9, _TRUNCATE);
+						*reinterpret_cast<int*>(0xE19908) = 0;
+						*reinterpret_cast<int*>(0xE1990C) = 0;
+						*reinterpret_cast<int*>(0xE198FC) = 1;
+						continue;
+					}
 					ClientCommandFor(p, text);
 					if (p == CoopNet::LocalClient() && role == CoopNet::ROLE_PARTNER)
 						*reinterpret_cast<int*>(CL_RELACK) = std::max(*reinterpret_cast<int*>(CL_RELACK), seq);
@@ -756,6 +773,57 @@ namespace Components
 			}
 		}
 
+		// SV_Frame 0x5C8515 asks 0x570FC0 "a pausing menu is open?" and then pauses the world (cl_paused 1). In a session menus do not
+		// pause once the level runs (IW4: cl_paused = !coop): the player with the menu open just stands (no moves from his client).
+		// The briefing (pregame) still pauses: it is the load barrier.
+		int __cdecl PausingMenuCheck()
+		{
+			const int open = Utils::Hook::Call<int()>(0x570FC0)();
+			if (!sessionActive || !localBriefDone)
+				return open;
+			auto* paused = *reinterpret_cast<Game::dvar_s**>(0xF8CE50);
+			if (paused && paused->current.integer)
+				paused->current.integer = 0;
+			return 0;
+		}
+
+		// Level exits issued by G_RunFrame state 1 (0x4B9E40 / 0x4B9DC0: spmap / spdevmap <next>, cinematic, loadgame_continue) at a tick
+		// both PCs reach: the partner runs it at once; the host holds and runs it once the partner holds that tick (else the host
+		// leaves the level before the partner got its last frames).
+		void __cdecl DeferLevelCommand(const char* text)
+		{
+			pendingCmd = text ? text : "";
+			if (!pendingCmd.empty() && pendingCmd.back() != '\n')
+				pendingCmd += "\n";
+			reloadTick = LevelTime();
+			reloadPending = true;
+			reloadPendingSince = GetTickCount64();
+			Coop::Log("net: level exit at tick %d: %s", reloadTick, text ? text : "");
+			if (role == CoopNet::ROLE_PARTNER)
+			{
+				QueueReload();
+				reloadPending = true; // no more steps of this level life
+			}
+		}
+
+		void __declspec(naked) LevelCommand_Stub()
+		{
+			__asm
+			{
+				cmp sessionActive, 0
+				je stock
+				pushad
+				push eax
+				call DeferLevelCommand
+				add esp, 4
+				popad
+				ret
+			stock:
+				push 0x530320 // Cbuf_AddText(ECX local client, EAX text)
+				ret
+			}
+		}
+
 		// End of the session: tell the other PC, stop. message: shown as an ERR_DROP error (back to the main menu) when a level runs.
 		void EndSession(const char* reason, const char* message)
 		{
@@ -879,6 +947,19 @@ namespace Components
 			}
 			if (cmd == "coopHb")
 				return;
+			if (cmd == "coopMap" && role == CoopNet::ROLE_PARTNER)
+			{
+				std::string map;
+				std::uint32_t life = 0;
+				in >> map >> life;
+				if (life > hostMapLife)
+				{
+					hostMap = map;
+					hostMapLife = life;
+					hostMapSeen = GetTickCount64();
+				}
+				return;
+			}
 			if (cmd == "coopReject" || cmd == "coopDis")
 			{
 				std::string reason;
@@ -1032,6 +1113,23 @@ namespace Components
 				{
 					lastHb = now;
 					SendOOB("coopHb");
+					if (role == CoopNet::ROLE_HOST)
+					{
+						const auto* mapname = Dvars::Functions::Dvar_FindVar("mapname");
+						SendOOB(Utils::String::VA("coopMap %s %u", mapname ? mapname->current.string : "", LifeId()));
+					}
+				}
+				// the host is in a newer level life of another map and this PC did not follow by itself within 3 s: load that map
+				if (role == CoopNet::ROLE_PARTNER && hostMapLife > LifeId() && !hostMap.empty() && now - hostMapSeen > 3000)
+				{
+					const auto* mapname = Dvars::Functions::Dvar_FindVar("mapname");
+					if (mapname && hostMap != mapname->current.string)
+					{
+						Coop::Log("net: the host changed the map to %s: loading it", hostMap.c_str());
+						const auto* cheats = Dvars::Functions::Dvar_FindVar("sv_cheats");
+						Game::Cbuf_AddText(0, Utils::String::VA("%s %s\n", cheats && cheats->current.enabled ? "spdevmap" : "spmap", hostMap.c_str()));
+					}
+					hostMapSeen = now; // once per 3 s at most
 				}
 			}
 			if (role == CoopNet::ROLE_PARTNER)
@@ -1268,6 +1366,11 @@ namespace Components
 		Utils::Hook::Set<void*>(0x6DDEBC, reinterpret_cast<void*>(GetDvarGuard<0x4C86D0>)); // (developer alias)
 		Utils::Hook::Set<void*>(0x6818F4, reinterpret_cast<void*>(ButtonPressedGuard));    // player method buttonpressed
 		Utils::Hook(0x4FA092, FxVisibility_Stub, HOOK_CALL).install()->quick();
+		Utils::Hook(0x5C8515, PausingMenuCheck, HOOK_CALL).install()->quick();  // menus do not pause a session
+		for (const DWORD at : { 0x4B9E9Du, 0x4B9EDBu }) // level exit Cbuf_AddText calls in 0x4B9E40
+			Utils::Hook(at, LevelCommand_Stub, HOOK_CALL).install()->quick();
+		for (const DWORD at : { 0x4B9DD0u, 0x4B9E1Au, 0x4B9E33u }) // tail JMPs to Cbuf_AddText in 0x4B9DC0 (a CALL there fell through: run p2q)
+			Utils::Hook(at, LevelCommand_Stub, HOOK_JUMP).install()->quick();
 
 		// every caller of UI_PlayerStart: Com_Error path, UI_Refresh (film over), uiScript playerstart (skip), SV_SpawnServer, UI_SetActiveMenu
 		for (const DWORD at : { 0x533657u, 0x5653A0u, 0x5671DAu, 0x5C76C4u, 0x567F70u })
