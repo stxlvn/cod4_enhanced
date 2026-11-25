@@ -9,7 +9,7 @@
 // Phase 2: IW4 Spec Ops style lockstep between two PCs. Spec: local/cod4/IW4-NETCODE-SPEC.md (sections 3-7, 9).
 //
 // Session:  host `coop_host <map>` listens on coop_port; partner `coop_connect <ip>[:port]` sends coopConnect until coopAccept;
-//           host replies coopAccept + coopLaunch <map> <serverId> <seed>, both run `devmap <map>`; the partner sends coopLoaded when
+//           host replies coopAccept + coopLaunch <map> <serverId> <seed> <skill>, both run `devmap <map>`; the partner sends coopLoaded when
 //           its level runs; the host's simulation is held until then (load barrier).
 // Tick T:   G_RunFrame state 1 (the stock input hand-over 0x4403F0, called from 0x4A3F6A) = our ExecuteTick:
 //           host: frame T = { T, state hash, block player 0 = host's new usercmds, block player 1 = partner's queued usercmds },
@@ -700,6 +700,98 @@ namespace Components
 			}
 		}
 
+		// Server commands to one player (Phase 4). SP queues every server command in client 0's reliable buffer, and each frame
+		// SV_SendClientMessages hands that buffer to the local client (CL_ParseCommandString), whatever player that client shows.
+		// Most commands are the level's (configstrings "cs", sounds, level audio "reverb"/"eq" on level.player, ...): both PCs need them
+		// and they stay as they are. The player-targeted ones come from SV_GameSendServerCommand(clientNum, ...) inlined in the
+		// senders below, each with "TEST reg,reg; JA skip" before clients + clientNum * 0xD728, i.e. client 0 only: player 2 got none
+		// of his, and the partner's client ran player 1's (his weapon switched with player 1's). For these 13 senders:
+		// - the JA is NOPed (bytes checked first), so a command for client 1 is sent too;
+		// - their call to SV_SendServerCommand 0x5C7F00 goes through TargetedSend_Stub, which marks the command as targeted;
+		// - after formatting (0x5C7F2F, EDI = client) a targeted command for this PC's player goes to client 0's buffer (the one this
+		//   PC's client reads), one for the other PC's player is dropped (his own PC sends it: same simulation).
+		// Left as they were: the 5 audio senders (eq, reverb, deactivatereverb, setchannelvol, deactivatechannelvol: the levels call
+		// them on level.player for the level's sound, so both PCs keep getting them) and the console print at 0x4AD607 (its branch
+		// goes on into client connection code). Server commands reach only the clients: the simulation is the same on both PCs.
+		constexpr DWORD TARGETED_SENDERS[][2] = { // { JA of the client-0-only guard, CALL 0x5C7F00 of the client path }
+			{ 0x4AC640, 0x4AC654 }, // print
+			{ 0x4AD048, 0x4AD05C }, // god
+			{ 0x4AD0D8, 0x4AD0EC }, // demigod
+			{ 0x4AD168, 0x4AD17C }, // notarget
+			{ 0x4AD209, 0x4AD21D }, // noclip
+			{ 0x4AD2A9, 0x4AD2BD }, // ufo
+			{ 0x4AD367, 0x4AD37B }, // print
+			{ 0x4AD581, 0x4AD599 }, // print
+			{ 0x4B4BA5, 0x4B4BB9 }, // gm GAME_PICKUP_AMMO / CLIPONLY_AMMO
+			{ 0x4B4E8C, 0x4B4EA0 }, // menu_show_notify
+			{ 0x4B51D0, 0x4B51E4 }, // gm
+			{ 0x4F1896, 0x4F18AC }, // sw (G_SelectWeapon: switchToWeapon, give)
+			{ 0x4F18E6, 0x4F18FC }, // offhand (setOffhandSecondaryClass)
+		};
+
+		int targetedSend = 0;
+		int routedLogged = 0;
+
+		void __declspec(naked) TargetedSend_Stub()
+		{
+			__asm
+			{
+				mov targetedSend, 1
+				push 0x5C7F00
+				ret
+			}
+		}
+
+		std::uint8_t* __cdecl ServerCommandTarget(std::uint8_t* cl, const char* text)
+		{
+			const bool targeted = targetedSend != 0;
+			targetedSend = 0;
+			if (!targeted || !cl || Coop::Players() < 2)
+				return cl;
+			auto* clients = *reinterpret_cast<std::uint8_t**>(0x14C2BA0);
+			if (!clients)
+				return cl;
+			const auto offset = cl - clients;
+			const int n = offset >= 0 && offset % 0xD728 == 0 ? static_cast<int>(offset / 0xD728) : -1;
+			const int local = CoopNet::Active() ? CoopNet::LocalClient() : 0;
+			const bool mine = n == local;
+			if (routedLogged < 200)
+			{
+				routedLogged++;
+				Coop::Log("net: command for player %d (%s) at tick %d: %.80s", n + 1, mine ? "this PC" : "the other PC", Coop::LevelTimeNow(),
+					text ? text : "");
+			}
+			return mine ? clients : reinterpret_cast<std::uint8_t*>(-1);
+		}
+
+		void __declspec(naked) ServerCommandTarget_Stub()
+		{
+			__asm
+			{
+				pushad
+				lea eax, [esp + 0x24]  // the formatted text (the sender's buffer at [esp+4] before PUSHAD)
+				push eax
+				push edi
+				call ServerCommandTarget
+				add esp, 8
+				mov [esp], eax      // popad loads it into EDI (pushed last)
+				popad
+				cmp edi, -1
+				je drop
+				test edi, edi       // the replaced code: TEST EDI,EDI / JZ 0x5C7F40 / MOV EAX,[EDI+8]
+				jz all
+				mov eax, [edi + 8]
+				push 0x5C7F36
+				ret
+			all:
+				push 0x5C7F40
+				ret
+			drop:
+				push 0x5C7F89       // POP EDI, free the text buffer, RET
+				ret
+			}
+		}
+
 		// Bodies (Phase 3, maps/_coop.gsc): every player has a body entity (script model) in the simulation; this PC's own player's body
 		// is left out of this PC's snapshots (svFlags SVF_NOCLIENT 0x1 at +0xA6 only while the snapshot is built), so the camera is not
 		// inside it. The script publishes the entity numbers in the dvars coop_body0 / coop_body1 (same on both PCs).
@@ -868,6 +960,47 @@ namespace Components
 			}
 		}
 
+		// Difficulty: level.gameSkill = getdvarint("g_gameskill") (maps\_gameskill), not a saved setting for the getdvar guard, so
+		// each PC read its own: different AI accuracy, damage, bleed-out time = two simulations (MW2 rule: the host's difficulty for
+		// both). The host sends its g_gameskill in coopLaunch; the partner plays the session with it and gets its own back after.
+		int partnerOwnSkill = -1;
+
+		// g_gameskill is read only: the menus set it with the server commands difficultyEasy / Medium / Hard / Fu (SV_Difficulty*,
+		// which also set player_damageMultiplier and player_deathInvulnerableTime for that skill)
+		const char* SkillCommand(int skill)
+		{
+			static const char* const names[] = { "difficultyEasy", "difficultyMedium", "difficultyHard", "difficultyFu" };
+			return names[skill < 0 ? 0 : skill > 3 ? 3 : skill];
+		}
+
+		int HostSkill()
+		{
+			const auto* d = Dvars::Functions::Dvar_FindVar("g_gameskill");
+			return d ? d->current.integer : 1;
+		}
+
+		void UseHostSkill(int skill)
+		{
+			const auto* d = Dvars::Functions::Dvar_FindVar("g_gameskill");
+			if (!d || skill < 0 || skill > 3)
+				return;
+			if (partnerOwnSkill < 0)
+				partnerOwnSkill = d->current.integer;
+			if (d->current.integer != skill)
+			{
+				Coop::Log("net: difficulty %d (the host's; this PC had %d)", skill, d->current.integer);
+				Command::Execute(SkillCommand(skill), true);
+			}
+		}
+
+		void RestoreOwnSkill()
+		{
+			if (partnerOwnSkill < 0)
+				return;
+			Command::Execute(SkillCommand(partnerOwnSkill), true);
+			partnerOwnSkill = -1;
+		}
+
 		// End of the session: tell the other PC, stop. message: shown as an ERR_DROP error (back to the main menu) when a level runs.
 		void EndSession(const char* reason, const char* message)
 		{
@@ -877,6 +1010,7 @@ namespace Components
 			role = CoopNet::ROLE_OFF;
 			launched = false;
 			sessionActive = 0;
+			RestoreOwnSkill();
 			havePeer = false;
 			snapshotOffset = 0;
 			frames.clear();
@@ -940,7 +1074,7 @@ namespace Components
 				havePeer = true;
 				Coop::Log("net: coopConnect from %s", Addr(from));
 				SendOOB(Utils::String::VA("coopAccept 1 %s %u", mapName.c_str(), serverId));
-				SendOOB(Utils::String::VA("coopLaunch %s %u %d", mapName.c_str(), serverId, seed));
+				SendOOB(Utils::String::VA("coopLaunch %s %u %d %d", mapName.c_str(), serverId, seed, HostSkill()));
 				if (!launched)
 					Launch();
 				return;
@@ -968,8 +1102,10 @@ namespace Components
 				std::string map;
 				std::uint32_t id = 0;
 				int s = 0;
-				in >> map >> id >> s;
+				int skill = -1;
+				in >> map >> id >> s >> skill;
 				accepted = true;
+				UseHostSkill(skill);
 				if (launched && id == serverId)
 					return;
 				mapName = map;
@@ -1212,7 +1348,7 @@ namespace Components
 				if (!partnerLoaded && now - lastLaunchSend > 1000)
 				{
 					lastLaunchSend = now;
-					SendOOB(Utils::String::VA("coopLaunch %s %u %d", mapName.c_str(), serverId, seed));
+					SendOOB(Utils::String::VA("coopLaunch %s %u %d %d", mapName.c_str(), serverId, seed, HostSkill()));
 				}
 				if (!frames.empty() && now - lastResend >= 30)
 				{
@@ -1289,8 +1425,9 @@ namespace Components
 			Game::UI_DrawTextWithGlow(1, 1, placement, text, font, 320.0f - width / 2.0f, y, scale, color, 3, glow, 0, 0);
 		}
 
-		// Downed and revive texts (Phase 4, maps/_coop.gsc publishes coop_downtime<n> = seconds left, coop_revive<n> = percent).
-		// Each PC shows its own player's side: "you are down" or "your partner is down".
+		// Downed and revive texts like IW4 Spec Ops (maps\_coop.gsc player_coop_downed_hud: "Bleeding out" / partner text and a timer
+		// below the centre (IW4: 75 units; here 100, under CoD4's own use hints such as "Press [Use] to swap for ..."), "Being revived..." / "Reviving partner..." while the Use button is held). maps/_coop.gsc publishes
+		// coop_downtime<n> = seconds left and coop_revive<n> = revive percent; each PC shows its own player's side.
 		void DrawDowned()
 		{
 			if (Coop::Players() < 2 || !LevelRunning())
@@ -1298,28 +1435,31 @@ namespace Components
 			if (*reinterpret_cast<int*>(0xE19904)) // level.missionFailed (GScr_MissionFailed 0x4D3080): the fail screen is up
 				return;
 			const int me = CoopNet::Active() ? CoopNet::LocalClient() : 0;
-			const int other = 1 - me;
 			const float white[4] = { 1.0f, 1.0f, 1.0f, 0.95f };
-			const float red[4] = { 1.0f, 0.35f, 0.3f, 0.95f };
-			if (Coop::Downed(me))
+			for (const int n : { me, 1 - me })
 			{
-				const int left = DvarInt(me ? "coop_downtime1" : "coop_downtime0");
-				const int revive = DvarInt(me ? "coop_revive1" : "coop_revive0");
-				DrawCentered("You are down", 315.0f, 0.5f, red);
+				if (!Coop::Downed(n))
+					continue;
+				const int left = DvarInt(n ? "coop_downtime1" : "coop_downtime0");
+				const int revive = DvarInt(n ? "coop_revive1" : "coop_revive0");
+				// IW4 colours the text by the time left (stages: yellow, then red near the end)
+				const float yellow[4] = { 1.0f, 0.85f, 0.2f, 0.95f };
+				const float red[4] = { 1.0f, 0.3f, 0.25f, 0.95f };
+				const float* color = left > 20 ? yellow : red;
+				const bool mine = n == me;
 				if (revive > 0)
-					DrawCentered(Utils::String::VA("Your partner is reviving you: %d%%", revive), 340.0f, 0.4f, white);
+				{
+					DrawCentered(mine ? "Being revived..." : "Reviving partner...", 340.0f, 0.45f, white);
+					DrawCentered(Utils::String::VA("%d%%", revive), 365.0f, 0.4f, white);
+				}
 				else
-					DrawCentered(Utils::String::VA("Wait for your partner to revive you (%d s)", left), 340.0f, 0.4f, white);
-			}
-			else if (Coop::Downed(other))
-			{
-				const int left = DvarInt(other ? "coop_downtime1" : "coop_downtime0");
-				const int revive = DvarInt(other ? "coop_revive1" : "coop_revive0");
-				DrawCentered("Your partner is down", 315.0f, 0.5f, red);
-				if (revive > 0)
-					DrawCentered(Utils::String::VA("Reviving: %d%%", revive), 340.0f, 0.4f, white);
-				else
-					DrawCentered(Utils::String::VA("Hold Use next to your partner to revive (%d s)", left), 340.0f, 0.4f, white);
+				{
+					DrawCentered(mine ? "Bleeding out" : "Partner bleeding out", 340.0f, 0.45f, color);
+					DrawCentered(Utils::String::VA("%d:%02d", left / 60, left % 60), 365.0f, 0.4f, color);
+					if (!mine)
+						DrawCentered("Hold Use next to your partner to revive", 387.0f, 0.35f, white);
+				}
+				return; // one downed player at a time (both down = mission failed)
 			}
 		}
 	}
@@ -1481,6 +1621,30 @@ namespace Components
 		Utils::Hook::Set<void*>(0x6818F4, reinterpret_cast<void*>(ButtonPressedGuard));    // player method buttonpressed
 		Utils::Hook(0x4FA092, FxVisibility_Stub, HOOK_CALL).install()->quick();
 		Utils::Hook(0x5C8515, PausingMenuCheck, HOOK_CALL).install()->quick();  // menus do not pause a session
+		// player-targeted server commands for player 2 too, each to the PC of its player
+		{
+			// all or nothing: guards opened without the routing would fill client 1's buffer until "Server command overflow"
+			int matched = 0;
+			for (const auto& t : TARGETED_SENDERS)
+			{
+				const auto* ja = reinterpret_cast<const std::uint8_t*>(t[0]);
+				const auto* call = reinterpret_cast<const std::uint8_t*>(t[1]);
+				if (ja[0] == 0x77 && call[0] == 0xE8 && t[1] + 5 + *reinterpret_cast<const std::int32_t*>(call + 1) == 0x5C7F00)
+					matched++;
+			}
+			const auto* t = reinterpret_cast<const std::uint8_t*>(0x5C7F2F);
+			if (matched == static_cast<int>(std::size(TARGETED_SENDERS)) && t[0] == 0x85 && t[1] == 0xFF && t[2] == 0x74)
+			{
+				Utils::Hook(0x5C7F2F, ServerCommandTarget_Stub, HOOK_JUMP).install()->quick();
+				for (const auto& s : TARGETED_SENDERS)
+				{
+					Utils::Hook(s[1], TargetedSend_Stub, HOOK_CALL).install()->quick();
+					Utils::Hook::Nop(s[0], 2);
+				}
+			}
+			else
+				Coop::Log("net: server command routing NOT installed (%d of %zu senders matched)", matched, std::size(TARGETED_SENDERS));
+		}
 		for (const DWORD at : { 0x4B9E9Du, 0x4B9EDBu }) // level exit Cbuf_AddText calls in 0x4B9E40
 			Utils::Hook(at, LevelCommand_Stub, HOOK_CALL).install()->quick();
 		for (const DWORD at : { 0x4B9DD0u, 0x4B9E1Au, 0x4B9E33u }) // tail JMPs to Cbuf_AddText in 0x4B9DC0 (a CALL there fell through: run p2q)

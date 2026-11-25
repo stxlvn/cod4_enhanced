@@ -167,28 +167,56 @@ namespace Components
 
 		bool consoleReady = false;
 
-		// Downed players (Phase 4, maps\_coop.gsc does the rest): a player whose partner is still up does not die. The player's die handler
-		// (entityHandlers[0x11].die = player_die 0x4ADF60, pointer at 0x6DEBF4) leaves him at 1 health and marks him down; the script reads
-		// and clears the mark (methods coopdowned / coopsetdowned). Both PCs run this at the same tick (same damage, same simulation).
-		int downed[2] = { 0, 0 };
+		// Downed players = IW4 Spec Ops last stand (maps\_coop.gsc does the rest). The mark lives in the player state: pm_flags bit 24
+		// (SP uses bits 0-23), so it is saved and loaded with the player, reaches the player's own client in the snapshot (SP copies
+		// the whole playerState) and the client's prediction runs the same last stand movement as the server.
+		constexpr std::uint32_t PMF_COOP_DOWNED = 0x01000000;
+		int reviveUse[2] = { 0, 0 };
 
+		bool IsDown(int n)
+		{
+			if (n < 0 || n >= 2 || n >= players || !*reinterpret_cast<void**>(LEVEL_CLIENTS))
+				return false;
+			return (*reinterpret_cast<std::uint32_t*>(Coop::GameClient(n) + 0xC) & PMF_COOP_DOWNED) != 0;
+		}
+
+		void SetDown(int n, bool down)
+		{
+			if (n < 0 || n >= 2 || n >= players || !*reinterpret_cast<void**>(LEVEL_CLIENTS))
+				return;
+			auto& flags = *reinterpret_cast<std::uint32_t*>(Coop::GameClient(n) + 0xC);
+			flags = down ? (flags | PMF_COOP_DOWNED) : (flags & ~PMF_COOP_DOWNED);
+		}
+
+		// The player's die handler (entityHandlers[0x11].die = player_die 0x4ADF60, pointer at 0x6DEBF4, called by G_Damage 0x4AE5E0):
+		// - a player whose partner is up does not die: 1 health, marked down (IW4: EnableDeathShield + the "deathshield" notify);
+		// - a downed player does not die either (death shield): the script ends the last stand (bleed-out / both down -> mission failed).
+		// Both PCs run this at the same tick (same damage, same simulation).
 		void __cdecl PlayerDie_Hook(std::uint8_t* self, std::uint8_t* inflictor, std::uint8_t* attacker, int damage, int mod, int weapon,
 			const float* dir, int hitLoc)
 		{
 			const int me = static_cast<int>((self - reinterpret_cast<std::uint8_t*>(G_ENTITIES)) / ENT_SIZE);
-			if (players > 1 && me >= 0 && me < 2 && !downed[me])
+			if (players > 1 && me >= 0 && me < 2)
 			{
-				const int other = 1 - me;
-				std::uint8_t* oe = Coop::Entity(other);
-				std::uint8_t* oc = Coop::GameClient(other);
-				const bool otherUp = oe[ENT_INUSE] && *reinterpret_cast<int*>(oe + 0x144) > 0 && !downed[other] &&
-					*reinterpret_cast<int*>(oc + GC_CONNECTED) == 2 && *reinterpret_cast<int*>(oc + GC_PMTYPE) < 4;
-				if (otherUp)
+				bool keep = IsDown(me);
+				if (!keep)
+				{
+					const int other = 1 - me;
+					std::uint8_t* oe = Coop::Entity(other);
+					std::uint8_t* oc = Coop::GameClient(other);
+					keep = oe[ENT_INUSE] && *reinterpret_cast<int*>(oe + 0x144) > 0 && !IsDown(other) &&
+						*reinterpret_cast<int*>(oc + GC_CONNECTED) == 2 && *reinterpret_cast<int*>(oc + GC_PMTYPE) < 4;
+					if (keep)
+					{
+						SetDown(me, true);
+						Coop::Log("player %d down at tick %d (damage %d, means %d)", me + 1, LevelTime(), damage, mod);
+					}
+				}
+				if (keep)
 				{
 					*reinterpret_cast<int*>(self + 0x144) = 1;
 					*reinterpret_cast<std::uint32_t*>(self + 0x130) &= ~0x20u; // G_Damage's "client died" flag
-					downed[me] = 1;
-					Coop::Log("player %d down at tick %d (damage %d, means %d)", me + 1, LevelTime(), damage, mod);
+					*reinterpret_cast<int*>(Coop::GameClient(me) + 0x124) = 1;  // ps.stats[STAT_HEALTH]
 					return;
 				}
 			}
@@ -196,9 +224,61 @@ namespace Components
 				self, inflictor, attacker, damage, mod, weapon, dir, hitLoc);
 		}
 
+		// Last stand movement (IW4 PM_LASTSTAND, pm_type 5 in IW4 SP ClientThink 0x14015be30): eye height 22 (IW4 and IW3 MP use 22,
+		// between crouch 40 and prone 11) and moves scaled by player_lastStandCrawlSpeedScale (IW4 default 0.2) instead of the stance's
+		// scale. IW3 SP has no last stand pm_type; its pmove code (shared by the server and the client's prediction) gets it here:
+		// - PM_CheckDuck 0x5B9E50 picks the stance's eye height (ps+0xF0) and calls PM_ViewHeightAdjust 0x5B99C0 at 0x5BA547 (ECX = pml,
+		//   [esp+4] = pm, caller pops): for a downed player the target is 22 for that call only (the adjust moves the eye there at 180/s,
+		//   the path IW3 MP last stand uses) and the crouch target (bounds, stance) is put back right after it;
+		// - PM_CmdScaleForStance 0x5B82A0 (EAX = pm, result in ST0), called at 0x5B8539 and 0x5BAB5E: the crawl scale instead.
+		Game::dvar_s* coop_crawlscale = nullptr;
+
+		float __cdecl CrawlScale()
+		{
+			return coop_crawlscale ? coop_crawlscale->current.value : 0.2f;
+		}
+
+		void __declspec(naked) ViewHeightAdjust_Stub()
+		{
+			__asm
+			{
+				mov eax, [esp + 4]       // pm
+				mov eax, [eax]           // ps
+				test dword ptr [eax + 0xC], 0x01000000
+				jnz down
+				mov eax, 0x5B99C0
+				jmp eax
+			down:
+				push esi
+				mov esi, eax
+				push dword ptr [esi + 0xF0] // the stance's eye height target
+				mov dword ptr [esi + 0xF0], 22
+				push dword ptr [esp + 0xC]  // pm (saved target, esi, return address above it)
+				mov eax, 0x5B99C0
+				call eax                    // ECX (pml) untouched
+				add esp, 4
+				pop dword ptr [esi + 0xF0]
+				pop esi
+				ret
+			}
+		}
+
+		void __declspec(naked) CmdScaleForStance_Stub()
+		{
+			__asm
+			{
+				mov ecx, [eax]           // pm->ps
+				test dword ptr [ecx + 0xC], 0x01000000
+				jnz down
+				mov ecx, 0x5B82A0
+				jmp ecx
+			down:
+				jmp CrawlScale           // float in ST0, like the original
+			}
+		}
+
 		void DecidePlayers()
 		{
-			downed[0] = downed[1] = 0;
 			int want = coop_players ? coop_players->current.integer : 1;
 			if (CoopNet::Active())
 			{
@@ -501,7 +581,7 @@ namespace Components
 
 	bool Coop::Downed(int n)
 	{
-		return n >= 0 && n < 2 && downed[n];
+		return IsDown(n);
 	}
 
 	int Coop::LevelTimeNow()
@@ -510,9 +590,30 @@ namespace Components
 	}
 
 	// Test input for player 2 (Phase 1). Lockstep input replaces this in Phase 2.
+	// Revive use (IW4 uses a usable entity on the downed player, so Use revives instead of taking a weapon on the ground; IW3 SP
+	// script models cannot be made usable): Use (buttons 0x28 = use | usereload) pressed within 128 units of the downed partner is
+	// taken out of the player's usercmd before the game sees it (no weapon pickup, no door) and kept for the script
+	// (coopreviveuse). Both PCs run the same usercmds, so both decide the same.
 	void Coop::Think(int n, const std::uint8_t* cmd)
 	{
-		std::memcpy(ServerClient(n) + SVCL_LASTCMD, cmd, USERCMD_SIZE);
+		std::uint8_t* last = ServerClient(n) + SVCL_LASTCMD;
+		std::memcpy(last, cmd, USERCMD_SIZE);
+		if (n >= 0 && n < 2)
+		{
+			reviveUse[n] = 0;
+			auto& buttons = *reinterpret_cast<int*>(last + 4);
+			if (players > 1 && (buttons & 0x28) && IsDown(1 - n) && !IsDown(n))
+			{
+				const float* a = reinterpret_cast<float*>(Entity(n) + ENT_ORIGIN);
+				const float* b = reinterpret_cast<float*>(Entity(1 - n) + ENT_ORIGIN);
+				const float dx = a[0] - b[0], dy = a[1] - b[1], dz = a[2] - b[2];
+				if (dx * dx + dy * dy + dz * dz < 128.0f * 128.0f)
+				{
+					reviveUse[n] = 1;
+					buttons &= ~0x28;
+				}
+			}
+		}
 		ClientThink(n);
 	}
 
@@ -533,10 +634,10 @@ namespace Components
 		{
 			yaw = std::atan2(dy, dx) * 180.0f / 3.14159265f;
 			forward = dist > 160.0f ? 127 : 0;
-			if (other >= 0 && other < 2 && downed[other] && !downed[self])
+			if (IsDown(other) && !IsDown(self))
 			{
-				forward = dist > 40.0f ? 127 : 0; // a downed partner: go to him and hold use (QA of the revive)
-				reviving = dist <= 70.0f;
+				forward = dist > 40.0f ? 127 : 0; // a downed partner: go to him and hold use (QA of the revive, IW4 use radius 128)
+				reviving = dist <= 100.0f;
 			}
 		}
 		else if (!std::strcmp(mode, "front"))
@@ -634,6 +735,7 @@ namespace Components
 			coop_botfire = Dvars::Register::Dvar_RegisterBool("coop_botfire", "Test bot fires every 4 s", false, Game::none);
 			coop_botgod = Dvars::Register::Dvar_RegisterBool("coop_botgod", "Test: player 2 cannot die", false, Game::none);
 			coop_botkit = Dvars::Register::Dvar_RegisterBool("coop_botkit", "Test: player 2 gets player 1's weapons as soon as player 1 has one", false, Game::none);
+			coop_crawlscale = Dvars::Register::Dvar_RegisterFloat("coop_crawlscale", "Downed player's crawl speed scale (IW4 player_lastStandCrawlSpeedScale)", 0.2f, 0.0f, 1.0f, Game::none);
 		});
 
 		// Two-entry client arrays of our own (stock: one client_t at 0x14A39D0, one gclient_s at 0xE0DA00 packed against level_locals).
@@ -656,6 +758,9 @@ namespace Components
 		Utils::Hook(0x4A64D3, ClientSpawnInit_Stub, HOOK_CALL).install()->quick();  // ClientSpawn, after the memset
 		Utils::Hook(0x4A3D1B, DeathReload_Stub, HOOK_CALL).install()->quick();      // ClientThink_real: death reload only for player 1
 		Utils::Hook(0x4D30CB, MissionFailedReload_Stub, HOOK_CALL).install()->quick(); // GScr_MissionFailed: the same reload
+		Utils::Hook(0x5BA547, ViewHeightAdjust_Stub, HOOK_CALL).install()->quick();    // last stand eye height 22 (PM_CheckDuck)
+		Utils::Hook(0x5B8539, CmdScaleForStance_Stub, HOOK_CALL).install()->quick();   // last stand crawl speed
+		Utils::Hook(0x5BAB5E, CmdScaleForStance_Stub, HOOK_CALL).install()->quick();
 		Utils::Hook(0x4BB123, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 7
 		Utils::Hook(0x4A3F70, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 1 (0x4A3F60)
 
@@ -664,12 +769,15 @@ namespace Components
 		// coop_give: player 1's weapons to player 2 (test kit)
 		GSC::AddMethod("coopdowned", [](Game::scr_entref_t entref)
 		{
-			Game::Scr_AddInt(entref.entnum < 2 ? downed[entref.entnum] : 0);
+			Game::Scr_AddInt(IsDown(entref.entnum) ? 1 : 0);
+		}, false);
+		GSC::AddMethod("coopreviveuse", [](Game::scr_entref_t entref)
+		{
+			Game::Scr_AddInt(entref.entnum < 2 ? reviveUse[entref.entnum] : 0);
 		}, false);
 		GSC::AddMethod("coopsetdowned", [](Game::scr_entref_t entref)
 		{
-			if (entref.entnum < 2)
-				downed[entref.entnum] = Game::Scr_GetInt(0);
+			SetDown(entref.entnum, Game::Scr_GetInt(0) != 0);
 		}, false);
 		Utils::Hook::Set<void*>(0x6DEBF4, reinterpret_cast<void*>(PlayerDie_Hook)); // entityHandlers[0x11].die
 
@@ -701,10 +809,15 @@ namespace Components
 				return;
 			}
 			const auto* sp = Dvars::Functions::Dvar_FindVar("coop_script_players");
+			const auto* skill = Dvars::Functions::Dvar_FindVar("g_gameskill");
+			Log("status: g_gameskill %d", skill ? skill->current.integer : -1);
 			Log("status: level.time %d maxclients %d num_entities %d players %d | script level.players.size %s", LevelTime(),
 				*reinterpret_cast<int*>(LEVEL_MAXCLIENTS), *reinterpret_cast<int*>(LEVEL_NUM_ENTITIES), players, sp ? sp->current.string : "(unset)");
 			for (int i = 0; i < players; i++)
 			{
+				const auto* hits = Dvars::Functions::Dvar_FindVar(i ? "coop_hits1" : "coop_hits0");
+				if (hits && hits->type == Game::dvar_type::string && hits->current.string)
+					Log("status: hits on player %d: %s", i + 1, hits->current.string);
 				const auto* bd = Dvars::Functions::Dvar_FindVar(i ? "coop_body1" : "coop_body0");
 				if (bd && bd->type == Game::dvar_type::string && bd->current.string && *bd->current.string)
 				{
@@ -718,8 +831,10 @@ namespace Components
 				std::uint8_t* cl = GameClient(i);
 				std::uint8_t* ent = Entity(i);
 				const float* o = reinterpret_cast<float*>(cl + GC_ORIGIN);
-				Log("status: client %d downed %d connected %d clientNum %d pm %d weapon %d origin (%.0f %.0f %.0f) view yaw %.0f | ent inuse %d health %d client %p sentient %p",
-					i, downed[i], *reinterpret_cast<int*>(cl + GC_CONNECTED), *reinterpret_cast<int*>(cl + GC_CLIENTNUM), *reinterpret_cast<int*>(cl + GC_PMTYPE), *reinterpret_cast<int*>(cl + GC_WEAPON),
+				Log("status: client %d weapons %08x %08x", i, *reinterpret_cast<std::uint32_t*>(cl + 0x534), *reinterpret_cast<std::uint32_t*>(cl + 0x538));
+				Log("status: client %d downed %d pmf %x eye %d/%.1f connected %d clientNum %d pm %d weapon %d origin (%.0f %.0f %.0f) view yaw %.0f | ent inuse %d health %d client %p sentient %p",
+					i, IsDown(i) ? 1 : 0, *reinterpret_cast<std::uint32_t*>(cl + 0xC), *reinterpret_cast<int*>(cl + 0xF0), *reinterpret_cast<float*>(cl + 0xF4),
+					*reinterpret_cast<int*>(cl + GC_CONNECTED), *reinterpret_cast<int*>(cl + GC_CLIENTNUM), *reinterpret_cast<int*>(cl + GC_PMTYPE), *reinterpret_cast<int*>(cl + GC_WEAPON),
 					o[0], o[1], o[2], reinterpret_cast<float*>(cl + GC_VIEWANGLES)[1], ent[ENT_INUSE],
 					reinterpret_cast<Game::gentity_s*>(ent)->health, *reinterpret_cast<void**>(ent + ENT_CLIENT), *reinterpret_cast<void**>(ent + ENT_SENTIENT));
 			}
