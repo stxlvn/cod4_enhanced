@@ -1115,6 +1115,7 @@ qa_keep_health()
 //   "switch <n> <weapon>"         switch player n to a weapon he has
 //   "notify <n> <message>"        notify player n (e.g. "switch weapons", as his key would)
 //   "notifyall <message>"         the same notify on every player in one frame
+//   "nearenemy <n> <dist> <dz>"   player n put dist units in front of the enemy AI nearest to player 1, facing it
 //   "flagwatch <n> <flag>"        mirror a level flag into dvar coop_f_<flag> (0 / 1)
 //   "flagset <n> <flag>"          set a level flag
 //   "heroes3tp <n> <key> <x> <y> <z>"  move level.heroes3[ key ] there
@@ -1155,6 +1156,26 @@ qa_commands()
 			trigs = getentarray( w[ 2 ], "script_noteworthy" );
 			for ( k = 0; k < trigs.size; k++ )
 				trigs[ k ] common_scripts\utility::trigger_on();
+			continue;
+		}
+		if ( w[ 0 ] == "nearenemy" && w.size >= 4 )
+		{
+			// player n put <dist> units in front of the nearest enemy AI (to player 1), facing it
+			ai = getaiarray( "axis" );
+			best = undefined;
+			for ( k = 0; k < ai.size; k++ )
+			{
+				if ( !isdefined( best ) || distance( ai[ k ].origin, level.player.origin ) < distance( best.origin, level.player.origin ) )
+					best = ai[ k ];
+			}
+			if ( isdefined( best ) && int( w[ 1 ] ) < level.players.size )
+			{
+				p = level.players[ int( w[ 1 ] ) ];
+				fwd = anglestoforward( ( 0, best.angles[ 1 ], 0 ) );
+				p setorigin( best.origin + vector_multiply( fwd, int( w[ 2 ] ) ) + ( 0, 0, int( w[ 3 ] ) ) );
+				p setplayerangles( ( 0, best.angles[ 1 ] + 180, 0 ) );
+				setdvar( "coop_qa_nearenemy", best getentitynumber() + " at " + best.origin );
+			}
 			continue;
 		}
 		if ( w[ 0 ] == "notifyall" )

@@ -282,8 +282,28 @@ namespace Components
 			}
 		}
 
+		// Levels set the threat bias (sentient +0x8, ent.threatbias) and the threat bias group (+0xC, setthreatbiasgroup) on
+		// level.player only: the "player" / "allies" groups most levels put him in, ambush's "oblivious" scenes, _gameskill's bias.
+		// Player 2 follows player 1's every frame so the AI treats both alike. (Not ignoreme: the last stand sets it per player.)
+		void MirrorThreatBias()
+		{
+			auto* s1 = *reinterpret_cast<std::uint8_t**>(Coop::Entity(0) + ENT_SENTIENT);
+			if (!s1)
+				return;
+			for (int n = 1; n < players; n++)
+			{
+				auto* s2 = *reinterpret_cast<std::uint8_t**>(Coop::Entity(n) + ENT_SENTIENT);
+				if (!s2 || !Coop::Entity(n)[ENT_INUSE])
+					continue;
+				*reinterpret_cast<int*>(s2 + 0x8) = *reinterpret_cast<int*>(s1 + 0x8);
+				*reinterpret_cast<int*>(s2 + 0xC) = *reinterpret_cast<int*>(s1 + 0xC);
+			}
+		}
+
 		void __cdecl UpdatePlayerTriggersAll(std::uint8_t* first)
 		{
+			if (players > 1)
+				MirrorThreatBias();
 			UpdatePlayerTriggersFor(first);
 			for (int n = 1; n < players; n++)
 			{
