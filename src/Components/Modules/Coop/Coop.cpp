@@ -342,6 +342,145 @@ namespace Components
 			}
 		}
 
+		// Screenshots from the frame itself: the stock screenshot / screenshotJPEG read the screen (R_GetFrontBufferData 0x5F9620,
+		// IDirect3DSwapChain9::GetFrontBufferData), so a window over the game (the test copies under the desktop app) was in the
+		// picture, and a window partly off-screen gave none. The same function reads the device's back buffer instead (copied to
+		// system memory; a multisampled one resolved first). Arguments as the exe calls it: width, height, buffer (3 bytes per pixel,
+		// B G R, rows top-down), cdecl, returns bool.
+		constexpr DWORD R_GET_FRONT_BUFFER_DATA = 0x5F9620;
+		Game::dvar_s* r_screenshotBackBuffer = nullptr;
+
+		bool __cdecl ScreenshotFromBackBuffer(int width, int height, std::uint8_t* buffer)
+		{
+			IDirect3DDevice9* dev = Game::dx ? Game::dx->device : nullptr;
+			if (!dev || !buffer || width <= 0 || height <= 0)
+				return false;
+			IDirect3DSurface9* back = nullptr;
+			if (FAILED(dev->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &back)) || !back)
+				return false;
+			D3DSURFACE_DESC desc{};
+			back->GetDesc(&desc);
+			IDirect3DSurface9* source = back;
+			IDirect3DSurface9* resolved = nullptr;
+			if (desc.MultiSampleType != D3DMULTISAMPLE_NONE)
+			{
+				if (FAILED(dev->CreateRenderTarget(desc.Width, desc.Height, desc.Format, D3DMULTISAMPLE_NONE, 0, FALSE, &resolved, nullptr)) ||
+					FAILED(dev->StretchRect(back, nullptr, resolved, nullptr, D3DTEXF_NONE)))
+				{
+					if (resolved)
+						resolved->Release();
+					back->Release();
+					return false;
+				}
+				source = resolved;
+			}
+			IDirect3DSurface9* sys = nullptr;
+			bool ok = SUCCEEDED(dev->CreateOffscreenPlainSurface(desc.Width, desc.Height, desc.Format, D3DPOOL_SYSTEMMEM, &sys, nullptr)) && sys &&
+				SUCCEEDED(dev->GetRenderTargetData(source, sys));
+			D3DLOCKED_RECT lr{};
+			if (ok && SUCCEEDED(sys->LockRect(&lr, nullptr, D3DLOCK_READONLY)))
+			{
+				const int w = width < static_cast<int>(desc.Width) ? width : static_cast<int>(desc.Width);
+				const int h = height < static_cast<int>(desc.Height) ? height : static_cast<int>(desc.Height);
+				std::memset(buffer, 0, static_cast<size_t>(width) * height * 3);
+				for (int y = 0; y < h; y++)
+				{
+					const auto* src = static_cast<const std::uint8_t*>(lr.pBits) + static_cast<size_t>(y) * lr.Pitch;
+					std::uint8_t* dst = buffer + static_cast<size_t>(y) * width * 3;
+					for (int x = 0; x < w; x++, src += 4, dst += 3)
+					{
+						dst[0] = src[0];
+						dst[1] = src[1];
+						dst[2] = src[2];
+					}
+				}
+				sys->UnlockRect();
+			}
+			else
+				ok = false;
+			if (sys)
+				sys->Release();
+			if (resolved)
+				resolved->Release();
+			back->Release();
+			return ok;
+		}
+
+		// The screenshot command runs on the main thread while the render thread may still be drawing the frame (a shot read at that
+		// moment lacked the last 2D draws: the version text, the name tags). So the read is done by the render thread right before
+		// it presents the finished frame: IDirect3DSwapChain9::Present (vtable slot 3) is wrapped once, the main thread waits up to
+		// 500 ms for it, else reads at once (a single-threaded renderer presents on the main thread itself).
+		using SwapPresent_t = HRESULT(__stdcall*)(IDirect3DSwapChain9*, const RECT*, const RECT*, HWND, const RGNDATA*, DWORD);
+		SwapPresent_t swapPresentOriginal = nullptr;
+		struct ShotRequest
+		{
+			int width = 0;
+			int height = 0;
+			std::uint8_t* buffer = nullptr;
+			bool ok = false;
+		};
+		ShotRequest* volatile shotPending = nullptr;
+		HANDLE shotDone = nullptr;
+
+		HRESULT __stdcall SwapPresent_Hook(IDirect3DSwapChain9* sc, const RECT* src, const RECT* dst, HWND wnd, const RGNDATA* dirty, DWORD flags)
+		{
+			ShotRequest* req = static_cast<ShotRequest*>(InterlockedExchangePointer(reinterpret_cast<void* volatile*>(&shotPending), nullptr));
+			if (req)
+			{
+				req->ok = ScreenshotFromBackBuffer(req->width, req->height, req->buffer);
+				SetEvent(shotDone);
+			}
+			return swapPresentOriginal(sc, src, dst, wnd, dirty, flags);
+		}
+
+		void HookSwapPresent()
+		{
+			if (swapPresentOriginal)
+				return;
+			IDirect3DDevice9* dev = Game::dx ? Game::dx->device : nullptr;
+			IDirect3DSwapChain9* sc = nullptr;
+			if (!dev || FAILED(dev->GetSwapChain(0, &sc)) || !sc)
+				return;
+			void** vtable = *reinterpret_cast<void***>(sc);
+			swapPresentOriginal = reinterpret_cast<SwapPresent_t>(vtable[3]);
+			Utils::Hook::Set<void*>(&vtable[3], reinterpret_cast<void*>(SwapPresent_Hook));
+			sc->Release();
+			shotDone = CreateEventW(nullptr, FALSE, FALSE, nullptr);
+		}
+
+		// the three screenshot callers' call (0x5F9AC7, 0x5F9B7C, 0x5F9BE7); the screen read stays there for r_screenshotBackBuffer 0
+		bool __cdecl ScreenshotRead(int width, int height, std::uint8_t* buffer)
+		{
+			if (r_screenshotBackBuffer && r_screenshotBackBuffer->current.enabled)
+			{
+				HookSwapPresent();
+				if (swapPresentOriginal && shotDone)
+				{
+					ShotRequest req;
+					req.width = width;
+					req.height = height;
+					req.buffer = buffer;
+					ResetEvent(shotDone);
+					InterlockedExchangePointer(reinterpret_cast<void* volatile*>(&shotPending), &req);
+					if (WaitForSingleObject(shotDone, 500) == WAIT_OBJECT_0)
+					{
+						if (req.ok)
+							return true;
+					}
+					else if (InterlockedExchangePointer(reinterpret_cast<void* volatile*>(&shotPending), nullptr) != &req)
+					{
+						WaitForSingleObject(shotDone, 500); // the render thread took it just now: let it finish with the buffer
+						if (req.ok)
+							return true;
+					}
+				}
+				if (ScreenshotFromBackBuffer(width, height, buffer))
+					return true;
+				Coop::Log("screenshot: back buffer read failed, reading the screen");
+			}
+			return Utils::Hook::Call<bool(__cdecl)(int, int, std::uint8_t*)>(R_GET_FRONT_BUFFER_DATA)(width, height, buffer);
+		}
+
 		void __cdecl UpdatePlayerTriggersAll(std::uint8_t* first)
 		{
 			if (players > 1)
@@ -1050,7 +1189,8 @@ namespace Components
 		Events::OnDvarInit([]
 		{
 			consoleReady = true;
-			coop_players = Dvars::Register::Dvar_RegisterInt("coop_players", "Players in the next level (1 or 2; 2 = co-op test: player 2 is a bot)", 1, 1, 2, Game::none);
+			r_screenshotBackBuffer = Dvars::Register::Dvar_RegisterBool("r_screenshotBackBuffer", "Screenshots from the game's own frame (0: read the screen, the stock way)", true, Game::none);
+			coop_players =Dvars::Register::Dvar_RegisterInt("coop_players", "Players in the next level (1 or 2; 2 = co-op test: player 2 is a bot)", 1, 1, 2, Game::none);
 			coop_bot = Dvars::Register::Dvar_RegisterString("coop_bot", "Test bot for player 2: follow, front, walk, stand", "follow", Game::none);
 			coop_botfire = Dvars::Register::Dvar_RegisterBool("coop_botfire", "Test bot fires every 4 s", false, Game::none);
 			coop_botgod = Dvars::Register::Dvar_RegisterBool("coop_botgod", "Test: player 2 cannot die", false, Game::none);
@@ -1091,6 +1231,22 @@ namespace Components
 		Utils::Hook::Set<void*>(0x6DDF34, reinterpret_cast<void*>(GetWeaponModel_Safe)); // getweaponmodel: "" for a weapon without a world model
 		Utils::Hook(0x4B4560, HudUpdateClient, HOOK_JUMP).install()->quick();           // ps.hud without the other player's elements
 		{
+			// screenshots from the back buffer (ScreenshotRead): the callers' "call R_GetFrontBufferData"
+			bool ok = true;
+			for (const DWORD at : { 0x5F9AC7u, 0x5F9B7Cu, 0x5F9BE7u })
+			{
+				const auto* p = reinterpret_cast<const std::uint8_t*>(at);
+				ok = ok && p[0] == 0xE8 && at + 5 + *reinterpret_cast<const std::int32_t*>(p + 1) == R_GET_FRONT_BUFFER_DATA;
+			}
+			if (ok)
+			{
+				for (const DWORD at : { 0x5F9AC7u, 0x5F9B7Cu, 0x5F9BE7u })
+					Utils::Hook(at, ScreenshotRead, HOOK_CALL).install()->quick();
+			}
+			else
+				Coop::Log("screenshot: the screenshot code differs from the known exe: screenshots read the screen");
+		}
+		{
 			// actor pool with two players (HoldActorLimit): SP_actor's "test byte [ebx+12Ch], 2; jz fail" and Actor_Alloc's limit check
 			static const std::uint8_t forceTest[] = { 0xF6, 0x83, 0x2C, 0x01, 0x00, 0x00, 0x02, 0x74, 0x4E };
 			static const std::uint8_t allocLimit[] = { 0xA1, 0x80, 0xD9, 0xE0, 0x00, 0x8B, 0x0D, 0x64, 0x8E, 0xE1, 0x00, 0x3B, 0x48, 0x0C };
@@ -1117,6 +1273,19 @@ namespace Components
 		GSC::AddMethod("coopflags", [](Game::scr_entref_t entref)
 		{
 			Game::Scr_AddInt(entref.entnum < static_cast<unsigned>(players) ? *reinterpret_cast<int*>(GameClient(entref.entnum) + 0xC) : 0);
+		}, false);
+		// the body's jump (maps\_coop body_update): playerState jumpTime (the command time of his newest jump: a new value = a new jump;
+		// pm_flags 0x4000 stays set through the landing slowdown, so a jump right after a landing showed no new jump) and whether he
+		// stands on something (groundEntityNum != ENTITYNUM_NONE 2175)
+		GSC::AddMethod("coopjumptime", [](Game::scr_entref_t entref)
+		{
+			Game::Scr_AddInt(entref.entnum < static_cast<unsigned>(players) && psLayoutOk ?
+				reinterpret_cast<Game::playerState_s*>(GameClient(entref.entnum))->jumpTime : 0);
+		}, false);
+		GSC::AddMethod("cooponground", [](Game::scr_entref_t entref)
+		{
+			Game::Scr_AddInt(entref.entnum < static_cast<unsigned>(players) && psLayoutOk ?
+				(reinterpret_cast<Game::playerState_s*>(GameClient(entref.entnum))->groundEntityNum != 2175 ? 1 : 0) : 1);
 		}, false);
 		GSC::AddMethod("coopweaponstate", [](Game::scr_entref_t entref)
 		{

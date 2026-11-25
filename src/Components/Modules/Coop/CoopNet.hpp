@@ -19,6 +19,11 @@ namespace Components
 		static void ClearShowOnly();
 		// player's PC shows target's camera (-1: his own again); cleared at each level start (ClearShowOnly)
 		static void Spectate(int player, int target);
+		// nicknames: this PC's (dvar coop_name; empty = the Steam name, else "Player 1" / "Player 2") and the other PC's (coopNick)
+		static std::string OwnNickUtf8();
+		static void SetPeerNick(const std::string& utf8);
+		// player n's nickname in the game's code page (1251 in the Russian game, else 1252), for drawing
+		static std::string NickForDraw(int player);
 		// a lockstep session drives the running level
 		static bool Active();
 		// session seed for G_InitGame's holdrand (valid when Active)

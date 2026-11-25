@@ -1287,6 +1287,13 @@ namespace Components
 			}
 			if (cmd == "coopHb")
 				return;
+			if (cmd == "coopNick")
+			{
+				std::string rest;
+				std::getline(in, rest);
+				CoopNet::SetPeerNick(rest);
+				return;
+			}
 			if (cmd == "coopMap" && role == CoopNet::ROLE_PARTNER)
 			{
 				std::string map;
@@ -1457,6 +1464,7 @@ namespace Components
 				{
 					lastHb = now;
 					SendOOB("coopHb");
+					SendOOB(std::string("coopNick ") + CoopNet::OwnNickUtf8());
 					if (role == CoopNet::ROLE_HOST)
 					{
 						const auto* mapname = Dvars::Functions::Dvar_FindVar("mapname");
@@ -1624,8 +1632,225 @@ namespace Components
 		}
 	}
 
+	// ---- nicknames ----
+	namespace
+	{
+		Game::dvar_s* coop_name = nullptr;
+		std::string peerNick; // the other PC's nickname (UTF-8), from coopNick
+		std::string steamNick;
+		bool steamNickRead = false;
+
+		// up to 31 bytes without control characters or cut UTF-8 sequences, spaces trimmed
+		std::string SanitizeNick(const std::string& in)
+		{
+			std::string s;
+			for (const char c : in)
+			{
+				if (static_cast<unsigned char>(c) >= 0x20 && c != 0x7F)
+					s += c;
+			}
+			while (!s.empty() && s.front() == ' ')
+				s.erase(s.begin());
+			while (!s.empty() && s.back() == ' ')
+				s.pop_back();
+			if (s.size() > 31)
+			{
+				size_t n = 31;
+				while (n > 0 && (static_cast<unsigned char>(s[n]) & 0xC0) == 0x80)
+					n--;
+				s.resize(n);
+			}
+			return s;
+		}
+
+		// the Steam persona name Steam keeps for the last game it ran (HKCU\Software\Valve\Steam LastGameNameUsed)
+		const std::string& SteamNick()
+		{
+			if (!steamNickRead)
+			{
+				steamNickRead = true;
+				wchar_t buf[256] = {};
+				DWORD size = sizeof(buf);
+				if (RegGetValueW(HKEY_CURRENT_USER, L"Software\\Valve\\Steam", L"LastGameNameUsed", RRF_RT_REG_SZ, nullptr, buf, &size) == ERROR_SUCCESS)
+				{
+					char u8[512] = {};
+					if (WideCharToMultiByte(CP_UTF8, 0, buf, -1, u8, sizeof(u8), nullptr, nullptr) > 0)
+						steamNick = SanitizeNick(u8);
+				}
+			}
+			return steamNick;
+		}
+
+		bool GameIsRussian()
+		{
+			const auto* loc = Dvars::Functions::Dvar_FindVar("loc_language");
+			const char* name = loc ? Game::SEH_GetLanguageName(loc->current.integer) : nullptr;
+			return name && !_stricmp(name, "russian");
+		}
+
+		std::string DefaultNick(int player)
+		{
+			return std::string(GameIsRussian() ? "\xD0\x98\xD0\xB3\xD1\x80\xD0\xBE\xD0\xBA " : "Player ") + std::to_string(player + 1); // "Игрок N"
+		}
+
+		// UTF-8 to the game font's code page (its glyph tables are Windows-1251 in the Russian game, 1252 otherwise)
+		std::string Utf8ToGame(const std::string& u8)
+		{
+			wchar_t wide[64] = {};
+			if (MultiByteToWideChar(CP_UTF8, 0, u8.c_str(), -1, wide, 64) <= 0)
+				return u8;
+			char out[128] = {};
+			if (WideCharToMultiByte(GameIsRussian() ? 1251 : 1252, 0, wide, -1, out, sizeof(out), "?", nullptr) <= 0)
+				return u8;
+			return out;
+		}
+
+		// The other player's nickname over his head, the way IW3 MP / IW4 draw overhead names (KisakCOD cgame_mp/cg_draw_mp.cpp
+		// CG_DrawOverheadNames, CG_CalcNamePosition; SP's own WorldPosToScreenPos for waypoints does the same projection):
+		// - the point: his body's j_head, then 10 up: maps\_coop links an invisible tag_origin model to the bone (coop_tagent<n>), whose
+		//   cgame-interpolated position is read here (cg_entitiesArray 0x72B6E8, 0x180 bytes per entity, pose.origin at +0x14:
+		//   the exe indexes it as n * 3 << 7; IW3SP-MOD's Game::CG_GetEntity indexes it twice over);
+		// - the projection: the view axes (refdef.viewaxis) over tanHalfFov, on 640 x 480 (the full-screen placement);
+		// - shown while his head is in sight of this PC's player (maps\_coop traces it every server frame: coop_tagvis<n>) and his
+		//   body is shown (coop_tag<n>), faded in 250 ms and out 1000 ms (CG_FadeCrosshairNameAlpha); smaller with distance (near
+		//   256 units: full size, from 1024 on: 0.6 of it); not while this PC watches another player's camera.
+		struct TagFade
+		{
+			bool visible = false;
+			ULONGLONG start = 0;
+			ULONGLONG last = 0;
+		};
+		TagFade tagFade[2];
+
+		float TagAlpha(ULONGLONG now, const TagFade& f, ULONGLONG fadeIn, ULONGLONG fadeOut)
+		{
+			if (!f.last || now - f.last >= fadeOut)
+				return 0.0f;
+			if (f.last - f.start < fadeIn && f.visible)
+				return static_cast<float>(f.last - f.start) / static_cast<float>(fadeIn);
+			if (f.visible)
+				return 1.0f;
+			return static_cast<float>(fadeOut - (now - f.last)) / static_cast<float>(fadeOut);
+		}
+
+		void DrawNameTags()
+		{
+			if (Coop::Players() < 2 || !LevelRunning() || !Game::cgs)
+				return;
+			if (*reinterpret_cast<int*>(0xE19904)) // the mission failed screen is up
+				return;
+			const int me = CoopNet::Active() ? CoopNet::LocalClient() : 0;
+			if (spectating[me] >= 0)
+				return;
+			const int other = 1 - me;
+			const int anchor = DvarInt(other ? "coop_tagent1" : "coop_tagent0");
+			if (anchor < 2 || anchor >= 0x880)
+				return;
+			const ULONGLONG now = GetTickCount64();
+			TagFade& fade = tagFade[other];
+			const bool visible = DvarInt(other ? "coop_tag1" : "coop_tag0") && DvarInt(other ? "coop_tagvis1" : "coop_tagvis0");
+			if (visible)
+			{
+				if (!fade.visible)
+					fade.start = now;
+				fade.last = now;
+			}
+			fade.visible = visible;
+			const float alpha = TagAlpha(now, fade, 250, 1000) * 0.9f;
+			{
+				static int lastState = -1;
+				const int state = (DvarInt(other ? "coop_tag1" : "coop_tag0") ? 1 : 0) + (DvarInt(other ? "coop_tagvis1" : "coop_tagvis0") ? 2 : 0);
+				if (state != lastState)
+				{
+					lastState = state;
+					Coop::Log("tag: body shown %d, head in sight %d", state & 1, (state >> 1) & 1);
+				}
+			}
+			if (alpha <= 0.0f)
+				return;
+			const float* org = reinterpret_cast<const float*>(0x72B6E8 + 0x180 * anchor + 0x14);
+			if (org[0] == 0.0f && org[1] == 0.0f && org[2] == 0.0f)
+				return; // not in this PC's snapshots yet
+			const auto& rd = Game::cgs->refdef;
+			const float d[3] = { org[0] - rd.vieworg[0], org[1] - rd.vieworg[1], org[2] + 10.0f - rd.vieworg[2] }; // j_head + 10 up (IW)
+			float proj[3];
+			for (int i = 0; i < 3; i++)
+				proj[i] = d[0] * rd.viewaxis[i][0] + d[1] * rd.viewaxis[i][1] + d[2] * rd.viewaxis[i][2];
+			if (proj[0] < 1.0f || rd.tanHalfFovX <= 0.0f || rd.tanHalfFovY <= 0.0f)
+				return;
+			// the engine's own mapping: real pixels of the view (CG_CalcNamePosition), then this placement's units for left / top
+			// aligned text (ScrPlace_ApplyX/Y: real = virtual * scaleVirtualToReal + realViewableMin)
+			auto* const placement = Game::ScrPlace_GetUnsafeFullPlacement();
+			if (!placement || placement->scaleVirtualToReal[0] <= 0.0f || placement->scaleVirtualToReal[1] <= 0.0f)
+				return;
+			const float realX = placement->realViewportSize[0] * 0.5f * (1.0f - proj[1] / rd.tanHalfFovX / proj[0]);
+			const float realY = placement->realViewportSize[1] * 0.5f * (1.0f - proj[2] / rd.tanHalfFovY / proj[0]);
+			const float sx = (realX - placement->realViewableMin[0]) / placement->scaleVirtualToReal[0];
+			const float sy = (realY - placement->realViewableMin[1]) / placement->scaleVirtualToReal[1];
+			const float virtualW = placement->realViewportSize[0] / placement->scaleVirtualToReal[0];
+			const float virtualH = placement->realViewportSize[1] / placement->scaleVirtualToReal[1];
+			{
+				static ULONGLONG lastLog = 0;
+				if (now - lastLog >= 500)
+				{
+					lastLog = now;
+					const float* pos = reinterpret_cast<const float*>(Coop::GameClient(other) + 0x1C); // ps.origin
+					Coop::Log("tag: view (%.0f %.0f %.0f) axes f (%.2f %.2f %.2f) l (%.2f %.2f %.2f) u (%.2f %.2f %.2f) tan %.3f %.3f | head point (%.0f %.0f %.0f) "
+						"player (%.0f %.0f %.0f) | proj %.0f %.0f %.0f -> (%.0f, %.0f) alpha %.2f",
+						rd.vieworg[0], rd.vieworg[1], rd.vieworg[2], rd.viewaxis[0][0], rd.viewaxis[0][1], rd.viewaxis[0][2], rd.viewaxis[1][0],
+						rd.viewaxis[1][1], rd.viewaxis[1][2], rd.viewaxis[2][0], rd.viewaxis[2][1], rd.viewaxis[2][2], rd.tanHalfFovX, rd.tanHalfFovY,
+						org[0], org[1], org[2], pos[0], pos[1], pos[2], proj[0], proj[1], proj[2], sx, sy, alpha);
+				}
+			}
+			if (sx < -50.0f || sx > virtualW + 50.0f || sy < -20.0f || sy > virtualH + 20.0f)
+				return;
+			const float dist = std::sqrt(d[0] * d[0] + d[1] * d[1] + d[2] * d[2]);
+			float distScale = 1.0f;
+			if (dist > 256.0f)
+				distScale = dist >= 1024.0f ? 0.6f : 1.0f - 0.4f * (dist - 256.0f) / (1024.0f - 256.0f);
+			const std::string text = CoopNet::NickForDraw(other);
+			const float color[4] = { 0.6f, 0.85f, 0.45f, alpha }; // the friendly name green of the IW games
+			const float glow[4] = { 0.0f, 0.0f, 0.0f, alpha * 0.7f };
+			const float scale = 0.32f * distScale;
+			Game::Font_s* font = Game::R_RegisterFont("fonts/normalFont", sizeof("fonts/normalFont"));
+			const float width = static_cast<float>(Game::UI_TextWidth(text.c_str(), 0, font, scale));
+			Game::UI_DrawTextWithGlow(1, 1, placement, text.c_str(), font, sx - width / 2.0f, sy, scale, color, 3, glow, 0, 0);
+		}
+	}
+
+	std::string CoopNet::OwnNickUtf8()
+	{
+		std::string s = coop_name && coop_name->current.string ? SanitizeNick(coop_name->current.string) : "";
+		if (s.empty())
+			s = SteamNick();
+		if (s.empty())
+			s = DefaultNick(Active() ? LocalClient() : 0);
+		return s;
+	}
+
+	void CoopNet::SetPeerNick(const std::string& utf8)
+	{
+		const std::string s = SanitizeNick(utf8);
+		if (s.empty() || s == peerNick)
+			return;
+		peerNick = s;
+		Coop::Log("net: the other player's nickname: %s", s.c_str());
+	}
+
+	std::string CoopNet::NickForDraw(int player)
+	{
+		const int me = Active() ? LocalClient() : 0;
+		std::string u8;
+		if (player == me)
+			u8 = OwnNickUtf8();
+		else
+			u8 = Active() && !peerNick.empty() ? peerNick : DefaultNick(player);
+		return Utf8ToGame(u8);
+	}
+
 	void CoopNet::DrawOverlay()
 	{
+		DrawNameTags();
 		DrawDowned();
 		if (!Active() || !localBriefDone || !LevelRunning())
 			return;
@@ -1744,6 +1969,7 @@ namespace Components
 			coop_localbotfire = Dvars::Register::Dvar_RegisterBool("coop_localbotfire", "Test: this PC's bot fires every 4 s", false, Game::none);
 			coop_droptest = Dvars::Register::Dvar_RegisterInt("coop_droptest", "Test: percent of outgoing game packets to drop", 0, 0, 90, Game::none);
 			coop_testgod = Dvars::Register::Dvar_RegisterBool("coop_testgod", "Test, set on both PCs: both players keep full health", false, Game::none);
+			coop_name = Dvars::Register::Dvar_RegisterString("coop_name", "Your nickname in co-op (empty: your Steam name, else Player 1 / Player 2)", "", Game::saved);
 		});
 
 		Command::Add("coop_host", [](Command::Params* params)

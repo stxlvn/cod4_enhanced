@@ -9,6 +9,8 @@
 main()
 {
 	level.coop_bodies = [];
+	level.coop_jump_frac = 0.5; // the jump: traverse_jumpdown_40 held at this moment (knees up, hands up) while he is in the air
+	level.coop_jump_rate = 0;
 	for ( i = 0; i < level.players.size; i++ )
 	{
 		level.players[ i ].coop_index = i;
@@ -455,6 +457,16 @@ body_follow( index )
 	body notsolid();
 	level.coop_bodies[ index ] = body;
 	setdvar( "coop_body" + index, body getentitynumber() );
+	setdvar( "coop_tag" + index, 1 ); // the nickname over his head (CoopNet DrawNameTags) while his body is shown
+	// the nickname's point (as IW3 MP / IW4 overhead names: j_head, then 10 up): an invisible model on his body's head, read by the other
+	// PC's cgame (coop_tagent<n>); whether the other player sees that head: a trace every server frame (coop_tagvis<n>)
+	anchor = spawn( "script_model", body.origin );
+	anchor setmodel( "tag_origin" );
+	anchor linkto( body, "j_head", ( 0, 0, 0 ), ( 0, 0, 0 ) ); // on the bone (an offset here is in the bone's axes: sideways on j_head)
+	body.coop_anchor = anchor;
+	setdvar( "coop_tagent" + index, anchor getentitynumber() );
+	setdvar( "coop_tagvis" + index, 0 );
+	tagvis = 0;
 
 	key = "";
 	gun = "";
@@ -470,6 +482,16 @@ body_follow( index )
 		view = self getplayerangles();
 		body.origin = pos;
 		body.angles = ( 0, view[ 1 ], 0 );
+		// is his head in sight of the other player (the nickname shows only then, as IW's CG_CanSeeFriendlyHead)?
+		vis = 0;
+		other = level.players[ 1 - index ];
+		if ( isalive( other ) && !isdefined( body.coop_hidden ) && bullettracepassed( other geteye(), anchor.origin + ( 0, 0, 10 ), false, self ) )
+			vis = 1;
+		if ( vis != tagvis )
+		{
+			tagvis = vis;
+			setdvar( "coop_tagvis" + index, vis );
+		}
 		// a level can hide both bodies (ac130: both gunners sit at the same tag, a body would fill the other one's view), a scene one
 		// player's (self.coop_scene_hide: he is a first-person rig, e.g. caught by Price on the Seaknight's ramp)
 		hide_now = isdefined( level.coop_hide_bodies ) || isdefined( self.coop_scene_hide );
@@ -479,11 +501,13 @@ body_follow( index )
 			{
 				body hide();
 				body.coop_hidden = true;
+				setdvar( "coop_tag" + index, 0 );
 			}
 			else
 			{
 				body show();
 				body.coop_hidden = undefined;
+				setdvar( "coop_tag" + index, 1 );
 			}
 		}
 
@@ -597,6 +621,7 @@ body_update( body, speed, vel, view )
 	stance = self getstance();
 	flags = self coopflags();
 	ws = self coopweaponstate();
+	jumptime = self coopjumptime();
 	weapon = self getcurrentweapon();
 	pistol = false;
 	if ( isdefined( weapon ) && weapon != "none" && weaponclass( weapon ) == "pistol" )
@@ -612,6 +637,7 @@ body_update( body, speed, vel, view )
 		body.coop_fired = 0;
 		body.coop_hitseen = 0;
 		body.coop_aim = false;
+		body.coop_jumptime = jumptime;
 	}
 
 	if ( self.health <= 0 )
@@ -636,13 +662,14 @@ body_update( body, speed, vel, view )
 		start = "melee";
 	else if ( body_in( ws, 15, 20 ) && !body_in( body.coop_ws, 15, 20 ) )
 		start = "throw";
-	else if ( ( flags & 16384 ) && !( body.coop_flags & 16384 ) && !( flags & 8 ) && stance == "stand" && body.coop_stance == "stand" )
-		start = "jump"; // 0x4000 is also set when he drops prone (the jump slowdown): a jump only standing
+	else if ( jumptime != body.coop_jumptime && jumptime != 0 && !( flags & 8 ) && stance == "stand" )
+		start = "jump"; // a new jumpTime: he just jumped (also right after a landing, when pm_flags 0x4000 is still set)
 	else if ( stance != body.coop_stance && speed < 30 )
 		start = body.coop_stance + "_2_" + stance;
 	else if ( ( flags & 65536 ) && !( body.coop_flags & 65536 ) )
 		start = "shock";
 	body.coop_flags = flags;
+	body.coop_jumptime = jumptime;
 	body.coop_ws = ws;
 	body.coop_stance = stance;
 	if ( start != "" )
@@ -655,7 +682,10 @@ body_update( body, speed, vel, view )
 			body.coop_key = start;
 			body.coop_aim = false;
 			setdvar( "coop_pose" + self.coop_index, start );
-			body setanimknoballrestart( a, %root, 1, 0.15, 1 );
+			if ( start == "jump" )
+				body body_jump_start( a, t );
+			else
+				body setanimknoballrestart( a, %root, 1, 0.15, 1 );
 		}
 	}
 
@@ -669,8 +699,8 @@ body_update( body, speed, vel, view )
 			over = true;
 		if ( body.coop_action == "throw" && !body_in( ws, 15, 20 ) )
 			over = true;
-		if ( body.coop_action == "jump" && !( flags & 16384 ) )
-			over = true;
+		if ( body.coop_action == "jump" && t > body.coop_jump_t + 250 && self cooponground() )
+			over = true; // landed
 		if ( ( issubstr( body.coop_action, "_2_" ) || body.coop_action == "shock" ) && speed > 30 )
 			over = true;
 		if ( !over )
@@ -1127,6 +1157,7 @@ qa_keep_health()
 //   "tp <n> <x> <y> <z> <yaw>"   put player n there
 //   "shock <n> <seconds>"         shell shock player n ("default")
 //   "ignoreme <n> <0|1>"          enemies (dogs too) ignore player n
+//   "animprobe <key> <percent>"   a still copy of player 1's body in front of him in that body animation at that moment
 //   "tpnear <n> <m> <dist> <yaw>" put player n dist units from player m in direction yaw, looking at him
 //   "give <n> <weapon>"           give player n a weapon and switch to it
 //   "switch <n> <weapon>"         switch player n to a weapon he has
@@ -1193,6 +1224,11 @@ qa_commands()
 				p setplayerangles( ( 0, best.angles[ 1 ] + 180, 0 ) );
 				setdvar( "coop_qa_nearenemy", best getentitynumber() + " at " + best.origin );
 			}
+			continue;
+		}
+		if ( w[ 0 ] == "animprobe" && w.size >= 3 )
+		{
+			level thread qa_anim_probe( w[ 1 ], int( w[ 2 ] ) / 100.0 ); // the moment in percent
 			continue;
 		}
 		if ( w[ 0 ] == "aiwatch" )
@@ -1277,6 +1313,67 @@ qa_ai_watch( limit )
 			println( t );
 		}
 	}
+}
+
+// The jump: the AI's jump-down traverse (traverse_jumpdown_40, notetracks traverse_drop 0.29, bodyfall 0.44) held at
+// level.coop_jump_frac (0.5: knees and hands up; rate 0) while he is in the air (the body rises and falls with him); the action ends
+// when he stands on something again (a played rate showed the mesh sliding forward with the traverse: its root motion).
+// QA can try other moments / rates: coop_qa_jumpfrac, coop_qa_jumprate (both PCs alike in a pair: coopqaset).
+body_jump_start( a, t )
+{
+	frac = level.coop_jump_frac;
+	rate = level.coop_jump_rate;
+	if ( getdvar( "coop_qa_jumpfrac" ) != "" )
+		frac = getdvarfloat( "coop_qa_jumpfrac" );
+	if ( getdvar( "coop_qa_jumprate" ) != "" )
+		rate = getdvarfloat( "coop_qa_jumprate" );
+	self setanimknoballrestart( a, %root, 1, 0.1, rate );
+	self setanimtime( a, frac );
+	self.coop_jump_t = t;
+	self.coop_action_end = t + 3000; // a long fall still ends when he lands
+	if ( rate > 0 )
+		self.coop_action_end = t + int( getanimlength( a ) * ( 1 - frac ) * 1000 / rate );
+}
+
+// QA: a still copy of player 1's body 120 units in front of him, facing him, in an animation at a moment ("animprobe <key> <percent>");
+// a negative percent plays it once and logs its notetracks with their times in coop_qa_notes ("<key> len <s>: <note>@<ms> ...")
+qa_anim_probe( key, frac )
+{
+	a = body_action_anim( key, "stand", 0, false );
+	if ( !isdefined( a ) || !isdefined( level.coop_bodies ) || !isdefined( level.coop_bodies[ 0 ] ) )
+		return;
+	if ( !isdefined( level.coop_probe ) )
+	{
+		level.coop_probe = spawn( "script_model", level.player.origin );
+		level.coop_probe setmodel( level.coop_bodies[ 0 ].model );
+		level.coop_probe useAnimTree( #animtree );
+	}
+	m = level.coop_probe;
+	yaw = level.player getplayerangles()[ 1 ];
+	m.origin = level.player.origin + vector_multiply( anglestoforward( ( 0, yaw, 0 ) ), 120 );
+	m.angles = ( 0, yaw + 180, 0 );
+	m notify( "coop_probe" );
+	m endon( "coop_probe" );
+	if ( frac >= 0 )
+	{
+		// the still pose at that moment
+		m setanimknoballrestart( a, %root, 1, 0, 0 );
+		m setanimtime( a, frac );
+		setdvar( "coop_qa_probe", key + " " + frac );
+		return;
+	}
+	// a negative moment: play it once and log its notetracks
+	m setflaggedanimknoballrestart( "probe", a, %root, 1, 0, 1 );
+	start = gettime();
+	notes = "";
+	for ( ;; )
+	{
+		m waittill( "probe", note );
+		notes += note + "@" + ( gettime() - start ) + " ";
+		if ( note == "end" )
+			break;
+	}
+	setdvar( "coop_qa_notes", key + " len " + getanimlength( a ) + ": " + notes );
 }
 
 qa_flag_mirror( name )
