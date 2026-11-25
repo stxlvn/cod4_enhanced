@@ -1111,6 +1111,7 @@ qa_keep_health()
 //   "give <n> <weapon>"           give player n a weapon and switch to it
 //   "switch <n> <weapon>"         switch player n to a weapon he has
 //   "notify <n> <message>"        notify player n (e.g. "switch weapons", as his key would)
+//   "notifyall <message>"         the same notify on every player in one frame
 qa_commands()
 {
 	setdvar( "coop_qa_cmd", "" );
@@ -1124,6 +1125,16 @@ qa_commands()
 		w = strtok( cmd, " " );
 		if ( w.size < 2 )
 			continue;
+		if ( w[ 0 ] == "notifyall" )
+		{
+			// the same notify on every player in one frame, player 1 first (both keys at one tick)
+			msg = w[ 1 ];
+			for ( k = 2; k < w.size; k++ )
+				msg = msg + " " + w[ k ];
+			for ( k = 0; k < level.players.size; k++ )
+				level.players[ k ] notify( msg );
+			continue;
+		}
 		n = int( w[ 1 ] );
 		if ( n < 0 || n >= level.players.size )
 			continue;

@@ -142,6 +142,8 @@ coop_set_gun( i, initial )
 	self switchtoweapon( gun.weapon );
 	coop_set_ammo();
 	setdvar( "coop_ac_guns", level.players[ 0 ].coop_gun + "-" + level.players[ 1 ].coop_gun ); // QA trace
+	if ( level.players[ 0 ].coop_gun == level.players[ 1 ].coop_gun )
+		setdvar( "coop_ac_clash", level.players[ 0 ].coop_gun ); // QA: must never happen
 }
 
 // the gun list on self's HUD: his gun pulses between 0.6 and 1 (never darker than the others: the game's blink to 0 left the free
