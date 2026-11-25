@@ -167,8 +167,38 @@ namespace Components
 
 		bool consoleReady = false;
 
+		// Downed players (Phase 4, maps\_coop.gsc does the rest): a player whose partner is still up does not die. The player's die handler
+		// (entityHandlers[0x11].die = player_die 0x4ADF60, pointer at 0x6DEBF4) leaves him at 1 health and marks him down; the script reads
+		// and clears the mark (methods coopdowned / coopsetdowned). Both PCs run this at the same tick (same damage, same simulation).
+		int downed[2] = { 0, 0 };
+
+		void __cdecl PlayerDie_Hook(std::uint8_t* self, std::uint8_t* inflictor, std::uint8_t* attacker, int damage, int mod, int weapon,
+			const float* dir, int hitLoc)
+		{
+			const int me = static_cast<int>((self - reinterpret_cast<std::uint8_t*>(G_ENTITIES)) / ENT_SIZE);
+			if (players > 1 && me >= 0 && me < 2 && !downed[me])
+			{
+				const int other = 1 - me;
+				std::uint8_t* oe = Coop::Entity(other);
+				std::uint8_t* oc = Coop::GameClient(other);
+				const bool otherUp = oe[ENT_INUSE] && *reinterpret_cast<int*>(oe + 0x144) > 0 && !downed[other] &&
+					*reinterpret_cast<int*>(oc + GC_CONNECTED) == 2 && *reinterpret_cast<int*>(oc + GC_PMTYPE) < 4;
+				if (otherUp)
+				{
+					*reinterpret_cast<int*>(self + 0x144) = 1;
+					*reinterpret_cast<std::uint32_t*>(self + 0x130) &= ~0x20u; // G_Damage's "client died" flag
+					downed[me] = 1;
+					Coop::Log("player %d down at tick %d (damage %d, means %d)", me + 1, LevelTime(), damage, mod);
+					return;
+				}
+			}
+			Utils::Hook::Call<void(std::uint8_t*, std::uint8_t*, std::uint8_t*, int, int, int, const float*, int)>(0x4ADF60)(
+				self, inflictor, attacker, damage, mod, weapon, dir, hitLoc);
+		}
+
 		void DecidePlayers()
 		{
+			downed[0] = downed[1] = 0;
 			int want = coop_players ? coop_players->current.integer : 1;
 			if (CoopNet::Active())
 			{
@@ -226,7 +256,9 @@ namespace Components
 		}
 
 		// ClientThink_real 0x4A38D0, dead client past its respawn time: 0x4A6050 starts the SP death reload (snd_fade, reload after
-		// g_deathDelay). Only player 1's death does that for now; a dead player 2 stays dead (revive comes with the campaign scripts).
+		// g_deathDelay on a real-time timer, 0xE19878). Only player 1's death does that: with two players a player only dies when his
+		// partner is down or dead too (PlayerDie_Hook), and maps\_coop fails the mission then. The script's missionfailed()
+		// (GScr_MissionFailed 0x4D3080) arms the same reload from 0x4D30CB. In a session both go by simulation time instead.
 		void __cdecl DeathArmed()
 		{
 			CoopNet::OnDeathReloadArmed();
@@ -244,6 +276,19 @@ namespace Components
 				call DeathArmed // a session: the reload goes by simulation time on both PCs
 				popad
 			skip:
+				ret
+			}
+		}
+
+		void __declspec(naked) MissionFailedReload_Stub()
+		{
+			__asm
+			{
+				pushad
+				mov eax, 0x4A6050
+				call eax
+				call DeathArmed // a session: the reload goes by simulation time on both PCs
+				popad
 				ret
 			}
 		}
@@ -438,12 +483,33 @@ namespace Components
 			BotThink();
 	}
 
-	// Test input for player 2 (Phase 1). Lockstep input replaces this in Phase 2.
+	// damage player n through G_Damage (QA of downed / revive): console coop_hurt (one process) or the session command coophurt
+	void Coop::Hurt(int n, int damage)
+	{
+		if (n < 0 || n >= players || !Entity(n)[ENT_INUSE])
+			return;
+		Log("hurt: player %d damage %d at tick %d (health %d)", n + 1, damage, LevelTime(), *reinterpret_cast<int*>(Entity(n) + 0x144));
+		// the "damage" notify reads the direction and the point: real vectors (null crashed in Scr_AddVector)
+		const float dir[3] = { 0.0f, 0.0f, -1.0f };
+		const float* o = reinterpret_cast<float*>(Entity(n) + ENT_ORIGIN);
+		const float point[3] = { o[0], o[1], o[2] + 40.0f };
+		// G_Damage(targ, inflictor, attacker, dir, point, damage, dflags, mod, weapon, hitLoc, model, part): 12 stack arguments
+		// (0x4AE8FC passes the last two, model and part name, to the "damage" notify; 0 = undefined)
+		Utils::Hook::Call<void(void*, void*, void*, const float*, const float*, int, int, int, int, int, int, int)>(0x4AE5E0)(
+			Entity(n), nullptr, nullptr, dir, point, damage, 0, 0, -1, 0, 0, 0);
+	}
+
+	bool Coop::Downed(int n)
+	{
+		return n >= 0 && n < 2 && downed[n];
+	}
+
 	int Coop::LevelTimeNow()
 	{
 		return LevelTime();
 	}
 
+	// Test input for player 2 (Phase 1). Lockstep input replaces this in Phase 2.
 	void Coop::Think(int n, const std::uint8_t* cmd)
 	{
 		std::memcpy(ServerClient(n) + SVCL_LASTCMD, cmd, USERCMD_SIZE);
@@ -462,10 +528,16 @@ namespace Components
 		float yaw = reinterpret_cast<float*>(cl + GC_VIEWANGLES)[1];
 		int forward = 0;
 		const int t = LevelTime();
+		bool reviving = false;
 		if (!std::strcmp(mode, "follow"))
 		{
 			yaw = std::atan2(dy, dx) * 180.0f / 3.14159265f;
 			forward = dist > 160.0f ? 127 : 0;
+			if (other >= 0 && other < 2 && downed[other] && !downed[self])
+			{
+				forward = dist > 40.0f ? 127 : 0; // a downed partner: go to him and hold use (QA of the revive)
+				reviving = dist <= 70.0f;
+			}
 		}
 		else if (!std::strcmp(mode, "front"))
 		{
@@ -488,13 +560,23 @@ namespace Components
 			forward = (t % 3000) < 2000 ? 127 : 0;
 		}
 		int buttons = 0;
-		if (fire && (t % 4000) < 150)
+		if (fire && (t % 4000) < 150 && !reviving)
 			buttons |= 1; // attack
+		if (reviving)
+			buttons |= 1 << 3; // CMD_BUTTON_ACTIVATE (use)
 		*reinterpret_cast<int*>(cmd + 0x4) = buttons;
 		reinterpret_cast<int*>(cmd + 0x8)[0] = Angle2Short(0.0f - delta[0]);
 		reinterpret_cast<int*>(cmd + 0x8)[1] = Angle2Short(yaw - delta[1]);
 		reinterpret_cast<int*>(cmd + 0x8)[2] = Angle2Short(0.0f - delta[2]);
-		cmd[0x14] = static_cast<std::uint8_t>(*reinterpret_cast<int*>(cl + GC_WEAPON));
+		// the weapon: a session bot keeps its client's selection (the server's weapon select, e.g. the script's switchToWeapon of the
+		// start kit, reaches that client); the one-process bot has no client: its weapon in hand, else the other player's
+		if (!cmd[0x14])
+		{
+			int w = *reinterpret_cast<int*>(cl + GC_WEAPON);
+			if (!w && !CoopNet::Active())
+				w = *reinterpret_cast<int*>(GameClient(other) + GC_WEAPON);
+			cmd[0x14] = static_cast<std::uint8_t>(w);
+		}
 		cmd[0x15] = static_cast<std::uint8_t>(*reinterpret_cast<int*>(cl + GC_OFFHAND));
 		cmd[0x16] = static_cast<std::uint8_t>(forward);
 		cmd[0x17] = 0;
@@ -573,12 +655,32 @@ namespace Components
 		Utils::Hook(0x4A62C1, SelectSpawnPoint_Hook, HOOK_CALL).install()->quick(); // ClientSpawn
 		Utils::Hook(0x4A64D3, ClientSpawnInit_Stub, HOOK_CALL).install()->quick();  // ClientSpawn, after the memset
 		Utils::Hook(0x4A3D1B, DeathReload_Stub, HOOK_CALL).install()->quick();      // ClientThink_real: death reload only for player 1
+		Utils::Hook(0x4D30CB, MissionFailedReload_Stub, HOOK_CALL).install()->quick(); // GScr_MissionFailed: the same reload
 		Utils::Hook(0x4BB123, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 7
 		Utils::Hook(0x4A3F70, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 1 (0x4A3F60)
 
 		psLayoutOk = sizeof(Game::playerState_s) == 0xB2D8 && offsetof(Game::playerState_s, clientNum) == GC_CLIENTNUM &&
 			offsetof(Game::playerState_s, viewangles) == GC_VIEWANGLES && offsetof(Game::playerState_s, weapon) == GC_WEAPON;
 		// coop_give: player 1's weapons to player 2 (test kit)
+		GSC::AddMethod("coopdowned", [](Game::scr_entref_t entref)
+		{
+			Game::Scr_AddInt(entref.entnum < 2 ? downed[entref.entnum] : 0);
+		}, false);
+		GSC::AddMethod("coopsetdowned", [](Game::scr_entref_t entref)
+		{
+			if (entref.entnum < 2)
+				downed[entref.entnum] = Game::Scr_GetInt(0);
+		}, false);
+		Utils::Hook::Set<void*>(0x6DEBF4, reinterpret_cast<void*>(PlayerDie_Hook)); // entityHandlers[0x11].die
+
+		// coop_hurt <client> <damage>: damage a player through G_Damage (QA of downed / revive). Inflictor and attacker: the world.
+		Command::Add("coop_hurt", [](Command::Params* params)
+		{
+			if (params->size() < 3)
+				return;
+			Hurt(std::atoi(params->get(1)), std::atoi(params->get(2)));
+		});
+
 		Command::Add("coop_give", []
 		{
 			if (!psLayoutOk || players < 2)
@@ -616,8 +718,8 @@ namespace Components
 				std::uint8_t* cl = GameClient(i);
 				std::uint8_t* ent = Entity(i);
 				const float* o = reinterpret_cast<float*>(cl + GC_ORIGIN);
-				Log("status: client %d connected %d clientNum %d pm %d weapon %d origin (%.0f %.0f %.0f) view yaw %.0f | ent inuse %d health %d client %p sentient %p",
-					i, *reinterpret_cast<int*>(cl + GC_CONNECTED), *reinterpret_cast<int*>(cl + GC_CLIENTNUM), *reinterpret_cast<int*>(cl + GC_PMTYPE), *reinterpret_cast<int*>(cl + GC_WEAPON),
+				Log("status: client %d downed %d connected %d clientNum %d pm %d weapon %d origin (%.0f %.0f %.0f) view yaw %.0f | ent inuse %d health %d client %p sentient %p",
+					i, downed[i], *reinterpret_cast<int*>(cl + GC_CONNECTED), *reinterpret_cast<int*>(cl + GC_CLIENTNUM), *reinterpret_cast<int*>(cl + GC_PMTYPE), *reinterpret_cast<int*>(cl + GC_WEAPON),
 					o[0], o[1], o[2], reinterpret_cast<float*>(cl + GC_VIEWANGLES)[1], ent[ENT_INUSE],
 					reinterpret_cast<Game::gentity_s*>(ent)->health, *reinterpret_cast<void**>(ent + ENT_CLIENT), *reinterpret_cast<void**>(ent + ENT_SENTIENT));
 			}

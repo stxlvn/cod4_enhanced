@@ -10,7 +10,114 @@ main()
 {
 	level.coop_bodies = [];
 	for ( i = 0; i < level.players.size; i++ )
+	{
+		level.players[ i ].coop_index = i;
 		level.players[ i ] thread body_follow( i );
+		level.players[ i ] thread downed_watch();
+	}
+	thread loadout_mirror();
+}
+
+// ---- Phase 4: start of level ----
+
+// maps\_loadout gives the level's start kit to level.player only: the other players get the same weapons and ammo.
+loadout_mirror()
+{
+	wait 0.05; // after _load's give_loadout
+	p1 = level.player;
+	list = p1 getweaponslist();
+	current = p1 getcurrentweapon();
+	for ( i = 1; i < level.players.size; i++ )
+	{
+		p = level.players[ i ];
+		// _load sets maxhealth on level.player only (level.player.maxhealth = level.player.health); 0 here broke the revive
+		if ( p.maxhealth <= 0 )
+			p.maxhealth = level.player.maxhealth;
+		p takeallweapons();
+		for ( k = 0; k < list.size; k++ )
+		{
+			p giveweapon( list[ k ] );
+			p setweaponammoclip( list[ k ], p1 getweaponammoclip( list[ k ] ) );
+			p setweaponammostock( list[ k ], p1 getweaponammostock( list[ k ] ) );
+		}
+		p setoffhandsecondaryclass( "flash" );
+		if ( isdefined( current ) && current != "none" )
+			p switchtoweapon( current );
+	}
+}
+
+// ---- Phase 4: downed and revive (Spec Ops style) ----
+// The native player die handler keeps a player alive at 1 health while his partner is up (coopdowned). Down: prone, no weapons,
+// ignored by the AI, invulnerable; the partner revives him by holding Use next to him for 3 s; nobody in 45 s, or both down:
+// mission failed. The dvars coop_downtime<n> / coop_revive<n> feed each PC's on-screen text (native overlay).
+downed_watch()
+{
+	while ( true )
+	{
+		if ( self coopdowned() && !isdefined( self.coop_isdown ) )
+			self downed();
+		wait 0.05;
+	}
+}
+
+downed()
+{
+	self.coop_isdown = true;
+	i = self.coop_index;
+	partner = level.players[ 1 - i ];
+	self enableinvulnerability();
+	self disableweapons();
+	self allowstand( false );
+	self allowcrouch( false );
+	self allowprone( true );
+	self setstance( "prone" );
+	self.ignoreme = true;
+
+	left = 45 * 20; // server frames
+	held = 0;
+	revived = false;
+	quote = "A downed player was not revived in time.";
+	while ( left > 0 )
+	{
+		if ( isdefined( partner.coop_isdown ) || partner.health <= 0 )
+		{
+			quote = "Both players went down.";
+			break;
+		}
+		if ( partner usebuttonpressed() && distance( partner.origin, self.origin ) < 80 )
+			held++;
+		else
+			held = 0;
+		setdvar( "coop_downtime" + i, int( ( left + 19 ) / 20 ) );
+		setdvar( "coop_revive" + i, int( held * 100 / 60 ) );
+		if ( held >= 60 )
+		{
+			revived = true;
+			break;
+		}
+		left--;
+		wait 0.05;
+	}
+	setdvar( "coop_downtime" + i, 0 );
+	setdvar( "coop_revive" + i, 0 );
+	if ( !revived )
+	{
+		setdvar( "ui_deadquote", quote ); // the fail screen's line (the same text on both PCs)
+		maps\_utility::missionFailedWrapper();
+		return;
+	}
+	self coopsetdowned( 0 );
+	self.coop_isdown = undefined;
+	full = self.maxhealth;
+	if ( full <= 0 )
+		full = 100;
+	self.health = int( full / 2 );
+	self.ignoreme = false;
+	self allowstand( true );
+	self allowcrouch( true );
+	self enableweapons();
+	self setstance( "crouch" );
+	self disableinvulnerability();
 }
 
 body_follow( index )
@@ -86,6 +193,8 @@ body_anim_key( player, speed )
 {
 	if ( player.health <= 0 )
 		return "death";
+	if ( isdefined( player.coop_isdown ) )
+		return "prone";
 	stance = player getstance();
 	if ( stance == "prone" )
 	{

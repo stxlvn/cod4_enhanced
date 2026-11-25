@@ -528,7 +528,11 @@ namespace Components
 						*reinterpret_cast<int*>(0xE198FC) = 1;
 						continue;
 					}
-					ClientCommandFor(p, text);
+					// QA (cheats only): "coophurt <damage>" = damage this player through G_Damage, on both PCs at this tick
+					if (text.rfind("coophurt ", 0) == 0 && cheats && cheats->current.enabled)
+						Coop::Hurt(p, std::atoi(text.c_str() + 9));
+					else
+						ClientCommandFor(p, text);
 					if (p == CoopNet::LocalClient() && role == CoopNet::ROLE_PARTNER)
 						*reinterpret_cast<int*>(CL_RELACK) = std::max(*reinterpret_cast<int*>(CL_RELACK), seq);
 				}
@@ -1262,20 +1266,73 @@ namespace Components
 	}
 
 	// "Waiting for the other player" over the game while this PC's simulation waits (no tick for 0.5 s after the briefing).
+	namespace
+	{
+		int DvarInt(const char* name)
+		{
+			const auto* d = Dvars::Functions::Dvar_FindVar(name);
+			if (!d)
+				return 0;
+			if (d->type == Game::dvar_type::string)
+				return d->current.string ? std::atoi(d->current.string) : 0;
+			if (d->type == Game::dvar_type::integer)
+				return d->current.integer;
+			return 0;
+		}
+
+		void DrawCentered(const char* text, float y, float scale, const float* color)
+		{
+			const float glow[4] = { 0.2f, 0.3f, 0.6f, 0.6f };
+			auto* const placement = Game::ScrPlace_GetUnsafeFullPlacement();
+			Game::Font_s* font = Game::R_RegisterFont("fonts/objectiveFont", sizeof("fonts/objectiveFont"));
+			const float width = static_cast<float>(Game::UI_TextWidth(text, 0, font, scale));
+			Game::UI_DrawTextWithGlow(1, 1, placement, text, font, 320.0f - width / 2.0f, y, scale, color, 3, glow, 0, 0);
+		}
+
+		// Downed and revive texts (Phase 4, maps/_coop.gsc publishes coop_downtime<n> = seconds left, coop_revive<n> = percent).
+		// Each PC shows its own player's side: "you are down" or "your partner is down".
+		void DrawDowned()
+		{
+			if (Coop::Players() < 2 || !LevelRunning())
+				return;
+			if (*reinterpret_cast<int*>(0xE19904)) // level.missionFailed (GScr_MissionFailed 0x4D3080): the fail screen is up
+				return;
+			const int me = CoopNet::Active() ? CoopNet::LocalClient() : 0;
+			const int other = 1 - me;
+			const float white[4] = { 1.0f, 1.0f, 1.0f, 0.95f };
+			const float red[4] = { 1.0f, 0.35f, 0.3f, 0.95f };
+			if (Coop::Downed(me))
+			{
+				const int left = DvarInt(me ? "coop_downtime1" : "coop_downtime0");
+				const int revive = DvarInt(me ? "coop_revive1" : "coop_revive0");
+				DrawCentered("You are down", 315.0f, 0.5f, red);
+				if (revive > 0)
+					DrawCentered(Utils::String::VA("Your partner is reviving you: %d%%", revive), 340.0f, 0.4f, white);
+				else
+					DrawCentered(Utils::String::VA("Wait for your partner to revive you (%d s)", left), 340.0f, 0.4f, white);
+			}
+			else if (Coop::Downed(other))
+			{
+				const int left = DvarInt(other ? "coop_downtime1" : "coop_downtime0");
+				const int revive = DvarInt(other ? "coop_revive1" : "coop_revive0");
+				DrawCentered("Your partner is down", 315.0f, 0.5f, red);
+				if (revive > 0)
+					DrawCentered(Utils::String::VA("Reviving: %d%%", revive), 340.0f, 0.4f, white);
+				else
+					DrawCentered(Utils::String::VA("Hold Use next to your partner to revive (%d s)", left), 340.0f, 0.4f, white);
+			}
+		}
+	}
+
 	void CoopNet::DrawOverlay()
 	{
+		DrawDowned();
 		if (!Active() || !localBriefDone || !LevelRunning())
 			return;
 		if (lastTickTime && GetTickCount64() - lastTickTime < 500)
 			return;
-		const char* text = "Waiting for the other player...";
 		const float color[4] = { 1.0f, 1.0f, 1.0f, 0.9f };
-		const float glow[4] = { 0.2f, 0.3f, 0.6f, 0.6f };
-		const float scale = 0.45f;
-		auto* const placement = Game::ScrPlace_GetUnsafeFullPlacement();
-		Game::Font_s* font = Game::R_RegisterFont("fonts/objectiveFont", sizeof("fonts/objectiveFont"));
-		const float width = static_cast<float>(Game::UI_TextWidth(text, 0, font, scale));
-		Game::UI_DrawTextWithGlow(1, 1, placement, text, font, 320.0f - width / 2.0f, 250.0f, scale, color, 3, glow, 0, 0);
+		DrawCentered("Waiting for the other player...", 250.0f, 0.45f, color);
 	}
 
 	// G_InitGame in a session: a new level life (launch, death reload, loadgame, map_restart). Both PCs run it for the same reasons
@@ -1316,7 +1373,7 @@ namespace Components
 			return;
 		const int delay = (*reinterpret_cast<Game::dvar_s**>(0xDCF7A0))->current.integer;
 		reloadTick = LevelTime() + delay;
-		Coop::Log("net: player 1 died at tick %d, reload at tick %d", LevelTime(), reloadTick);
+		Coop::Log("net: death reload armed at tick %d (player 1 died or mission failed), reload at tick %d", LevelTime(), reloadTick);
 	}
 
 	int CoopNet::Role()

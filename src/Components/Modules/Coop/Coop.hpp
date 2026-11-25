@@ -19,6 +19,10 @@ namespace Components
 		static std::uint8_t* GameClient(int num);
 		static std::uint8_t* ServerClient(int num);
 		static int LevelTimeNow();
+		// player n is down (waiting for a revive, Phase 4)
+		static bool Downed(int n);
+		// QA: damage player n through G_Damage
+		static void Hurt(int n, int damage);
 		// lastUsercmd of client n = cmd (0x38 bytes), then ClientThink(n)
 		static void Think(int n, const std::uint8_t* cmd);
 		// test bot: moves/angles/buttons/weapon for player self, relative to player other
