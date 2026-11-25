@@ -86,3 +86,4 @@ namespace Components
 #include "Modules/PlayerStats.hpp"
 
 #include "Modules/Devgui.hpp"
+#include "Modules/Coop/Coop.hpp"

@@ -51,13 +51,15 @@ namespace Components
 		Register(new ScriptExtension());
 		Register(new Movement());
 		Register(new Weapons());
-		Register(new Discord());
+		// co-op fork: no Discord presence under IW3SP-MOD's application id
+		//Register(new Discord());
 		Register(new TextRenderer());
 		Register(new LocalizedStrings());
 		Register(new Toast());
 		Register(new Achievements());
 		Register(new Events());
-		Register(new Updater());
+		// co-op fork: never auto-update from upstream IW3SP-MOD (it would replace this game.dll)
+		//Register(new Updater());
 		Register(new Window());
 		Register(new Sound());
 		Register(new Gamepad());
@@ -68,6 +70,7 @@ namespace Components
 		Register(new Paintball());
 		Register(new PlayerStats());
 		Register(new Devgui());
+		Register(new Coop());
 
 		Pregame = false;
 		// Make sure preDestroy is called when the game shuts down
