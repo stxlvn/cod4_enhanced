@@ -528,9 +528,23 @@ namespace Components
 						*reinterpret_cast<int*>(0xE198FC) = 1;
 						continue;
 					}
+					// a key command notification of this player (CommandNotify_Hook)
+					if (text.rfind("coopcmdn ", 0) == 0)
+						Coop::CommandNotify(p, text.c_str() + 9);
 					// QA (cheats only): "coophurt <damage>" = damage this player through G_Damage, on both PCs at this tick
-					if (text.rfind("coophurt ", 0) == 0 && cheats && cheats->current.enabled)
+					else if (text.rfind("coophurt ", 0) == 0 && cheats && cheats->current.enabled)
 						Coop::Hurt(p, std::atoi(text.c_str() + 9));
+					// QA (cheats only): "coopqaset <dvar> <value ...>" = set a coop_qa_* dvar on both PCs at this tick (the QA dvars level
+					// scripts read: coop_qa_cmd, coop_qa_kh, ...; a dvar set on one PC alone would be a desync)
+					else if (text.rfind("coopqaset coop_qa_", 0) == 0 && cheats && cheats->current.enabled)
+					{
+						const size_t sp = text.find(' ', 10);
+						const std::string name = text.substr(10, sp == std::string::npos ? std::string::npos : sp - 10);
+						std::string value = sp == std::string::npos ? "" : text.substr(sp + 1);
+						if (value.size() >= 2 && value.front() == '"' && value.back() == '"')
+							value = value.substr(1, value.size() - 2);
+						Dvars::Functions::Dvar_SetStringByName(name.c_str(), value.c_str());
+					}
 					else
 						ClientCommandFor(p, text);
 					if (p == CoopNet::LocalClient() && role == CoopNet::ROLE_PARTNER)
@@ -755,6 +769,9 @@ namespace Components
 			const int n = offset >= 0 && offset % 0xD728 == 0 ? static_cast<int>(offset / 0xD728) : -1;
 			const int local = CoopNet::Active() ? CoopNet::LocalClient() : 0;
 			const bool mine = n == local;
+			// a one-process test bot has no client: it takes the weapon the server selects for it ("sw <index>")
+			if (!mine && !CoopNet::Active() && n == 1 && text && !std::strncmp(text, "sw ", 3))
+				Coop::SetBotWeaponSelect(std::atoi(text + 3));
 			if (routedLogged < 200)
 			{
 				routedLogged++;
@@ -790,6 +807,31 @@ namespace Components
 				push 0x5C7F89       // POP EDI, free the text buffer, RET
 				ret
 			}
+		}
+
+		// Key command notifications (player notifyOnCommand, used by the tutorial hints of every level and by killhouse's course: keyHint,
+		// the sprint to the finish): SP runs them on this PC at once and always on entity 0 — Cmd_CheckNotify 0x531300, for a command
+		// this PC executes (a key: "+attack", "+sprint", ...), calls G_AddCommandNotify 0x4A8570 at 0x531365, which notifies
+		// g_entities[0] (Scr_NotifyNum 0x5571D0). In a session that was a desync (the partner's keys notified player 1 on the partner's
+		// PC only). Now the notification is a reliable command of this PC's player ("coopcmdn <notify>") that the frames run on both
+		// PCs at one tick, on that player's entity (ExecuteInputs -> Coop::CommandNotify).
+		void __cdecl CommandNotify_Hook(unsigned int notify)
+		{
+			if (!CoopNet::Active())
+			{
+				Utils::Hook::Call<void(unsigned int)>(0x4A8570)(notify);
+				return;
+			}
+			const char* name = Game::SL_ConvertToString(notify & 0xFFFF);
+			if (!name || !*name)
+				return;
+			int& seq = *reinterpret_cast<int*>(CL_RELSEQ);
+			const int ack = *reinterpret_cast<int*>(CL_RELACK);
+			if (seq - ack >= 255)
+				return; // the ring is full: drop this notification rather than a command
+			seq++;
+			char* slot = reinterpret_cast<char*>(0x819680 + ((seq & 0xFF) << 10)); // clc.reliableCommands[256][1024]
+			_snprintf_s(slot, 1024, _TRUNCATE, "coopcmdn %s", name);
 		}
 
 		// Bodies (Phase 3, maps/_coop.gsc): every player has a body entity (script model) in the simulation; this PC's own player's body
@@ -1621,6 +1663,7 @@ namespace Components
 		Utils::Hook::Set<void*>(0x6818F4, reinterpret_cast<void*>(ButtonPressedGuard));    // player method buttonpressed
 		Utils::Hook(0x4FA092, FxVisibility_Stub, HOOK_CALL).install()->quick();
 		Utils::Hook(0x5C8515, PausingMenuCheck, HOOK_CALL).install()->quick();  // menus do not pause a session
+		Utils::Hook(0x531365, CommandNotify_Hook, HOOK_CALL).install()->quick(); // key command notifications through the frames
 		// player-targeted server commands for player 2 too, each to the PC of its player
 		{
 			// all or nothing: guards opened without the routing would fill client 1's buffer until "Server command overflow"

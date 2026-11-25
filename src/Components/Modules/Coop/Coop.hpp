@@ -23,6 +23,11 @@ namespace Components
 		static bool Downed(int n);
 		// QA: damage player n through G_Damage
 		static void Hurt(int n, int damage);
+		static void Hurt(int n, int damage, int mod, float fromYaw);
+		// one-process test bot: the weapon the server selected for player 2
+		static void SetBotWeaponSelect(int weapon);
+		// a key command notification of player n, run by the frames on both PCs
+		static void CommandNotify(int n, const char* name);
 		// lastUsercmd of client n = cmd (0x38 bytes), then ClientThink(n)
 		static void Think(int n, const std::uint8_t* cmd);
 		// test bot: moves/angles/buttons/weapon for player self, relative to player other

@@ -99,6 +99,46 @@ namespace Components
 				"\tsetdvar( \"coop_script_players\", level.players.size );\n"
 				"\tif ( level.players.size > 1 )\n"
 				"\t\tthread maps\\_coop::main();" },
+
+			// the training level for two (maps/_coop_killhouse.gsc): Gaz's range at two stations at once
+			{ "maps/killhouse.gsc", "level notify ( \"rifleTraining_start\" );",
+				"level notify ( \"rifleTraining_start\" );\n"
+				"\tif ( isdefined( level.players ) && level.players.size > 1 )\n"
+				"\t{\n"
+				"\t\tthread maps\\_coop_killhouse::rifle_training();\n"
+				"\t\treturn;\n"
+				"\t}" },
+			// station one's targets take only player 1's hits (player 2 has his own at station two)
+			{ "maps/killhouse_code.gsc", "if ( ! ( level.player istouching ( stall ) ) )",
+				"if ( isdefined( level.players ) && level.players.size > 1 && ( !isdefined( attacker ) || attacker != level.player ) )\n"
+				"\t\t\t{\n"
+				"\t\t\t\tself.health = 1000;\n"
+				"\t\t\t\tcontinue;\n"
+				"\t\t\t}\n"
+				"\t\t\tif ( ! ( level.player istouching ( stall ) ) )" },
+			// Price's ship: one player after the other (the course loop runs each run for level.player), started from
+			// report_to_price right before its "thread cargoship_training();". The loop that runs is not killhouse.gsc's:
+			// IW3SP-MOD's scripts/killhouse/best_squad_record.gsc ReplaceFunc's it with its own copy (Gaz's squad record), so
+			// the loop's patches target that file; the same patches on killhouse.gsc keep a build without the override right
+			{ "maps/killhouse.gsc", "level.price animscripts\\shared::placeWeaponOn( level.price.weapon, \"right\" );",
+				"level.price animscripts\\shared::placeWeaponOn( level.price.weapon, \"right\" );\n"
+				"\tif ( isdefined( level.players ) && level.players.size > 1 )\n"
+				"\t\tthread maps\\_coop_killhouse::cargoship_turns();" },
+			{ "scripts/killhouse/best_squad_record.gsc", "\t\t\tthread maps\\killhouse::debrief();",
+				"\t\t\tthread maps\\_coop_killhouse::debrief_gate();" },
+			{ "scripts/killhouse/best_squad_record.gsc", "level.player UploadTime( 19, final_time );",
+				"if ( !isdefined( level.players ) || level.player == level.players[ 0 ] )\n"
+				"\t\t\t\tlevel.player UploadTime( 19, final_time );" },
+			{ "maps/killhouse.gsc", "\t\t\tthread debrief();",
+				"\t\t\tthread maps\\_coop_killhouse::debrief_gate();" },
+			// QA helpers of the co-op training level (dvars only: idle unless a test sets coop_qa_kh)
+			{ "maps/killhouse.gsc", "thread clear_hints_on_mission_fail();",
+				"thread clear_hints_on_mission_fail();\n"
+				"\tif ( isdefined( level.players ) && level.players.size > 1 )\n"
+				"\t\tthread maps\\_coop_killhouse::coop_kh_qa();" },
+			{ "maps/killhouse.gsc", "level.player UploadTime( 19, final_time );",
+				"if ( !isdefined( level.players ) || level.player == level.players[ 0 ] )\n"
+				"\t\t\t\tlevel.player UploadTime( 19, final_time );" },
 		};
 
 		// The mod's own scripts: cod4coop/scripts/<name> in the game folder (e.g. maps/_coop.gsc), served before the fastfiles.
@@ -180,6 +220,14 @@ namespace Components
 			p->text = std::move(text);
 			p->raw = RawFile{ p->name.c_str(), static_cast<int>(p->text.size()), p->text.c_str() };
 			Coop::Log("script patch %s: %d getent(player) -> getentarray(player)[0], %d text patch(es)", name, n, t);
+			// QA: the patched text in cod4coop/patched/<name> when COD4COOP_DUMP is set
+			char dump[8] = {};
+			if (GetEnvironmentVariableA("COD4COOP_DUMP", dump, sizeof(dump)) && dump[0] == '1')
+			{
+				std::string out = std::string("cod4coop/patched/") + name;
+				std::filesystem::create_directories(std::filesystem::path(out).parent_path());
+				std::ofstream(out, std::ios::binary) << p->text;
+			}
 			header.data = &p->raw;
 			cache.emplace(name, std::move(p));
 			return header;

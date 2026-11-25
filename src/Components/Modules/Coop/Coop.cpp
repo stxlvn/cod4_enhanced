@@ -76,6 +76,7 @@ namespace Components
 		Game::dvar_s* coop_botfire = nullptr;
 		Game::dvar_s* coop_botgod = nullptr;
 		Game::dvar_s* coop_botpose = nullptr;
+		Game::dvar_s* coop_qa_nodown = nullptr;
 		Game::dvar_s* coop_botkit = nullptr;
 
 		// playerState_s fields used here are taken from the mod's Structs.hpp; its layout is checked at load against offsets read from the exe.
@@ -173,6 +174,7 @@ namespace Components
 		// the whole playerState) and the client's prediction runs the same last stand movement as the server.
 		constexpr std::uint32_t PMF_COOP_DOWNED = 0x01000000;
 		int reviveUse[2] = { 0, 0 };
+		int botWeaponSelect = 0; // one-process bot: the last "sw" the server sent to player 2
 
 		bool IsDown(int n)
 		{
@@ -197,7 +199,7 @@ namespace Components
 			const float* dir, int hitLoc)
 		{
 			const int me = static_cast<int>((self - reinterpret_cast<std::uint8_t*>(G_ENTITIES)) / ENT_SIZE);
-			if (players > 1 && me >= 0 && me < 2)
+			if (players > 1 && me >= 0 && me < 2 && !(coop_qa_nodown && coop_qa_nodown->current.enabled))
 			{
 				bool keep = IsDown(me);
 				if (!keep)
@@ -264,6 +266,45 @@ namespace Components
 			}
 		}
 
+		// Triggers a player touches (trigger_multiple: flag_set, spawn and course triggers ...): G_RunFrame state 1 calls
+		// G_UpdatePlayerTriggers 0x4A3F80 (EAX = entity; it also moves his sentient's path node, then G_TouchTriggers 0x4A2F30 with
+		// EDI = entity) at 0x4BAB99 for g_entities[0] only, so player 2 never fired a trigger (killhouse: the top of the ladder on his
+		// turn). Now it runs for every player, in entity order, on both PCs at the same tick.
+		void UpdatePlayerTriggersFor(std::uint8_t* ent)
+		{
+			__asm
+			{
+				mov eax, ent
+				mov ecx, 0x4A3F80
+				call ecx
+			}
+		}
+
+		void __cdecl UpdatePlayerTriggersAll(std::uint8_t* first)
+		{
+			UpdatePlayerTriggersFor(first);
+			for (int n = 1; n < players; n++)
+			{
+				std::uint8_t* ent = Coop::Entity(n);
+				if (!ent[ENT_INUSE] || !*reinterpret_cast<void**>(ent + ENT_CLIENT) || !*reinterpret_cast<void**>(ent + ENT_SENTIENT))
+					continue;
+				if (*reinterpret_cast<int*>(Coop::GameClient(n) + GC_CONNECTED) != 2)
+					continue;
+				UpdatePlayerTriggersFor(ent);
+			}
+		}
+
+		void __declspec(naked) UpdatePlayerTriggers_Stub()
+		{
+			__asm
+			{
+				push eax
+				call UpdatePlayerTriggersAll
+				add esp, 4
+				ret
+			}
+		}
+
 		void __declspec(naked) CmdScaleForStance_Stub()
 		{
 			__asm
@@ -280,6 +321,7 @@ namespace Components
 
 		void DecidePlayers()
 		{
+			botWeaponSelect = 0;
 			int want = coop_players ? coop_players->current.integer : 1;
 			if (CoopNet::Active())
 			{
@@ -567,17 +609,65 @@ namespace Components
 	// damage player n through G_Damage (QA of downed / revive): console coop_hurt (one process) or the session command coophurt
 	void Coop::Hurt(int n, int damage)
 	{
+		Hurt(n, damage, 0, -1000.0f);
+	}
+
+	// mod: means of death index (IW3: 2 rifle bullet, 4 grenade splash, 14 explosive, ...); fromYaw: the world yaw the hit comes from
+	// (-1000 = straight down, as before)
+	void Coop::Hurt(int n, int damage, int mod, float fromYaw)
+	{
 		if (n < 0 || n >= players || !Entity(n)[ENT_INUSE])
 			return;
 		Log("hurt: player %d damage %d at tick %d (health %d)", n + 1, damage, LevelTime(), *reinterpret_cast<int*>(Entity(n) + 0x144));
 		// the "damage" notify reads the direction and the point: real vectors (null crashed in Scr_AddVector)
-		const float dir[3] = { 0.0f, 0.0f, -1.0f };
+		float dir[3] = { 0.0f, 0.0f, -1.0f };
+		if (fromYaw > -999.0f)
+		{
+			const float r = fromYaw * 3.14159265f / 180.0f;
+			dir[0] = -std::cos(r); // the damage travels from that side towards the player
+			dir[1] = -std::sin(r);
+			dir[2] = 0.0f;
+		}
 		const float* o = reinterpret_cast<float*>(Entity(n) + ENT_ORIGIN);
 		const float point[3] = { o[0], o[1], o[2] + 40.0f };
 		// G_Damage(targ, inflictor, attacker, dir, point, damage, dflags, mod, weapon, hitLoc, model, part): 12 stack arguments
 		// (0x4AE8FC passes the last two, model and part name, to the "damage" notify; 0 = undefined)
 		Utils::Hook::Call<void(void*, void*, void*, const float*, const float*, int, int, int, int, int, int, int)>(0x4AE5E0)(
-			Entity(n), nullptr, nullptr, dir, point, damage, 0, 0, -1, 0, 0, 0);
+			Entity(n), nullptr, nullptr, dir, point, damage, 0, mod, -1, 0, 0, 0);
+	}
+
+	// a key command notification of player n (CoopNet CommandNotify_Hook): notify his entity, as G_AddCommandNotify 0x4A8570 does
+	// for entity 0; the notify string id is the one notifyOnCommand registered (table 0xF82408 command / 0xF8240A notify, count
+	// 0xF7FBCC), so no new script string is made
+	void Coop::CommandNotify(int n, const char* name)
+	{
+		if (n < 0 || n >= players || !name || !Entity(n)[ENT_INUSE])
+			return;
+		const int count = *reinterpret_cast<int*>(0xF7FBCC);
+		for (int i = 0; i < count && i < 64; i++)
+		{
+			const unsigned int id = *reinterpret_cast<std::uint16_t*>(0xF8240A + i * 4);
+			const char* s = id ? Game::SL_ConvertToString(id) : nullptr;
+			if (!s || std::strcmp(s, name))
+				continue;
+			const int entnum = n;
+			__asm
+			{
+				push id
+				push 0
+				push entnum
+				xor eax, eax // no parameters
+				mov ecx, 0x5571D0 // Scr_NotifyNum( entnum, classnum, notify ), EAX = parameter count
+				call ecx
+				add esp, 12
+			}
+			return;
+		}
+	}
+
+	void Coop::SetBotWeaponSelect(int weapon)
+	{
+		botWeaponSelect = weapon;
 	}
 
 	bool Coop::Downed(int n)
@@ -675,6 +765,8 @@ namespace Components
 		if (!cmd[0x14])
 		{
 			int w = *reinterpret_cast<int*>(cl + GC_WEAPON);
+			if (!CoopNet::Active() && botWeaponSelect > 0)
+				w = botWeaponSelect; // the server's switchToWeapon for the bot
 			if (!w && !CoopNet::Active())
 				w = *reinterpret_cast<int*>(GameClient(other) + GC_WEAPON);
 			cmd[0x14] = static_cast<std::uint8_t>(w);
@@ -779,6 +871,7 @@ namespace Components
 			coop_bot = Dvars::Register::Dvar_RegisterString("coop_bot", "Test bot for player 2: follow, front, walk, stand", "follow", Game::none);
 			coop_botfire = Dvars::Register::Dvar_RegisterBool("coop_botfire", "Test bot fires every 4 s", false, Game::none);
 			coop_botgod = Dvars::Register::Dvar_RegisterBool("coop_botgod", "Test: player 2 cannot die", false, Game::none);
+			coop_qa_nodown = Dvars::Register::Dvar_RegisterBool("coop_qa_nodown", "Test: players die without going down first", false, Game::none);
 			coop_botpose = Dvars::Register::Dvar_RegisterString("coop_botpose", "Test: bot actions on top of its mode (forward back left right "
 				"slow sprint crouch prone ads fire reload melee frag jump copyweapon lookup lookdown)", "", Game::none);
 			coop_botkit = Dvars::Register::Dvar_RegisterBool("coop_botkit", "Test: player 2 gets player 1's weapons as soon as player 1 has one", false, Game::none);
@@ -810,6 +903,7 @@ namespace Components
 		Utils::Hook(0x5BAB5E, CmdScaleForStance_Stub, HOOK_CALL).install()->quick();
 		Utils::Hook(0x4BB123, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 7
 		Utils::Hook(0x4A3F70, PlayerTrail_Hook, HOOK_CALL).install()->quick();      // G_RunFrame state 1 (0x4A3F60)
+		Utils::Hook(0x4BAB99, UpdatePlayerTriggers_Stub, HOOK_CALL).install()->quick(); // G_UpdatePlayerTriggers for every player
 
 		psLayoutOk = sizeof(Game::playerState_s) == 0xB2D8 && offsetof(Game::playerState_s, clientNum) == GC_CLIENTNUM &&
 			offsetof(Game::playerState_s, viewangles) == GC_VIEWANGLES && offsetof(Game::playerState_s, weapon) == GC_WEAPON;
@@ -843,7 +937,9 @@ namespace Components
 		{
 			if (params->size() < 3)
 				return;
-			Hurt(std::atoi(params->get(1)), std::atoi(params->get(2)));
+			const int mod = params->size() > 3 ? std::atoi(params->get(3)) : 0;
+			const float yaw = params->size() > 4 ? static_cast<float>(std::atof(params->get(4))) : -1000.0f;
+			Hurt(std::atoi(params->get(1)), std::atoi(params->get(2)), mod, yaw);
 		});
 
 		Command::Add("coop_give", []

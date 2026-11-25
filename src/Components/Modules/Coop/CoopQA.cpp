@@ -4,6 +4,7 @@
 // QA script runner for automated test runs: the file named by the environment variable COD4COOP_QA, one step per line.
 //   wait <ms>        real time
 //   waitlevel <ms>   until a level runs and level.time >= ms
+//   waitdvar <name> <value> [timeout ms]   until the dvar has that value (default timeout 120 s; the log says if it timed out)
 //   anything else    a console command (e.g. "screenshotJPEG", "quit")
 // Lines starting with '#' are comments. Every step is written to cod4coop\coop.log.
 
@@ -17,6 +18,8 @@ namespace Components
 		int waitLevel = -1;
 		int waitMenu = -1;
 		ULONGLONG waitMenuUntil = 0;
+		std::string waitDvar, waitDvarValue;
+		ULONGLONG waitDvarUntil = 0;
 		bool started = false;
 
 		int LevelTimeIfRunning()
@@ -49,7 +52,29 @@ namespace Components
 				Coop::Log("qa: menu type %d %s", type, type == waitMenu ? "reached" : "NOT reached (timeout)");
 				waitMenu = -1;
 			}
+			if (!waitDvar.empty())
+			{
+				const auto* d = Dvars::Functions::Dvar_FindVar(waitDvar.c_str());
+				std::string value;
+				if (d && d->type == Game::dvar_type::string && d->current.string)
+					value = d->current.string;
+				else if (d && d->type == Game::dvar_type::integer)
+					value = std::to_string(d->current.integer);
+				if (value != waitDvarValue && GetTickCount64() < waitDvarUntil)
+					return;
+				Coop::Log("qa: dvar %s = \"%s\" %s", waitDvar.c_str(), value.c_str(), value == waitDvarValue ? "reached" : "NOT reached (timeout)");
+				waitDvar.clear();
+			}
 			const std::string line = steps[next++];
+			if (line.rfind("waitdvar ", 0) == 0)
+			{
+				std::istringstream in(line.substr(9));
+				ULONGLONG timeout = 120000;
+				in >> waitDvar >> waitDvarValue >> timeout;
+				waitDvarUntil = GetTickCount64() + timeout;
+				Coop::Log("qa: wait for dvar %s = %s", waitDvar.c_str(), waitDvarValue.c_str());
+				return;
+			}
 			if (line.rfind("waitmenu ", 0) == 0)
 			{
 				waitMenu = std::atoi(line.c_str() + 9);

@@ -24,6 +24,7 @@ main()
 		level.players[ i ] thread weapon_watch();
 	}
 	thread loadout_mirror();
+	thread qa_commands();
 }
 
 // ---- Phase 4: start of level ----
@@ -1085,5 +1086,44 @@ qa_keep_health()
 		wait 0.05;
 		if ( getdvar( "coop_qa_keephealth" ) == "1" && !isdefined( self.coop_isdown ) && self.health > 0 && self.health < self.maxhealth )
 			self.health = self.maxhealth;
+	}
+}
+
+// QA (one process / both PCs alike): coop_qa_cmd runs one command and clears itself.
+//   "tp <n> <x> <y> <z> <yaw>"   put player n there
+//   "shock <n> <seconds>"         shell shock player n ("default")
+//   "give <n> <weapon>"           give player n a weapon and switch to it
+//   "switch <n> <weapon>"         switch player n to a weapon he has
+qa_commands()
+{
+	setdvar( "coop_qa_cmd", "" );
+	while ( true )
+	{
+		wait 0.05;
+		cmd = getdvar( "coop_qa_cmd" );
+		if ( cmd == "" )
+			continue;
+		setdvar( "coop_qa_cmd", "" );
+		w = strtok( cmd, " " );
+		if ( w.size < 2 )
+			continue;
+		n = int( w[ 1 ] );
+		if ( n < 0 || n >= level.players.size )
+			continue;
+		p = level.players[ n ];
+		if ( w[ 0 ] == "tp" && w.size >= 6 )
+		{
+			p setorigin( ( int( w[ 2 ] ), int( w[ 3 ] ), int( w[ 4 ] ) ) );
+			p setplayerangles( ( 0, int( w[ 5 ] ), 0 ) );
+		}
+		else if ( w[ 0 ] == "shock" && w.size >= 3 )
+			p shellshock( "default", int( w[ 2 ] ) );
+		else if ( w[ 0 ] == "give" && w.size >= 3 )
+		{
+			p giveweapon( w[ 2 ] );
+			p switchtoweapon( w[ 2 ] );
+		}
+		else if ( w[ 0 ] == "switch" && w.size >= 3 )
+			p switchtoweapon( w[ 2 ] );
 	}
 }
