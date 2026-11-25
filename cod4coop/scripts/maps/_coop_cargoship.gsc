@@ -6,6 +6,9 @@
 //   Price's line). Both lose sprint and weapons; the bodies lie on their backs during it (_coop coop_scene_down).
 // - The run on the sinking ship: every player near a quake stumbles (crouch, push, rumble, breathing), quakes and the last jolt
 //   at the Seaknight follow each player; the slow speed (g_speed) is the server's, the same for both.
+// - The Blackhawk ride and fast-rope: player 2 rides beside player 1 at the right door (the game's player ride animation on his
+//   own hidden rig) and ropes down right after him, as the SAS do one after another on a rope; the Blackhawk waits for him
+//   (he is in its unload queue). The bodies are out of the cabin while seated and slide down the rope (the SAS slide).
 // - The jump: each player jumps on his own (standing in the jump zone, facing the Seaknight). Price catches the first as in the
 //   game; the Seaknight waits for the second, whom Gaz catches beside Price on the ramp; then it leaves. If the second does not
 //   jump in time it leaves without him: mission failed (never one player left behind).
@@ -330,6 +333,199 @@ coop_last_quake()
 	self PlayRumbleOnEntity( "tank_rumble" );
 }
 
+// ---- the Blackhawk ride and fast-rope ----
+
+// mo_fastrope::fastrope_player_think (self = the Blackhawk) runs for level.player; the other players ride and rope down here
+coop_fastrope_partners( heli )
+{
+	if ( !coop_on() )
+		return;
+	level.players[ 0 ].coop_scene_hide = true; // a seated body would stand through the cabin
+	level.players[ 0 ] thread coop_fastrope_body_p1( heli );
+	for ( i = 1; i < level.players.size; i++ )
+		level.players[ i ] thread coop_fastrope_partner( heli );
+}
+
+// player 1's body: hidden while seated, sliding while he ropes down (the game moves him; the body follows him)
+coop_fastrope_body_p1( heli )
+{
+	heli.vehicle waittill( "reached_wait_node" );
+	while ( coop_in_que( heli, self ) )
+		wait 0.05;
+	self.coop_scene_hide = undefined;
+	self.coop_scene_anim = coop_rope_slide_anim( heli );
+	wait 1;
+	if ( isdefined( self.time ) )
+		wait self.time;
+	self.coop_scene_anim = undefined;
+}
+
+coop_rope_slide_anim( heli )
+{
+	return level.scr_anim[ maps\mo_fastrope::fastrope_animname( heli.type, 1 ) ][ "loop" ][ 0 ];
+}
+
+coop_in_que( heli, p )
+{
+	for ( i = 0; i < heli.que.size; i++ )
+	{
+		if ( heli.que[ i ] == p )
+			return true;
+	}
+	return false;
+}
+
+#using_animtree( "fastrope" );
+coop_fastrope_partner( heli )
+{
+	self endon( "death" );
+	self DisableWeapons();
+	self.coop_scene_hide = true;
+
+	// his seat: the player's ride animation on an anchor beside player 1's (placed in tag_detach axes, then linked)
+	tagangles = heli.model gettagangles( "tag_detach" );
+	off = level.coop_cs_seat_offset;
+	org = heli.model gettagorigin( "tag_detach" ) + vector_multiply( anglestoforward( tagangles ), off[ 0 ] ) + vector_multiply( anglestoright( tagangles ), off[ 1 ] ) + vector_multiply( anglestoup( tagangles ), off[ 2 ] );
+	anchor = spawn( "script_model", org );
+	anchor setmodel( "tag_origin" );
+	anchor.angles = tagangles;
+	anchor linkto( heli.model, "tag_detach" );
+	camera = spawn( "script_model", org );
+	camera setmodel( level.models[ "player" ][ "fastrope" ] );
+	camera linkto( anchor, "tag_origin", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+	camera.animname = maps\mo_fastrope::fastrope_animname( heli.type, "player" );
+	camera UseAnimTree( #animtree );
+	camera hide();
+	self playerlinktodelta( camera, "tag_player", 1, 100, 100, 30, 60 );
+	anchor thread anim_single_solo( camera, "ride", "tag_origin" );
+	camera thread coop_ride_end();
+	self allowLean( false );
+	self allowcrouch( false );
+	self allowprone( false );
+
+	// the unload queue right after player 1: the Blackhawk leaves once the queue is empty
+	wait .1;
+	pos = heli.que.size;
+	for ( i = 0; i < heli.que.size; i++ )
+	{
+		if ( heli.que[ i ] == level.player )
+			pos = i + 1;
+	}
+	heli.que = array_insert( heli.que, self, pos );
+	setdvar( "coop_cs_rope", "seated" ); // QA trace
+	wait 2;
+	self setplayerangles( ( 15, 70, 0 ) );
+
+	heli.vehicle waittill( "reached_wait_node" );
+	// player 1 goes first; the next man takes the rope once he has left the queue, at the Blackhawk's unload spacing
+	while ( coop_in_que( heli, level.player ) )
+		wait 0.05;
+	wait heli.unloadwait + 1;
+	self coop_fastrope_viewshift( camera );
+	self coop_fastrope_unload( heli, camera, anchor );
+}
+
+coop_ride_end()
+{
+	self waittillmatch( "single anim", "end" );
+	self.coop_ride_done = true;
+}
+
+// mo_fastrope::fastrope_player_viewshift_lock for self: the view turns to the rope over 1 s, then the tighter link
+coop_fastrope_viewshift( camera )
+{
+	camera2 = spawn( "script_origin", camera.origin );
+	camera2.angles = self getplayerangles();
+	time = 1;
+	camera2 rotateto( camera gettagangles( "tag_player" ), time, time * .5, time * .5 );
+	num = int( time * 20 );
+	numtotal = num;
+	self freezecontrols( true );
+	while ( num )
+	{
+		num--;
+		self setplayerangles( ( camera2.angles[ 0 ], camera2.angles[ 1 ], self getplayerangles()[ 2 ] ) );
+		wait .05;
+		if ( num > ( numtotal * .5 ) || num % 2 )
+			continue;
+		if ( !num )
+			break;
+		camera2 rotateto( camera gettagangles( "tag_player" ), ( time * ( num / numtotal ) ) );
+	}
+	self setplayerangles( ( camera2.angles[ 0 ], camera2.angles[ 1 ], self getplayerangles()[ 2 ] ) );
+	self playerlinktodelta( camera, "tag_player", 1, 15, 15, 5, 5 );
+	wait .1;
+	self freezecontrols( false );
+	camera2 delete();
+	while ( !isdefined( camera.coop_ride_done ) )
+		wait 0.05;
+}
+
+// mo_fastrope::fastrope_player_unload_lock for self: down the right rope, landing beside player 1's spot
+coop_fastrope_unload( heli, camera, anchor )
+{
+	link = spawn( "script_origin", camera.origin );
+	link.angles = camera.angles;
+	camera linkto( link );
+	time1 = 1;
+	back = vector_multiply( anglestoforward( ( 0, 233, 0 ) ), -50 );
+
+	heli.que = array_remove( heli.que, self );
+	heli thread maps\mo_fastrope::fastrope_que_check();
+	maps\mo_fastrope::fastrope_calc( self );
+	self.time += .5;
+	heli.lasttime = self.time;
+	setdvar( "coop_cs_rope", "sliding" ); // QA trace
+
+	zrange = ( self.range + 100 ) * -1;
+	timefrac = time1 / ( self.time + .5 );
+	zfrac = zrange * timefrac;
+	link rotateto( ( 80, 233, 0 ), time1, time1 * .5, time1 * .5 );
+	link moveto( link.origin + back + ( 0, 0, zfrac ), time1 );
+	link thread anim_loop_solo( camera, "loop", undefined, "stopanimscripted" );
+	camera thread play_sound_on_entity( "fastrope_start_plr" );
+	camera thread play_loop_sound_on_entity( "fastrope_loop_plr" );
+	self thread coop_rope_fx();
+	self.coop_scene_hide = undefined;
+	self.coop_scene_anim = coop_rope_slide_anim( heli );
+	wait time1;
+
+	time3 = .5;
+	time2 = self.time - time1 + .5 - time3;
+	zfrac = zrange - zfrac;
+	back = vector_multiply( back, -1 );
+	link moveto( link.origin + back + ( 0, 0, zfrac ), ( self.time + .5 - time1 ) );
+	wait time2;
+	link rotateto( ( 10, 233, 0 ), time3, time3 * .5, time3 * .5 );
+	wait time3 - .25;
+	camera notify( "stop sound" + "fastrope_loop_plr" );
+	camera thread play_sound_on_entity( "fastrope_end_plr" );
+	link moveto( ( 3200, 225, 337 ) + level.coop_cs_land_offset, .5 );
+	link notify( "stopanimscripted" );
+	self EnableWeapons();
+	wait .4;
+	self unlink();
+	self allowLean( true );
+	self allowcrouch( true );
+	self allowprone( true );
+	self.coop_scene_anim = undefined;
+	setdvar( "coop_cs_rope", "landed " + self.origin ); // QA trace
+	link delete();
+	camera delete();
+	anchor delete();
+}
+
+// mo_fastrope::play_fast_rope_fx for self
+coop_rope_fx()
+{
+	fx = spawn( "script_model", self.origin );
+	fx setmodel( "tag_origin" );
+	fx linkto( self );
+	playfxontag( level._effect[ "rain_drops_fastrope" ], fx, "tag_origin" );
+	wait 3;
+	fx delete();
+}
+
 // ---- the jump to the Seaknight ----
 
 coop_facing_heli( p )
@@ -528,4 +724,6 @@ coop_cs_init()
 	level.coop_cs_knock_offset = ( 0, 80, 0 );
 	level.coop_cs_ramp_side = 24; // units to the right of the first one on the Seaknight's ramp (tag_detach axes)
 	level.coop_cs_second_jump_time = 6;
+	level.coop_cs_seat_offset = ( 0, 30, 0 ); // player 2's seat from player 1's (tag_detach forward / right / up)
+	level.coop_cs_land_offset = ( 0, 48, 0 ); // player 2's landing spot on the bridge from player 1's (world)
 }

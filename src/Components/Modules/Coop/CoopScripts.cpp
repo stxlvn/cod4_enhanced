@@ -183,6 +183,9 @@ namespace Components
 			{ "maps/_load.gsc", "assertEx( other == level.player, \"trigger_cansee currently only supports looking from the player\" );\r\n\t\t\r\n\t\twhile ( level.player istouching( trigger ) )",
 				"while ( other istouching( trigger ) )" },
 			// Crew Expendable for two (maps/_coop_cargoship.gsc): the package, the explosion, the run on the sinking ship, the jump
+			// the Blackhawk ride and fast-rope: player 2 rides and ropes down with player 1
+			{ "maps/mo_fastrope.gsc", "playerWeaponTake();",
+				"playerWeaponTake();\n\tthread maps\\_coop_cargoship::coop_fastrope_partners( self );" },
 			{ "maps/cargoship.gsc", "jumptoInit();",
 				"jumptoInit();\n\tmaps\\_coop_cargoship::coop_cs_init();" },
 			{ "maps/cargoship.gsc", "while( distance( guy.origin, level.player.origin ) > 700 )",

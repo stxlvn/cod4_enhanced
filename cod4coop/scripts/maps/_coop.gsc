@@ -501,9 +501,23 @@ body_follow( index )
 			gun = want_gun;
 		}
 
-		// last stand, or a scene that knocks the player down (self.coop_scene_down, e.g. the cargoship explosion): on his back
-		if ( isdefined( self.coop_isdown ) || isdefined( self.coop_scene_down ) )
+		// a scene's own animation for the body (self.coop_scene_anim, an AI animation the scene plays for him, e.g. the SAS sliding
+		// down the cargoship's fast-rope), looped while it is set
+		if ( isdefined( self.coop_scene_anim ) )
 		{
+			if ( !isdefined( body.coop_scene_anim ) || body.coop_scene_anim != self.coop_scene_anim )
+			{
+				body.coop_scene_anim = self.coop_scene_anim;
+				body setanimknoballrestart( self.coop_scene_anim, %root, 1, 0.2, 1 );
+			}
+			body.coop_key = "";
+			key = "";
+			fall_end = undefined;
+		}
+		// last stand, or a scene that knocks the player down (self.coop_scene_down, e.g. the cargoship explosion): on his back
+		else if ( isdefined( self.coop_isdown ) || isdefined( self.coop_scene_down ) )
+		{
+			body.coop_scene_anim = undefined;
 			body.coop_key = ""; // the standing poses start again after a revive
 			// last stand: the CoD4 AI's wounded-on-the-back set (animscripts\pain.gsc dying crawl) for IW4's pb_laststand_*:
 			// fall from his stance onto the back, then idle / crawl / fire with the pistol, death when he bleeds out
@@ -534,6 +548,7 @@ body_follow( index )
 		}
 		else
 		{
+			body.coop_scene_anim = undefined;
 			fall_end = undefined;
 			key = "";
 			// the move over about three frames: one frame's origin step is noisy (a diagonal walk flipped F / L every frame)
