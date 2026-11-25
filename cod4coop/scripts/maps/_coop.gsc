@@ -1126,6 +1126,8 @@ qa_keep_health()
 // QA (one process / both PCs alike): coop_qa_cmd runs one command and clears itself.
 //   "tp <n> <x> <y> <z> <yaw>"   put player n there
 //   "shock <n> <seconds>"         shell shock player n ("default")
+//   "ignoreme <n> <0|1>"          enemies (dogs too) ignore player n
+//   "tpnear <n> <m> <dist> <yaw>" put player n dist units from player m in direction yaw, looking at him
 //   "give <n> <weapon>"           give player n a weapon and switch to it
 //   "switch <n> <weapon>"         switch player n to a weapon he has
 //   "notify <n> <message>"        notify player n (e.g. "switch weapons", as his key would)
@@ -1214,6 +1216,16 @@ qa_commands()
 		}
 		else if ( w[ 0 ] == "shock" && w.size >= 3 )
 			p shellshock( "default", int( w[ 2 ] ) );
+		else if ( w[ 0 ] == "ignoreme" && w.size >= 3 )
+			p.ignoreme = ( int( w[ 2 ] ) != 0 );
+		else if ( w[ 0 ] == "tpnear" && w.size >= 5 && int( w[ 2 ] ) < level.players.size )
+		{
+			// player n put <dist> units from player m in direction <yaw>, looking at him (15 degrees down)
+			m = level.players[ int( w[ 2 ] ) ];
+			yaw = int( w[ 4 ] );
+			p setorigin( m.origin + vector_multiply( anglestoforward( ( 0, yaw, 0 ) ), int( w[ 3 ] ) ) + ( 0, 0, 8 ) );
+			p setplayerangles( ( 15, yaw + 180, 0 ) );
+		}
 		else if ( w[ 0 ] == "give" && w.size >= 3 )
 		{
 			p giveweapon( w[ 2 ] );

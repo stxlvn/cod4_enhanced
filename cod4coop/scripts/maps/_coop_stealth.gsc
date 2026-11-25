@@ -151,20 +151,3 @@ coop_qa_trace()
 		setdvar( "coop_stealth_vis", t );
 	}
 }
-
-// animscripts\dog_combat main: a dog whose melee target is a player other than level.player took the dog-vs-AI path
-// (meleeStruggleVsAI -> animcustom on the player: script error). Until player 2 has the game's first-person dog takedown, the
-// dog bites him: damage and a short shock every second while he is within reach.
-coop_dog_bite_player()
-{
-	self endon( "killanimscript" );
-	self endon( "death" );
-	p = self.enemy;
-	while ( isalive( p ) && distance( self.origin, p.origin ) < 96 )
-	{
-		p dodamage( 25, self.origin, self );
-		p shellshock( "default", 1 );
-		setdvar( "coop_dog_bites", gettime() ); // QA trace
-		wait 1;
-	}
-}

@@ -938,6 +938,8 @@ namespace Components
 				b |= 0x10;
 			if (has("melee") && (t % 3000) < 100)
 				b |= 0x4;
+			if (has("meleehold")) // held while the word is set (QA of the dog takedown's melee window)
+				b |= 0x4;
 			if (has("frag") && (t % 5000) < 150)
 				b |= 0x4000;
 			if (has("jump") && (t % 2000) < 100)
