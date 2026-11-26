@@ -71,6 +71,7 @@ namespace Components
 		Register(new PlayerStats());
 		Register(new Devgui());
 		Register(new Coop());
+		Register(new Fonts());
 
 		Pregame = false;
 		// Make sure preDestroy is called when the game shuts down

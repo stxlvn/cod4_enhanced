@@ -87,3 +87,4 @@ namespace Components
 
 #include "Modules/Devgui.hpp"
 #include "Modules/Coop/Coop.hpp"
+#include "Modules/Fonts.hpp"
