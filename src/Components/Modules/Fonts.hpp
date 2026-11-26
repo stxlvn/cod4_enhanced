@@ -11,6 +11,9 @@ namespace Components
 
 	private:
 		static void* Find(int type, const char* name);
+		static void Collect(Game::XAssetHeader header, void* userdata);
+		static std::vector<std::pair<std::string, void*>> Loaded;
 		static void Tick();
+		static void Waiting(const std::string& why);
 	};
 }

@@ -11,7 +11,7 @@
 //   rectangle in the atlas).
 //   The atlas is a material's first texture: Material -> textureTable (MaterialTextureDef, 16 bytes, GfxImage * at +8) -> GfxImage
 //   (IW3: mapType at +0, the IDirect3DTexture9 * at +4, width/height u16, cardMemory int[2]).
-//   The English game keeps all fonts on one atlas (fonts/gamefonts_pc); IW3SP-MOD's Russian fonts use two (fonts/ru_gamefonts_1/_2).
+//   The English game keeps all fonts on one atlas (fonts/gamefonts_pc); IW3SP-MOD's Russian fonts use two (ru_gamefonts_1 / _2).
 //   The mod builds one atlas for all the planned fonts, installs it into the first font's atlas image and points every patched
 //   font at that material (its glyph rectangles all refer to the new atlas).
 // A replacement atlas is built on the game's own D3D9 device. Its glyphs are rasterized at 4x resolution, while the game's glyph
@@ -189,10 +189,11 @@ HRESULT modtex_lock(IDirect3DTexture9* tex, UINT level, D3DLOCKED_RECT* lr, DWOR
 HRESULT modtex_unlock(IDirect3DTexture9* tex, UINT level) { return tex->UnlockRect(level); }
 void modtex_release(IDirect3DTexture9* tex) { if (tex) tex->Release(); }
 
-// a font atlas material of the game (English fonts/gamefonts_pc, IW3SP-MOD's Russian fonts/ru_gamefonts_1 and _2)
+// a font atlas material of the game (English fonts/gamefonts_pc, IW3SP-MOD's Russian ru_gamefonts_1 and _2)
 int is_atlas_material_name(const char* name)
 {
-	return name && !_strnicmp(name, "fonts/", 6) && strstr(name, "gamefonts") != nullptr && !strstr(name, "_glow");
+	// (IW3SP-MOD names its Russian atlases without the "fonts/" folder: ru_gamefonts_1, ru_gamefonts_2)
+	return name && strstr(name, "gamefonts") != nullptr && !strstr(name, "_glow");
 }
 
 #define DEF_IMAGE 8
@@ -217,9 +218,10 @@ static const struct {
 	const char *name;
 	int face;
 } plan[] = {
-	{"fonts/bigfont", FACE_TEXT}, {"fonts/extrabigfont", FACE_TEXT}, {"fonts/objectivefont", FACE_BOLD},
-	{"fonts/hudbigfont", FACE_BANK}, {"fonts/hudsmallfont", FACE_BANK}, {"fonts/normalfont", FACE_TEXT},
-	{"fonts/smallfont", FACE_TEXT}, {"fonts/boldfont", FACE_BOLD}, {"fonts/consolefont", FACE_TEXT},
+	// the IW3 names (R_RegisterFont("fonts/objectiveFont") etc.; MW2's table had them in lower case)
+	{"fonts/bigFont", FACE_TEXT}, {"fonts/extraBigFont", FACE_TEXT}, {"fonts/objectiveFont", FACE_BOLD},
+	{"fonts/hudBigFont", FACE_BANK}, {"fonts/hudSmallFont", FACE_BANK}, {"fonts/normalFont", FACE_TEXT},
+	{"fonts/smallFont", FACE_TEXT}, {"fonts/boldFont", FACE_BOLD}, {"fonts/consoleFont", FACE_TEXT},
 };
 // The target height of Й, including its breve, as a fraction of the game font asset height.
 #define CAP_FACTOR 0.685
@@ -1775,26 +1777,93 @@ void fonts_retry(void *(*find)(int, const char *))
 
 namespace Components
 {
+	// The fonts are looked up among the loaded ones only (DB_EnumXAssets, refreshed every tick): DB_FindXAssetHeader on the
+	// main thread while zones load gives up the renderer's thread ownership and waits for the database thread (KisakCOD
+	// db_registry.cpp), which hung the game at a level load when this ran from the main loop.
+	std::vector<std::pair<std::string, void*>> Fonts::Loaded;
+
+	void Fonts::Collect(Game::XAssetHeader header, void*)
+	{
+		const auto* font = static_cast<const Game::Font_s*>(header.data);
+		if (font && font->fontName)
+			Loaded.emplace_back(font->fontName, header.data);
+	}
+
 	void* Fonts::Find(int type, const char* name)
 	{
-		if (Game::DB_IsXAssetDefault(static_cast<Game::XAssetType>(type), name))
+		if (type != FONT_ASSET_TYPE || !name)
 			return nullptr;
-		return Game::DB_FindXAssetHeader(static_cast<Game::XAssetType>(type), name).data;
+		for (const auto& f : Loaded)
+		{
+			if (!_stricmp(f.first.c_str(), name))
+				return f.second;
+		}
+		return nullptr;
+	}
+
+	// why the module waits, logged when it changes (QA)
+	void Fonts::Waiting(const std::string& why)
+	{
+		static std::string last;
+		if (why != last)
+		{
+			last = why;
+			if (!why.empty())
+				log_printf("fonts: waiting: %s", why.c_str());
+		}
 	}
 
 	void Fonts::Tick()
 	{
-		if (!settings_fonts() || !localize_is_russian())
-			return;
-		for (int p = 0; p < PLAN_COUNT; p++)
+		if (!settings_fonts())
+			return Waiting("fonts_enable is 0");
+		if (!localize_is_russian())
+			return Waiting("the game is not Russian (loc_language)");
+		Loaded.clear();
+		Game::DB_EnumXAssets(Game::ASSET_TYPE_FONT, Collect, nullptr, false);
 		{
-			void* font = Find(FONT_ASSET_TYPE, plan[p].name);
-			if (font)
+			// the loaded fonts and their atlas materials, logged when the list changes (QA)
+			std::string list;
+			for (const auto& f : Loaded)
 			{
-				fonts_seen(font, plan[p].name, Find); // the first patch, and again when the game reloaded its fonts or their atlas
-				return;
+				const auto* mat = *reinterpret_cast<const std::uint8_t* const*>(static_cast<const std::uint8_t*>(f.second) + FONT_MATERIAL);
+				const char* mname = mat ? *reinterpret_cast<const char* const*>(mat) : nullptr;
+				list += f.first + "=" + (mname ? mname : "(none)") + " ";
+			}
+			static std::string lastList;
+			if (list != lastList)
+			{
+				lastList = list;
+				log_printf("fonts: loaded: %s", list.c_str());
 			}
 		}
+		std::string seen;
+		for (int p = 0; p < PLAN_COUNT; p++)
+		{
+			auto* font = static_cast<const std::uint8_t*>(Find(FONT_ASSET_TYPE, plan[p].name));
+			if (!font)
+			{
+				seen += std::string(plan[p].name) + " not loaded; ";
+				continue;
+			}
+			const auto* mat = *reinterpret_cast<const std::uint8_t* const*>(font + FONT_MATERIAL);
+			const char* mname = mat ? *reinterpret_cast<const char* const*>(mat) : nullptr;
+			if (!is_atlas_material_name(mname))
+			{
+				seen += std::string(plan[p].name) + " on material " + (mname ? mname : "(none)") + "; ";
+				continue;
+			}
+			const std::uint8_t* image = material_image(mat);
+			if (!image || !*reinterpret_cast<void* const*>(image + IMAGE_TEX))
+			{
+				seen += std::string(plan[p].name) + " atlas " + mname + " has no texture yet; ";
+				continue;
+			}
+			Waiting("");
+			fonts_seen(const_cast<std::uint8_t*>(font), plan[p].name, Find); // the first patch, and again when the game reloaded its fonts or their atlas
+			return;
+		}
+		Waiting(seen);
 	}
 
 	Fonts::Fonts()
