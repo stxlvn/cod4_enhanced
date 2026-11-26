@@ -1,65 +1,77 @@
-![license](https://img.shields.io/badge/License-GPL%20v3-green.svg)
-[![Build](https://gitea.com/JerryALT/iw3sp_mod/actions/workflows/Build/badge.svg)](https://gitea.com/JerryALT/iw3sp_mod/actions/runs/latest)
-[![Discord](https://img.shields.io/discord/1091304681822752778?color=%237289DA&label=members&logo=discord&logoColor=%23FFFFFF)](https://discord.gg/YzNZSEMAnf)
+# Call of Duty 4: Modern Warfare Enhanced
 
-# IW3SP-MOD - Modification for Call of Duty 4: Modern Warfare
+Campaign co-op for two players in Call of Duty 4: Modern Warfare (2007, PC). Both PCs run the whole level in lockstep (the way the
+Modern Warfare 2 Spec Ops co-op works): only the players' input crosses the network, so the world, the AI and the scripted scenes
+are the same on both screens.
 
-Singleplayer client modification for Call of Duty 4: Modern Warfare (IW3). This client based on the [IW4x Client](https://github.com/iw4x/iw4x-client).
+Built on [IW3SP-MOD](https://gitea.com/JerryALT/iw3sp_mod), the single-player client modification for CoD4 (its own README:
+[docs/IW3SP-MOD.md](docs/IW3SP-MOD.md)). Sister projects by the same author:
+[Modern Warfare 2 Enhanced](https://github.com/stxlvn/mw2_enhanced), [Shrek 2 Enhanced](https://github.com/stxlvn/shrek2-enhanced).
 
-<p align="center">
-  <img src="assets/github/banner.png?raw=true"/>
-</p>
+Русская версия: [README.ru.md](README.ru.md).
 
-___
+> **Status: early alpha, no release yet.** Everything below runs in automated tests with two game copies on one PC; a session
+> between two real PCs has not been played yet.
 
-# Credits
-- [Bogdan Konstantinou](https://www.youtube.com/@BogdanKonstantinou)
-- [xoxor4d - IW3xo](https://github.com/xoxor4d/iw3xo-dev)
-- [X Labs Team](https://github.com/XLabsProject)
-- [AlterWare](https://github.com/alterware)
-- [fed - h2-mod](https://github.com/fedddddd/h2-mod)
-- [Nukem9 - LinkerMod](https://github.com/Nukem9/LinkerMod)
-- [CoD4X Server/Client](https://github.com/callofduty4x)
-- [Vlad Loktionov](https://www.youtube.com/@ruvlad)
+## What works
 
-## [Dependencies]
-- [ocornut - Dear ImGui](https://github.com/ocornut/imgui)
-- [curl](https://github.com/curl/curl)
-- [juliettef - imgui_markdown](https://github.com/juliettef/imgui_markdown)
-- [discord-rpc](https://github.com/discord/discord-rpc)
-- [nlohmann - json](https://github.com/nlohmann/json)
-- [DirectX SDK](https://github.com/devKlausS/dxsdk)
-- [LibTomCrypt](https://github.com/libtom/libtomcrypt)
-- [LibTomMath](https://github.com/libtom/libtommath)
+- **Two players in one campaign**: host and partner, lockstep with a state hash check every tick, a load barrier per level,
+  "waiting for the other player" when one PC stalls, the next level for both.
+- **Bodies**: each player sees the other as a soldier with stances, movement, firing, reloads, throws, ladders, mantling, jumps
+  and deaths (CoD4's AI animations).
+- **Last stand and revive** in the IW4 Spec Ops style (pistol on the ground, bleed-out timer, hold Use next to the partner).
+- **Nicknames** over the partner's head the way IW3 MP / IW4 draw overhead names (shown while his head is in sight, faded,
+  smaller with distance). `coop_name` sets yours; empty = your Steam name, else Player 1 / Player 2.
+- **Missions reworked for two so far**:
+  - F.N.G. (killhouse): Gaz's range for two stations, the knife on your own watermelon, the course by turns.
+  - Crew Expendable (cargoship): either player opens the container, the explosion knocks both down, the slow run, the jump to
+    the helicopter in either order, the fast-rope with both players.
+  - The Coup: the partner is a captive too and watches the host's camera for the whole level (native spectate).
+  - Death from Above (ac130): two gunners, each on his own gun (a gun the other player uses cannot be taken), own HUD, FOV and
+    thermal.
+  - Stealth (Blackout, All Ghillied Up, Ultimatum): the enemies detect each player by his own stance, movement and distance.
+  - The attack-dog takedown for both players (each his own first-person scene and melee window).
+- **Engine fixes for two players**: player 2 fires triggers, the actor pool keeps room for the second player's sentient,
+  per-player HUD elements, hints, vision sets and saved dvars, entities shown on one PC only.
+- **Russian game**: the text drawn with fonts closer to the English original (port of MW2 Enhanced's font module; not checked in
+  game yet).
+- Screenshots (`screenshotJPEG`) are taken from the game's own frame, not from the screen.
 
-# Disclaimer
-This software has been created purely for the purposes of academic research. Project maintainers are not responsible or liable for misuse of the software. Use responsibly.
+The other missions run in co-op but their scripted scenes still follow player 1 only.
 
-# Features (Short)
-[Mod compatibility list](https://gitea.com/JerryALT/iw3sp_mod/wiki/Mod-Compatibility)
+## Playing (for testers)
 
-- Increased asset limits for IW3
-  - FX: 1200
-  - Image: 7168
-  - Loaded Sound: 2700
-  - Streamed Sound: 24000
-  - Material: 8192
-  - Weapon: 2400
-  - Xmodel: 5125
-- Added the game achievements;
-- Added the gamepad support with aim assist;
-- Ability to launch the mods from main menu of the game and more...
+1. A copy of CoD4 1.0 (Steam). Install [IW3SP-MOD](https://gitea.com/JerryALT/iw3sp_mod/releases) into it.
+2. Build this repository (below) and copy `build/bin/Release/game.dll` over IW3SP-MOD's `game.dll`, and the `cod4coop` folder
+   next to it.
+3. Start `iw3sp_mod.exe` on both PCs. Host: open the console and type `coop_host killhouse` (or any campaign map). Partner:
+   `coop_connect <host IP>` (UDP port 28960, `coop_port` changes it). `coop_stop` ends the session.
 
-More information about features of the IW3SP-MOD you can see in Wiki Page: [link](https://gitea.com/JerryALT/iw3sp_mod/wiki/IW3SP-MOD%3A+Features.-)
+## Building
 
-# How to install modification? (For regular users)
-1. Download the latest [release](https://gitea.com/JerryALT/iw3sp_mod/releases/latest)
-2. Place the .zip contents into your cod4 root folder
-3. Start the **iw3sp_mod.exe**
+Windows, Visual Studio 2022 Build Tools (C++ x86) and the Windows SDK:
 
-# How to compile from source? (For advanced users)
-1. Clone the this repository. I recommend use the [git-scm](https://git-scm.com/downloads).
-</br>P.S: (**Downloading the zip does not include deps!**)</br>
-2. Find any directory which you want the placed the content of repository, then open context menu and find "Git Bash Here" and write next line in the cmd: `git clone https://gitea.com/JerryALT/iw3sp_mod`
-3. After cloning click the `generate.bat` and wait when all files will be ready.
-4. Open build folder and find the `iw3sp_dev.sln` file and compile.
+```
+tools\premake5.exe vs2022
+msbuild build\iw3sp_dev.sln -p:Configuration=Release -p:Platform=Win32
+```
+
+The result is `build\bin\Release\game.dll`.
+
+## Where the co-op code is
+
+- `src/Components/Modules/Coop/`: the session and lockstep (`CoopNet`), players, bodies, last stand, engine hooks (`Coop`), the
+  text patches of the game's scripts (`CoopScripts`), the QA runner (`CoopQA`).
+- `cod4coop/scripts/maps/_coop*.gsc`: the co-op scripts (bodies, last stand, one module per reworked mission or system).
+- `src/Components/Modules/Fonts.cpp`: the Russian fonts.
+
+No game files are in this repository: the mod patches the game's scripts as they load.
+
+## Licence and credits
+
+GPL-3.0, as IW3SP-MOD ([LICENSE](LICENSE)). IW3SP-MOD and its credits: [docs/IW3SP-MOD.md](docs/IW3SP-MOD.md). The fonts in
+`cod4coop/fonts` are h2-mod's, SIL Open Font License ([cod4coop/fonts/H2MOD-FONTS.txt](cod4coop/fonts/H2MOD-FONTS.txt)).
+References used while building it: KisakCOD (the CoD4 decompilation), IW4x, the IW4 Spec Ops design.
+
+Call of Duty and Modern Warfare are trademarks of Activision. This is a fan project, not affiliated with Activision or Infinity
+Ward; you need your own copy of the game.
