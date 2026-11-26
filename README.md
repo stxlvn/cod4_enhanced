@@ -63,14 +63,14 @@ The result is `build\bin\Release\game.dll`.
 - `src/Components/Modules/Coop/`: the session and lockstep (`CoopNet`), players, bodies, last stand, engine hooks (`Coop`), the
   text patches of the game's scripts (`CoopScripts`), the QA runner (`CoopQA`).
 - `cod4coop/scripts/maps/_coop*.gsc`: the co-op scripts (bodies, last stand, one module per reworked mission or system).
-- `src/Components/Modules/Fonts.cpp`: the Russian fonts.
+- `src/Components/Modules/Fonts.cpp`: the Russian fonts (`tools/fonts/subset_win1251.py` cuts a font for `cod4coop/fonts`).
 
 No game files are in this repository: the mod patches the game's scripts as they load.
 
 ## Licence and credits
 
 GPL-3.0, as IW3SP-MOD ([LICENSE](LICENSE)). IW3SP-MOD and its credits: [docs/IW3SP-MOD.md](docs/IW3SP-MOD.md). The fonts in
-`cod4coop/fonts` are h2-mod's, SIL Open Font License ([cod4coop/fonts/H2MOD-FONTS.txt](cod4coop/fonts/H2MOD-FONTS.txt)).
+`cod4coop/fonts` are h1-mod's, SIL Open Font License ([cod4coop/fonts/H1MOD-FONTS.txt](cod4coop/fonts/H1MOD-FONTS.txt)).
 References used while building it: KisakCOD (the CoD4 decompilation), IW4x, the IW4 Spec Ops design.
 
 Call of Duty and Modern Warfare are trademarks of Activision. This is a fan project, not affiliated with Activision or Infinity

@@ -1,8 +1,8 @@
 // Russian game: fonts closer to the English original (a port of MW2 Enhanced's fonts.c, same owner, to IW3SP-MOD / CoD4).
 //
 // The Russian CoD4 draws its text with generic Cyrillic fonts. The mod replaces the glyphs of the game's font assets with glyphs
-// rendered by Windows GDI from the user-selectable files bank.ttf, default.otf and defaultBold.otf in <game dir>' + BS + 'cod4coop' + BS + 'fonts
-// (the bundled defaults are SIL OFL fonts; users can replace the files without changing their names).
+// rendered by Windows GDI from the user-selectable files bank.ttf, default.otf and defaultBold.otf in <game dir>\cod4coop\fonts
+// (the bundled defaults are h1-mod's SIL OFL fonts, cod4coop/fonts/H1MOD-FONTS.txt; users can replace the files without changing their names).
 //
 // How the game's fonts work (IW3, Game::Font_s / Game::Glyph in Structs.hpp):
 //   Font_s (asset type 0x13): name, pixelHeight (int), glyphCount (int), Material *material, Material *glowMaterial, Glyph *glyphs.
@@ -1801,7 +1801,7 @@ namespace Components
 	{
 		Events::OnDvarInit([]
 		{
-			fonts_enable = Dvars::Register::Dvar_RegisterBool("fonts_enable", "Russian game: draw the text with the mod's fonts (cod4coop' + BS + BS + 'fonts)", true, Game::saved);
+			fonts_enable = Dvars::Register::Dvar_RegisterBool("fonts_enable", "Russian game: draw the text with the mod's fonts (cod4coop\\fonts)", true, Game::saved);
 			fonts_force = Dvars::Register::Dvar_RegisterBool("fonts_force", "Test: the mod's fonts in any language", false, Game::none);
 			fonts_mip = Dvars::Register::Dvar_RegisterBool("fonts_mip", "The mod's font atlas filtered between its levels", true, Game::saved);
 		});

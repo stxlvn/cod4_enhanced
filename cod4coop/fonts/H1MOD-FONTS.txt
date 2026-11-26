@@ -1,0 +1,22 @@
+The fonts in this folder: bank.ttf, default.otf and defaultBold.otf.
+The mod draws the Russian game's text with them (src/Components/Modules/Fonts.cpp, a port of MW2 Enhanced's src/fonts.c);
+the file names are what the mod looks for, so other fonts can be put here under the same names.
+
+From h1-mod (https://github.com/auroramod/h1-mod), commit 60e7352b4d0a7c83e55a21504a7d19a5029b95eb, cut to the characters of
+Windows-1251 (the code page of the Russian CoD4's font tables: 222 characters, Latin and Cyrillic) with
+tools/fonts/subset_win1251.py (fontTools; every name record kept, the licence lines among them):
+
+== bank.ttf <- data/zonetool/h1_mod_common/fonts/bank_h1.ttf
+   "H1-Mod Mix Gothic Regular", Version 1.1
+   original 220,776 bytes, SHA-256 1d5374113de39df858368ff5810ed17538e97e5f2a30554e48e9346c53d7dc8f
+== default.otf <- data/zonetool/h1_mod_common/fonts/default.otf (the same file as h2-mod's data/zonetool/fonts/default.otf)
+   "H*-Mod Mix Medium", Version 1.20
+   original 5,372,856 bytes, SHA-256 36636672d28b7c48b52369918abb6c7241ddf4a86500da8b7681c6eae311663d
+== defaultBold.otf <- data/cdata/fallback/fonts/defaultBold.otf (the same file as h2-mod's data/zonetool/fonts/defaultBold.otf)
+   "H*-Mod Mix Open Bold", Version 1.00
+   original 13,900,220 bytes, SHA-256 9f0522523cf44b164a0e2f3e792a62a2ed9968256427af60a241d4d620def7ce
+   Its cmap format 4 subtable has ten CJK segments pointing past its glyph array (fontTools cannot read it); the script maps
+   those to glyph 0 before cutting (none of them is in Windows-1251).
+
+Licence stated in each file's name table: "This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is available with a FAQ at: http://scripts.sil.org/OFL". The files declare no Reserved Font Name.

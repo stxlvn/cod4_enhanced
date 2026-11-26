@@ -30,5 +30,5 @@
 
 ## Лицензия
 
-GPL-3.0, как у IW3SP-MOD. Шрифты в `cod4coop/fonts` — из h2-mod, SIL Open Font License. Call of Duty и Modern Warfare —
+GPL-3.0, как у IW3SP-MOD. Шрифты в `cod4coop/fonts` — из h1-mod, SIL Open Font License. Call of Duty и Modern Warfare —
 товарные знаки Activision; это фанатский проект, нужна своя копия игры.
